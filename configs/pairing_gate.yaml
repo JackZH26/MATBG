@@ -1,0 +1,28 @@
+project: matbg_interband_pairing_superfluid_stiffness
+created: 2026-06-07
+purpose: gate_1_pairing_definition
+
+basis:
+  internal_order:
+    - top_A
+    - top_B
+    - bottom_A
+    - bottom_B
+  expansion_order: momentum_then_internal
+
+pairing_family:
+  m0: tau0_sigma0
+  m1: taux_sigmax
+  initial_m1: taux_sigma0
+  partner_convention: tr_sewn
+  eta_values: [0.0, 0.1, 0.25, 0.5, 0.75, 1.0]
+  delta0_meV: 1.0
+  normalization_modes:
+    - fixed_delta0
+    - fixed_frobenius_norm
+
+acceptance:
+  pairing_symmetry_relative_tolerance: 1.0e-10
+  gauge_projection_relative_tolerance: 1.0e-10
+  gauge_spectrum_relative_tolerance: 1.0e-8
+  particle_hole_spectrum_relative_tolerance: 1.0e-8

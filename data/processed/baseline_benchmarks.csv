@@ -1,0 +1,4 @@
+source,pairing,mu_meV,delta0_meV,n_keep,nk,D_total_eV_A2,D_conv_eV_A2,D_geom_eV_A2,geom_fraction_percent,cross_fraction,enhancement,units_note
+MATBG_superfluid_weight_PRB_v2.tex,uniform_s,0,1.0,2,14,67.5,53.0,14.5,21.5,<1e-13,1.27,per valley per spin
+MATBG_superfluid_weight_PRB_v2.tex,sublattice_s,0,1.0,2,14,59.3,43.7,15.5,26.2,<0.01%,1.35,per valley per spin
+MATBG_superfluid_weight_PRB_v2.tex,nematic_d,0,1.0,2,14,52.4,39.6,12.8,24.4,<1e-13,1.32,per valley per spin

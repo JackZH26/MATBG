@@ -1,0 +1,44 @@
+project: matbg_interband_pairing_superfluid_stiffness
+created: 2026-06-07
+
+bm_model:
+  theta_deg: 1.05
+  vF_eV_A: 2.135
+  w0_meV: 87.2
+  w1_meV: 109.0
+  w0_over_w1: 0.80
+  n_shell: 3
+
+calculation:
+  temperature_K: 0
+  nk_values: [12, 14, 16]
+  n_keep_values: [2, 4, 6]
+  finite_difference_dk_Ainv: 1.0e-6
+  delta0_meV_values: [0.3, 0.5, 1.0]
+  mu_meV_values: [-8, -6, -4, -2, 0, 2, 4, 6, 8]
+
+pairing:
+  baseline_types:
+    - intraband_uniform_s
+    - intraband_nematic_d
+  interband_eta_values: [0.0, 0.1, 0.25, 0.5, 0.75, 1.0]
+  production_requires:
+    - hermiticity_test
+    - particle_hole_symmetry_test
+    - gauge_randomization_test
+    - gap_norm_control
+
+outputs:
+  primary_observables:
+    - Dxx_total
+    - Dyy_total
+    - anisotropy_ratio
+    - anisotropy_norm
+    - filling_dependence
+  secondary_explanations:
+    - Dxx_conv
+    - Dyy_conv
+    - Dxx_geom
+    - Dyy_geom
+    - Dxx_cross
+    - Dyy_cross

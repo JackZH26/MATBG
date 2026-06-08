@@ -1,0 +1,36 @@
+project: matbg_interband_pairing_superfluid_stiffness
+created: 2026-06-07
+purpose: first_minimal_bdg_response_gate
+
+bm_model:
+  theta_deg: 1.05
+  vF_eV_A: 2.135
+  w0_meV: 87.2
+  w1_meV: 109.0
+  n_shell: 3
+
+pairing:
+  partner_convention: tr_sewn
+  m0: tau0_sigma0
+  m1: taux_sigmax
+  normalization_modes:
+    - fixed_frobenius_norm
+    - fixed_delta0
+  eta_values: [0.0, 0.25, 0.5, 0.75, 1.0]
+  delta0_meV: 1.0
+
+response:
+  temperature_K: 0
+  mu_meV: 0.0
+  n_keep_values: [2, 4, 6]
+  nk_values: [3, 5]
+  finite_difference_dk_Ainv: 1.0e-6
+  current_split_convention: manuscript_band_basis
+  includes_diamagnetic_counterterm: false
+  applies_moire_area_factor: false
+  applies_spin_valley_degeneracy: false
+
+acceptance:
+  max_bdg_hermiticity_error: 1.0e-10
+  max_particle_hole_spectrum_error: 1.0e-8
+  max_decomposition_closure_error: 1.0e-10
