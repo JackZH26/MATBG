@@ -377,6 +377,50 @@ the current manuscript claims sign and order-of-magnitude stability of the
 normalized mechanism signal, not a strict continuum-limit extrapolation of the
 tabulated values.
 
+As an additional finite-grid audit, the same values are fitted to
+\begin{equation}
+  y(nk)=y_0+a/nk^2,\qquad
+  y=100\left[D_{\rm iso}(\eta=1)/D_{\rm iso}(\eta=0)-1\right].
+\end{equation}
+Figure~\ref{fig:sm_nk_trend} shows the measured points, the $1/nk^2$ trend
+lines, and the intercept markers at $1/nk^2=0$.  Table~\ref{tab:sm_nk_trend}
+also lists a $1/nk$ intercept as a simple sensitivity check.  With only three
+grids, these intercepts are an audit of trend stability rather than a final
+continuum extrapolation.  The fixed-Frobenius intercepts remain positive in
+both trend coordinates, whereas the fixed-$\Delta_0$ measured-grid signs remain
+mixed except at $\mu=0$.
+
+\begin{figure}[t]
+\includegraphics[width=\textwidth]{figures/nk_trend_audit_nkeep6.pdf}
+\caption{Finite-grid trend audit for the selected $nk=9,11,13$ key points.
+Markers at nonzero $1/nk^2$ are computed values, dotted lines are linear
+$1/nk^2$ fits, and crosses at zero are fitted intercepts.  The fixed-Frobenius
+trend remains positive for all four chemical potentials; the fixed-$\Delta_0$
+control remains much smaller and sign-sensitive on the measured grids.}
+\label{fig:sm_nk_trend}
+\end{figure}
+
+\begin{table}[t]
+\caption{Finite-grid trend audit for the selected key points.  Values are in
+percent.  The $1/nk^2$ intercept is the plotted trend marker, while the $1/nk$
+intercept is a sensitivity check.}
+\label{tab:sm_nk_trend}
+\begin{ruledtabular}
+\begin{tabular}{lrrrrl}
+mode, $\mu$ (meV) & min & max & $1/nk^2$ int. & $1/nk$ int. & sign\\
+\hline
+fixed $\Delta_0$, -4 & -0.68 &  1.22 &  2.32 &  4.81 & mixed\\
+fixed $\Delta_0$,  0 &  0.80 &  1.96 &  2.34 &  3.53 & positive\\
+fixed $\Delta_0$,  2 & -0.29 &  1.18 &  1.38 &  2.20 & mixed\\
+fixed $\Delta_0$,  4 & -0.17 &  0.11 &  0.36 &  0.74 & mixed\\
+fixed Frobenius, -4 &  6.04 &  8.72 & 10.27 & 13.77 & positive\\
+fixed Frobenius,  0 &  7.96 & 10.13 & 10.58 & 12.48 & positive\\
+fixed Frobenius,  2 &  6.43 &  9.27 & 10.58 & 12.94 & positive\\
+fixed Frobenius,  4 &  6.05 &  7.72 &  8.65 & 10.82 & positive\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 \section{Historical PRB Benchmark Reconstruction}
 
 The production interband-pairing scan and the historical PRB table
@@ -411,14 +455,14 @@ than a production convention.
 
 The current submission-critical gaps are:
 \begin{enumerate}
-  \item a systematic continuum-grid extrapolation beyond the present selected
-  $nk=9$, $nk=11$, and $nk=13$ key-point checks;
+  \item a denser or formal continuum-grid extrapolation beyond the present
+  selected $nk=9$, $nk=11$, and $nk=13$ trend audit;
   \item a fully independent two-valley implementation before studying
   valley-asymmetric perturbations;
   \item a final absolute stiffness convention before any direct experimental
   comparison;
-  \item a calibrated filling variable replacing the retained-band proxy
-  $\nu_{\rm proxy}$.
+  \item a device-level filling calibration beyond the central-flat-band
+  crosswalk reported here.
 \end{enumerate}
 
 These limitations do not invalidate the normalized-response mechanism claim,

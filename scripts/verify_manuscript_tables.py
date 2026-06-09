@@ -25,6 +25,7 @@ VALLEY_SEWING = ROOT / "data" / "processed" / "valley_sewing_diagnostic.csv"
 PRB_RECON = ROOT / "data" / "processed" / "prb_table_reconstruction_nk14.csv"
 FLAT_AUDIT = ROOT / "data" / "processed" / "flatband_endpoint_audit_nk14.csv"
 FILLING_CROSSWALK = ROOT / "data" / "processed" / "filling_crosswalk_nk7_nshell3.csv"
+NK_TREND = ROOT / "data" / "processed" / "nk_trend_audit_nkeep6.csv"
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -384,6 +385,61 @@ def verify_supplemental_filling_crosswalk(tex: str) -> None:
         )
 
 
+def verify_supplemental_nk_trend(tex: str) -> None:
+    rows = split_rows(table_block(tex, "tab:sm_nk_trend"))
+    data = {
+        (row["normalization"], int(float(row["mu_meV"]))): row
+        for row in load_csv(NK_TREND)
+    }
+
+    checked = 0
+    for cells in rows:
+        if len(cells) != 6:
+            continue
+        if "Frobenius" not in cells[0] and "Delta" not in cells[0]:
+            continue
+        normalization = (
+            "fixed_delta0" if "Delta" in cells[0] else "fixed_frobenius_norm"
+        )
+        mu_values = numbers(cells[0])
+        if not mu_values:
+            raise ValueError(f"No mu value found in cell: {cells[0]!r}")
+        mu = int(mu_values[-1])
+        row = data[(normalization, mu)]
+        assert_close(
+            f"supp nk trend min {normalization} mu={mu}",
+            number(cells[1]),
+            rounded(row["min_percent"], 2),
+            2,
+        )
+        assert_close(
+            f"supp nk trend max {normalization} mu={mu}",
+            number(cells[2]),
+            rounded(row["max_percent"], 2),
+            2,
+        )
+        assert_close(
+            f"supp nk trend h2 {normalization} mu={mu}",
+            number(cells[3]),
+            rounded(row["intercept_percent_h2"], 2),
+            2,
+        )
+        assert_close(
+            f"supp nk trend h1 {normalization} mu={mu}",
+            number(cells[4]),
+            rounded(row["intercept_percent_h1"], 2),
+            2,
+        )
+        if row["measured_sign_status"] not in cells[5]:
+            raise AssertionError(
+                f"supp nk trend sign {normalization} mu={mu}: "
+                f"{cells[5]!r} does not contain {row['measured_sign_status']!r}"
+            )
+        checked += 1
+    if checked != 8:
+        raise AssertionError(f"Expected 8 supplemental nk trend rows, checked {checked}")
+
+
 def main() -> int:
     tex = TEX_PATH.read_text()
     verify_dense_eta(tex)
@@ -394,6 +450,7 @@ def main() -> int:
         verify_supplemental_nk_convergence(supp)
         verify_supplemental_valley_sewing(supp)
         verify_supplemental_filling_crosswalk(supp)
+        verify_supplemental_nk_trend(supp)
     print("All manuscript and supplemental table values match processed CSV data.")
     return 0
 

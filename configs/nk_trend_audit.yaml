@@ -1,0 +1,25 @@
+project: matbg_interband_pairing_superfluid_stiffness
+created: 2026-06-09
+purpose: finite_grid_trend_audit_for_selected_nk_keypoints
+
+inputs:
+  summaries:
+    - data/processed/mu_response_scan_nk9_nkeep6_keypoints_summary.csv
+    - data/processed/mu_response_scan_nk11_nkeep6_keypoints_summary.csv
+    - data/processed/mu_response_scan_nk13_nkeep6_keypoints_summary.csv
+
+analysis:
+  nks: [9, 11, 13]
+  mu_meV_values: [-4.0, 0.0, 2.0, 4.0]
+  trend_coordinate: 1/nk^2
+  sensitivity_coordinate: 1/nk
+  reported_quantity: 100 * [D_iso(eta=1) / D_iso(eta=0) - 1]
+
+outputs:
+  csv: data/processed/nk_trend_audit_nkeep6.csv
+  figure_png: figures/nk_trend_audit_nkeep6.png
+  figure_pdf: figures/nk_trend_audit_nkeep6.pdf
+
+commands:
+  audit: >
+    python3 scripts/analyze_nk_trend.py

@@ -251,6 +251,46 @@ three checked grids. The Supplemental Material table values are checked by
 summary CSV files. The Supplemental Material figure is generated from the same
 summary CSV files.
 
+### Supplemental finite-grid trend audit figure and table
+
+Supplemental content:
+finite-grid trend audit using the selected `nk=9`, `nk=11`, and `nk=13`
+key-point summaries.  The plotted trend coordinate is `1/nk^2`, with `1/nk`
+stored as a sensitivity check in the CSV and table.
+
+Figure files:
+`figures/nk_trend_audit_nkeep6.png`
+`figures/nk_trend_audit_nkeep6.pdf`
+
+Source CSV:
+`data/processed/nk_trend_audit_nkeep6.csv`
+
+Script:
+`scripts/analyze_nk_trend.py`
+
+Reproduction command:
+
+```bash
+python3 scripts/analyze_nk_trend.py
+```
+
+Config:
+`configs/nk_trend_audit.yaml`
+
+Columns mapped into LaTeX:
+
+```text
+min_percent -> min column
+max_percent -> max column
+intercept_percent_h2 -> 1/nk^2 intercept column
+intercept_percent_h1 -> 1/nk intercept column
+measured_sign_status -> sign column
+```
+
+Current status:
+values are generated from the `nk=9/11/13` summary CSV files and checked by
+`scripts/verify_manuscript_tables.py`.
+
 ### Supplemental raw valley sewing diagnostic table
 
 Supplemental content:
