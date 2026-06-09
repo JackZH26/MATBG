@@ -145,9 +145,15 @@ not regenerated in this work package because the legacy figure assets
    recorded in
    `data/processed/prb_validation_summary.csv` and
    `notes/prb_validation_chain_2026-06-09.md`. The current manuscript package
-   inventory contains all 30 required entries, including the cover letter
-   draft, and is recorded in `data/processed/prb_submission_manifest.csv` and
-   `notes/prb_submission_manifest_2026-06-09.md`.
+   inventory contains all 71 required entries, including the cover letter
+   draft, included figures, key data tables, audit outputs, provenance notes,
+   all repository scripts, and all MATBG source modules. It is recorded in
+   `data/processed/prb_submission_manifest.csv` and
+   `notes/prb_submission_manifest_2026-06-09.md`. A local checkpoint package
+   builder now copies the journal-facing files and provenance material into
+   ignored outputs under `submission/build/`; the tracked summary is
+   `data/processed/prb_submission_package_build.csv` and the build note is
+   `notes/prb_submission_package_build_2026-06-09.md`.
    `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
    presents the first standalone Supplemental Material skeleton. The remaining
    reproducibility gap is to repeat the literature sweep immediately

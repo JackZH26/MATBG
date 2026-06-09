@@ -81,13 +81,38 @@ def base_items() -> list[ManifestItem]:
         ManifestItem("claim_scope", "audit_output", PROCESSED / "claim_scope_audit.csv", True, "Text-level claim-scope guardrail."),
         ManifestItem("observable_policy", "audit_output", PROCESSED / "observable_policy_audit.csv", True, "Observable-policy guardrail."),
         ManifestItem("submission_package_audit", "audit_output", PROCESSED / "submission_package_audit.csv", True, "Mechanical submission-package audit."),
-        ManifestItem("table_verifier", "validation_script", ROOT / "scripts" / "verify_manuscript_tables.py", True, "Table-value verification script."),
-        ManifestItem("validation_chain", "validation_script", ROOT / "scripts" / "run_prb_validation.py", True, "One-command validation chain."),
         ManifestItem("figure_table_provenance", "provenance_note", ROOT / "notes" / "figure_table_provenance_2026-06-09.md", True, "Figure/table provenance manifest."),
         ManifestItem("readiness_audit", "provenance_note", ROOT / "notes" / "prb_readiness_audit_2026-06-09.md", True, "Current PRB readiness audit."),
         ManifestItem("validation_chain_note", "provenance_note", ROOT / "notes" / "prb_validation_chain_2026-06-09.md", True, "Validation-chain description."),
         ManifestItem("submission_manifest_note", "provenance_note", ROOT / "notes" / "prb_submission_manifest_2026-06-09.md", True, "Submission-manifest description."),
+        ManifestItem("submission_package_build_note", "provenance_note", ROOT / "notes" / "prb_submission_package_build_2026-06-09.md", True, "Submission-package build description."),
         ManifestItem("recent_literature_note", "provenance_note", ROOT / "notes" / "recent_literature_update_2026-06-09.md", True, "Latest recorded literature sweep."),
+    ]
+
+
+def script_items() -> list[ManifestItem]:
+    return [
+        ManifestItem(
+            artifact_id=f"script_{path.stem}",
+            role="validation_script",
+            path=path,
+            required=True,
+            notes="Repository script included for validation and reproducibility.",
+        )
+        for path in sorted((ROOT / "scripts").glob("*.py"))
+    ]
+
+
+def source_code_items() -> list[ManifestItem]:
+    return [
+        ManifestItem(
+            artifact_id=f"source_{path.relative_to(ROOT).with_suffix('').as_posix().replace('/', '_')}",
+            role="source_code",
+            path=path,
+            required=True,
+            notes="MATBG source module included for reproducibility.",
+        )
+        for path in sorted((ROOT / "src").rglob("*.py"))
     ]
 
 
@@ -127,7 +152,7 @@ def row_for(item: ManifestItem) -> dict[str, str]:
 
 def main() -> int:
     args = parse_args()
-    items = base_items() + figure_items()
+    items = base_items() + script_items() + source_code_items() + figure_items()
     rows = [row_for(item) for item in items]
 
     args.output.parent.mkdir(parents=True, exist_ok=True)

@@ -58,6 +58,25 @@ submission-package mechanics, submission-manifest completeness, main/Supplementa
 Material LaTeX builds, cover letter presence/signature, and blocking LaTeX log
 warnings.
 
+## Local PRB Package Checkpoint
+
+Build the local manuscript checkpoint package with:
+
+```bash
+python3 scripts/build_prb_submission_package.py
+```
+
+The command writes an ignored local package and zip under `submission/build/`
+and records the tracked build summary in:
+
+```text
+data/processed/prb_submission_package_build.csv
+```
+
+The package is for internal review and final-preparation work. It should be
+regenerated after the final literature sweep and before any actual journal
+upload.
+
 ## Research Owner
 
 Jian Zhou  

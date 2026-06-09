@@ -38,8 +38,10 @@ The chain currently runs:
 6. `scripts/verify_manuscript_tables.py`;
 7. `scripts/audit_submission_package.py`, including the PRB cover letter
    draft and required signature;
-8. `scripts/build_prb_submission_manifest.py`, including the cover letter in
-   the manuscript package inventory;
+8. `scripts/build_prb_submission_manifest.py`, including the cover letter,
+   included figures, key processed data tables, audit outputs, provenance
+   notes, validation scripts, and MATBG source modules in the manuscript
+   package inventory;
 9. `latexmk` for the main manuscript;
 10. `latexmk` for the Supplemental Material;
 11. blocking-warning scan of the main LaTeX log;
@@ -60,4 +62,6 @@ absolute stiffness or device-level filling calibration.
 ## Current Decision
 
 Use this command as the standard pre-commit and pre-submission smoke test for
-the current manuscript package.
+the current manuscript package. Use
+`scripts/build_prb_submission_package.py` after this chain when a local
+checkpoint archive under `submission/build/` is needed.

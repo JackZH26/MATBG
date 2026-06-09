@@ -10,7 +10,8 @@ manuscript package.
 The manifest is not a journal upload archive. It is a deterministic inventory
 of the files that constitute the current manuscript checkpoint: main text,
 Supplemental Material, cover letter draft, bibliography, included figures, key
-source-data CSV files, audit outputs, validation scripts, and provenance notes.
+source-data CSV files, audit outputs, validation scripts, source modules, and
+provenance notes.
 
 ## Command
 
@@ -33,11 +34,16 @@ absolute stiffness or device-calibrated filling predictions.
 
 ## Current Result
 
-All 30 required manifest entries are present.
+All 71 required manifest entries are present. The current inventory includes
+the journal-facing manuscript files, included figures, key processed data
+tables, audit outputs, provenance notes, all repository scripts in `scripts/`,
+and all MATBG source modules in `src/matbg/`.
 
 ## Current Decision
 
 Use this manifest as the working inventory before creating any eventual journal
-upload archive. A final submission-time package should be regenerated after
-the final literature sweep and after deciding whether the manuscript remains
-within the present normalized-response mechanism scope.
+upload archive. The local checkpoint archive is generated separately by
+`scripts/build_prb_submission_package.py`. A final submission-time package
+should be regenerated after the final literature sweep and after deciding
+whether the manuscript remains within the present normalized-response
+mechanism scope.
