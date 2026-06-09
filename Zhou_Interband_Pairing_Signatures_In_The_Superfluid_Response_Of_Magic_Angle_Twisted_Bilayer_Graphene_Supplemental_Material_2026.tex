@@ -35,6 +35,17 @@ between robust quantum-geometric mechanism diagnostics~\cite{peotta_torma_2015,h
 and direct quantitative comparison with recent stiffness
 experiments~\cite{tian_2023,tanaka_2025}.
 
+The material below is meant to be read as a set of checks attached to the main
+text, not as a separate enlargement of the claim.  The BM parameters, reporting
+policy, and filling crosswalk specify what the plotted axes and tabulated
+labels mean.  The pairing-construction and finite-response sections define the
+diagnostic used in the main text.  The provenance section identifies the data
+and scripts behind each figure and table.  The momentum-grid section supplies
+the selected-grid evidence invoked after the main-text $nk=9$ table.  The
+benchmark-reconstruction and claim-scope sections record why absolute
+stiffness, device-level filling, and continuum-limit interpretations are left
+outside the current mechanism-paper scope.
+
 \section{BM Model and Numerical Parameters}
 
 The normal-state calculation uses the single-valley BM continuum Hamiltonian
@@ -363,6 +374,11 @@ The convergence figure is generated with
 \begin{verbatim}
 python3 scripts/plot_nk_convergence_keypoints.py
 \end{verbatim}
+
+This section supports the main-text validation paragraph that follows the
+$nk=9$ table.  Its role is to test sign and scale stability at selected
+chemical potentials, not to replace the dense $\mu$-$\eta$ map or to turn the
+selected grids into a continuum extrapolation.
 
 Figure~\ref{fig:sm_nk_convergence} and Table~\ref{tab:sm_nk_convergence}
 compare the normalized $\eta=1$ response relative to $\eta=0$.  The

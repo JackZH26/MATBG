@@ -41,6 +41,13 @@ pairing/velocity gates establish internal consistency, Table I gives the
 claim-bearing dense endpoint comparison, the heatmaps show interpolation and
 normalization control, and the `nk=9` table is framed as representative-grid
 validation rather than a replacement dense scan.
+The Supplemental Material now opens with a reader roadmap that maps main-text
+claims to the relevant checks: BM/reporting/filling conventions, pairing and
+response definitions, provenance, selected-grid convergence, benchmark
+reconstruction, and claim-scope boundaries.  Its convergence section now
+explicitly states that the `nk=11/13/15` material supports sign/scale stability
+at selected chemical potentials rather than replacing the dense map or
+establishing a continuum extrapolation.
 
 Legacy note: `MATBG_superfluid_weight_PRB_v2.tex` is treated as a historical
 baseline source, not as the current submission manuscript. Its author block has

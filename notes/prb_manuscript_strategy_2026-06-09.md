@@ -209,3 +209,7 @@ submission/Zhou_PRB_Cover_Letter_2026.md
 21. The current Results narrative explicitly distinguishes definition gates,
     the dense endpoint comparison, heatmap interpolation, normalization
     control, and selected-grid validation.
+22. The Supplemental Material now includes a reader roadmap linking main-text
+    claims to BM/reporting/filling conventions, pairing/response definitions,
+    provenance, selected-grid convergence, benchmark reconstruction, and
+    claim-scope boundaries.
