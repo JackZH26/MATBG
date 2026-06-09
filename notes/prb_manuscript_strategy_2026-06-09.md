@@ -206,3 +206,6 @@ submission/Zhou_PRB_Cover_Letter_2026.md
     mechanism question, the fixed-Frobenius/fixed-Delta0 contrast, and the
     selected-grid stability evidence before the absolute-unit and filling
     limitations.
+21. The current Results narrative explicitly distinguishes definition gates,
+    the dense endpoint comparison, heatmap interpolation, normalization
+    control, and selected-grid validation.

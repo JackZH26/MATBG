@@ -271,11 +271,20 @@ For $n_{\rm keep}=6$, $nk=7$, and $\eta=1$, the dense scan gives
 \end{equation}
 The velocity gate confirms that projected velocity matrices are Hermitian to
 machine precision and that the intra/inter velocity split closes numerically.
+These gates are not yet response claims.  They establish that the pairing
+direction, valley sewing convention, and current decomposition are internally
+consistent before the normalized response maps are interpreted.
 
 \subsection{Dense chemical-potential and pairing scan}
 
 Table~\ref{tab:dense_eta} summarizes the dense scan at $nk=7$ and
 $n_{\rm keep}=6$.
+It is the main endpoint comparison: each row compares $\eta=1$ with the
+corresponding $\eta=0$ reference at the same chemical potential.
+The fixed-Frobenius column asks how the response changes when the orbital
+direction is changed at fixed matrix norm, while the fixed-$\Delta_0$ column
+keeps the raw gap amplitude fixed and therefore serves as the normalization
+control.
 The first column gives the retained-band filling proxy $\nu_{\rm proxy}$; this
 is a diagnostic occupancy proxy and is not used as a calibrated experimental
 filling.  The Supplemental Material gives a central two-flat-band crosswalk;
@@ -313,9 +322,11 @@ $\mu$ (meV) & $\nu_{\rm proxy}$ & fixed Frobenius & fixed $\Delta_0$\\
 \end{table*}
 
 Figure~\ref{fig:heatmap_frob} shows the fixed-Frobenius dense response map.
-The enhancement is positive over most of the scanned chemical-potential range,
-with the largest endpoint value in the present scan occurring near
-$\mu=5$ meV.
+The table records the $\eta=1$ endpoint, while the heatmap shows how the
+response evolves throughout the interpolation.
+At $\eta=1$ the fixed-Frobenius response is positive for every tabulated
+chemical potential, with the largest endpoint value in the present scan
+occurring near $\mu=5$ meV.
 The middle panel shows that the geometric fraction remains a useful diagnostic
 of how the response is redistributed between current sectors.
 
@@ -331,8 +342,10 @@ Right: response anisotropy $D_{xx}/D_{yy}$.
 \end{figure*}
 
 Figure~\ref{fig:heatmap_delta0} shows the same scan at fixed raw $\Delta_0$.
-The response is much weaker and can be negative.  This contrast is the main
-reason that the conclusion is stated as normalization-conditioned.
+The response is much weaker and can be negative.  This control is essential:
+it shows that the fixed-Frobenius map should be interpreted as a response to a
+specified normalized orbital direction, not as a normalization-independent
+enhancement produced by any finite interband weight.
 
 \begin{figure*}[t]
 \centering
@@ -346,8 +359,11 @@ suppressed and changes sign in parts of the scan.
 
 \subsection{\texorpdfstring{$nk=9$}{nk=9} validation}
 
-The key-point validation in Table~\ref{tab:nk9} repeats selected values at
-$nk=9$.
+The key-point validation in Table~\ref{tab:nk9} repeats representative values
+at $nk=9$.
+It is not a replacement for the dense $nk=7$ map; rather, it tests whether the
+main sign and scale survive on a finer momentum grid at chemically distinct
+points.
 The fixed-Frobenius signal remains positive and of comparable size, while the
 fixed-$\Delta_0$ response stays close to zero.
 Additional selected $nk=11$ and $nk=13$ key-point checks, reported in the

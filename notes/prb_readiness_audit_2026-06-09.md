@@ -36,6 +36,11 @@ The Abstract and Introduction now foreground the normalized-response mechanism
 question, the fixed-Frobenius versus fixed-Delta0 contrast, and the selected
 `nk=9/11/13` plus representative `nk=15` stability evidence before turning to
 the absolute-unit and filling limitations.
+The main Results section now separates the evidence layers more explicitly:
+pairing/velocity gates establish internal consistency, Table I gives the
+claim-bearing dense endpoint comparison, the heatmaps show interpolation and
+normalization control, and the `nk=9` table is framed as representative-grid
+validation rather than a replacement dense scan.
 
 Legacy note: `MATBG_superfluid_weight_PRB_v2.tex` is treated as a historical
 baseline source, not as the current submission manuscript. Its author block has
