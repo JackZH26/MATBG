@@ -45,9 +45,13 @@ final absolute-unit convention decisions before submission.
    saturation check is performed.
 
 2. Valley convention:
-   The current `tr_sewn` proxy is acceptable for a mechanism diagnostic, but a
-   final paper should either implement a fully documented two-valley sewing
-   convention or explicitly frame the result as a finite-band diagnostic model.
+   The current `tr_sewn` proxy is now explicitly documented in the main text
+   and Supplemental Material. The Supplemental Material includes a raw-valley
+   diagnostic table showing that independently diagonalized valley-minus
+   eigenvectors are not in the target time-reversal sewing convention. This
+   supports the finite-band diagnostic framing. A fully independent two-valley
+   implementation remains necessary before studying valley-asymmetric
+   perturbations, strain, or explicitly valley-dependent interactions.
 
 3. Absolute stiffness:
    The production convention and the historical PRB table are not identical.
@@ -97,5 +101,5 @@ final absolute-unit convention decisions before submission.
 Current level: strong internal checkpoint, not yet submission-ready.
 
 The central normalized-response mechanism claim is viable. The final PRB paper
-should not be submitted until convergence, valley convention language, and
-figure/table provenance are tightened.
+should not be submitted until the remaining absolute-unit convention, filling
+calibration, and recent-literature comparison are tightened.

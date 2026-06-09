@@ -76,3 +76,31 @@ Raw diagnostic modes remain available:
 ```
 
 These modes should be used only to diagnose gauge mismatch, not to make physics claims about interband pairing weight.
+
+## Manuscript Integration
+
+As of the PRB checkpoint on 2026-06-09, the main manuscript explicitly writes
+the production projection as
+
+```text
+Delta_band(k) = U_+^\dagger(k) Delta_orb U_-^*(-k),
+U_-(-k) = U_+^*(k),
+```
+
+so the actual `tr_sewn` scan evaluates
+
+```text
+Delta_band(k) = U_+^\dagger(k) Delta_orb U_+(k).
+```
+
+The Supplemental Material now includes a CSV-verified raw-valley diagnostic
+table showing that independently diagonalized valley-minus eigenvectors have
+large alignment error and very small singular values relative to the
+`U_+^*(k)` target. This supports the decision not to use raw valley-minus
+eigenvectors for `W_inter`.
+
+Remaining limitation:
+the current production convention is an explicitly stated diagnostic sewing
+choice. A future fully independent two-valley implementation remains necessary
+before studying valley-asymmetric perturbations, strain, or explicitly
+valley-dependent interactions.

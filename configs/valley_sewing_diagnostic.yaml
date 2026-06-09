@@ -1,0 +1,26 @@
+project: matbg_interband_pairing_superfluid_stiffness
+created: 2026-06-09
+purpose: raw_valley_minus_sewing_diagnostic
+
+bm_model:
+  theta_deg: 1.05
+  vF_eV_A: 2.135
+  w0_meV: 87.2
+  w1_meV: 109.0
+  n_shell: 3
+
+diagnostic:
+  nk: 3
+  n_keep_values: [2, 4, 6]
+  target: U_minus(-k) = U_plus(k)^*
+  raw_partner: independently diagonalized BMModel(valley=-1)
+  alignment: unitary Procrustes within retained subspace
+
+outputs:
+  csv: data/processed/valley_sewing_diagnostic.csv
+
+commands:
+  diagnostic: >
+    python3 scripts/run_valley_sewing_diagnostic.py --n-shell 3 --nk 3
+    --n-keep-values 2 4 6
+    --output data/processed/valley_sewing_diagnostic.csv

@@ -1,6 +1,6 @@
 \documentclass[aps,prb,preprint,superscriptaddress,floatfix,nofootinbib]{revtex4-2}
 
-\usepackage{amsmath,amssymb,booktabs,array,graphicx,float}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx}
 \usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
 
 \newcommand{\code}[1]{\texttt{#1}}
@@ -105,16 +105,46 @@ The band-basis pairing matrix is
 \begin{equation}
   \Delta_{\rm band}(\mathbf{k})
   =
-  U^\dagger(\mathbf{k})\Delta_{\rm orb}U^*(-\mathbf{k}).
+  U_+^\dagger(\mathbf{k})\Delta_{\rm orb}U_-^*(-\mathbf{k}).
 \end{equation}
 The working valley convention in the present diagnostic is the time-reversal
 sewn proxy
 \begin{equation}
   U_{-}(-\mathbf{k}) = U_{+}^*(\mathbf{k}).
 \end{equation}
+The production projection is therefore
+\begin{equation}
+  \Delta_{\rm band}(\mathbf{k})
+  =
+  U_+^\dagger(\mathbf{k})\Delta_{\rm orb}U_+(\mathbf{k}).
+\end{equation}
 This convention is useful for isolating an orbital-defined interband-pairing
-signature, but the readiness audit identifies a fully documented two-valley
-implementation as a submission-critical improvement.
+signature.  It also avoids a known gauge artifact: independently diagonalized
+valley-minus eigenvectors are not automatically in the same time-reversal
+sewing convention as the valley-plus eigenvectors.  Table~\ref{tab:sm_valley_sewing}
+summarizes the raw-basis diagnostic.
+
+\begin{table}[t]
+\caption{Raw valley-minus sewing diagnostic.  The independently diagonalized
+valley-minus subspace at $-\mathbf{k}$ is compared with the target
+$U_+^*(\mathbf{k})$ on an $nk=3$ grid.  Small singular values and large
+alignment errors indicate that the raw valley-minus eigenvectors should not be
+used directly to define $W_{\rm inter}$.}
+\label{tab:sm_valley_sewing}
+\begin{ruledtabular}
+\begin{tabular}{rrrr}
+$n_{\rm keep}$ & alignment error & mean minimum singular value & minimum singular value\\
+\hline
+2 & 1.3895 & 0.0267 & 0.0218\\
+4 & 1.3782 & 0.0201 & 0.0043\\
+6 & 1.3760 & 0.0095 & 0.0016\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+This is still a diagnostic convention rather than a full independent
+two-valley implementation.  Valley-asymmetric perturbations, strain, or
+valley-dependent interactions would require revisiting this sewing choice.
 
 The projected interband-pairing weight is
 \begin{equation}
@@ -235,7 +265,8 @@ The fixed-$\Delta_0$ response remains small and sign-sensitive, consistent with
 the main-text interpretation that the interband-pairing signal is
 normalization-conditioned.
 
-\begin{figure}[H]
+\clearpage
+\begin{figure}[t]
 \includegraphics[width=\textwidth]{figures/nk_convergence_keypoints_nkeep6.pdf}
 \caption{Selected-grid convergence of the normalized $\eta=1$ response.
 The left panel shows the fixed-Frobenius comparison used for the main mechanism

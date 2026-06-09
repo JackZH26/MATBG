@@ -206,6 +206,33 @@ three checked grids. The Supplemental Material table values are checked by
 summary CSV files. The Supplemental Material figure is generated from the same
 summary CSV files.
 
+### Supplemental raw valley sewing diagnostic table
+
+Supplemental content:
+diagnostic comparison between independently diagonalized valley-minus
+eigenvectors at `-k` and the time-reversal-sewn target `U_plus(k)^*`.
+
+Source CSV:
+`data/processed/valley_sewing_diagnostic.csv`
+
+Reproduction command:
+
+```bash
+python3 scripts/run_valley_sewing_diagnostic.py \
+  --n-shell 3 \
+  --nk 3 \
+  --n-keep-values 2 4 6 \
+  --output data/processed/valley_sewing_diagnostic.csv
+```
+
+Config:
+`configs/valley_sewing_diagnostic.yaml`
+
+Current status:
+raw valley-minus eigenvectors show large alignment errors and small singular
+values relative to the `tr_sewn` target. The table values are checked by
+`scripts/verify_manuscript_tables.py`.
+
 ### `tab:prb_audit`
 
 Manuscript content:

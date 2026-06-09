@@ -21,6 +21,7 @@ DENSE_SUMMARY = ROOT / "data" / "processed" / "mu_eta_response_scan_nk7_nkeep6_e
 NK9_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk9_nkeep6_keypoints_summary.csv"
 NK11_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk11_nkeep6_keypoints_summary.csv"
 NK13_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk13_nkeep6_keypoints_summary.csv"
+VALLEY_SEWING = ROOT / "data" / "processed" / "valley_sewing_diagnostic.csv"
 PRB_RECON = ROOT / "data" / "processed" / "prb_table_reconstruction_nk14.csv"
 FLAT_AUDIT = ROOT / "data" / "processed" / "flatband_endpoint_audit_nk14.csv"
 
@@ -305,13 +306,51 @@ def verify_supplemental_nk_convergence(tex: str) -> None:
         raise AssertionError(f"Expected 8 supplemental convergence rows, checked {checked}")
 
 
+def verify_supplemental_valley_sewing(tex: str) -> None:
+    rows = split_rows(table_block(tex, "tab:sm_valley_sewing"))
+    data = {
+        int(float(row["n_keep"])): row
+        for row in load_csv(VALLEY_SEWING)
+    }
+
+    checked = 0
+    for cells in rows:
+        if len(cells) != 4 or not cells[0].strip().isdigit():
+            continue
+        n_keep = int(number(cells[0]))
+        row = data[n_keep]
+        assert_close(
+            f"supp valley n_keep={n_keep} alignment",
+            number(cells[1]),
+            rounded(row["alignment_error_mean"], 4),
+            4,
+        )
+        assert_close(
+            f"supp valley n_keep={n_keep} min singular mean",
+            number(cells[2]),
+            rounded(row["min_singular_mean"], 4),
+            4,
+        )
+        assert_close(
+            f"supp valley n_keep={n_keep} min singular min",
+            number(cells[3]),
+            rounded(row["min_singular_min"], 4),
+            4,
+        )
+        checked += 1
+    if checked != 3:
+        raise AssertionError(f"Expected 3 supplemental valley rows, checked {checked}")
+
+
 def main() -> int:
     tex = TEX_PATH.read_text()
     verify_dense_eta(tex)
     verify_nk9(tex)
     verify_prb_audit(tex)
     if SUPP_PATH.exists():
-        verify_supplemental_nk_convergence(SUPP_PATH.read_text())
+        supp = SUPP_PATH.read_text()
+        verify_supplemental_nk_convergence(supp)
+        verify_supplemental_valley_sewing(supp)
     print("All manuscript and supplemental table values match processed CSV data.")
     return 0
 
