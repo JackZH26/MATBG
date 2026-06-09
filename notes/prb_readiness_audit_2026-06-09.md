@@ -13,11 +13,18 @@ tables, a declarations section, a formal BibTeX file, a figure/table
 provenance manifest, and a standalone Supplemental Material skeleton.
 
 The current draft is suitable as a research checkpoint and internal review
-target. It still needs a final absolute-unit convention, filling calibration,
-and a final pre-submission literature sweep before submission.
+target. It still needs a final absolute-unit convention and filling
+calibration. A broad 2025-2026 literature sweep was performed on 2026-06-09,
+but it should be repeated immediately before actual submission.
 The current draft now includes a central two-flat-band filling crosswalk for
 the dense scan, but this is still not a device-specific carrier-density
 calibration.
+
+Legacy note: `MATBG_superfluid_weight_PRB_v2.tex` is treated as a historical
+baseline source, not as the current submission manuscript. Its author block has
+been brought into the current Jian Zhou / JZ Institute format, but its PDF was
+not regenerated in this work package because the legacy figure assets
+`figures/fig*_v3.pdf` are not present in the current repository.
 
 ## Claim Audit
 
@@ -81,10 +88,13 @@ calibration.
 5. Reference completeness:
    The key recent stiffness and band-off-diagonal pairing references have now
    been added: Tanaka et al. 2025, Christos-Sachdev-Scheurer 2023,
-   Putzer-Scheurer 2025, and Wang-Chen-Boyack-Levin 2026. The previous
-   Lamponen placeholder was removed because no matching primary source was
-   identified. A final PRB manuscript should still receive a broad
-   pre-submission literature sweep.
+   Putzer-Scheurer 2025, Wang-Levin 2026, and Wang-Chen-Boyack-Levin 2026.
+   The 2026-06-09 sweep also added Portoles et al. 2025, Banerjee et al. 2025,
+   Park et al. 2025, Kim et al. 2026, Gao et al. 2026, and the current
+   author's Zhou 2026 band-basis decomposition preprint as benchmark
+   provenance. The previous Lamponen placeholder was removed because no
+   matching primary source was identified. A final PRB manuscript should still
+   receive a repeat literature sweep immediately before submission.
 
 6. Supplemental reproducibility:
    `notes/figure_table_provenance_2026-06-09.md` now maps every current main
@@ -113,16 +123,18 @@ calibration.
    mechanism claim, or add a device-level carrier-density calibration before
    comparing to superconducting dome locations.
 
-4. Perform a final broad literature sweep before submission, focused on new
-   2026 stiffness, tunneling, and band-off-diagonal pairing papers.
+4. Repeat a broad literature sweep immediately before submission, focused on
+   new 2026 stiffness, tunneling, and band-off-diagonal or finite-momentum
+   pairing papers.
 
 ## Readiness Judgment
 
 Current level: strong internal checkpoint, not yet submission-ready.
 
 The central normalized-response mechanism claim is viable. The final PRB paper
-should not be submitted until the remaining absolute-unit convention, filling
-calibration, and final literature sweep are tightened.
+should not be submitted until the remaining absolute-unit convention and
+filling calibration are tightened, and the 2026-06-09 literature sweep is
+repeated against the then-current literature.
 The filling status has improved from an uncalibrated proxy alone to a
 CSV-verified central-flat-band crosswalk, but the conservative limitation should
 remain unless a device-level calibration is added.
