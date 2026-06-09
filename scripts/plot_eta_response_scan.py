@@ -51,10 +51,14 @@ def float_column(rows: list[dict[str, str]], name: str) -> list[float]:
 
 
 def d_iso(row: dict[str, str]) -> float:
+    if "D_iso_raw" in row and row["D_iso_raw"]:
+        return float(row["D_iso_raw"])
     return 0.5 * (float(row["Dxx_total_raw"]) + float(row["Dyy_total_raw"]))
 
 
 def geom_fraction(row: dict[str, str]) -> float:
+    if "geom_fraction_total" in row and row["geom_fraction_total"]:
+        return float(row["geom_fraction_total"])
     geom = float(row["Dxx_geom_raw"]) + float(row["Dyy_geom_raw"])
     total = float(row["Dxx_total_raw"]) + float(row["Dyy_total_raw"])
     return geom / total if total else 0.0

@@ -73,3 +73,13 @@ Config / run_id: `python3 scripts/run_mu_response_scan.py --n-shell 3 --nk 7 --n
 Result: Fixed-Frobenius mode shows an eta=1 relative D_iso increase between about `5.4%` and `11.5%` across `mu=-6...6 meV`. Fixed-Delta0 mode is much weaker, between about `-1.1%` and `+3.6%`. The geometric fraction follows a doping-dependent trend and remains useful as an explanation variable.
 
 Decision: Doping dependence is promising enough for a denser mu scan, but the main text must not claim unconditional stiffness enhancement. The normalization convention is now a first-class control parameter.
+
+## 2026-06-09
+
+Question: Does a denser mu-eta response map preserve the eta-dependent signature?
+
+Config / run_id: `mu=-5...5 meV`, `eta=0,0.25,0.5,0.75,1`, `nk=7`, `n_keep=6`; plus `nk=9` key-point check at `mu=-4,0,2,4`.
+
+Result: Fixed-Frobenius mode gives eta=1 relative D_iso changes from about `+0.56%` to `+11.86%` across the dense mu grid. The `nk=9` key-point check gives `+6.04%`, `+8.63%`, `+6.43%`, and `+6.05%` at `mu=-4,0,2,4`. Fixed-Delta0 remains weak and can be slightly negative.
+
+Decision: The eta response is reproducible as a normalization-conditioned mechanism signature. Next work should focus on unit conversion/baseline matching and deciding the main normalization convention.

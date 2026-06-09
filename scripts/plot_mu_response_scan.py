@@ -33,10 +33,14 @@ def load_rows(path: Path) -> list[dict[str, str]]:
 
 
 def d_iso(row: dict[str, str]) -> float:
+    if "D_iso_raw" in row and row["D_iso_raw"]:
+        return float(row["D_iso_raw"])
     return 0.5 * (float(row["Dxx_total_raw"]) + float(row["Dyy_total_raw"]))
 
 
 def geom_fraction(row: dict[str, str]) -> float:
+    if "geom_fraction_total" in row and row["geom_fraction_total"]:
+        return float(row["geom_fraction_total"])
     geom = float(row["Dxx_geom_raw"]) + float(row["Dyy_geom_raw"])
     total = float(row["Dxx_total_raw"]) + float(row["Dyy_total_raw"])
     return geom / total if total else 0.0
@@ -73,19 +77,22 @@ def main() -> int:
         ax_g = axes[1, col]
         for eta in etas:
             selected = rows_for(rows, normalization, eta)
-            mu = [float(row["mu_meV"]) for row in selected]
+            x_values = [
+                float(row["nu_proxy"]) if "nu_proxy" in row and row["nu_proxy"] else float(row["mu_meV"])
+                for row in selected
+            ]
             d_values = [d_iso(row) for row in selected]
             geom_values = [geom_fraction(row) for row in selected]
-            ax_d.plot(mu, d_values, marker="o", label=f"eta={eta:g}", color=colors.get(eta))
-            ax_g.plot(mu, geom_values, marker="o", label=f"eta={eta:g}", color=colors.get(eta))
+            ax_d.plot(x_values, d_values, marker="o", label=f"eta={eta:g}", color=colors.get(eta))
+            ax_g.plot(x_values, geom_values, marker="o", label=f"eta={eta:g}", color=colors.get(eta))
 
         ax_d.set_title(titles[normalization])
-        ax_d.set_xlabel("mu (meV)")
+        ax_d.set_xlabel("nu proxy")
         ax_d.set_ylabel("D_iso raw")
         ax_d.grid(True, alpha=0.25)
         ax_d.legend(frameon=False)
 
-        ax_g.set_xlabel("mu (meV)")
+        ax_g.set_xlabel("nu proxy")
         ax_g.set_ylabel("geometric fraction")
         ax_g.grid(True, alpha=0.25)
 

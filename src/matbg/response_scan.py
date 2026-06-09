@@ -8,6 +8,7 @@ from typing import Iterable
 import numpy as np
 
 from .bm_model import BMModel
+from .filling import filling_proxy_from_energies
 from .pairing import interband_weight, orbital_pairing_matrix, project_pairing
 from .stiffness import stiffness_components
 
@@ -110,6 +111,14 @@ def evaluate_response_row(
 
     dxx_total = _average(values["Dxx_total"])
     dyy_total = _average(values["Dyy_total"])
+    dxx_geom = _average(values["Dxx_geom"])
+    dyy_geom = _average(values["Dyy_geom"])
+    d_iso = 0.5 * (dxx_total + dyy_total)
+    geom_fraction = (
+        (dxx_geom + dyy_geom) / (dxx_total + dyy_total)
+        if (dxx_total + dyy_total) != 0
+        else np.nan
+    )
     anisotropy_ratio = dxx_total / dyy_total if dyy_total != 0 else np.nan
     anisotropy_norm = (
         (dxx_total - dyy_total) / (dxx_total + dyy_total)
@@ -129,7 +138,10 @@ def evaluate_response_row(
         "dimension": dimension,
         "delta0_meV": delta0,
         "mu_meV": mu,
+        "nu_proxy": filling_proxy_from_energies([item.eps for item in cache], mu),
         "interband_pairing_weight_mean": _average(weights),
+        "D_iso_raw": d_iso,
+        "geom_fraction_total": geom_fraction,
         "anisotropy_ratio": anisotropy_ratio,
         "anisotropy_norm": anisotropy_norm,
         "max_closure_error": float(np.max(values["closure_error"])),
