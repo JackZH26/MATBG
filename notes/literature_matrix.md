@@ -21,8 +21,14 @@
 | Interaction correction | Herzog-Arbeitman et al., PRL 2022 | Interaction-renormalized geometry | No | Related | Conceptual | Indirect | Explain remaining enhancement beyond mean field |
 | Vertex/strong coupling | Verma, Hazra, Randeria, PNAS 2021 | Flat-band superfluid stiffness | Not central | Yes | Related | Indirect | Discussion of beyond-BCS effects |
 | Pairing symmetry | Isobe, Yuan, Fu, PRX 2018 | MATBG pairing mechanisms | Candidate symmetries | No | No | Indirect | Candidate pairing comparison |
+| Band-off-diagonal pairing | Christos, Sachdev, Scheurer, Nat. Commun. 2023 | Twisted graphene superlattices | Yes | Spectral consequences | Symmetry classification | Tunneling/gap structure | Direct predecessor; cite as microscopic motivation |
+| Band-off-diagonal stiffness | Putzer and Scheurer, PRB 2025 | Twisted graphene | Yes | Yes | Eliashberg/multiband/geometry | Stiffness measurements | Direct predecessor; distinguish present orbital-projected response diagnostic |
 | Recent theory | Wang, Chen, Boyack, Levin, arXiv 2026 | Kekule / PDW superconductivity in twisted graphene | Yes, finite momentum | Yes | Geometric stiffness | Yes | Boundary of current uniform-pairing framework; future finite-momentum BdG extension |
-| Recent theory | Lamponen et al., PRB 2025 | To verify | To verify | To verify | To verify | To verify | Check relevance to interband pairing |
+
+Removed placeholder:
+`Lamponen et al., PRB 2025` was searched but no matching primary source was
+identified for the interband-pairing/stiffness context. It should not be cited
+unless a concrete DOI or arXiv record is found later.
 
 ## Gap Statement Draft
 

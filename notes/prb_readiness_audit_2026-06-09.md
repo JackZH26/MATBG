@@ -14,7 +14,7 @@ provenance manifest, and a standalone Supplemental Material skeleton.
 
 The current draft is suitable as a research checkpoint and internal review
 target. It still needs a final absolute-unit convention, filling calibration,
-and recent-literature comparison before submission.
+and a final pre-submission literature sweep before submission.
 
 ## Claim Audit
 
@@ -67,10 +67,12 @@ and recent-literature comparison before submission.
    calibrated carrier density or remain clearly qualitative.
 
 5. Reference completeness:
-   `references.bib` now covers the cited draft, but the literature matrix still
-   marks several rows as needing verification. A final PRB manuscript should
-   add a concise comparison paragraph for recent 2025-2026 stiffness and
-   pairing-symmetry work.
+   The key recent stiffness and band-off-diagonal pairing references have now
+   been added: Tanaka et al. 2025, Christos-Sachdev-Scheurer 2023,
+   Putzer-Scheurer 2025, and Wang-Chen-Boyack-Levin 2026. The previous
+   Lamponen placeholder was removed because no matching primary source was
+   identified. A final PRB manuscript should still receive a broad
+   pre-submission literature sweep.
 
 6. Supplemental reproducibility:
    `notes/figure_table_provenance_2026-06-09.md` now maps every current main
@@ -95,8 +97,8 @@ and recent-literature comparison before submission.
 3. Add a calibrated filling workflow or keep all comparisons to experimental
    superconducting domes qualitative.
 
-4. Expand discussion of recent finite-momentum Kekule / PDW scenarios as a
-   future extension rather than a covered case.
+4. Perform a final broad literature sweep before submission, focused on new
+   2026 stiffness, tunneling, and band-off-diagonal pairing papers.
 
 ## Readiness Judgment
 
@@ -104,4 +106,4 @@ Current level: strong internal checkpoint, not yet submission-ready.
 
 The central normalized-response mechanism claim is viable. The final PRB paper
 should not be submitted until the remaining absolute-unit convention, filling
-calibration, and recent-literature comparison are tightened.
+calibration, and final literature sweep are tightened.

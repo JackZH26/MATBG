@@ -132,3 +132,7 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
    mechanism ratios, eV A^2 per-flavor benchmark audits, and the retained-band
    filling proxy; details are tracked in
    `notes/normalization_and_units_strategy.md`.
+10. Recent stiffness and band-off-diagonal pairing context is now included in
+    the manuscript through `tanaka_2025`, `christos_2023`, `putzer_2025`, and
+    `wang_kekule_2026`; supporting notes are in
+    `notes/recent_literature_update_2026-06-09.md`.
