@@ -115,3 +115,11 @@ Config / run_id: `python3 scripts/audit_conventional_channel.py --nk 14 --n-keep
 Result: At `curvature_dk=1e-4 A^-1`, the current intraband paramagnetic value is `20.95 eV A^2` for `n_keep=2` and `25.72 eV A^2` for `n_keep=6`, versus PRB conventional benchmarks `53.0` and `54.0`. Multiplying by two gives `41.89` and `51.45`; this nearly matches `n_keep=6` but remains too small for `n_keep=2`. Adding a half-curvature term gives `49.94` and `60.92`, close for `n_keep=2` but high for `n_keep=6`.
 
 Decision: Do not change the production response convention yet. The PRB conventional table is not reproduced by a single audited factor-of-two or curvature correction. Next step is a dedicated PRB-table reconstruction script that separates old-manuscript benchmarking from the normalized interband-pairing mechanism scans.
+
+Question: Can a dedicated PRB reconstruction route reproduce the old uniform-s benchmark table?
+
+Config / run_id: `python3 scripts/reconstruct_prb_table.py --nk 14 --n-keep-values 2 4 6`.
+
+Result: The best simple unified candidate is `double_conv_all_tauz`, defined as `D_conv = 2 * intraband_tauz` and `D_geom = interband_tauz`. It nearly reconstructs the extended-band endpoint: for `n_keep=6`, it gives `D_total = 126.66 eV A^2` versus PRB `129.3`, `D_conv = 51.45` versus `54.0`, and `D_geom = 75.22` versus `75.3`. It also gives `D_conv = 50.78` for `n_keep=4` versus PRB `53.9`. However, for `n_keep=2`, it gives `D_total = 54.40` versus PRB `67.5`, so the flat-band endpoint remains unreconciled.
+
+Decision: Keep PRB table reconstruction as a separate benchmark route. Do not retune the production interband-pairing response convention to match the old table. New mechanism claims should continue to use normalized eta-response maps until the `n_keep=2` PRB endpoint is understood.

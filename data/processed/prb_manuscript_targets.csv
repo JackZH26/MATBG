@@ -1,0 +1,4 @@
+source,pairing,n_keep,nk,mu_meV,delta0_meV,D_total_eV_A2,D_conv_eV_A2,D_geom_eV_A2,geom_fraction,notes
+MATBG_superfluid_weight_PRB_v2.tex,uniform_s,2,14,0,1.0,67.5,53.0,14.5,0.215,Table cnp uniform-s row
+MATBG_superfluid_weight_PRB_v2.tex,uniform_s,4,14,0,1.0,,53.9,,,Text states conventional sequence 53.0 -> 53.9 -> 54.0
+MATBG_superfluid_weight_PRB_v2.tex,uniform_s,6,14,0,1.0,129.3,54.0,75.3,0.583,Extended n_keep text uniform-s endpoint
