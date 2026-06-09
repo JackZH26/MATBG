@@ -83,3 +83,19 @@ Config / run_id: `mu=-5...5 meV`, `eta=0,0.25,0.5,0.75,1`, `nk=7`, `n_keep=6`; p
 Result: Fixed-Frobenius mode gives eta=1 relative D_iso changes from about `+0.56%` to `+11.86%` across the dense mu grid. The `nk=9` key-point check gives `+6.04%`, `+8.63%`, `+6.43%`, and `+6.05%` at `mu=-4,0,2,4`. Fixed-Delta0 remains weak and can be slightly negative.
 
 Decision: The eta response is reproducible as a normalization-conditioned mechanism signature. Next work should focus on unit conversion/baseline matching and deciding the main normalization convention.
+
+Question: Does the current response engine reproduce the PRB uniform-s baseline after unit conversion?
+
+Config / run_id: `scripts/convert_response_units.py`, `scripts/run_band_diagonal_response_gate.py --nk 14 --n-keep-values 2 4 6`, and `scripts/compare_prb_baseline.py`.
+
+Result: The moire constants match the manuscript convention: `A_M = 15605.57 A^2` and `G_M = 0.054047 A^-1`. Raw response values convert conservatively as `raw meV A^2 / 1000 = eV A^2` per flavor. However, the explicit band-diagonal uniform-s route at `nk=14` gives `D_iso = 29.34 eV A^2` for `n_keep=2` and `85.60 eV A^2` for `n_keep=6`, below the PRB benchmark values `67.5` and `129.3 eV A^2`.
+
+Decision: The baseline mismatch is not caused mainly by the new orbital-projected pairing ansatz and is not a single global unit factor. Before manuscript-level absolute tables, audit Kubo prefactors, Nambu current convention, BZ integration weights, and the previous PRB implementation. Continue using normalized eta-response quantities for mechanism figures.
+
+Question: Is the PRB baseline mismatch mostly due to the Nambu current convention?
+
+Config / run_id: `python3 scripts/audit_response_conventions.py --nk 14 --n-keep-values 2 6`.
+
+Result: Switching from the current `intra_tauz_inter_tau0` convention to `all_tauz` moves the band-diagonal baseline closer to the PRB table, but does not close the gap. For `n_keep=2`, `D_iso` changes from `29.34` to `33.45 eV A^2` versus PRB `67.5`; for `n_keep=6`, it changes from `85.60` to `100.94 eV A^2` versus PRB `129.3`.
+
+Decision: Current convention is a contributor but not the whole discrepancy. Continue the audit by checking Kubo prefactors, BZ integration weights, and any older-code implementation differences before changing the production response convention.

@@ -134,3 +134,31 @@ Anisotropy remains useful as a diagnostic, but current scans do not support it a
 2. Decide whether the response should be divided by the sampled Brillouin-zone area or moire-cell area.
 3. Add spin/valley degeneracy as an explicit optional factor.
 4. Compare the `eta=0` baseline against the existing PRB manuscript values only after the same conventions are matched.
+
+## 6. Baseline Matching Update
+
+The first unit-conversion pass gives:
+
+```text
+moire_cell_area_A2 = 15605.5711
+moire_reciprocal_scale_Ainv = 0.0540474
+raw meV A^2 / 1000 = eV A^2 per flavor
+```
+
+These constants match the PRB manuscript convention, but the explicit
+band-diagonal uniform-s route does not reproduce the PRB table:
+
+```text
+n_keep = 2, nk = 14:
+current D_iso = 29.34 eV A^2
+PRB benchmark = 67.50 eV A^2
+
+n_keep = 6, nk = 14:
+current D_iso = 85.60 eV A^2
+PRB benchmark = 129.30 eV A^2
+```
+
+Because the mismatch persists for the band-diagonal route, it is not primarily
+an artifact of the new orbital-projected interband-pairing ansatz. The response
+engine needs a baseline audit before any absolute stiffness table is used in a
+manuscript.

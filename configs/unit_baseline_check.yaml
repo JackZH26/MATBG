@@ -1,0 +1,41 @@
+project: matbg_interband_pairing_superfluid_stiffness
+created: 2026-06-09
+purpose: unit_conversion_and_prb_baseline_check
+
+bm_model:
+  theta_deg: 1.05
+  vF_eV_A: 2.135
+  w0_meV: 87.2
+  w1_meV: 109.0
+  n_shell: 3
+
+unit_convention:
+  raw_response_units: meV_A2_per_flavor_diagnostic
+  converted_units: eV_A2_per_flavor
+  conversion: raw_meV_A2 / 1000
+  spin_valley_degeneracy_optional_factor: 4.0
+  moire_cell_area_A2: 15605.5711
+  moire_reciprocal_scale_Ainv: 0.0540474
+
+baseline_runs:
+  nk: 14
+  n_keep_values: [2, 4, 6]
+  mu_meV: 0.0
+  delta0_meV: 1.0
+  finite_difference_dk_Ainv: 1.0e-6
+  pairing:
+    route: band_diagonal_uniform_s
+    matrix: Delta_nm = Delta0 * delta_nm
+
+benchmarks:
+  source: MATBG_superfluid_weight_PRB_v2.tex
+  file: data/processed/baseline_benchmarks.csv
+  n_keep_2_uniform_s_D_total_eV_A2: 67.5
+  n_keep_6_uniform_s_D_total_eV_A2: 129.3
+
+outputs:
+  band_diagonal_csv: data/processed/band_diagonal_response_baseline_nk14.csv
+  band_diagonal_units_csv: data/processed/band_diagonal_response_baseline_nk14_units.csv
+  comparison_csv: data/processed/prb_baseline_compare_band_diagonal_nk14.csv
+  response_convention_audit_csv: data/processed/response_convention_audit_nk14.csv
+  note: notes/unit_conversion_baseline_result_2026-06-09.md
