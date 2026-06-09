@@ -67,6 +67,12 @@ REQUIRED_PHRASES = [
         "Main text should reflect the latest high-grid representative check.",
     ),
     RequiredPhrase(
+        "main_convergence_sufficiency_scope",
+        "main",
+        "selected-grid normalized mechanism claim",
+        "Main text should state the finite-grid claim scope supported by the audit.",
+    ),
+    RequiredPhrase(
         "supp_no_final_experimental_stiffness",
         "supplement",
         "does not promote the raw response units to final experimental stiffness values",
@@ -89,6 +95,12 @@ REQUIRED_PHRASES = [
         "supplement",
         "not a full dense-grid replacement",
         "The nk15 result is a targeted spot check only.",
+    ),
+    RequiredPhrase(
+        "supp_convergence_sufficiency_table",
+        "supplement",
+        "\\label{tab:sm_convergence_sufficiency}",
+        "Supplement should expose the convergence-sufficiency self-audit.",
     ),
     RequiredPhrase(
         "supp_claim_scope_table",

@@ -27,6 +27,9 @@ PRB_RECON = ROOT / "data" / "processed" / "prb_table_reconstruction_nk14.csv"
 FLAT_AUDIT = ROOT / "data" / "processed" / "flatband_endpoint_audit_nk14.csv"
 FILLING_CROSSWALK = ROOT / "data" / "processed" / "filling_crosswalk_nk7_nshell3.csv"
 NK_TREND = ROOT / "data" / "processed" / "nk_trend_audit_nkeep6.csv"
+CONVERGENCE_SUFFICIENCY = (
+    ROOT / "data" / "processed" / "convergence_sufficiency_audit.csv"
+)
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -44,10 +47,17 @@ def table_block(tex: str, label: str) -> str:
     return tex[start:end]
 
 
+def strip_latex_comment(line: str) -> str:
+    for index, char in enumerate(line):
+        if char == "%" and (index == 0 or line[index - 1] != "\\"):
+            return line[:index]
+    return line
+
+
 def split_rows(block: str) -> list[list[str]]:
     rows: list[list[str]] = []
     for line in block.splitlines():
-        line = line.split("%", 1)[0].strip()
+        line = strip_latex_comment(line).strip()
         if "&" not in line or "\\\\" not in line:
             continue
         line = line.replace("\\\\", "").strip()
@@ -497,6 +507,57 @@ def verify_supplemental_nk15(tex: str) -> None:
         raise AssertionError(f"Expected 4 supplemental nk15 rows, checked {checked}")
 
 
+def verify_supplemental_convergence_sufficiency(tex: str) -> None:
+    rows = split_rows(table_block(tex, "tab:sm_convergence_sufficiency"))
+    data = {row["check_id"]: row for row in load_csv(CONVERGENCE_SUFFICIENCY)}
+
+    checked = 0
+    for cells in rows:
+        if len(cells) != 3:
+            continue
+        label = cells[0]
+        actual = numbers(cells[1])
+        if "Frob. sign" in label:
+            expected = numbers(data["frob_keypoint_positive"]["measured_value"])
+            assert_close("supp convergence frob min", actual[0], expected[0], 2)
+            assert_close("supp convergence frob max", actual[1], expected[1], 2)
+            checked += 1
+        elif "Frob. spread" in label:
+            expected = numbers(data["frob_keypoint_range"]["measured_value"])
+            assert_close("supp convergence frob spread", actual[0], expected[0], 2)
+            checked += 1
+        elif "Trend intercepts" in label:
+            expected = numbers(
+                data["frob_trend_intercepts_positive"]["measured_value"]
+            )
+            assert_close("supp convergence trend h2", actual[0], expected[1], 2)
+            assert_close("supp convergence trend h1", actual[1], expected[3], 2)
+            checked += 1
+        elif "nk=15" in label:
+            expected_values = numbers(data["frob_nk15_positive"]["measured_value"])
+            expected_shift = numbers(data["frob_nk15_close_to_nk13"]["measured_value"])
+            assert_close("supp convergence nk15 mu0", actual[0], expected_values[-2], 2)
+            assert_close("supp convergence nk15 mu2", actual[1], expected_values[-1], 2)
+            assert_close("supp convergence nk15 shift", actual[2], expected_shift[-1], 2)
+            checked += 1
+        elif "Delta" in label:
+            expected = numbers(data["delta0_control_weak"]["measured_value"])
+            assert_close("supp convergence delta0 max", actual[0], expected[-1], 2)
+            if "mixed" not in cells[1]:
+                raise AssertionError("supp convergence delta0 row should report mixed signs")
+            checked += 1
+        elif "Overall scope" in label:
+            expected = numbers(data["overall_selected_grid_sufficiency"]["measured_value"])
+            assert_close("supp convergence numeric gate numerator", actual[0], expected[0], 0)
+            assert_close("supp convergence numeric gate denominator", actual[1], expected[1], 0)
+            checked += 1
+
+    if checked != 6:
+        raise AssertionError(
+            f"Expected 6 supplemental convergence-sufficiency rows, checked {checked}"
+        )
+
+
 def main() -> int:
     tex = TEX_PATH.read_text()
     verify_dense_eta(tex)
@@ -509,6 +570,7 @@ def main() -> int:
         verify_supplemental_filling_crosswalk(supp)
         verify_supplemental_nk_trend(supp)
         verify_supplemental_nk15(supp)
+        verify_supplemental_convergence_sufficiency(supp)
     print("All manuscript and supplemental table values match processed CSV data.")
     return 0
 

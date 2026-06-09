@@ -14,9 +14,12 @@ provenance manifest, and a standalone Supplemental Material skeleton.
 
 The current draft is suitable as a research checkpoint and internal review
 target. It now has an explicit normalized-response observable policy for the
-mechanism-paper scope. It still needs final judgement on whether the present
-finite-grid and filling-crosswalk evidence is sufficient for submission. A
-broad 2025-2026 literature sweep was performed on 2026-06-09, but it should be
+mechanism-paper scope. It also now has a convergence-sufficiency self-audit
+showing that the selected finite-grid evidence is sufficient for the current
+normalized mechanism claim, while still not supporting continuum-limit
+numerical values. The remaining judgement call is whether the current
+central-flat-band filling crosswalk is sufficient for submission. A broad
+2025-2026 literature sweep was performed on 2026-06-09, but it should be
 repeated immediately before actual submission.
 The current draft now includes a central two-flat-band filling crosswalk for
 the dense scan, but this is still not a device-specific carrier-density
@@ -39,6 +42,7 @@ not regenerated in this work package because the legacy figure assets
 | `nk=9`, `nk=11`, and `nk=13` key points preserve positive fixed-Frobenius response | `data/processed/mu_response_scan_nk9_nkeep6_keypoints_summary.csv`, `data/processed/mu_response_scan_nk11_nkeep6_keypoints_summary.csv`, `data/processed/mu_response_scan_nk13_nkeep6_keypoints_summary.csv`, `notes/nk11_convergence_result_2026-06-09.md`, `notes/nk13_convergence_result_2026-06-09.md` | Supported as selected-grid key-point convergence; not a full continuum extrapolation | Main text plus Supplemental Material |
 | Simple `1/nk^2` trend audit keeps fixed-Frobenius key-point intercepts positive | `data/processed/nk_trend_audit_nkeep6.csv`, `figures/nk_trend_audit_nkeep6.pdf`, `notes/nk_trend_audit_result_2026-06-09.md` | Supported as finite-grid trend audit; not a formal continuum limit | Main text plus Supplemental Material |
 | `nk=15` spot check preserves positive fixed-Frobenius response at representative key points | `data/processed/mu_response_scan_nk15_nkeep6_spotcheck_summary.csv`, `notes/nk15_spotcheck_result_2026-06-09.md` | Supported for `mu=0,2`; not a dense-grid replacement | Main text plus Supplemental Material |
+| Finite-grid evidence is sufficient for the selected-grid normalized mechanism claim | `data/processed/convergence_sufficiency_audit.csv`, `notes/convergence_sufficiency_audit_2026-06-09.md`, `scripts/audit_convergence_sufficiency.py` | Supported for current mechanism-paper scope; not a continuum-limit estimate | Main text plus Supplemental Material |
 | Fixed-Delta0 response is weak and can be negative | Dense and key-point scan summaries | Supported | Control result |
 | Manuscript keeps the conservative mechanism-paper claim scope | `data/processed/claim_scope_audit.csv`, `notes/claim_scope_audit_2026-06-09.md`, `scripts/audit_claim_scope.py` | Supported as text-level guardrail | Main text plus Supplemental Material |
 | Interband pairing universally enhances physical stiffness | Contradicted by fixed-Delta0 control | Not allowed | Do not claim |
@@ -57,9 +61,15 @@ not regenerated in this work package because the legacy figure assets
    Supplemental Material now includes the direct convergence figure/table, a
    finite-grid `1/nk^2` trend audit whose fixed-Frobenius intercepts are
    positive at the four key points, and a targeted `nk=15` spot check at
-   `mu=0,2`. A final submission should still avoid strict continuum-limit
-   claims unless a complete denser-mesh saturation check or a more formal
-   extrapolation is performed.
+   `mu=0,2`. The convergence-sufficiency self-audit passes all nine checks:
+   fixed-Frobenius key-point values remain positive from `6.04%` to `10.13%`,
+   the largest per-`mu` selected-grid spread is `2.85` percentage points, the
+   two trend-coordinate intercept audits remain positive, and the `nk=15`
+   spot-check shifts from `nk=13` are at most `1.16` percentage points. This is
+   sufficient for the selected-grid normalized mechanism claim. A final
+   submission should still avoid strict continuum-limit claims unless a
+   complete denser-mesh saturation check or a more formal extrapolation is
+   performed.
 
 2. Valley convention:
    The current `tr_sewn` proxy is now explicitly documented in the main text
@@ -109,28 +119,25 @@ not regenerated in this work package because the legacy figure assets
    short list of forbidden overclaims.
    `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
    presents the first standalone Supplemental Material skeleton. The remaining
-   reproducibility gap is to decide whether additional convergence or
-   device-level filling work is needed before submission.
+   remaining reproducibility gap is to decide whether additional device-level
+   filling work is needed before submission.
 
 ## Recommended Next Work Packages
 
-1. Decide whether the selected normalized-response evidence is sufficient for
-   the PRB mechanism-paper scope, or whether to add one more denser-grid layer.
+1. Decide whether the central-flat-band crosswalk is sufficient for the PRB
+   mechanism claim, or add a device-level carrier-density calibration before
+   comparing to superconducting dome locations.
 
 2. If the manuscript scope is expanded to direct experimental stiffness
    comparison, regenerate absolute values from one declared response convention
    with explicit degeneracy, BZ normalization, and diamagnetic or curvature
    terms.
 
-3. Decide whether the selected `nk=9/11/13` trend audit plus `nk=15`
-   representative spot check is enough for the PRB mechanism claim, or whether
-   to add a broader denser-grid saturation check.
+3. Optionally add a broader denser-grid saturation check if the target claim is
+   expanded beyond selected-grid sign/scale stability, or if reviewer-facing
+   precision becomes central.
 
-4. Decide whether the central-flat-band crosswalk is sufficient for the PRB
-   mechanism claim, or add a device-level carrier-density calibration before
-   comparing to superconducting dome locations.
-
-5. Repeat a broad literature sweep immediately before submission, focused on
+4. Repeat a broad literature sweep immediately before submission, focused on
    new 2026 stiffness, tunneling, and band-off-diagonal or finite-momentum
    pairing papers.
 
@@ -141,10 +148,10 @@ Current level: strong internal checkpoint, not yet submission-ready.
 The central normalized-response mechanism claim is viable. The final PRB paper
 should not make direct absolute-stiffness or superconducting-dome comparison
 claims unless absolute-unit and device-level filling calibrations are added.
-For the current mechanism-paper scope, the main remaining decisions are
-whether the finite-grid evidence and central-flat-band crosswalk are sufficient,
-and to repeat the 2026-06-09 literature sweep against the then-current
-literature.
+For the current mechanism-paper scope, the finite-grid evidence is now
+sufficient for the selected-grid normalized mechanism claim. The main remaining
+decisions are whether the central-flat-band crosswalk is sufficient and to
+repeat the 2026-06-09 literature sweep against the then-current literature.
 The filling status has improved from an uncalibrated proxy alone to a
 CSV-verified central-flat-band crosswalk, but the conservative limitation should
 remain unless a device-level calibration is added.

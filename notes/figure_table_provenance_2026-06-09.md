@@ -355,6 +355,37 @@ nk15 W_inter_target -> W_inter(15) column
 Current status:
 values are checked by `scripts/verify_manuscript_tables.py`.
 
+### Supplemental convergence-sufficiency self-audit table
+
+Supplemental content:
+manuscript-level convergence sufficiency checks combining the selected
+`nk=9/11/13` key-point data, finite-grid trend audit, targeted `nk=15` spot
+check, fixed-Delta0 control, and `W_inter` grid stability.
+
+Source CSV:
+`data/processed/convergence_sufficiency_audit.csv`
+
+Script:
+`scripts/audit_convergence_sufficiency.py`
+
+Reproduction command:
+
+```bash
+python3 scripts/audit_convergence_sufficiency.py
+```
+
+Columns mapped into LaTeX:
+
+```text
+check_id -> check column after manuscript-facing relabeling
+measured_value -> measured value column
+consequence -> manuscript consequence column
+```
+
+Current status:
+the audit passes all nine checks. The Supplemental Material table values are
+checked by `scripts/verify_manuscript_tables.py`.
+
 ### Supplemental claim-scope audit table
 
 Supplemental content:

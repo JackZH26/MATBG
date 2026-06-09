@@ -1,0 +1,10 @@
+check_id,status,measured_value,criterion,consequence
+frob_keypoint_positive,pass,"min=6.04%, max=10.13%",all fixed-Frobenius nk=9/11/13 key-point responses > 0,supports sign stability of the normalized mechanism signal
+frob_keypoint_range,pass,largest per-mu range=2.85 percentage points,largest nk=9/11/13 per-mu spread <= 3 percentage points,supports order-of-magnitude stability rather than precision extrapolation
+frob_trend_intercepts_positive,pass,"h2 min=8.65%, h1 min=10.82%",both 1/nk and 1/nk^2 fixed-Frobenius intercept audits > 0,supports positive trend-sign robustness without claiming a continuum value
+frob_nk15_positive,pass,"nk15 mu=0,2 values=8.97%, 8.65%",targeted nk=15 fixed-Frobenius spot checks > 0,tests the central representative points on a denser mesh
+frob_nk15_close_to_nk13,pass,max |nk15-nk13|=1.16 percentage points,targeted nk15 shifts from nk13 are <= 1.5 percentage points,supports scale stability at the two central representative points
+delta0_control_weak,pass,max measured |fixed-Delta0 response|=1.96%,fixed-Delta0 measured-grid control remains within 2 percent,supports the normalization-conditioned interpretation
+delta0_control_sign_sensitive,pass,"sign statuses=mixed,positive,mixed,mixed",at least three fixed-Delta0 trend rows have mixed measured signs,blocks a universal stiffness-enhancement interpretation
+winter_grid_stability,pass,W_inter range=0.1073-0.1099,W_inter target spread across checked grids <= 0.004,supports stable projected-pairing scale across finite grids
+overall_selected_grid_sufficiency,pass,8/8 numeric gates pass,all finite-grid mechanism gates pass,sufficient for the selected-grid normalized mechanism claim; not sufficient for a final continuum-limit numerical estimate

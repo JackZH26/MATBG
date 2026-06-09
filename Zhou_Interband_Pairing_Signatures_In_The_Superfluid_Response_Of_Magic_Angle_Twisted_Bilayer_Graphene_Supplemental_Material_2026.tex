@@ -445,6 +445,39 @@ fixed Frobenius, 2 & +0.0805 & +0.0865 & +0.0060 & 0.1076\\
 \end{ruledtabular}
 \end{table}
 
+The selected-grid evidence is finally summarized by the convergence-sufficiency
+self-audit
+\begin{verbatim}
+python3 scripts/audit_convergence_sufficiency.py
+\end{verbatim}
+which writes
+\begin{verbatim}
+data/processed/convergence_sufficiency_audit.csv
+\end{verbatim}
+Table~\ref{tab:sm_convergence_sufficiency} records the manuscript-level
+consequence.  The audit supports the selected-grid normalized mechanism claim
+used in the main text.  It does not constitute a dense-mesh replacement or a
+strict continuum-limit numerical value.
+
+\begin{table}[t]
+\caption{Convergence-sufficiency self-audit for the current mechanism-paper
+scope.}
+\label{tab:sm_convergence_sufficiency}
+\small
+\begin{ruledtabular}
+\begin{tabular}{lll}
+check & measured value & manuscript consequence\\
+\hline
+Frob. sign & 6.04 to 10.13\% & sign stable\\
+Frob. spread & 2.85 pp & scale stable\\
+Trend intercepts & 8.65\% / 10.82\% & positive trend audits\\
+$nk=15$ spot check & 8.97\%, 8.65\%; shift 1.16 pp & central spot stable\\
+fixed-$\Delta_0$ control & max 1.96\%; mixed signs & weak/sign-sensitive\\
+Overall scope & 8/8 numeric gates & selected-grid claim only\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 \section{Historical PRB Benchmark Reconstruction}
 
 The production interband-pairing scan and the historical PRB table
