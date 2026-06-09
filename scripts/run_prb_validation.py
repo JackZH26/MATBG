@@ -122,6 +122,7 @@ def validation_commands() -> list[tuple[str, list[str]]]:
         ("convergence_sufficiency_audit", [sys.executable, "scripts/audit_convergence_sufficiency.py"]),
         ("manuscript_table_verifier", [sys.executable, "scripts/verify_manuscript_tables.py"]),
         ("submission_package_audit", [sys.executable, "scripts/audit_submission_package.py"]),
+        ("submission_manifest_build", [sys.executable, "scripts/build_prb_submission_manifest.py"]),
     ]
 
 

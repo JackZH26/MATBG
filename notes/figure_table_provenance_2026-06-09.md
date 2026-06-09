@@ -549,8 +549,10 @@ python3 scripts/run_prb_validation.py
 ```
 
 This command runs the table verifier, text guardrails, submission-package
-audit, main/Supplemental Material LaTeX builds, and blocking log-warning scans.
-The current output is `data/processed/prb_validation_summary.csv` and is
+audit, submission-manifest build, main/Supplemental Material LaTeX builds, and
+blocking log-warning scans. The current outputs are
+`data/processed/prb_validation_summary.csv` and
+`data/processed/prb_submission_manifest.csv`; the validation chain is
 summarized in `notes/prb_validation_chain_2026-06-09.md`.
 
 ## Remaining Provenance Gap

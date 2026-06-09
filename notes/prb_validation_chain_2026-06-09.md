@@ -26,7 +26,7 @@ data/processed/prb_validation_summary.csv
 
 ## Current Result
 
-All 11 validation checks pass.
+All 12 validation checks pass.
 
 The chain currently runs:
 
@@ -37,10 +37,11 @@ The chain currently runs:
 5. `scripts/audit_convergence_sufficiency.py`;
 6. `scripts/verify_manuscript_tables.py`;
 7. `scripts/audit_submission_package.py`;
-8. `latexmk` for the main manuscript;
-9. `latexmk` for the Supplemental Material;
-10. blocking-warning scan of the main LaTeX log;
-11. blocking-warning scan of the Supplemental Material LaTeX log.
+8. `scripts/build_prb_submission_manifest.py`;
+9. `latexmk` for the main manuscript;
+10. `latexmk` for the Supplemental Material;
+11. blocking-warning scan of the main LaTeX log;
+12. blocking-warning scan of the Supplemental Material LaTeX log.
 
 The log scans fail on undefined references, citation warnings, LaTeX errors,
 and overfull boxes. They intentionally do not fail on the current benign

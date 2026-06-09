@@ -46,12 +46,13 @@ The command writes:
 
 ```text
 data/processed/prb_validation_summary.csv
+data/processed/prb_submission_manifest.csv
 ```
 
 It checks script syntax, claim-scope guardrails, observable policy, filling and
 convergence sufficiency, manuscript/Supplemental Material table values,
-submission-package mechanics, main/Supplemental Material LaTeX builds, and
-blocking LaTeX log warnings.
+submission-package mechanics, submission-manifest completeness, main/Supplemental
+Material LaTeX builds, and blocking LaTeX log warnings.
 
 ## Research Owner
 

@@ -138,10 +138,13 @@ not regenerated in this work package because the legacy figure assets
    chain `scripts/run_prb_validation.py` now runs the script syntax check,
    claim-scope audit, observable-policy audit, filling-sufficiency audit,
    convergence-sufficiency audit, table verifier, submission-package audit,
-   main/Supplemental Material LaTeX builds, and blocking LaTeX log scans. The
-   current chain passes all 11 checks and is recorded in
+   submission-manifest build, main/Supplemental Material LaTeX builds, and
+   blocking LaTeX log scans. The current chain passes all 12 checks and is
+   recorded in
    `data/processed/prb_validation_summary.csv` and
-   `notes/prb_validation_chain_2026-06-09.md`.
+   `notes/prb_validation_chain_2026-06-09.md`. The current manuscript package
+   inventory is recorded in `data/processed/prb_submission_manifest.csv` and
+   `notes/prb_submission_manifest_2026-06-09.md`.
    `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
    presents the first standalone Supplemental Material skeleton. The remaining
    reproducibility gap is to repeat the literature sweep immediately
