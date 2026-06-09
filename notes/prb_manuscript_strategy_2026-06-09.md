@@ -46,8 +46,10 @@ as a final experimental prediction.
    `nk=15` spot check preserve the positive fixed-Frobenius sign and scale.
 6. The convergence-sufficiency self-audit passes all current selected-grid
    gates for the normalized mechanism claim.
-7. In `fixed_delta0`, the response is much weaker and can be negative.
-8. Therefore, the effect is a normalization-conditioned mechanism signature,
+7. The filling-sufficiency self-audit supports the central-flat-band crosswalk
+   as the current mechanism-paper counting reference.
+8. In `fixed_delta0`, the response is much weaker and can be negative.
+9. Therefore, the effect is a normalization-conditioned mechanism signature,
    not an unconditional absolute-stiffness enhancement.
 
 ## Claims Not Allowed Yet
@@ -140,19 +142,23 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
    `notes/convergence_sufficiency_audit_2026-06-09.md`,
    `data/processed/convergence_sufficiency_audit.csv`, and
    `scripts/audit_convergence_sufficiency.py`.
-9. The `tr_sewn` valley convention is documented in the main text and
+9. The central-flat-band filling sufficiency decision is tracked in
+   `notes/filling_sufficiency_audit_2026-06-09.md`,
+   `data/processed/filling_sufficiency_audit.csv`, and
+   `scripts/audit_filling_sufficiency.py`.
+10. The `tr_sewn` valley convention is documented in the main text and
    Supplemental Material, with the raw-valley diagnostic tracked by
    `notes/valley_sewing_convention.md`,
    `configs/valley_sewing_diagnostic.yaml`, and
    `data/processed/valley_sewing_diagnostic.csv`.
-10. The manuscript reporting convention separates raw diagnostics, normalized
+11. The manuscript reporting convention separates raw diagnostics, normalized
    mechanism ratios, eV A^2 per-flavor benchmark audits, and the retained-band
    filling proxy; details are tracked in
    `notes/normalization_and_units_strategy.md` and
    `notes/observable_policy_decision_2026-06-09.md`.
-11. Recent stiffness and band-off-diagonal pairing context is now included in
+12. Recent stiffness and band-off-diagonal pairing context is now included in
     the manuscript through `tanaka_2025`, `christos_2023`, `putzer_2025`, and
     `wang_kekule_2026`; supporting notes are in
     `notes/recent_literature_update_2026-06-09.md`.
-12. Text-level guardrails are run with `scripts/audit_claim_scope.py` and
+13. Text-level guardrails are run with `scripts/audit_claim_scope.py` and
     `scripts/audit_observable_policy.py`.

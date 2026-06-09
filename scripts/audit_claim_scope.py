@@ -55,6 +55,12 @@ REQUIRED_PHRASES = [
         "Filling crosswalk is not a device-level carrier-density calibration.",
     ),
     RequiredPhrase(
+        "main_filling_sufficiency_scope",
+        "main",
+        "adequate as a BM central-flat-band counting reference",
+        "Main text should state the mechanism-paper filling-reference scope.",
+    ),
+    RequiredPhrase(
         "main_delta0_control",
         "main",
         "fixed-$\\Delta_0$ control remains weak",
@@ -83,6 +89,12 @@ REQUIRED_PHRASES = [
         "supplement",
         "not as a device-specific carrier-density calibration",
         "Central-flat-band crosswalk must not be overinterpreted.",
+    ),
+    RequiredPhrase(
+        "supp_filling_sufficiency_table",
+        "supplement",
+        "\\label{tab:sm_filling_sufficiency}",
+        "Supplement should expose the filling-sufficiency self-audit.",
     ),
     RequiredPhrase(
         "supp_not_continuum_extrapolation",

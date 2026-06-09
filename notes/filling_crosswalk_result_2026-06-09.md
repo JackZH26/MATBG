@@ -52,3 +52,6 @@ Manuscript integration:
   `nu_flat`, and occupied central flat bands per flavor.
 - The main text now points readers to this crosswalk while preserving the
   conservative statement that no device-specific filling calibration is claimed.
+- The mechanism-paper sufficiency of this crosswalk is now audited by
+  `scripts/audit_filling_sufficiency.py` and recorded in
+  `notes/filling_sufficiency_audit_2026-06-09.md`.

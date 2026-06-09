@@ -26,6 +26,7 @@ VALLEY_SEWING = ROOT / "data" / "processed" / "valley_sewing_diagnostic.csv"
 PRB_RECON = ROOT / "data" / "processed" / "prb_table_reconstruction_nk14.csv"
 FLAT_AUDIT = ROOT / "data" / "processed" / "flatband_endpoint_audit_nk14.csv"
 FILLING_CROSSWALK = ROOT / "data" / "processed" / "filling_crosswalk_nk7_nshell3.csv"
+FILLING_SUFFICIENCY = ROOT / "data" / "processed" / "filling_sufficiency_audit.csv"
 NK_TREND = ROOT / "data" / "processed" / "nk_trend_audit_nkeep6.csv"
 CONVERGENCE_SUFFICIENCY = (
     ROOT / "data" / "processed" / "convergence_sufficiency_audit.csv"
@@ -396,6 +397,61 @@ def verify_supplemental_filling_crosswalk(tex: str) -> None:
         )
 
 
+def verify_supplemental_filling_sufficiency(tex: str) -> None:
+    rows = split_rows(table_block(tex, "tab:sm_filling_sufficiency"))
+    data = {row["check_id"]: row for row in load_csv(FILLING_SUFFICIENCY)}
+
+    checked = 0
+    for cells in rows:
+        if len(cells) != 3:
+            continue
+        label = cells[0]
+        actual = numbers(cells[1])
+        if "grid" in label:
+            expected = numbers(data["mu_grid_matches_dense_scan"]["measured_value"])
+            assert_close("supp filling sufficiency mu count", actual[0], expected[0], 0)
+            assert_close("supp filling sufficiency mu denominator", actual[1], expected[0], 0)
+            checked += 1
+        elif "proxy" in label:
+            expected = numbers(data["nu_proxy_monotone"]["measured_value"])
+            assert_close("supp filling sufficiency proxy min", actual[0], expected[0], 3)
+            assert_close("supp filling sufficiency proxy max", actual[1], expected[1], 3)
+            checked += 1
+        elif "flat" in label and "nu" in label:
+            expected = numbers(data["nu_flat_nondecreasing"]["measured_value"])
+            assert_close("supp filling sufficiency flat min", actual[0], expected[0], 3)
+            assert_close("supp filling sufficiency flat max", actual[1], expected[1], 3)
+            checked += 1
+        elif "window" in label:
+            expected = numbers(
+                data["flat_band_window_inside_mu_scan"]["measured_value"]
+            )
+            assert_close("supp filling sufficiency window min", actual[0], expected[2], 3)
+            assert_close("supp filling sufficiency window max", actual[1], expected[3], 3)
+            checked += 1
+        elif "sampled" in label:
+            expected_zero = numbers(data["central_filling_sampled"]["measured_value"])
+            expected_pm2 = numbers(
+                data["pm2_filling_neighborhoods_sampled"]["measured_value"]
+            )
+            assert_close("supp filling sufficiency near zero", actual[0], expected_zero[0], 3)
+            assert_close("supp filling sufficiency near minus two", actual[1], expected_pm2[1], 3)
+            assert_close("supp filling sufficiency near plus two", actual[2], expected_pm2[3], 3)
+            checked += 1
+        elif "Overall" in label:
+            expected = numbers(
+                data["overall_filling_reference_sufficiency"]["measured_value"]
+            )
+            assert_close("supp filling sufficiency overall numerator", actual[0], expected[0], 0)
+            assert_close("supp filling sufficiency overall denominator", actual[1], expected[1], 0)
+            checked += 1
+
+    if checked != 6:
+        raise AssertionError(
+            f"Expected 6 supplemental filling-sufficiency rows, checked {checked}"
+        )
+
+
 def verify_supplemental_nk_trend(tex: str) -> None:
     rows = split_rows(table_block(tex, "tab:sm_nk_trend"))
     data = {
@@ -568,6 +624,7 @@ def main() -> int:
         verify_supplemental_nk_convergence(supp)
         verify_supplemental_valley_sewing(supp)
         verify_supplemental_filling_crosswalk(supp)
+        verify_supplemental_filling_sufficiency(supp)
         verify_supplemental_nk_trend(supp)
         verify_supplemental_nk15(supp)
         verify_supplemental_convergence_sufficiency(supp)

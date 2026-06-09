@@ -2,11 +2,13 @@ check_id,kind,scope,status,phrase,reason
 main_normalization_conditioned,required_phrase,main,pass,normalization-conditioned mechanism signature,Central result must remain conditional on the normalization protocol.
 main_not_absolute_prediction,required_phrase,main,pass,not an absolute stiffness prediction,Main text must not promote raw response values to physical stiffness.
 main_not_dome_map,required_phrase,main,pass,not as a quantitative map onto an experimental superconducting dome,Filling crosswalk is not a device-level carrier-density calibration.
+main_filling_sufficiency_scope,required_phrase,main,pass,adequate as a BM central-flat-band counting reference,Main text should state the mechanism-paper filling-reference scope.
 main_delta0_control,required_phrase,main,pass,fixed-$\Delta_0$ control remains weak,The weaker fixed-Delta0 control limits unconditional enhancement claims.
 main_nk15_spotcheck,required_phrase,main,pass,targeted $nk=15$ spot check,Main text should reflect the latest high-grid representative check.
 main_convergence_sufficiency_scope,required_phrase,main,pass,selected-grid normalized mechanism claim,Main text should state the finite-grid claim scope supported by the audit.
 supp_no_final_experimental_stiffness,required_phrase,supplement,pass,does not promote the raw response units to final experimental stiffness values,Supplement must declare the absolute-unit boundary.
 supp_device_calibration_boundary,required_phrase,supplement,pass,not as a device-specific carrier-density calibration,Central-flat-band crosswalk must not be overinterpreted.
+supp_filling_sufficiency_table,required_phrase,supplement,pass,\label{tab:sm_filling_sufficiency},Supplement should expose the filling-sufficiency self-audit.
 supp_not_continuum_extrapolation,required_phrase,supplement,pass,rather than a final continuum extrapolation,Finite-grid trend audit must not be sold as a continuum limit.
 supp_not_dense_replacement,required_phrase,supplement,pass,not a full dense-grid replacement,The nk15 result is a targeted spot check only.
 supp_convergence_sufficiency_table,required_phrase,supplement,pass,\label{tab:sm_convergence_sufficiency},Supplement should expose the convergence-sufficiency self-audit.

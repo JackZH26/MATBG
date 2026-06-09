@@ -30,6 +30,7 @@ selected-grid and nk=15 representative stability of the sign/scale
 convergence-sufficiency support for the selected-grid mechanism claim
 fixed-Delta0 as a weak/sign-sensitive control
 central-flat-band filling crosswalk as a counting reference
+filling-sufficiency support for the BM counting-reference scope
 ```
 
 Deferred claims:
@@ -53,5 +54,5 @@ replace, the numerical table verifier.
 Current outcome:
 
 ```text
-Claim-scope checks passed: 16/16
+Claim-scope checks passed: 18/18
 ```

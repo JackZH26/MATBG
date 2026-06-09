@@ -156,6 +156,36 @@ $\mu$ (meV) & $\nu_{\rm proxy}$ & $\nu_{\rm flat}$ & occupied flat bands/flavor\
 \end{ruledtabular}
 \end{table}
 
+The filling-reference claim is checked by the self-audit
+\begin{verbatim}
+python3 scripts/audit_filling_sufficiency.py
+\end{verbatim}
+which writes
+\begin{verbatim}
+data/processed/filling_sufficiency_audit.csv
+\end{verbatim}
+Table~\ref{tab:sm_filling_sufficiency} summarizes the result.  The crosswalk
+is sufficient as a BM central-flat-band counting reference for the present
+mechanism maps.  It is not a device-level carrier-density calibration.
+
+\begin{table}[h]
+\caption{Filling-sufficiency self-audit for the current mechanism-paper scope.}
+\label{tab:sm_filling_sufficiency}
+\small
+\begin{ruledtabular}
+\begin{tabular}{lll}
+check & measured value & manuscript consequence\\
+\hline
+$\mu$ grid & 11/11 values & matches dense response map\\
+$\nu_{\rm proxy}$ & -1.483 to 0.857 & monotone scan label\\
+$\nu_{\rm flat}$ & -4.000 to 4.000 & full central-pair range\\
+flat-band window & -1.051 to 4.134 meV & bracketed by scan window\\
+sampled fillings & 0.327, 0.286, 0.367 & near $0,-2,+2$ references\\
+Overall scope & 8/8 numeric gates & counting reference only\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 \section{Orbital-Projected Pairing Construction}
 
 The pairing direction is specified first in the layer-sublattice orbital basis,

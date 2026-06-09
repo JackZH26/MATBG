@@ -17,10 +17,12 @@ target. It now has an explicit normalized-response observable policy for the
 mechanism-paper scope. It also now has a convergence-sufficiency self-audit
 showing that the selected finite-grid evidence is sufficient for the current
 normalized mechanism claim, while still not supporting continuum-limit
-numerical values. The remaining judgement call is whether the current
-central-flat-band filling crosswalk is sufficient for submission. A broad
-2025-2026 literature sweep was performed on 2026-06-09, but it should be
-repeated immediately before actual submission.
+numerical values. The central-flat-band filling crosswalk now also has a
+filling-sufficiency self-audit showing that it is sufficient as a BM counting
+reference for the mechanism-paper scope, while still not supporting
+device-level carrier-density calibration. A broad 2025-2026 literature sweep
+was performed on 2026-06-09, but it should be repeated immediately before
+actual submission.
 The current draft now includes a central two-flat-band filling crosswalk for
 the dense scan, but this is still not a device-specific carrier-density
 calibration.
@@ -50,6 +52,7 @@ not regenerated in this work package because the legacy figure assets
 | Old `n_keep=6` endpoint can be nearly reconstructed by `double_conv_all_tauz` | `notes/prb_table_reconstruction_result_2026-06-09.md` | Supported as benchmark route | Audit table |
 | Old `n_keep=2` endpoint needs mesh/curvature-specific convention | `notes/flatband_endpoint_audit_result_2026-06-09.md` | Supported as historical audit | Appendix/audit |
 | Direct comparison to experimental stiffness | Requires final absolute convention and device-level filling calibration | Outside current mechanism-paper scope | Motivation/discussion only |
+| Central-flat-band filling crosswalk is sufficient as a mechanism-paper counting reference | `data/processed/filling_sufficiency_audit.csv`, `notes/filling_sufficiency_audit_2026-06-09.md`, `scripts/audit_filling_sufficiency.py` | Supported for current mechanism-paper scope; not a device calibration | Main text plus Supplemental Material |
 | Anisotropy is a robust observable signature | Current scans do not establish robustness | Not ready | Secondary diagnostic only |
 
 ## Submission-Critical Gaps
@@ -95,8 +98,15 @@ not regenerated in this work package because the legacy figure assets
    two-flat-band crosswalk generated from
    `data/processed/filling_crosswalk_nk7_nshell3.csv`, showing that the dense
    chemical-potential window spans approximately `nu_flat=-4` to `+4` in the
-   central-pair counting convention. Any comparison to superconducting domes
-   must still use calibrated carrier density or remain clearly qualitative.
+   central-pair counting convention. The filling-sufficiency audit passes all
+   nine checks: the crosswalk uses the same 11 chemical potentials as the dense
+   response table, `nu_proxy` is strictly increasing, `nu_flat` is
+   nondecreasing from `-4.000` to `+4.000`, the dense scan brackets the central
+   two-flat-band energy window `[-1.051,4.134] meV`, and the sampled grid
+   includes counting-reference points near `nu_flat=0` and `+-2`. This is
+   sufficient for the current mechanism-paper filling reference. Any
+   comparison to superconducting domes must still use calibrated carrier
+   density or remain clearly qualitative.
 
 5. Reference completeness:
    The key recent stiffness and band-off-diagonal pairing references have now
@@ -119,27 +129,27 @@ not regenerated in this work package because the legacy figure assets
    short list of forbidden overclaims.
    `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
    presents the first standalone Supplemental Material skeleton. The remaining
-   remaining reproducibility gap is to decide whether additional device-level
-   filling work is needed before submission.
+   remaining reproducibility gap is to repeat the literature sweep immediately
+   before submission and decide whether any expanded-scope experimental
+   calibration is desired.
 
 ## Recommended Next Work Packages
 
-1. Decide whether the central-flat-band crosswalk is sufficient for the PRB
-   mechanism claim, or add a device-level carrier-density calibration before
-   comparing to superconducting dome locations.
+1. Repeat a broad literature sweep immediately before submission, focused on
+   new 2026 stiffness, tunneling, and band-off-diagonal or finite-momentum
+   pairing papers.
 
 2. If the manuscript scope is expanded to direct experimental stiffness
    comparison, regenerate absolute values from one declared response convention
    with explicit degeneracy, BZ normalization, and diamagnetic or curvature
    terms.
 
-3. Optionally add a broader denser-grid saturation check if the target claim is
+3. If the manuscript scope is expanded to quantitative superconducting-dome
+   comparison, add a device-level carrier-density calibration.
+
+4. Optionally add a broader denser-grid saturation check if the target claim is
    expanded beyond selected-grid sign/scale stability, or if reviewer-facing
    precision becomes central.
-
-4. Repeat a broad literature sweep immediately before submission, focused on
-   new 2026 stiffness, tunneling, and band-off-diagonal or finite-momentum
-   pairing papers.
 
 ## Readiness Judgment
 
@@ -149,9 +159,10 @@ The central normalized-response mechanism claim is viable. The final PRB paper
 should not make direct absolute-stiffness or superconducting-dome comparison
 claims unless absolute-unit and device-level filling calibrations are added.
 For the current mechanism-paper scope, the finite-grid evidence is now
-sufficient for the selected-grid normalized mechanism claim. The main remaining
-decisions are whether the central-flat-band crosswalk is sufficient and to
-repeat the 2026-06-09 literature sweep against the then-current literature.
+sufficient for the selected-grid normalized mechanism claim, and the
+central-flat-band crosswalk is sufficient as a BM counting reference. The main
+remaining submission-timing task is to repeat the 2026-06-09 literature sweep
+against the then-current literature.
 The filling status has improved from an uncalibrated proxy alone to a
-CSV-verified central-flat-band crosswalk, but the conservative limitation should
-remain unless a device-level calibration is added.
+CSV-verified and self-audited central-flat-band crosswalk, but the conservative
+limitation should remain unless a device-level calibration is added.

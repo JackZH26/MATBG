@@ -1,0 +1,10 @@
+check_id,status,measured_value,criterion,consequence
+mu_grid_matches_dense_scan,pass,11 crosswalk mus match dense summary,crosswalk mu grid equals the dense response summary mu grid,supports direct table-to-table reading of mu and filling labels
+nu_proxy_monotone,pass,nu_proxy range=-1.483 to 0.857,retained-band proxy is strictly increasing over the scan,supports using nu_proxy only as an ordering label
+nu_flat_nondecreasing,pass,nu_flat range=-4.000 to 4.000,central-flat-band filling is nondecreasing over the scan,supports a consistent flat-band counting crosswalk
+flat_band_window_inside_mu_scan,pass,"mu=[-5.000, 5.000] meV; flat window=[-1.051, 4.134] meV",dense mu range brackets the central two-band energy window,supports empty-to-full central-flat-band coverage
+nu_flat_full_range_spanned,pass,"nu_flat min/max=-4.000, 4.000",central-flat-band count spans -4 to +4 with g=4,supports full flat-band counting coverage for the mechanism scan
+flat_occupation_bounds,pass,occupied bands/flavor=0.000 to 2.000,central pair occupancy stays within the two-band bounds,checks that the crosswalk remains a valid counting reference
+central_filling_sampled,pass,closest |nu_flat|=0.327,dense mu grid samples the central flat-band filling region,supports reading the response map across the central crossing
+pm2_filling_neighborhoods_sampled,pass,closest to -2: 0.286; closest to +2: 0.367,dense mu grid includes counting-reference points near nu_flat=+-2,allows qualitative orientation relative to common MATBG fillings
+overall_filling_reference_sufficiency,pass,8/8 numeric gates pass,all filling crosswalk mechanism-scope gates pass,sufficient as a BM central-flat-band counting reference; not sufficient as a device-level carrier-density calibration

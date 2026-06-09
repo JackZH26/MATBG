@@ -153,6 +153,38 @@ Current status:
 values are generated from the BM central-pair spectrum and checked by
 `scripts/verify_manuscript_tables.py`.
 
+### `tab:sm_filling_sufficiency`
+
+Supplemental content:
+filling-reference sufficiency checks combining the dense response `mu` grid,
+the retained-band proxy monotonicity, central two-flat-band counting range,
+flat-band window coverage, and sampled counting-reference neighborhoods near
+`nu_flat=0` and `nu_flat=+-2`.
+
+Data source:
+`data/processed/filling_sufficiency_audit.csv`
+
+Script:
+`scripts/audit_filling_sufficiency.py`
+
+Reproduction command:
+
+```bash
+python3 scripts/audit_filling_sufficiency.py
+```
+
+Columns mapped into LaTeX:
+
+```text
+check_id -> check column after manuscript-facing relabeling
+measured_value -> measured value column
+consequence -> manuscript consequence column
+```
+
+Current status:
+the audit passes all nine checks. The Supplemental Material table values are
+checked by `scripts/verify_manuscript_tables.py`.
+
 ### Text-Level Claim and Observable Audits
 
 Outputs:
