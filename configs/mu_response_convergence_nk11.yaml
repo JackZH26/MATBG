@@ -1,0 +1,40 @@
+project: matbg_interband_pairing_superfluid_stiffness
+created: 2026-06-09
+purpose: nk11_keypoint_convergence_check
+
+bm_model:
+  theta_deg: 1.05
+  vF_eV_A: 2.135
+  w0_meV: 87.2
+  w1_meV: 109.0
+  n_shell: 3
+
+scan:
+  nk: 11
+  n_keep: 6
+  mu_meV_values: [-4.0, 0.0, 2.0, 4.0]
+  eta_values: [0.0, 0.5, 1.0]
+  delta0_meV: 1.0
+  finite_difference_dk_Ainv: 1.0e-6
+  normalization_modes:
+    - fixed_frobenius_norm
+    - fixed_delta0
+
+pairing:
+  partner_convention: tr_sewn
+  m0: tau0_sigma0
+  m1: taux_sigmax
+
+outputs:
+  csv: data/processed/mu_response_scan_nk11_nkeep6_keypoints.csv
+  eta1_summary: data/processed/mu_response_scan_nk11_nkeep6_keypoints_summary.csv
+
+commands:
+  scan: >
+    python3 scripts/run_mu_response_scan.py --nk 11 --n-shell 3 --n-keep 6
+    --mus -4 0 2 4 --etas 0 0.5 1
+    --output data/processed/mu_response_scan_nk11_nkeep6_keypoints.csv
+  summary: >
+    python3 scripts/summarize_eta_effect.py
+    data/processed/mu_response_scan_nk11_nkeep6_keypoints.csv
+    --output data/processed/mu_response_scan_nk11_nkeep6_keypoints_summary.csv

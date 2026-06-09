@@ -111,7 +111,11 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
    `notes/prb_readiness_audit_2026-06-09.md`.
 3. Figure and table provenance is tracked in
    `notes/figure_table_provenance_2026-06-09.md`.
-4. Manuscript table values are checked against processed CSV files by
+4. Manuscript and Supplemental Material table values are checked against
+   processed CSV files by
    `scripts/verify_manuscript_tables.py`.
 5. Recent 2025-2026 stiffness and Kekule/PDW context is tracked in
    `notes/recent_literature_update_2026-06-09.md`.
+6. The selected `nk=11` convergence check is tracked in
+   `notes/nk11_convergence_result_2026-06-09.md` and
+   `configs/mu_response_convergence_nk11.yaml`.

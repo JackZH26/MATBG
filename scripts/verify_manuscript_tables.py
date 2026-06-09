@@ -13,8 +13,13 @@ TEX_PATH = (
     ROOT
     / "Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex"
 )
+SUPP_PATH = (
+    ROOT
+    / "Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex"
+)
 DENSE_SUMMARY = ROOT / "data" / "processed" / "mu_eta_response_scan_nk7_nkeep6_eta1_summary.csv"
 NK9_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk9_nkeep6_keypoints_summary.csv"
+NK11_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk11_nkeep6_keypoints_summary.csv"
 PRB_RECON = ROOT / "data" / "processed" / "prb_table_reconstruction_nk14.csv"
 FLAT_AUDIT = ROOT / "data" / "processed" / "flatband_endpoint_audit_nk14.csv"
 
@@ -51,6 +56,10 @@ def number(cell: str) -> float:
     if match is None:
         raise ValueError(f"No numeric value found in cell: {cell!r}")
     return float(match.group(0))
+
+
+def numbers(cell: str) -> list[float]:
+    return [float(match) for match in re.findall(r"[-+]?\d+(?:\.\d+)?", cell)]
 
 
 def assert_close(name: str, actual: float, expected: float, decimals: int) -> None:
@@ -232,12 +241,65 @@ def verify_prb_audit(tex: str) -> None:
         )
 
 
+def verify_supplemental_nk_convergence(tex: str) -> None:
+    rows = split_rows(table_block(tex, "tab:sm_nk_convergence"))
+    nk9 = load_csv(NK9_SUMMARY)
+    nk11 = load_csv(NK11_SUMMARY)
+    nk9_by_key = {
+        (row["normalization"], int(float(row["mu_meV"]))): row
+        for row in nk9
+    }
+    nk11_by_key = {
+        (row["normalization"], int(float(row["mu_meV"]))): row
+        for row in nk11
+    }
+
+    checked = 0
+    for cells in rows:
+        if len(cells) != 4:
+            continue
+        if "Frobenius" not in cells[0] and "Delta" not in cells[0]:
+            continue
+        normalization = (
+            "fixed_delta0" if "Delta" in cells[0] else "fixed_frobenius_norm"
+        )
+        mu_values = numbers(cells[0])
+        if not mu_values:
+            raise ValueError(f"No mu value found in cell: {cells[0]!r}")
+        mu = int(mu_values[-1])
+        value9 = float(nk9_by_key[(normalization, mu)]["D_iso_rel_target_vs_baseline"])
+        value11 = float(nk11_by_key[(normalization, mu)]["D_iso_rel_target_vs_baseline"])
+        assert_close(
+            f"supp nk9 {normalization} mu={mu}",
+            number(cells[1]),
+            rounded(value9, 4),
+            4,
+        )
+        assert_close(
+            f"supp nk11 {normalization} mu={mu}",
+            number(cells[2]),
+            rounded(value11, 4),
+            4,
+        )
+        assert_close(
+            f"supp nk diff {normalization} mu={mu}",
+            number(cells[3]),
+            rounded(value11 - value9, 4),
+            4,
+        )
+        checked += 1
+    if checked != 8:
+        raise AssertionError(f"Expected 8 supplemental convergence rows, checked {checked}")
+
+
 def main() -> int:
     tex = TEX_PATH.read_text()
     verify_dense_eta(tex)
     verify_nk9(tex)
     verify_prb_audit(tex)
-    print("All manuscript table values match processed CSV data.")
+    if SUPP_PATH.exists():
+        verify_supplemental_nk_convergence(SUPP_PATH.read_text())
+    print("All manuscript and supplemental table values match processed CSV data.")
     return 0
 
 
