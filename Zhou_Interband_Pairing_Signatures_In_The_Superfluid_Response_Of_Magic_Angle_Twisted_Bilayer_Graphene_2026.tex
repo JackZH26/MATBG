@@ -14,15 +14,18 @@
 \date{June 9, 2026}
 
 \begin{abstract}
-The superfluid response of magic-angle twisted bilayer graphene is strongly
-affected by quantum geometry, but the role of pairing structure in this
-response remains less directly quantified.
-We construct an executable Bistritzer-MacDonald--Bogoliubov-de Gennes workflow
-for testing orbital-projected interband-pairing directions in a finite-band
-response calculation.
+The anomalously large superfluid response of magic-angle twisted bilayer
+graphene is often discussed in terms of quantum geometry, but the extent to
+which the orbital structure of the superconducting gap leaves a separable
+response signature remains less directly quantified.
+We address this question with an executable
+Bistritzer-MacDonald--Bogoliubov-de Gennes workflow that tests
+orbital-projected interband-pairing directions in a finite-band response
+calculation.
 The pairing family is defined in the layer-sublattice orbital basis and then
 projected into the normal-state band basis using a fixed time-reversal-sewn
-valley convention.
+valley convention, allowing the pairing direction and response convention to
+be varied independently.
 For the working direction $M_1=\tau_x\sigma_x$, the projected interband
 pairing weight increases smoothly with the tuning parameter $\eta$ and reaches
 approximately $0.108$ at $\eta=1$ for the $n_{\rm keep}=6$ truncation.
@@ -33,11 +36,12 @@ $\eta=1$ over $\mu=-5,\ldots,5$ meV.
 The same scan at fixed raw gap amplitude is much weaker and can be negative.
 We therefore identify the signal as a normalization-conditioned mechanism
 signature rather than an unconditional enhancement of the absolute stiffness.
-Finally, we audit the absolute-unit baseline against a previous PRB-style
-superfluid-weight table and show that the prior benchmark can be only partially
-reconstructed from a unified convention.
-This motivates using normalized response maps for the main mechanism claim and
-keeping absolute stiffness comparisons as a separate benchmark problem.
+An absolute-unit audit of a previous PRB-style superfluid-weight benchmark
+shows that the legacy values can be only partially reconstructed from one
+unified convention.
+The resulting manuscript policy is that normalized response maps carry the
+main mechanism claim, while absolute stiffness comparisons are deferred to a
+separate benchmark calculation with a fully declared convention.
 \end{abstract}
 
 \maketitle
@@ -477,22 +481,24 @@ diagnostic and will require a separate finite-momentum BdG extension.
 \section{Conclusions}
 %====================================================================
 
-We have built an executable MATBG response pipeline for testing
-orbital-projected interband-pairing signatures.
-The working pairing direction $M_1=\tau_x\sigma_x$ produces a finite projected
-interband-pairing weight and a reproducible normalized response in the
-fixed-Frobenius scan.
-The same mechanism is strongly suppressed when the raw gap amplitude is held
-fixed.
-Thus the calculation supports a precise and conservative conclusion:
-interband pairing produces a normalization-conditioned mechanism signature in
-the finite-band MATBG superfluid response.
+The calculation isolates a concrete finite-band diagnostic of pairing
+structure in MATBG.
+For the orbital direction $M_1=\tau_x\sigma_x$, the projected interband weight
+is finite and the fixed-Frobenius response map shows a reproducible positive
+change across the scanned chemical-potential window.
+The fixed-$\Delta_0$ control, by contrast, is weak and sign-sensitive.
+This contrast is the central result: interband pairing produces a
+normalization-conditioned mechanism signature in the finite-band MATBG
+superfluid response, not an absolute stiffness prediction independent of how
+the gap direction is normalized.
 
-The accompanying benchmark audit shows that absolute stiffness tables should
-be regenerated from a single modern convention before being used as final
-manuscript or experimental-comparison numbers.
-The normalized response maps reported here provide the more robust foundation
-for the next stage of the PRB manuscript.
+The self-audit of units and filling fixes the scope of this conclusion.
+Normalized response ratios are robust claim-bearing observables for the
+present mechanism paper, while absolute stiffness tables, device-level filling
+calibration, and continuum-limit extrapolation remain separate tasks.
+Within that boundary, the work provides an executable route for comparing
+orbital gap structure, band projection, and quantum-geometric response in
+magic-angle graphene superconductivity.
 
 \begin{acknowledgments}
 The author acknowledges use of open-source scientific computing tools
