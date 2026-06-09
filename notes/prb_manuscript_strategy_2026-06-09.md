@@ -34,8 +34,10 @@ with both `fixed_frobenius_norm` and `fixed_delta0` retained as controls.
 3. In `fixed_frobenius_norm`, `eta=1` changes `D_iso` by about `+0.56%` to
    `+11.86%` across `mu=-5...5 meV` at `nk=7`, `n_keep=6`.
 4. `nk=9` key-point checks preserve the qualitative signal.
-5. In `fixed_delta0`, the response is much weaker and can be negative.
-6. Therefore, the effect is a normalization-conditioned mechanism signature,
+5. `nk=11/13` key-point checks, a finite-grid trend audit, and a representative
+   `nk=15` spot check preserve the positive fixed-Frobenius sign and scale.
+6. In `fixed_delta0`, the response is much weaker and can be negative.
+7. Therefore, the effect is a normalization-conditioned mechanism signature,
    not an unconditional absolute-stiffness enhancement.
 
 ## Claims Not Allowed Yet

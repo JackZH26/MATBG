@@ -474,6 +474,37 @@ Because this full-curvature correction does not work uniformly at
 $n_{\rm keep}=6$, the reconstruction is treated as a historical audit rather
 than a production convention.
 
+\section{Claim Scope and Excluded Interpretations}
+
+The manuscript is framed as a normalized-response mechanism paper.  The
+text-level claim-scope audit is generated with
+\begin{verbatim}
+python3 scripts/audit_claim_scope.py
+\end{verbatim}
+and recorded in \code{data/processed/claim\_scope\_audit.csv}.  This audit is
+not a numerical validation tool; it checks that the manuscript retains the
+boundary statements needed to avoid overinterpreting the finite-band diagnostic
+calculation.  Table~\ref{tab:sm_claim_scope} summarizes the current claim
+scope.
+
+\begin{table}[h]
+\caption{Allowed manuscript claims and excluded interpretations.}
+\label{tab:sm_claim_scope}
+\small
+\begin{tabular}{lll}
+\toprule
+topic & allowed in the present manuscript & excluded interpretation\\
+\midrule
+normalized response & mechanism signature & absolute stiffness enhancement\\
+fixed-$\Delta_0$ control & weak/sign-sensitive control & universal enhancement\\
+momentum grids & selected sign/scale stability & continuum-limit value\\
+filling variable & central flat-band crosswalk & device density calibration\\
+absolute units & benchmark self-audit only & experimental comparison\\
+valley partner & \code{tr\_sewn} diagnostic convention & valley-asymmetric calculation\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Current Limitations and Next Validation Gates}
 
 The current submission-critical gaps are:

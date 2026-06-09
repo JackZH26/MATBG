@@ -1,0 +1,15 @@
+check_id,kind,scope,status,phrase,reason
+main_normalization_conditioned,required_phrase,main,pass,normalization-conditioned mechanism signature,Central result must remain conditional on the normalization protocol.
+main_not_absolute_prediction,required_phrase,main,pass,not an absolute stiffness prediction,Main text must not promote raw response values to physical stiffness.
+main_not_dome_map,required_phrase,main,pass,not as a quantitative map onto an experimental superconducting dome,Filling crosswalk is not a device-level carrier-density calibration.
+main_delta0_control,required_phrase,main,pass,fixed-$\Delta_0$ control remains weak,The weaker fixed-Delta0 control limits unconditional enhancement claims.
+main_nk15_spotcheck,required_phrase,main,pass,targeted $nk=15$ spot check,Main text should reflect the latest high-grid representative check.
+supp_no_final_experimental_stiffness,required_phrase,supplement,pass,does not promote the raw response units to final experimental stiffness values,Supplement must declare the absolute-unit boundary.
+supp_device_calibration_boundary,required_phrase,supplement,pass,not as a device-specific carrier-density calibration,Central-flat-band crosswalk must not be overinterpreted.
+supp_not_continuum_extrapolation,required_phrase,supplement,pass,rather than a final continuum extrapolation,Finite-grid trend audit must not be sold as a continuum limit.
+supp_not_dense_replacement,required_phrase,supplement,pass,not a full dense-grid replacement,The nk15 result is a targeted spot check only.
+supp_claim_scope_table,required_phrase,supplement,pass,\label{tab:sm_claim_scope},Supplement should expose the allowed and excluded claim scope.
+forbid_universal_enhancement,forbidden_phrase,main+supplement,pass,universally enhances physical stiffness,The fixed-Delta0 control contradicts a universal enhancement claim.
+forbid_quant_agreement,forbidden_phrase,main+supplement,pass,quantitative agreement with experimental stiffness,Direct experimental stiffness comparison is outside the current scope.
+forbid_final_carrier_density,forbidden_phrase,main+supplement,pass,device-level carrier-density calibration is complete,The current filling work is a central-flat-band crosswalk only.
+forbid_final_continuum_limit,forbidden_phrase,main+supplement,pass,final continuum-limit estimate,The present convergence layer is finite-grid and selected-point only.

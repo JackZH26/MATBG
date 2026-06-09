@@ -31,6 +31,7 @@ calibration.
 | Simple `1/nk^2` trend audit keeps fixed-Frobenius key-point intercepts positive | `data/processed/nk_trend_audit_nkeep6.csv`, `figures/nk_trend_audit_nkeep6.pdf`, `notes/nk_trend_audit_result_2026-06-09.md` | Supported as finite-grid trend audit; not a formal continuum limit | Main text plus Supplemental Material |
 | `nk=15` spot check preserves positive fixed-Frobenius response at representative key points | `data/processed/mu_response_scan_nk15_nkeep6_spotcheck_summary.csv`, `notes/nk15_spotcheck_result_2026-06-09.md` | Supported for `mu=0,2`; not a dense-grid replacement | Main text plus Supplemental Material |
 | Fixed-Delta0 response is weak and can be negative | Dense and key-point scan summaries | Supported | Control result |
+| Manuscript keeps the conservative mechanism-paper claim scope | `data/processed/claim_scope_audit.csv`, `notes/claim_scope_audit_2026-06-09.md`, `scripts/audit_claim_scope.py` | Supported as text-level guardrail | Main text plus Supplemental Material |
 | Interband pairing universally enhances physical stiffness | Contradicted by fixed-Delta0 control | Not allowed | Do not claim |
 | Absolute PRB benchmark table is reproduced by current production convention | Unit/baseline audits show mismatch | Not allowed | Self-audit only |
 | Old `n_keep=6` endpoint can be nearly reconstructed by `double_conv_all_tauz` | `notes/prb_table_reconstruction_result_2026-06-09.md` | Supported as benchmark route | Audit table |
@@ -89,7 +90,10 @@ calibration.
    `notes/figure_table_provenance_2026-06-09.md` now maps every current main
    figure and table to scripts, configs, data files, and reproduction commands.
    `scripts/verify_manuscript_tables.py` checks the main-text and Supplemental
-   Material LaTeX table values against the processed CSV files.
+   Material LaTeX table values against the processed CSV files. The
+   `scripts/audit_claim_scope.py` text-level guardrail checks that the current
+   manuscript keeps the required conservative boundary statements and avoids a
+   short list of forbidden overclaims.
    `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
    presents the first standalone Supplemental Material skeleton. The remaining
    gap is to expand it with any final convention decisions.

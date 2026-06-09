@@ -332,6 +332,33 @@ nk15 W_inter_target -> W_inter(15) column
 Current status:
 values are checked by `scripts/verify_manuscript_tables.py`.
 
+### Supplemental claim-scope audit table
+
+Supplemental content:
+qualitative table separating allowed normalized-response mechanism claims from
+excluded interpretations such as direct experimental stiffness agreement,
+device-level carrier-density calibration, or final continuum-limit estimates.
+
+Source CSV:
+`data/processed/claim_scope_audit.csv`
+
+Script:
+`scripts/audit_claim_scope.py`
+
+Reproduction command:
+
+```bash
+python3 scripts/audit_claim_scope.py
+```
+
+Config:
+`configs/claim_scope_audit.yaml`
+
+Current status:
+the script checks required conservative boundary phrases in the main text and
+Supplemental Material, checks for a short list of forbidden overclaims, and
+records the result as a CSV guardrail for future edits.
+
 ### Supplemental raw valley sewing diagnostic table
 
 Supplemental content:

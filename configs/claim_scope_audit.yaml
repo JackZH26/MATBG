@@ -1,0 +1,28 @@
+project: matbg_interband_pairing_superfluid_stiffness
+created: 2026-06-09
+purpose: manuscript_claim_scope_audit
+
+inputs:
+  main_tex: Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex
+  supplemental_tex: Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex
+
+outputs:
+  csv: data/processed/claim_scope_audit.csv
+
+checks:
+  required_boundaries:
+    - normalization-conditioned mechanism signature
+    - not an absolute stiffness prediction
+    - not a quantitative map onto an experimental superconducting dome
+    - not a device-specific carrier-density calibration
+    - rather than a final continuum extrapolation
+    - \label{tab:sm_claim_scope}
+  forbidden_overclaims:
+    - universal physical-stiffness enhancement
+    - quantitative agreement with experimental stiffness
+    - completed device-level carrier-density calibration
+    - final continuum-limit estimate
+
+commands:
+  audit: >
+    python3 scripts/audit_claim_scope.py
