@@ -66,10 +66,15 @@ script yet.
 
 | Label | Output | Source data | Script | Reproduction command | Status |
 |---|---|---|---|---|---|
+| `fig:workflow` | `figures/workflow_schematic_prb.png` | Manuscript workflow definitions; no numeric data | `scripts/plot_workflow_schematic.py` | `python3 scripts/plot_workflow_schematic.py --output figures/workflow_schematic_prb.png` | Reproducible |
 | `fig:heatmap_frob` | `figures/mu_eta_heatmap_nk7_nkeep6_fixed_frobenius.png` | `data/processed/mu_eta_response_scan_nk7_nkeep6.csv` | `scripts/plot_mu_eta_heatmap.py` | `python3 scripts/plot_mu_eta_heatmap.py --input data/processed/mu_eta_response_scan_nk7_nkeep6.csv --normalization fixed_frobenius_norm --output figures/mu_eta_heatmap_nk7_nkeep6_fixed_frobenius.png` | Reproducible |
 | `fig:heatmap_delta0` | `figures/mu_eta_heatmap_nk7_nkeep6_fixed_delta0.png` | `data/processed/mu_eta_response_scan_nk7_nkeep6.csv` | `scripts/plot_mu_eta_heatmap.py` | `python3 scripts/plot_mu_eta_heatmap.py --input data/processed/mu_eta_response_scan_nk7_nkeep6.csv --normalization fixed_delta0 --output figures/mu_eta_heatmap_nk7_nkeep6_fixed_delta0.png` | Reproducible |
 
 Each plot command also writes the matching PDF next to the PNG.
+
+The workflow schematic is a visual map of the calculation sequence and claim
+boundary. It should not be read as a new numerical result; the numerical
+claims come from the response tables and heatmaps below.
 
 ## Manuscript Tables
 

@@ -10,7 +10,8 @@ Manuscript:
 The manuscript is a coherent first PRB-style draft, not a submission-ready final
 paper. It has a conservative central claim, reproducible figures, explicit
 tables, a declarations section, a formal BibTeX file, a figure/table
-provenance manifest, and a standalone Supplemental Material skeleton.
+provenance manifest, a workflow schematic for the main calculation route, and
+a standalone Supplemental Material skeleton.
 
 The current draft is suitable as a research checkpoint and internal review
 target. It now has an explicit normalized-response observable policy for the
