@@ -65,7 +65,19 @@ Date: 2026-06-09
     arXiv:2604.05994 (2026).
     Source: https://arxiv.org/abs/2604.05994
 
-12. Searches for a specific "Lamponen et al., PRB 2025" interband-pairing or
+12. M. S. Liang, Y.-J. Wang, G.-D. Zhou, Z.-D. Song, and X. Dai,
+    "Strongly Correlated Superconductivity in Twisted Bilayer Graphene: A
+    Gutzwiller Study,"
+    arXiv:2604.04631 (v2, 2026).
+    Source: https://arxiv.org/abs/2604.04631
+
+13. J. Xiao, A. Inbar, J. Birkbeck et al.,
+    "Imaging the flat bands of magic-angle graphene reshaped by
+    interactions,"
+    Nature 653, 68-75 (2026).
+    Source: https://www.nature.com/articles/s41586-026-10378-x
+
+14. Searches for a specific "Lamponen et al., PRB 2025" interband-pairing or
    MATBG superfluid-stiffness paper did not identify a primary source matching
    the old placeholder in `notes/literature_matrix.md`. The placeholder has
    therefore been removed from the active manuscript queue.
@@ -80,6 +92,8 @@ twisted graphene band-off-diagonal pairing 2025/2026
 Kekule superconductivity magic-angle twisted bilayer graphene
 magic-angle graphene tunneling nodal gap superconductivity 2025/2026
 twisted graphene gapless quasiparticles geometric superfluid stiffness
+strongly correlated superconductivity twisted bilayer graphene Gutzwiller 2026
+magic-angle graphene flat bands reshaped by interactions 2026
 ```
 
 ## Manuscript Impact
@@ -117,6 +131,16 @@ The 2026 dielectric-environment paper supports the conservative statement that
 the microscopic pairing mechanism remains unsettled. It should not be used to
 claim that the present ansatz identifies the pairing glue.
 
+The 2026 Gutzwiller study adds a strong-correlation theoretical mechanism
+context, including nematic and nodal superconducting tendencies. It supports
+the claim that the pairing problem remains open, but it does not modify the
+present fixed mean-field ansatz or response calculation.
+
+The 2026 flat-band imaging paper shows that interactions can reshape the
+normal-state flat bands in MATBG. It is useful as a limitation/future-work
+reference: the current calculation uses a noninteracting BM normal-state
+spectrum and should not be read as a final interacting-band reconstruction.
+
 The Zhou 2026 arXiv entry is the current author's prior band-basis
 decomposition/baseline paper. It is useful as provenance for the benchmark
 self-audit, not as external evidence for the new interband-pairing mechanism.
@@ -131,3 +155,7 @@ current uniform-pairing scan covers Kekule or PDW order.
 Add Christos-Sachdev-Scheurer and Putzer-Scheurer to the Introduction so the
 paper is positioned as a response-diagnostic complement to existing
 band-off-diagonal pairing theory.
+Add Liang-Wang-Zhou-Song-Dai as additional pairing-mechanism context and
+Xiao-Inbar-Birkbeck et al. as a limitation/future-work citation for
+interaction-reshaped flat bands. Do not use either source to expand the
+present manuscript beyond the normalized finite-band response mechanism claim.

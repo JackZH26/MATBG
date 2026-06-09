@@ -21,8 +21,8 @@ numerical values. The central-flat-band filling crosswalk now also has a
 filling-sufficiency self-audit showing that it is sufficient as a BM counting
 reference for the mechanism-paper scope, while still not supporting
 device-level carrier-density calibration. A broad 2025-2026 literature sweep
-was performed on 2026-06-09, but it should be repeated immediately before
-actual submission.
+was performed and then refreshed on 2026-06-09; it should still be repeated
+immediately before actual submission.
 The current draft now includes a central two-flat-band filling crosswalk for
 the dense scan, but this is still not a device-specific carrier-density
 calibration.
@@ -113,11 +113,12 @@ not regenerated in this work package because the legacy figure assets
    been added: Tanaka et al. 2025, Christos-Sachdev-Scheurer 2023,
    Putzer-Scheurer 2025, Wang-Levin 2026, and Wang-Chen-Boyack-Levin 2026.
    The 2026-06-09 sweep also added Portoles et al. 2025, Banerjee et al. 2025,
-   Park et al. 2025, Kim et al. 2026, Gao et al. 2026, and the current
-   author's Zhou 2026 band-basis decomposition preprint as benchmark
-   provenance. The previous Lamponen placeholder was removed because no
-   matching primary source was identified. A final PRB manuscript should still
-   receive a repeat literature sweep immediately before submission.
+   Park et al. 2025, Kim et al. 2026, Gao et al. 2026, Liang et al. 2026,
+   Xiao et al. 2026, and the current author's Zhou 2026 band-basis
+   decomposition preprint as benchmark provenance. The previous Lamponen
+   placeholder was removed because no matching primary source was identified.
+   A final PRB manuscript should still receive a repeat literature sweep
+   immediately before submission.
 
 6. Supplemental reproducibility:
    `notes/figure_table_provenance_2026-06-09.md` now maps every current main
@@ -129,7 +130,7 @@ not regenerated in this work package because the legacy figure assets
    short list of forbidden overclaims.
    `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
    presents the first standalone Supplemental Material skeleton. The remaining
-   remaining reproducibility gap is to repeat the literature sweep immediately
+   reproducibility gap is to repeat the literature sweep immediately
    before submission and decide whether any expanded-scope experimental
    calibration is desired.
 

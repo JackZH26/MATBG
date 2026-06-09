@@ -23,6 +23,7 @@
 | Experiment | Park et al., Science 2025 | Magic-angle graphene tunneling plus transport | No | Gap spectroscopy | No | Yes | Nodal-gap and pseudogap motivation for tunneling/stiffness comparison; not used as direct MATBG stiffness calibration |
 | Experiment | Kim et al., Nature 2026 | Magic-angle twisted trilayer STM/STS | No | Gap spectroscopy | No | Yes | Intervalley/coexisting-gap motivation for future valley-resolved extensions |
 | Experiment / mechanism | Gao et al., Nat. Phys. 2026 | tBLG dielectric-environment tuning | Pairing mechanism constraint | Indirect | No | Yes | Supports conservative statement that microscopic pairing glue is unsettled |
+| Experiment / normal-state bands | Xiao et al., Nature 2026 | MATBG flat-band imaging with interaction reshaping | No | Indirect | Band reconstruction context | Yes | Limitation/future-work citation for going beyond the noninteracting BM spectrum |
 | Interaction correction | Herzog-Arbeitman et al., PRL 2022 | Interaction-renormalized geometry | No | Related | Conceptual | Indirect | Explain remaining enhancement beyond mean field |
 | Vertex/strong coupling | Verma, Hazra, Randeria, PNAS 2021 | Flat-band superfluid stiffness | Not central | Yes | Related | Indirect | Discussion of beyond-BCS effects |
 | Pairing symmetry | Isobe, Yuan, Fu, PRX 2018 | MATBG pairing mechanisms | Candidate symmetries | No | No | Indirect | Candidate pairing comparison |
@@ -30,6 +31,7 @@
 | Band-off-diagonal stiffness | Putzer and Scheurer, PRB 2025 | Twisted graphene | Yes | Yes | Eliashberg/multiband/geometry | Stiffness measurements | Direct predecessor; distinguish present orbital-projected response diagnostic |
 | Finite-momentum pairing | Wang and Levin, arXiv 2026 | Kekule PDW superconductivity in magic-angle bilayer graphene | Yes, finite momentum | BKT/gap context | No | Tunneling/gap structure | Direct boundary of current uniform-pairing ansatz |
 | Recent theory | Wang, Chen, Boyack, Levin, arXiv 2026 | Kekule / PDW superconductivity in twisted graphene | Yes, finite momentum | Yes | Geometric stiffness | Yes | Boundary of current uniform-pairing framework; future finite-momentum BdG extension |
+| Strong-correlation theory | Liang, Wang, Zhou, Song, Dai, arXiv 2026 | Gutzwiller MATBG superconductivity | Candidate nematic/nodal pairing | Indirect | Strong-correlation mechanism | No | Supports open-pairing-mechanism framing; not part of the present fixed-ansatz calculation |
 | Prior internal baseline | Zhou, arXiv 2026 | MATBG band-basis superfluid-weight decomposition | No | Yes | Conventional/geometric/cross | Indirect | Source of prior benchmark table; cite only for provenance/self-audit |
 
 Removed placeholder:
@@ -45,12 +47,15 @@ Existing work establishes that quantum geometry contributes to superfluid stiffn
 
 1. Bibliographic information for active manuscript rows was checked against
    primary arXiv, Nature, Science, APS, or journal pages on 2026-06-09.
-2. 2024-2026 literature on stiffness, tunneling/nodal gaps, and
-   band-off-diagonal/Kekule pairing was swept on 2026-06-09. Repeat immediately
+2. 2024-2026 literature on stiffness, tunneling/nodal gaps,
+   band-off-diagonal/Kekule pairing, strong-correlation pairing, and
+   interaction-reshaped flat bands was swept on 2026-06-09. Repeat immediately
    before actual PRB submission.
 3. Add columns for equations used, numerical parameters, and limitations if the
    literature matrix is promoted into Supplemental Material.
 4. Current placement: stiffness and nodal-gap experiments belong in the
    Introduction/Discussion; Christos-Putzer-Wang finite-momentum theory belongs
-   in the limitation/future-extension discussion; the Zhou 2026 decomposition
-   entry belongs only to benchmark provenance.
+   in the limitation/future-extension discussion; Liang et al. supports the
+   open pairing-mechanism framing; Xiao et al. supports the limitation that
+   interacting flat-band reconstruction is outside the current BM calculation;
+   the Zhou 2026 decomposition entry belongs only to benchmark provenance.

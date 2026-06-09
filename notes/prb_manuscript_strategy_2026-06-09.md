@@ -129,7 +129,8 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
 4. Manuscript and Supplemental Material table values are checked against
    processed CSV files by
    `scripts/verify_manuscript_tables.py`.
-5. Recent 2025-2026 stiffness and Kekule/PDW context is tracked in
+5. Recent 2025-2026 stiffness, Kekule/PDW, strong-correlation, and
+   interaction-reshaped-band context is tracked in
    `notes/recent_literature_update_2026-06-09.md`.
 6. The selected `nk=11` and `nk=13` convergence checks are tracked in
    `notes/nk11_convergence_result_2026-06-09.md`,
@@ -157,8 +158,9 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
    `notes/normalization_and_units_strategy.md` and
    `notes/observable_policy_decision_2026-06-09.md`.
 12. Recent stiffness and band-off-diagonal pairing context is now included in
-    the manuscript through `tanaka_2025`, `christos_2023`, `putzer_2025`, and
-    `wang_kekule_2026`; supporting notes are in
+    the manuscript through `tanaka_2025`, `christos_2023`, `putzer_2025`,
+    `wang_kekule_2026`, `liang_gutzwiller_2026`, and
+    `xiao_flat_bands_2026`; supporting notes are in
     `notes/recent_literature_update_2026-06-09.md`.
 13. Text-level guardrails are run with `scripts/audit_claim_scope.py` and
     `scripts/audit_observable_policy.py`.
