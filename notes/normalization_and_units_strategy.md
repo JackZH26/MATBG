@@ -162,3 +162,29 @@ Because the mismatch persists for the band-diagonal route, it is not primarily
 an artifact of the new orbital-projected interband-pairing ansatz. The response
 engine needs a baseline audit before any absolute stiffness table is used in a
 manuscript.
+
+## 7. Manuscript Integration
+
+As of the 2026-06-09 PRB checkpoint, the main manuscript and Supplemental
+Material use a three-layer reporting convention:
+
+1. raw response values are internal finite-band diagnostics;
+2. normalized ratios such as `D_iso(eta)/D_iso(0)-1` are the main mechanism
+   observables;
+3. eV A^2 per-flavor values are used only for benchmark self-audit, not for
+   experimental stiffness comparison.
+
+The conversion
+
+```text
+D_raw[meV A^2] / 1000 = D_per_flavor[eV A^2]
+```
+
+is retained as a transparent audit conversion. Spin/valley degeneracy,
+Brillouin-zone normalization, and any diamagnetic or curvature term must remain
+explicit in any future absolute table.
+
+The manuscript also states that `nu_proxy` is a retained-band occupancy label,
+not a calibrated experimental filling. Any final comparison to superconducting
+domes must either compute carrier density from the full BM spectrum with a
+declared degeneracy convention or keep the comparison qualitative.

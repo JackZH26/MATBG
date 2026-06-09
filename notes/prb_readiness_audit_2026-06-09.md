@@ -13,8 +13,8 @@ tables, a declarations section, a formal BibTeX file, a figure/table
 provenance manifest, and a standalone Supplemental Material skeleton.
 
 The current draft is suitable as a research checkpoint and internal review
-target. It still needs additional convergence, a stronger methods appendix, and
-final absolute-unit convention decisions before submission.
+target. It still needs a final absolute-unit convention, filling calibration,
+and recent-literature comparison before submission.
 
 ## Claim Audit
 
@@ -55,14 +55,16 @@ final absolute-unit convention decisions before submission.
 
 3. Absolute stiffness:
    The production convention and the historical PRB table are not identical.
-   The final paper must choose one absolute convention, recompute all absolute
-   values, and keep old-table reconstruction in an appendix or supplemental
-   audit.
+   The manuscript now states a three-layer reporting convention: raw response
+   values are internal diagnostics, normalized ratios are the main mechanism
+   observable, and eV A^2 per-flavor values are used only for the benchmark
+   self-audit. The final paper must still choose one absolute convention and
+   recompute any absolute values before direct experimental comparison.
 
 4. Filling calibration:
-   `nu_proxy` is not yet an experimental filling. Any comparison to
-   superconducting domes must use calibrated carrier density or be clearly
-   qualitative.
+   `nu_proxy` is now explicitly defined as a retained-band occupancy label, not
+   an experimental filling. Any comparison to superconducting domes must use
+   calibrated carrier density or remain clearly qualitative.
 
 5. Reference completeness:
    `references.bib` now covers the cited draft, but the literature matrix still
@@ -81,17 +83,17 @@ final absolute-unit convention decisions before submission.
 
 ## Recommended Next Work Packages
 
-1. Expand the Supplemental Material:
-   add final convergence results, explicit script/config command blocks, and
-   any final absolute-convention decision.
+1. Decide the final absolute stiffness convention:
+   if absolute values are needed, regenerate them from one declared response
+   convention with explicit degeneracy, BZ normalization, and diamagnetic or
+   curvature terms.
 
 2. Decide whether the selected `nk=9/11/13` convergence layer is enough for the
    PRB claim, or whether to add a smaller formal extrapolation plot using one
    or two representative chemical potentials.
 
-3. Add a manuscript appendix section or separate supplement section for the
-   PRB benchmark reconstruction, keeping it separate from the main mechanism
-   claim.
+3. Add a calibrated filling workflow or keep all comparisons to experimental
+   superconducting domes qualitative.
 
 4. Expand discussion of recent finite-momentum Kekule / PDW scenarios as a
    future extension rather than a covered case.

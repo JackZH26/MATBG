@@ -59,7 +59,7 @@ AA tunneling & $w_0=87.2~\mathrm{meV}$\\
 AB tunneling & $w_1=109.0~\mathrm{meV}$\\
 reciprocal cutoff & $N_{\rm shell}=3$\\
 retained bands & $n_{\rm keep}=6$\\
-momentum grid & $nk=7$ for dense maps, $nk=9$ for key-point validation\\
+momentum grid & $nk=7$ for dense maps, $nk=9,11,13$ for key-point checks\\
 gap scale & $\Delta_0=1~\mathrm{meV}$\\
 velocity finite difference & $dk=10^{-6}~\text{\AA}^{-1}$\\
 \end{tabular}
@@ -79,6 +79,42 @@ The raw response conversion used in the audit is
 \end{equation}
 with all remaining spin, valley, or convention factors kept explicit rather
 than absorbed into a hidden prefactor.
+
+\subsection{Reporting Convention for Units and Filling}
+
+Table~\ref{tab:sm_reporting_layers} states the reporting convention used in
+the present manuscript.  The main figures use normalized response ratios, while
+absolute eV\,\AA$^2$ values are restricted to the self-audit and historical
+benchmark reconstruction.
+
+\begin{table}[h]
+\caption{Reporting convention for response and filling quantities.}
+\label{tab:sm_reporting_layers}
+\begin{ruledtabular}
+\begin{tabular}{lll}
+quantity & present use & excluded interpretation\\
+\hline
+raw response & internal finite-band diagnostic & physical stiffness\\
+$D_{\rm iso}(\eta)/D_{\rm iso}(0)-1$ & main mechanism observable & absolute stiffness\\
+eV\,\AA$^2$ per flavor & benchmark audit only & experimental comparison\\
+$\nu_{\rm proxy}$ & retained-band occupancy label & calibrated carrier density\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The retained-band filling proxy is computed as
+\begin{equation}
+  \nu_{\rm proxy}
+  =
+  g\left[
+  \left\langle
+  N_{\rm keep}^{-1}\sum_n \Theta(\mu-\varepsilon_{n\mathbf{k}})
+  \right\rangle_{\mathbf{k}}
+  -\frac{1}{2}\right],
+\end{equation}
+with $g=4$ used as a spin-valley counting factor in the proxy.  For the
+$n_{\rm keep}=6$ scans this is not identical to a calibrated experimental
+filling factor; it is used only to order the chemical-potential scans.
 
 \section{Orbital-Projected Pairing Construction}
 
@@ -338,8 +374,8 @@ The current submission-critical gaps are:
 \begin{enumerate}
   \item a systematic continuum-grid extrapolation beyond the present selected
   $nk=9$, $nk=11$, and $nk=13$ key-point checks;
-  \item a fully documented two-valley sewing convention or an explicitly
-  limited diagnostic-model framing;
+  \item a fully independent two-valley implementation before studying
+  valley-asymmetric perturbations;
   \item a final absolute stiffness convention before any direct experimental
   comparison;
   \item a calibrated filling variable replacing the retained-band proxy

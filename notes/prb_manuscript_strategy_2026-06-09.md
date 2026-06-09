@@ -128,3 +128,7 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
    `notes/valley_sewing_convention.md`,
    `configs/valley_sewing_diagnostic.yaml`, and
    `data/processed/valley_sewing_diagnostic.csv`.
+9. The manuscript reporting convention separates raw diagnostics, normalized
+   mechanism ratios, eV A^2 per-flavor benchmark audits, and the retained-band
+   filling proxy; details are tracked in
+   `notes/normalization_and_units_strategy.md`.

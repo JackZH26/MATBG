@@ -338,6 +338,12 @@ $\mu$ (meV) & fixed Frobenius & fixed $\Delta_0$\\
 The raw response engine outputs values in finite-band diagnostic units.
 A conservative conversion maps raw meV\,\AA$^2$ to eV\,\AA$^2$ per flavor by
 dividing by $1000$.
+Any spin/valley degeneracy factor is left outside this conversion:
+\begin{equation}
+  D_{\rm per~flavor}[\mathrm{eV}\,\text{\AA}^2]
+  =
+  D_{\rm raw}[\mathrm{meV}\,\text{\AA}^2]/1000.
+\end{equation}
 The moire area and reciprocal scale agree with the standard MATBG geometry,
 but the historical PRB-style benchmark table is not reproduced by a single
 global prefactor or by the present production convention.
@@ -377,7 +383,9 @@ double-conv all-$\tau_z$ & 6 & 126.66 & 129.30 & 51.45 & 54.00 & 75.22\\
 This self-audit changes the interpretation of absolute stiffness values.
 The historical table is useful as a benchmark, but it should not be used to
 set the convention for the present interband-pairing mechanism scans.
-Future absolute tables should be regenerated from one declared convention.
+Future absolute tables should be regenerated from one declared response
+convention, with degeneracy, Brillouin-zone normalization, and any
+diamagnetic or curvature term stated explicitly.
 
 %====================================================================
 \section{Discussion}
@@ -400,13 +408,20 @@ the audit shows that old absolute tables can mix conventions in ways that are
 not captured by one simple prefactor.
 For this reason the most robust near-term observable in the present work is a
 normalized response map, not an absolute stiffness prediction.
+Likewise, $\nu_{\rm proxy}$ in the tables is a retained-band occupancy proxy
+defined for scan organization, not a calibrated carrier density.  The present
+figures should therefore be read as functions of chemical potential and
+retained-band occupancy, not as a quantitative map onto an experimental
+superconducting dome.
 
 Several limitations remain.  First, the valley sewing convention used here is a
-controlled time-reversal proxy and should be replaced by a fully documented
-two-valley implementation before final production calculations.
-Second, the filling variable is currently a retained-band occupancy proxy.
-Third, no self-consistent gap equation is solved.
-Fourth, a UV-complete lattice calculation would be required for final
+controlled time-reversal proxy; a fully independent two-valley implementation
+would be required for valley-asymmetric perturbations or final absolute
+production calculations.
+Second, the absolute response convention is not yet final for experimental
+stiffness comparison.  Third, the filling variable is currently a retained-band
+occupancy proxy.  Fourth, no self-consistent gap equation is solved.
+Fifth, a UV-complete lattice calculation would be required for final
 quantitative comparison with experiment.
 Finally, recent finite-momentum Kekul\'e or pair-density-wave scenarios connect
 tunneling spectra, gapless quasiparticles, and geometric stiffness in twisted

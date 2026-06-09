@@ -106,6 +106,20 @@ Current status:
 values are copied from the summary CSV and rounded in the LaTeX table. The
 rounding is checked by `scripts/verify_manuscript_tables.py`.
 
+### `tab:sm_reporting_layers`
+
+Supplemental content:
+qualitative reporting convention separating raw finite-band diagnostics,
+normalized mechanism ratios, eV A^2 per-flavor benchmark audit values, and the
+retained-band filling proxy.
+
+Source:
+`notes/normalization_and_units_strategy.md`
+
+Current status:
+this table has no numerical CSV dependencies. It records interpretive
+boundaries for the manuscript and is not part of the numerical table verifier.
+
 ### `tab:nk9`
 
 Manuscript content:
