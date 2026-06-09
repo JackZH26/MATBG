@@ -1,0 +1,11 @@
+requirement,status,evidence,decision
+PRB-targeted main manuscript,present,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex and PDF,Complete for normalized-response mechanism-paper checkpoint
+Supplemental Material,present,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex and PDF,Complete for supporting reproducibility and self-audit
+Data tables and figures,present,notes/figure_table_provenance_2026-06-09.md and data/processed/prb_submission_manifest.csv,Complete for current manuscript figures and tables
+Claim and observable self-review,present,data/processed/claim_scope_audit.csv and data/processed/observable_policy_audit.csv,Complete for current conservative mechanism scope
+Convergence and filling self-review,present,data/processed/convergence_sufficiency_audit.csv and data/processed/filling_sufficiency_audit.csv,Complete for selected-grid normalized mechanism claim and BM filling reference
+Recent literature context,present,notes/recent_literature_update_2026-06-09.md and references.bib,Complete as of 2026-06-09 submission-time refresh
+Standard validation chain,pass,data/processed/prb_validation_summary.csv,Complete with all recorded validation rows passing
+Local PRB package checkpoint,pass,data/processed/prb_submission_package_build.csv,Complete with ignored local package and zip generated
+Final local checkpoint audit,pass,data/processed/prb_submission_checkpoint_audit.csv,Complete with cross-file package consistency checks passing
+Scope boundary,documented,README.md and notes/prb_readiness_audit_2026-06-09.md,Complete for normalized-response mechanism scope; expanded absolute-stiffness or device-calibration paper remains separate

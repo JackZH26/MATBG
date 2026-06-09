@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import re
 import zipfile
 from dataclasses import dataclass
@@ -25,6 +26,7 @@ GITIGNORE = ROOT / ".gitignore"
 MANIFEST = PROCESSED / "prb_submission_manifest.csv"
 VALIDATION_SUMMARY = PROCESSED / "prb_validation_summary.csv"
 PACKAGE_SUMMARY = PROCESSED / "prb_submission_package_build.csv"
+GOAL_COMPLETION_AUDIT = PROCESSED / "prb_goal_completion_audit.csv"
 OUTPUT = PROCESSED / "prb_submission_checkpoint_audit.csv"
 
 EXPECTED_AUTHOR_BLOCKS = [
@@ -63,7 +65,9 @@ REQUIRED_MANIFEST_IDS = {
     "bibliography",
     "submission_package_build_summary",
     "prb_submission_checkpoint_audit",
+    "prb_goal_completion_audit",
     "submission_checkpoint_audit_note",
+    "goal_completion_audit_note",
 }
 REQUIRED_JOURNAL_UPLOADS = [
     MAIN_TEX,
@@ -79,7 +83,21 @@ REQUIRED_PROVENANCE = [
     VALIDATION_SUMMARY,
     PACKAGE_SUMMARY,
     OUTPUT,
+    GOAL_COMPLETION_AUDIT,
 ]
+JOURNAL_ROLES = {
+    "journal_source",
+    "journal_pdf",
+    "journal_figure",
+    "journal_submission_text",
+}
+PROVENANCE_ROLES = {
+    "source_data",
+    "audit_output",
+    "source_code",
+    "validation_script",
+    "provenance_note",
+}
 
 
 @dataclass(frozen=True)
@@ -168,6 +186,70 @@ def zip_contains(zip_path: Path | None, package_dir: Path | None, root_folder: s
         return arcname in set(archive.namelist())
 
 
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def manifest_package_payloads(manifest_rows: list[dict[str, str]]) -> list[tuple[dict[str, str], str]]:
+    payloads: list[tuple[dict[str, str], str]] = []
+    for row in manifest_rows:
+        role = row.get("role", "")
+        if row.get("required") != "yes" or row.get("status") != "present":
+            continue
+        if role in JOURNAL_ROLES:
+            payloads.append((row, "journal_upload"))
+        elif role in PROVENANCE_ROLES:
+            payloads.append((row, "provenance"))
+    return payloads
+
+
+def package_hash_mismatches(
+    package_dir: Path | None,
+    manifest_rows: list[dict[str, str]],
+) -> list[str]:
+    if package_dir is None:
+        return ["missing package directory"]
+    mismatches: list[str] = []
+    for row, root_folder in manifest_package_payloads(manifest_rows):
+        relative = row.get("path", "")
+        expected_hash = row.get("sha256", "")
+        packaged = package_dir / root_folder / relative
+        if not packaged.exists():
+            mismatches.append(f"{relative}: missing")
+        elif expected_hash and sha256_file(packaged) != expected_hash:
+            mismatches.append(f"{relative}: hash mismatch")
+    return mismatches
+
+
+def zip_hash_mismatches(
+    zip_path: Path | None,
+    package_dir: Path | None,
+    manifest_rows: list[dict[str, str]],
+) -> list[str]:
+    if zip_path is None or package_dir is None or not zip_path.exists():
+        return ["missing package zip"]
+    mismatches: list[str] = []
+    with zipfile.ZipFile(zip_path) as archive:
+        names = set(archive.namelist())
+        for row, root_folder in manifest_package_payloads(manifest_rows):
+            relative = row.get("path", "")
+            expected_hash = row.get("sha256", "")
+            arcname = package_dir.name + "/" + root_folder + "/" + relative
+            if arcname not in names:
+                mismatches.append(f"{relative}: missing")
+            elif expected_hash and sha256_bytes(archive.read(arcname)) != expected_hash:
+                mismatches.append(f"{relative}: hash mismatch")
+    return mismatches
+
+
 def main() -> int:
     rows: list[AuditRow] = []
 
@@ -198,10 +280,11 @@ def main() -> int:
         add(rows, f"main_declaration_{len([r for r in rows if r.check_id.startswith('main_declaration_')]) + 1:02d}", "declarations", contains(main_text, phrase), phrase, "Main TeX contains the required declarations.")
         add(rows, f"supp_declaration_{len([r for r in rows if r.check_id.startswith('supp_declaration_')]) + 1:02d}", "declarations", contains(supp_text, phrase), phrase, "Supplement contains the required declarations.")
 
-    add(rows, "readme_scope_status", "readme", contains(readme_text, "strong internal checkpoint, not yet a final submission package"), "checkpoint scope", "README states the current non-final submission status.")
+    add(rows, "readme_scope_status", "readme", contains(readme_text, "local PRB submission-facing checkpoint"), "checkpoint scope", "README states the current local PRB checkpoint status.")
     add(rows, "readme_validation_command", "readme", "python3 scripts/run_prb_validation.py" in readme_text, "run_prb_validation.py", "README documents the standard validation command.")
     add(rows, "readme_package_command", "readme", "python3 scripts/build_prb_submission_package.py" in readme_text, "build_prb_submission_package.py", "README documents the local package command.")
     add(rows, "readme_checkpoint_audit_command", "readme", "python3 scripts/audit_prb_submission_checkpoint.py" in readme_text, "audit_prb_submission_checkpoint.py", "README documents the final checkpoint audit command.")
+    add(rows, "readme_goal_completion_audit", "readme", "prb_goal_completion_audit.csv" in readme_text, "prb_goal_completion_audit.csv", "README documents the goal-level completion audit.")
 
     add(rows, "validation_summary_exists", "validation", bool(validation_rows), str(VALIDATION_SUMMARY), "Validation summary CSV exists.")
     add(rows, "validation_summary_all_pass", "validation", bool(validation_rows) and all(row.get("status") == "pass" for row in validation_rows), f"{sum(row.get('status') == 'pass' for row in validation_rows)}/{len(validation_rows)}", "All recorded validation rows pass.")
@@ -220,6 +303,10 @@ def main() -> int:
     add(rows, "manifest_count_matches_summary", "package", manifest_entries == len(manifest_rows), f"summary={manifest_entries}, manifest_rows={len(manifest_rows)}", "Package summary manifest-entry count matches the current manifest.")
     add(rows, "package_build_ignored", "package", "submission/build/" in read_text(GITIGNORE), "submission/build/", "Ignored package outputs are excluded from git.")
     add(rows, "package_readme_exists", "package", package_dir is not None and (package_dir / "README_PACKAGE.md").exists(), "README_PACKAGE.md", "Package includes a package README.")
+    package_mismatches = package_hash_mismatches(package_dir, manifest_rows)
+    zip_mismatches = zip_hash_mismatches(zip_path, package_dir, manifest_rows)
+    add(rows, "package_manifest_hashes_match", "package", not package_mismatches, f"{len(package_mismatches)} mismatch(es)", "All manifest-tracked files in the package directory match their recorded SHA-256 hashes.")
+    add(rows, "zip_manifest_hashes_match", "package", not zip_mismatches, f"{len(zip_mismatches)} mismatch(es)", "All manifest-tracked files in the package zip match their recorded SHA-256 hashes.")
 
     for source in REQUIRED_JOURNAL_UPLOADS:
         slug = artifact_slug(source)

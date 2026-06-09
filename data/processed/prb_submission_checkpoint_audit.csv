@@ -26,23 +26,26 @@ main_declaration_04,declarations,pass,\textbf{Data availability}: All data and c
 supp_declaration_04,declarations,pass,\textbf{Data availability}: All data and code supporting this work are available,Supplement contains the required declarations.
 main_declaration_05,declarations,pass,\textbf{Ethics approval}: Not applicable.,Main TeX contains the required declarations.
 supp_declaration_05,declarations,pass,\textbf{Ethics approval}: Not applicable.,Supplement contains the required declarations.
-readme_scope_status,readme,pass,checkpoint scope,README states the current non-final submission status.
+readme_scope_status,readme,pass,checkpoint scope,README states the current local PRB checkpoint status.
 readme_validation_command,readme,pass,run_prb_validation.py,README documents the standard validation command.
 readme_package_command,readme,pass,build_prb_submission_package.py,README documents the local package command.
 readme_checkpoint_audit_command,readme,pass,audit_prb_submission_checkpoint.py,README documents the final checkpoint audit command.
+readme_goal_completion_audit,readme,pass,prb_goal_completion_audit.csv,README documents the goal-level completion audit.
 validation_summary_exists,validation,pass,/Users/jackzhou/Documents/Papers/MATBG/data/processed/prb_validation_summary.csv,Validation summary CSV exists.
 validation_summary_all_pass,validation,pass,12/12,All recorded validation rows pass.
 manifest_exists,manifest,pass,/Users/jackzhou/Documents/Papers/MATBG/data/processed/prb_submission_manifest.csv,Submission manifest exists.
 manifest_required_ids,manifest,pass,all present,Manifest contains the final checkpoint-required artifact IDs.
-manifest_all_required_present,manifest,pass,75/75,All required manifest rows are present.
+manifest_all_required_present,manifest,pass,77/77,All required manifest rows are present.
 package_summary_exists,package,pass,/Users/jackzhou/Documents/Papers/MATBG/data/processed/prb_submission_package_build.csv,Package build summary exists.
 package_summary_pass,package,pass,pass,Package build summary status is pass.
 package_dir_exists,package,pass,/Users/jackzhou/Documents/Papers/MATBG/submission/build/MATBG_PRB_submission_checkpoint_2026-06-09,Ignored local package directory exists.
 package_zip_exists,package,pass,/Users/jackzhou/Documents/Papers/MATBG/submission/build/MATBG_PRB_submission_checkpoint_2026-06-09.zip,Ignored local package zip exists.
-package_count_matches_manifest,package,pass,"copied=78, manifest=75","Package copies all manifest files plus manifest, validation summary, and README extras."
-manifest_count_matches_summary,package,pass,"summary=75, manifest_rows=75",Package summary manifest-entry count matches the current manifest.
+package_count_matches_manifest,package,pass,"copied=80, manifest=77","Package copies all manifest files plus manifest, validation summary, and README extras."
+manifest_count_matches_summary,package,pass,"summary=77, manifest_rows=77",Package summary manifest-entry count matches the current manifest.
 package_build_ignored,package,pass,submission/build/,Ignored package outputs are excluded from git.
 package_readme_exists,package,pass,README_PACKAGE.md,Package includes a package README.
+package_manifest_hashes_match,package,pass,0 mismatch(es),All manifest-tracked files in the package directory match their recorded SHA-256 hashes.
+zip_manifest_hashes_match,package,pass,0 mismatch(es),All manifest-tracked files in the package zip match their recorded SHA-256 hashes.
 package_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026_tex,package,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex,Journal upload package contains the required manuscript-facing file.
 zip_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026_tex,package,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex,Package zip contains the required manuscript-facing file.
 package_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026_pdf,package,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.pdf,Journal upload package contains the required manuscript-facing file.
@@ -65,3 +68,5 @@ package_provenance_data_processed_prb_submission_package_build_csv,package,pass,
 zip_provenance_data_processed_prb_submission_package_build_csv,package,pass,data/processed/prb_submission_package_build.csv,Package zip contains the required provenance file.
 package_provenance_data_processed_prb_submission_checkpoint_audit_csv,package,pass,data/processed/prb_submission_checkpoint_audit.csv,Package provenance directory contains the required file.
 zip_provenance_data_processed_prb_submission_checkpoint_audit_csv,package,pass,data/processed/prb_submission_checkpoint_audit.csv,Package zip contains the required provenance file.
+package_provenance_data_processed_prb_goal_completion_audit_csv,package,pass,data/processed/prb_goal_completion_audit.csv,Package provenance directory contains the required file.
+zip_provenance_data_processed_prb_goal_completion_audit_csv,package,pass,data/processed/prb_goal_completion_audit.csv,Package zip contains the required provenance file.

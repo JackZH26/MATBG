@@ -30,8 +30,8 @@ This repository contains the working materials for a MATBG superfluid stiffness 
 The current PRB-targeted manuscript is a normalized-response mechanism paper.
 Its central claim is that an orbital-projected interband-pairing direction
 produces a reproducible, normalization-conditioned finite-band response
-signature in MATBG. The current draft is a strong internal checkpoint, not yet
-a final submission package.
+signature in MATBG. The current repository state is a local PRB
+submission-facing checkpoint for this mechanism-paper scope.
 
 The manuscript deliberately does not claim direct quantitative agreement with
 experimental stiffness, a final absolute stiffness convention, a device-level
@@ -73,9 +73,9 @@ and records the tracked build summary in:
 data/processed/prb_submission_package_build.csv
 ```
 
-The package is for internal review and final-preparation work. It should be
-regenerated after the final literature sweep and before any actual journal
-upload.
+The package is for local review and final-preparation work. It is not an APS
+Editorial Manager upload; actual journal submission still requires user
+approval and upload through the journal system.
 
 Run the final local checkpoint audit after validation and package construction:
 
@@ -91,7 +91,15 @@ data/processed/prb_submission_checkpoint_audit.csv
 
 This audit checks cross-file consistency among the manuscript, Supplemental
 Material, cover letter, README, manifest, validation summary, and ignored local
-package outputs.
+package outputs, including SHA-256 content matches for manifest-tracked files
+inside both the package directory and zip archive.
+
+The goal-level completion audit is recorded in:
+
+```text
+data/processed/prb_goal_completion_audit.csv
+notes/prb_goal_completion_audit_2026-06-09.md
+```
 
 ## Research Owner
 

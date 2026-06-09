@@ -34,7 +34,7 @@ absolute stiffness or device-calibrated filling predictions.
 
 ## Current Result
 
-All 75 required manifest entries are present. The current inventory includes
+All 77 required manifest entries are present. The current inventory includes
 the journal-facing manuscript files, included figures, key processed data
 tables, audit outputs, provenance notes, all repository scripts in `scripts/`,
 and all MATBG source modules in `src/matbg/`.

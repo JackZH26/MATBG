@@ -13,8 +13,9 @@ The audit checks cross-file consistency that is broader than the mechanical
 LaTeX/package smoke test: title alignment, required Jian Zhou authorship
 metadata, declarations, cover letter signature, README workflow instructions,
 validation summary status, manifest status, local package summary, package
-directory contents, package zip contents, and the `submission/build/` ignore
-rule.
+directory contents, package zip contents, SHA-256 content matches for
+manifest-tracked files in both package outputs, and the `submission/build/`
+ignore rule.
 
 ## Command
 
@@ -27,6 +28,9 @@ Output:
 ```text
 data/processed/prb_submission_checkpoint_audit.csv
 ```
+
+The current audit records `71/71` checks passing, including zero SHA-256
+mismatches for both the package directory and the package zip.
 
 ## Current Scope
 
@@ -46,4 +50,7 @@ python3 scripts/audit_prb_submission_checkpoint.py
 ```
 
 The package should be rebuilt after any manuscript, Supplemental Material,
-cover letter, validation-output, manifest, or audit-output change.
+cover letter, validation-output, manifest, or audit-output change. If the
+checkpoint audit output itself changes, rerun the package build and checkpoint
+audit once more so the ignored package copies and zip match the refreshed
+manifest hashes.

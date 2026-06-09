@@ -7,16 +7,17 @@ Manuscript:
 
 ## Current Status
 
-The manuscript is a coherent first PRB-style draft, not a submission-ready final
-paper. It has a conservative central claim, reproducible figures, explicit
-tables, a declarations section, a formal BibTeX file, a figure/table
-provenance manifest, a workflow schematic for the main calculation route, and
-a standalone Supplemental Material skeleton. It now also has a PRB cover
-letter draft for the current mechanism-paper scope.
+The manuscript is a coherent PRB-style mechanism paper checkpoint. It has a
+conservative central claim, reproducible figures, explicit tables, a
+declarations section, a formal BibTeX file, a figure/table provenance manifest,
+a workflow schematic for the main calculation route, and a standalone
+Supplemental Material. It now also has a PRB cover letter draft for the current
+mechanism-paper scope.
 
-The current draft is suitable as a research checkpoint and internal review
-target. It now has an explicit normalized-response observable policy for the
-mechanism-paper scope. It also now has a convergence-sufficiency self-audit
+The current draft is suitable as a local PRB submission-facing checkpoint for
+the normalized-response mechanism-paper scope. It now has an explicit
+normalized-response observable policy for the mechanism-paper scope. It also
+now has a convergence-sufficiency self-audit
 showing that the selected finite-grid evidence is sufficient for the current
 normalized mechanism claim, while still not supporting continuum-limit
 numerical values. The central-flat-band filling crosswalk now also has a
@@ -171,7 +172,7 @@ not regenerated in this work package because the legacy figure assets
    recorded in
    `data/processed/prb_validation_summary.csv` and
    `notes/prb_validation_chain_2026-06-09.md`. The current manuscript package
-   inventory contains all 75 required entries, including the cover letter
+   inventory contains all 77 required entries, including the cover letter
    draft, included figures, key data tables, audit outputs, provenance notes,
    all repository scripts, and all MATBG source modules. It is recorded in
    `data/processed/prb_submission_manifest.csv` and
@@ -182,9 +183,14 @@ not regenerated in this work package because the legacy figure assets
    `notes/prb_submission_package_build_2026-06-09.md`. The final local
    checkpoint audit is recorded in
    `data/processed/prb_submission_checkpoint_audit.csv` and
-   `notes/prb_submission_checkpoint_audit_2026-06-09.md`.
+   `notes/prb_submission_checkpoint_audit_2026-06-09.md`; it now also checks
+   SHA-256 content consistency for manifest-tracked files inside both the
+   package directory and the package zip. The goal-level
+   completion audit is recorded in
+   `data/processed/prb_goal_completion_audit.csv` and
+   `notes/prb_goal_completion_audit_2026-06-09.md`.
    `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
-   presents the first standalone Supplemental Material skeleton. The remaining
+   presents the current standalone Supplemental Material. The remaining
    reproducibility gap is to repeat the literature sweep immediately
    before submission and decide whether any expanded-scope experimental
    calibration is desired.
@@ -209,7 +215,8 @@ not regenerated in this work package because the legacy figure assets
 
 ## Readiness Judgment
 
-Current level: strong internal checkpoint, not yet submission-ready.
+Current level: local PRB submission-facing checkpoint for the current
+normalized-response mechanism-paper scope.
 
 The central normalized-response mechanism claim is viable. The final PRB paper
 should not make direct absolute-stiffness or superconducting-dome comparison

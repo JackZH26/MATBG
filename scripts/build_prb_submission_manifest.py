@@ -83,12 +83,14 @@ def base_items() -> list[ManifestItem]:
         ManifestItem("submission_package_audit", "audit_output", PROCESSED / "submission_package_audit.csv", True, "Mechanical submission-package audit."),
         ManifestItem("submission_package_build_summary", "audit_output", PROCESSED / "prb_submission_package_build.csv", True, "Local submission-package build summary."),
         ManifestItem("prb_submission_checkpoint_audit", "audit_output", PROCESSED / "prb_submission_checkpoint_audit.csv", True, "Final local PRB submission checkpoint audit."),
+        ManifestItem("prb_goal_completion_audit", "audit_output", PROCESSED / "prb_goal_completion_audit.csv", True, "Goal-level completion audit for the local PRB mechanism-paper checkpoint."),
         ManifestItem("figure_table_provenance", "provenance_note", ROOT / "notes" / "figure_table_provenance_2026-06-09.md", True, "Figure/table provenance manifest."),
         ManifestItem("readiness_audit", "provenance_note", ROOT / "notes" / "prb_readiness_audit_2026-06-09.md", True, "Current PRB readiness audit."),
         ManifestItem("validation_chain_note", "provenance_note", ROOT / "notes" / "prb_validation_chain_2026-06-09.md", True, "Validation-chain description."),
         ManifestItem("submission_manifest_note", "provenance_note", ROOT / "notes" / "prb_submission_manifest_2026-06-09.md", True, "Submission-manifest description."),
         ManifestItem("submission_package_build_note", "provenance_note", ROOT / "notes" / "prb_submission_package_build_2026-06-09.md", True, "Submission-package build description."),
         ManifestItem("submission_checkpoint_audit_note", "provenance_note", ROOT / "notes" / "prb_submission_checkpoint_audit_2026-06-09.md", True, "Submission-checkpoint audit description."),
+        ManifestItem("goal_completion_audit_note", "provenance_note", ROOT / "notes" / "prb_goal_completion_audit_2026-06-09.md", True, "Goal-completion audit description."),
         ManifestItem("recent_literature_note", "provenance_note", ROOT / "notes" / "recent_literature_update_2026-06-09.md", True, "Latest recorded literature sweep."),
     ]
 

@@ -218,4 +218,9 @@ submission/Zhou_PRB_Cover_Letter_2026.md
 23. The local final submission-checkpoint audit is run with
     `scripts/audit_prb_submission_checkpoint.py`, which checks cross-file
     consistency across the manuscript, Supplemental Material, cover letter,
-    README, manifest, validation summary, and ignored local package outputs.
+    README, manifest, validation summary, ignored local package outputs, and
+    manifest-recorded SHA-256 content matches for the package directory and
+    zip archive.
+24. The goal-level completion decision is recorded in
+    `data/processed/prb_goal_completion_audit.csv` and
+    `notes/prb_goal_completion_audit_2026-06-09.md`.
