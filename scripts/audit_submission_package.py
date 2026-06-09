@@ -21,6 +21,7 @@ SUPP_TEX = (
     / "Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex"
 )
 SUPP_PDF = SUPP_TEX.with_suffix(".pdf")
+COVER_LETTER = ROOT / "submission" / "Zhou_PRB_Cover_Letter_2026.md"
 
 OUTPUT = ROOT / "data" / "processed" / "submission_package_audit.csv"
 
@@ -45,6 +46,14 @@ REQUIRED_DECLARATIONS = [
     r"\textbf{Conflict of interest}: The author declares no conflict of interest.",
     r"\textbf{Data availability}: All data and code supporting this work are available",
     r"\textbf{Ethics approval}: Not applicable.",
+]
+
+COVER_LETTER_REQUIRED_PHRASES = [
+    "Physical Review B",
+    "Interband Pairing Signatures in the Superfluid Response of Magic-Angle Twisted Bilayer Graphene",
+    "does not claim a final absolute stiffness prediction",
+    "not under consideration elsewhere",
+    "Sincerely,\nJian Zhou\nPrincipal Investigator\nJZ Institute of Science, Hong Kong, China\njack@jzis.org",
 ]
 
 MAIN_REQUIRED_SECTIONS = [
@@ -175,14 +184,17 @@ def main() -> int:
 
     main_exists = MAIN_TEX.exists()
     supp_exists = SUPP_TEX.exists()
+    cover_exists = COVER_LETTER.exists()
     add(rows, "main_tex_exists", "main", main_exists, str(MAIN_TEX), "Main TeX file exists.")
     add(rows, "main_pdf_exists", "main", MAIN_PDF.exists(), str(MAIN_PDF), "Main PDF exists.")
     add(rows, "supp_tex_exists", "supplement", supp_exists, str(SUPP_TEX), "Supplement TeX exists.")
     add(rows, "supp_pdf_exists", "supplement", SUPP_PDF.exists(), str(SUPP_PDF), "Supplement PDF exists.")
+    add(rows, "cover_letter_exists", "cover_letter", cover_exists, str(COVER_LETTER), "Cover letter draft exists.")
 
     main_text = read(MAIN_TEX) if main_exists else ""
     supp_text = read(SUPP_TEX) if supp_exists else ""
-    combined = f"{main_text}\n{supp_text}"
+    cover_text = read(COVER_LETTER) if cover_exists else ""
+    combined = f"{main_text}\n{supp_text}\n{cover_text}"
 
     add(
         rows,
@@ -215,6 +227,13 @@ def main() -> int:
     audit_required_phrases(rows, supp_text, "supplement", REQUIRED_AUTHOR_PHRASES, "supp_author")
     audit_required_phrases(rows, main_text, "main", REQUIRED_DECLARATIONS, "main_declaration")
     audit_required_phrases(rows, supp_text, "supplement", REQUIRED_DECLARATIONS, "supp_declaration")
+    audit_required_phrases(
+        rows,
+        cover_text,
+        "cover_letter",
+        COVER_LETTER_REQUIRED_PHRASES,
+        "cover_letter",
+    )
     audit_required_phrases(rows, main_text, "main", MAIN_REQUIRED_SECTIONS, "main_section")
     audit_required_phrases(rows, supp_text, "supplement", SUPP_REQUIRED_SECTIONS, "supp_section")
     audit_required_phrases(rows, main_text, "main", REQUIRED_MAIN_LABELS, "main_label")
@@ -226,10 +245,10 @@ def main() -> int:
         add(
             rows,
             f"forbid_author_variant_{slug}",
-            "main+supplement",
+            "main+supplement+cover_letter",
             variant not in combined,
             variant,
-            "Prohibited author-name variant must not appear in paper files.",
+            "Prohibited author-name variant must not appear in submission text files.",
         )
 
     audit_graphics(rows, main_text, "main")

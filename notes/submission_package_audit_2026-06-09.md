@@ -24,7 +24,7 @@ data/processed/submission_package_audit.csv
 
 ## Current Result
 
-All 59 submission-package checks pass.
+All 65 submission-package checks pass.
 
 The passing checks cover:
 
@@ -34,13 +34,14 @@ The passing checks cover:
 3. the main manuscript uses the APS/PRB RevTeX class;
 4. main and Supplemental Material author blocks use `Jian Zhou`,
    `JZ Institute of Science, Hong Kong, China`, and `jack@jzis.org`;
-5. prohibited author variants are absent from the paper files;
+5. prohibited author variants are absent from the submission text files;
 6. required declaration sections are present in both paper files;
-7. required main-text and Supplemental Material sections are present;
-8. current main figure and table labels are present;
-9. current Supplemental Material table labels are present;
-10. `\bibliography{references}` is used by both paper files;
-11. every graphic included in the main manuscript exists in the repository.
+7. the PRB cover letter draft exists and carries the required signature;
+8. required main-text and Supplemental Material sections are present;
+9. current main figure and table labels are present;
+10. current Supplemental Material table labels are present;
+11. `\bibliography{references}` is used by both paper files;
+12. every graphic included in the main manuscript exists in the repository.
 
 ## Interpretation
 

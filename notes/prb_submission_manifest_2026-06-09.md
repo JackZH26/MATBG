@@ -9,8 +9,8 @@ manuscript package.
 
 The manifest is not a journal upload archive. It is a deterministic inventory
 of the files that constitute the current manuscript checkpoint: main text,
-Supplemental Material, bibliography, included figures, key source-data CSV
-files, audit outputs, validation scripts, and provenance notes.
+Supplemental Material, cover letter draft, bibliography, included figures, key
+source-data CSV files, audit outputs, validation scripts, and provenance notes.
 
 ## Command
 
@@ -30,6 +30,10 @@ The manifest covers the current normalized-response mechanism-paper scope. It
 does not include files for an expanded direct experimental-comparison paper,
 because the current manuscript intentionally does not make claim-bearing
 absolute stiffness or device-calibrated filling predictions.
+
+## Current Result
+
+All 30 required manifest entries are present.
 
 ## Current Decision
 

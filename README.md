@@ -22,6 +22,9 @@ This repository contains the working materials for a MATBG superfluid stiffness 
 6. `notes/interband_pairing_definition.md`
    Working definition and validation requirements for interband pairing.
 
+7. `submission/Zhou_PRB_Cover_Letter_2026.md`
+   Current Physical Review B cover letter draft.
+
 ## Current Manuscript Status
 
 The current PRB-targeted manuscript is a normalized-response mechanism paper.
@@ -52,7 +55,8 @@ data/processed/prb_submission_manifest.csv
 It checks script syntax, claim-scope guardrails, observable policy, filling and
 convergence sufficiency, manuscript/Supplemental Material table values,
 submission-package mechanics, submission-manifest completeness, main/Supplemental
-Material LaTeX builds, and blocking LaTeX log warnings.
+Material LaTeX builds, cover letter presence/signature, and blocking LaTeX log
+warnings.
 
 ## Research Owner
 

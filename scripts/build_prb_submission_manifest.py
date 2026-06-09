@@ -23,6 +23,7 @@ SUPP_TEX = (
     ROOT
     / "Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex"
 )
+COVER_LETTER = ROOT / "submission" / "Zhou_PRB_Cover_Letter_2026.md"
 
 
 @dataclass(frozen=True)
@@ -66,6 +67,7 @@ def base_items() -> list[ManifestItem]:
         ManifestItem("main_pdf", "journal_pdf", MAIN_TEX.with_suffix(".pdf"), True, "Compiled main manuscript PDF."),
         ManifestItem("supplement_tex", "journal_source", SUPP_TEX, True, "Supplemental Material source."),
         ManifestItem("supplement_pdf", "journal_pdf", SUPP_TEX.with_suffix(".pdf"), True, "Compiled Supplemental Material PDF."),
+        ManifestItem("cover_letter", "journal_submission_text", COVER_LETTER, True, "Physical Review B cover letter draft."),
         ManifestItem("bibliography", "journal_source", ROOT / "references.bib", True, "Shared BibTeX database."),
         ManifestItem("dense_response_data", "source_data", PROCESSED / "mu_eta_response_scan_nk7_nkeep6.csv", True, "Dense mu-eta response map source data."),
         ManifestItem("dense_response_summary", "source_data", PROCESSED / "mu_eta_response_scan_nk7_nkeep6_eta1_summary.csv", True, "Main dense eta=1 response table source."),

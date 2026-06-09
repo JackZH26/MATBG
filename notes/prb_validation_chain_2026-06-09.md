@@ -36,8 +36,10 @@ The chain currently runs:
 4. `scripts/audit_filling_sufficiency.py`;
 5. `scripts/audit_convergence_sufficiency.py`;
 6. `scripts/verify_manuscript_tables.py`;
-7. `scripts/audit_submission_package.py`;
-8. `scripts/build_prb_submission_manifest.py`;
+7. `scripts/audit_submission_package.py`, including the PRB cover letter
+   draft and required signature;
+8. `scripts/build_prb_submission_manifest.py`, including the cover letter in
+   the manuscript package inventory;
 9. `latexmk` for the main manuscript;
 10. `latexmk` for the Supplemental Material;
 11. blocking-warning scan of the main LaTeX log;

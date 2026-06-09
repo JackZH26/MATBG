@@ -11,7 +11,8 @@ The manuscript is a coherent first PRB-style draft, not a submission-ready final
 paper. It has a conservative central claim, reproducible figures, explicit
 tables, a declarations section, a formal BibTeX file, a figure/table
 provenance manifest, a workflow schematic for the main calculation route, and
-a standalone Supplemental Material skeleton.
+a standalone Supplemental Material skeleton. It now also has a PRB cover
+letter draft for the current mechanism-paper scope.
 
 The current draft is suitable as a research checkpoint and internal review
 target. It now has an explicit normalized-response observable policy for the
@@ -130,9 +131,10 @@ not regenerated in this work package because the legacy figure assets
    manuscript keeps the required conservative boundary statements and avoids a
    short list of forbidden overclaims. `scripts/audit_submission_package.py`
    checks the mechanical manuscript package invariants: author blocks,
-   declarations, required files, main figure existence, labels, bibliography
-   commands, RevTeX class, and filename convention. The current
-   submission-package audit passes all 59 checks and is recorded in
+   declarations, cover letter signature, required files, main figure
+   existence, labels, bibliography commands, RevTeX class, and filename
+   convention. The current submission-package audit passes all 65 checks and
+   is recorded in
    `data/processed/submission_package_audit.csv` and
    `notes/submission_package_audit_2026-06-09.md`. The one-command validation
    chain `scripts/run_prb_validation.py` now runs the script syntax check,
@@ -143,7 +145,8 @@ not regenerated in this work package because the legacy figure assets
    recorded in
    `data/processed/prb_validation_summary.csv` and
    `notes/prb_validation_chain_2026-06-09.md`. The current manuscript package
-   inventory is recorded in `data/processed/prb_submission_manifest.csv` and
+   inventory contains all 30 required entries, including the cover letter
+   draft, and is recorded in `data/processed/prb_submission_manifest.csv` and
    `notes/prb_submission_manifest_2026-06-09.md`.
    `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
    presents the first standalone Supplemental Material skeleton. The remaining

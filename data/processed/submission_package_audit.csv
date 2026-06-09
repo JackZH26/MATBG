@@ -3,6 +3,7 @@ main_tex_exists,main,pass,/Users/jackzhou/Documents/Papers/MATBG/Zhou_Interband_
 main_pdf_exists,main,pass,/Users/jackzhou/Documents/Papers/MATBG/Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.pdf,Main PDF exists.
 supp_tex_exists,supplement,pass,/Users/jackzhou/Documents/Papers/MATBG/Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex,Supplement TeX exists.
 supp_pdf_exists,supplement,pass,/Users/jackzhou/Documents/Papers/MATBG/Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.pdf,Supplement PDF exists.
+cover_letter_exists,cover_letter,pass,/Users/jackzhou/Documents/Papers/MATBG/submission/Zhou_PRB_Cover_Letter_2026.md,Cover letter draft exists.
 main_filename_rule_tex,main,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex,Main paper TeX filename follows the Zhou_<Title>_2026.tex convention.
 main_filename_rule_pdf,main,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.pdf,Main paper PDF filename follows the Zhou_<Title>_2026.pdf convention.
 main_revtex_01,main,pass,"\documentclass[aps,prb,reprint,superscriptaddress,floatfix,nofootinbib]{revtex4-2}",Required manuscript/package phrase must be present.
@@ -23,6 +24,15 @@ supp_declaration_02,supplement,pass,\textbf{Funding}: Not applicable.,Required m
 supp_declaration_03,supplement,pass,\textbf{Conflict of interest}: The author declares no conflict of interest.,Required manuscript/package phrase must be present.
 supp_declaration_04,supplement,pass,\textbf{Data availability}: All data and code supporting this work are available,Required manuscript/package phrase must be present.
 supp_declaration_05,supplement,pass,\textbf{Ethics approval}: Not applicable.,Required manuscript/package phrase must be present.
+cover_letter_01,cover_letter,pass,Physical Review B,Required manuscript/package phrase must be present.
+cover_letter_02,cover_letter,pass,Interband Pairing Signatures in the Superfluid Response of Magic-Angle Twisted Bilayer Graphene,Required manuscript/package phrase must be present.
+cover_letter_03,cover_letter,pass,does not claim a final absolute stiffness prediction,Required manuscript/package phrase must be present.
+cover_letter_04,cover_letter,pass,not under consideration elsewhere,Required manuscript/package phrase must be present.
+cover_letter_05,cover_letter,pass,"Sincerely,
+Jian Zhou
+Principal Investigator
+JZ Institute of Science, Hong Kong, China
+jack@jzis.org",Required manuscript/package phrase must be present.
 main_section_01,main,pass,\section{Introduction},Required manuscript/package phrase must be present.
 main_section_02,main,pass,\section{Model and Pairing Construction},Required manuscript/package phrase must be present.
 main_section_03,main,pass,\section{Finite-Band Response},Required manuscript/package phrase must be present.
@@ -48,12 +58,12 @@ supp_label_04,supplement,pass,\label{tab:sm_convergence_sufficiency},Required ma
 supp_label_05,supplement,pass,\label{tab:sm_claim_scope},Required manuscript/package phrase must be present.
 main_bibliography_01,main,pass,\bibliography{references},Required manuscript/package phrase must be present.
 supp_bibliography_01,supplement,pass,\bibliography{references},Required manuscript/package phrase must be present.
-forbid_author_variant_jack,main+supplement,pass,Jack,Prohibited author-name variant must not appear in paper files.
-forbid_author_variant_jack_zhou,main+supplement,pass,Jack Zhou,Prohibited author-name variant must not appear in paper files.
-forbid_author_variant_wall_e,main+supplement,pass,Wall-E,Prohibited author-name variant must not appear in paper files.
-forbid_author_variant_wali_chinese,main+supplement,pass,瓦力,Prohibited author-name variant must not appear in paper files.
-forbid_author_variant_j_zhou,main+supplement,pass,J. Zhou,Prohibited author-name variant must not appear in paper files.
-forbid_author_variant_zhou_j,main+supplement,pass,"Zhou, J.",Prohibited author-name variant must not appear in paper files.
+forbid_author_variant_jack,main+supplement+cover_letter,pass,Jack,Prohibited author-name variant must not appear in submission text files.
+forbid_author_variant_jack_zhou,main+supplement+cover_letter,pass,Jack Zhou,Prohibited author-name variant must not appear in submission text files.
+forbid_author_variant_wall_e,main+supplement+cover_letter,pass,Wall-E,Prohibited author-name variant must not appear in submission text files.
+forbid_author_variant_wali_chinese,main+supplement+cover_letter,pass,瓦力,Prohibited author-name variant must not appear in submission text files.
+forbid_author_variant_j_zhou,main+supplement+cover_letter,pass,J. Zhou,Prohibited author-name variant must not appear in submission text files.
+forbid_author_variant_zhou_j,main+supplement+cover_letter,pass,"Zhou, J.",Prohibited author-name variant must not appear in submission text files.
 main_graphics_present,main,pass,3 includegraphics command(s),At least one visual asset should be present in a PRB manuscript file.
 main_graphic_exists_01,main,pass,figures/workflow_schematic_prb.png,Every included graphic file must exist in the repository.
 main_graphic_exists_02,main,pass,figures/mu_eta_heatmap_nk7_nkeep6_fixed_frobenius.png,Every included graphic file must exist in the repository.

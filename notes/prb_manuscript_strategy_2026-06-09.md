@@ -125,6 +125,12 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
 Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex
 ```
 
+## Cover Letter Draft
+
+```text
+submission/Zhou_PRB_Cover_Letter_2026.md
+```
+
 ## Current Manuscript Infrastructure
 
 1. Bibliography is managed through `references.bib`.
@@ -184,3 +190,7 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
     `scripts/build_prb_submission_manifest.py`, which writes
     `data/processed/prb_submission_manifest.csv` and is summarized in
     `notes/prb_submission_manifest_2026-06-09.md`.
+18. The current PRB cover letter draft is
+    `submission/Zhou_PRB_Cover_Letter_2026.md`; its target journal, title,
+    conservative scope statement, originality statement, and required signature
+    are checked by `scripts/audit_submission_package.py`.
