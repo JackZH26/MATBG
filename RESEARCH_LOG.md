@@ -107,3 +107,11 @@ Config / run_id: `python3 scripts/audit_bm_baseline.py` and `python3 scripts/ana
 Result: The BM geometry factors are internally consistent: `|b| = 0.054047 A^-1` and BZ area equals `(2pi)^2/A_M`. However, the current BM implementation gives a two-flat-band bandwidth of about `6.1 meV` at `theta=1.05 deg`, not the `11.2 meV` quoted in the old PRB text. Moving to `theta=1.20 deg` gives `W2 = 11.76 meV` but only changes the `n_keep=2` band-diagonal response from `29.34` to `31.15 eV A^2`, still far below the PRB `67.5 eV A^2`. Prefactor residuals are not global: in the `all_tauz` convention, the scale needed is `2.018` for `n_keep=2` but `1.281` for `n_keep=6`.
 
 Decision: BZ/moire area factors and one global Kubo prefactor are not sufficient explanations. The strongest remaining lead is the conventional/intraband sector: with `all_tauz`, the `n_keep=6` geometric contribution already matches the PRB value, while the conventional contribution remains too small by roughly a factor of two.
+
+Question: Does adding a band-curvature or diamagnetic-like conventional term reconcile the PRB conventional baseline?
+
+Config / run_id: `python3 scripts/audit_conventional_channel.py --nk 14 --n-keep-values 2 6 --curvature-dk-values 3e-4 1e-4 3e-5`.
+
+Result: At `curvature_dk=1e-4 A^-1`, the current intraband paramagnetic value is `20.95 eV A^2` for `n_keep=2` and `25.72 eV A^2` for `n_keep=6`, versus PRB conventional benchmarks `53.0` and `54.0`. Multiplying by two gives `41.89` and `51.45`; this nearly matches `n_keep=6` but remains too small for `n_keep=2`. Adding a half-curvature term gives `49.94` and `60.92`, close for `n_keep=2` but high for `n_keep=6`.
+
+Decision: Do not change the production response convention yet. The PRB conventional table is not reproduced by a single audited factor-of-two or curvature correction. Next step is a dedicated PRB-table reconstruction script that separates old-manuscript benchmarking from the normalized interband-pairing mechanism scans.

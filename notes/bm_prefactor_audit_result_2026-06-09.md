@@ -95,3 +95,24 @@ The next audit should focus on the conventional/intraband sector:
 
 For the interband-pairing project, keep using normalized eta-response maps
 until the absolute conventional baseline is reconciled.
+
+## Conventional-Channel Follow-Up
+
+See:
+
+```text
+notes/conventional_channel_audit_result_2026-06-09.md
+```
+
+Summary:
+
+```text
+2 * intraband paramagnetic nearly reproduces the PRB conventional value at
+n_keep=6, but remains too small at n_keep=2.
+
+Adding a half-curvature term brings n_keep=2 close to the PRB value, but
+overshoots n_keep=6.
+```
+
+So the conventional-channel mismatch is not resolved by one simple
+factor-of-two or curvature correction.

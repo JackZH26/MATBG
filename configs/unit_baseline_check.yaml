@@ -41,5 +41,7 @@ outputs:
   bm_theta_scan_csv: data/processed/bm_baseline_theta_scan_nk17.csv
   bm_theta_response_csv: data/processed/bm_baseline_theta_response_nkeep2_nk14.csv
   prefactor_residual_csv: data/processed/prefactor_residual_audit_nk14.csv
+  conventional_channel_audit_csv: data/processed/conventional_channel_audit_nk14.csv
   note: notes/unit_conversion_baseline_result_2026-06-09.md
   bm_prefactor_note: notes/bm_prefactor_audit_result_2026-06-09.md
+  conventional_channel_note: notes/conventional_channel_audit_result_2026-06-09.md
