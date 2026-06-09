@@ -103,5 +103,9 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
 1. Bibliography is managed through `references.bib`.
 2. Submission-readiness risks are tracked in
    `notes/prb_readiness_audit_2026-06-09.md`.
-3. Recent 2025-2026 stiffness and Kekule/PDW context is tracked in
+3. Figure and table provenance is tracked in
+   `notes/figure_table_provenance_2026-06-09.md`.
+4. Manuscript table values are checked against processed CSV files by
+   `scripts/verify_manuscript_tables.py`.
+5. Recent 2025-2026 stiffness and Kekule/PDW context is tracked in
    `notes/recent_literature_update_2026-06-09.md`.

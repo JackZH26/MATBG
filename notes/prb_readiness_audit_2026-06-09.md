@@ -9,7 +9,8 @@ Manuscript:
 
 The manuscript is a coherent first PRB-style draft, not a submission-ready final
 paper. It has a conservative central claim, reproducible figures, explicit
-tables, a declarations section, and a formal BibTeX file.
+tables, a declarations section, a formal BibTeX file, and a figure/table
+provenance manifest.
 
 The current draft is suitable as a research checkpoint and internal review
 target. It still needs additional convergence, a stronger methods appendix, and
@@ -62,28 +63,26 @@ final absolute-unit convention decisions before submission.
    pairing-symmetry work.
 
 6. Supplemental reproducibility:
-   The paper needs a compact appendix or supplement mapping every main figure
-   and table to its script, config, data file, and random-free reproducibility
-   command.
+   `notes/figure_table_provenance_2026-06-09.md` now maps every current main
+   figure and table to scripts, configs, data files, and reproduction commands.
+   `scripts/verify_manuscript_tables.py` checks the LaTeX table values against
+   the processed CSV files. The remaining gap is a compact Supplemental
+   Material section that presents this provenance in publication form.
 
 ## Recommended Next Work Packages
 
-1. Create a figure/table provenance manifest:
-   map manuscript figures and tables to `scripts/`, `configs/`, and
-   `data/processed/`.
+1. Draft a Supplemental Material skeleton:
+   model details, pairing projection gate, response formula, convergence,
+   units audit, figure/table provenance, and benchmark reconstruction.
 
 2. Run an `nk=11` or selected high-accuracy convergence check for:
    `mu=-4,0,2,4`, `eta=0,1`, `n_keep=6`, both normalization modes.
 
-3. Draft a Supplemental Material skeleton:
-   model details, pairing projection gate, response formula, convergence,
-   units audit, and benchmark reconstruction.
-
-4. Add a manuscript appendix section or separate supplement section for the
+3. Add a manuscript appendix section or separate supplement section for the
    PRB benchmark reconstruction, keeping it separate from the main mechanism
    claim.
 
-5. Expand discussion of recent finite-momentum Kekule / PDW scenarios as a
+4. Expand discussion of recent finite-momentum Kekule / PDW scenarios as a
    future extension rather than a covered case.
 
 ## Readiness Judgment
