@@ -82,6 +82,16 @@ Date: 2026-06-09
    the old placeholder in `notes/literature_matrix.md`. The placeholder has
    therefore been removed from the active manuscript queue.
 
+15. C. Chen, K. P. Nuckolls, S. Ding et al.,
+   "Strong electron-phonon coupling in magic-angle twisted bilayer graphene,"
+   Nature 636, 342-347 (2024).
+   Source: https://www.nature.com/articles/s41586-024-08227-w
+
+16. Y.-J. Wang, G.-D. Zhou, S.-Y. Peng, B. Lian, and Z.-D. Song,
+   "Molecular Pairing in Twisted Bilayer Graphene Superconductivity,"
+   Physical Review Letters 133, 146001 (2024).
+   Source: https://doi.org/10.1103/PhysRevLett.133.146001
+
 ## Final Sweep Queries
 
 The 2026-06-09 sweep used primary-source oriented searches for:
@@ -94,6 +104,8 @@ magic-angle graphene tunneling nodal gap superconductivity 2025/2026
 twisted graphene gapless quasiparticles geometric superfluid stiffness
 strongly correlated superconductivity twisted bilayer graphene Gutzwiller 2026
 magic-angle graphene flat bands reshaped by interactions 2026
+magic-angle twisted bilayer graphene electron-phonon coupling 2024
+molecular pairing twisted bilayer graphene superconductivity 2024
 ```
 
 ## Manuscript Impact
@@ -141,6 +153,15 @@ normal-state flat bands in MATBG. It is useful as a limitation/future-work
 reference: the current calculation uses a noninteracting BM normal-state
 spectrum and should not be read as a final interacting-band reconstruction.
 
+The 2024 ARPES electron-phonon-coupling paper and the 2024 PRL molecular
+pairing theory were added during the submission-time refresh as missing
+mechanism-background context. They strengthen the statement that the pairing
+mechanism remains unsettled and has competing electron-phonon, interaction,
+and molecular-orbital interpretations. They do not change the current
+calculation, which fixes an orbital pairing family and studies a normalized
+finite-band response diagnostic rather than solving for the microscopic
+pairing glue.
+
 The Zhou 2026 arXiv entry is the current author's prior band-basis
 decomposition/baseline paper. It is useful as provenance for the benchmark
 self-audit, not as external evidence for the new interband-pairing mechanism.
@@ -159,3 +180,6 @@ Add Liang-Wang-Zhou-Song-Dai as additional pairing-mechanism context and
 Xiao-Inbar-Birkbeck et al. as a limitation/future-work citation for
 interaction-reshaped flat bands. Do not use either source to expand the
 present manuscript beyond the normalized finite-band response mechanism claim.
+Add Chen-Nuckolls-Ding et al. and Wang-Zhou-Peng-Lian-Song as missing
+electron-phonon and molecular-pairing mechanism context in the Introduction.
+Do not use either source as evidence for the present fixed pairing ansatz.

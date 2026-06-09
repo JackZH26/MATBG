@@ -140,10 +140,11 @@ not regenerated in this work package because the legacy figure assets
    been added: Tanaka et al. 2025, Christos-Sachdev-Scheurer 2023,
    Putzer-Scheurer 2025, Wang-Levin 2026, and Wang-Chen-Boyack-Levin 2026.
    The 2026-06-09 sweep also added Portoles et al. 2025, Banerjee et al. 2025,
-   Park et al. 2025, Kim et al. 2026, Gao et al. 2026, Liang et al. 2026,
-   Xiao et al. 2026, and the current author's Zhou 2026 band-basis
-   decomposition preprint as benchmark provenance. The previous Lamponen
-   placeholder was removed because no matching primary source was identified.
+   Park et al. 2025, Kim et al. 2026, Chen et al. 2024, Gao et al. 2026,
+   Wang-Zhou-Peng-Lian-Song 2024, Liang et al. 2026, Xiao et al. 2026, and
+   the current author's Zhou 2026 band-basis decomposition preprint as
+   benchmark provenance. The previous Lamponen placeholder was removed because
+   no matching primary source was identified.
    A final PRB manuscript should still receive a repeat literature sweep
    immediately before submission.
 

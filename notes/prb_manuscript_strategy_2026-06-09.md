@@ -174,10 +174,12 @@ submission/Zhou_PRB_Cover_Letter_2026.md
    filling proxy; details are tracked in
    `notes/normalization_and_units_strategy.md` and
    `notes/observable_policy_decision_2026-06-09.md`.
-13. Recent stiffness and band-off-diagonal pairing context is now included in
+13. Recent stiffness, electron-phonon, molecular-pairing, strong-correlation,
+    and band-off-diagonal pairing context is now included in
     the manuscript through `tanaka_2025`, `christos_2023`, `putzer_2025`,
-    `wang_kekule_2026`, `liang_gutzwiller_2026`, and
-    `xiao_flat_bands_2026`; supporting notes are in
+    `chen_epc_2024`, `gao_interactions_2026`,
+    `wang_molecular_pairing_2024`, `wang_kekule_2026`,
+    `liang_gutzwiller_2026`, and `xiao_flat_bands_2026`; supporting notes are in
     `notes/recent_literature_update_2026-06-09.md`.
 14. Text-level guardrails are run with `scripts/audit_claim_scope.py` and
     `scripts/audit_observable_policy.py`.
