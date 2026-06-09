@@ -9,8 +9,8 @@ Manuscript:
 
 The manuscript is a coherent first PRB-style draft, not a submission-ready final
 paper. It has a conservative central claim, reproducible figures, explicit
-tables, a declarations section, a formal BibTeX file, and a figure/table
-provenance manifest.
+tables, a declarations section, a formal BibTeX file, a figure/table
+provenance manifest, and a standalone Supplemental Material skeleton.
 
 The current draft is suitable as a research checkpoint and internal review
 target. It still needs additional convergence, a stronger methods appendix, and
@@ -66,14 +66,17 @@ final absolute-unit convention decisions before submission.
    `notes/figure_table_provenance_2026-06-09.md` now maps every current main
    figure and table to scripts, configs, data files, and reproduction commands.
    `scripts/verify_manuscript_tables.py` checks the LaTeX table values against
-   the processed CSV files. The remaining gap is a compact Supplemental
-   Material section that presents this provenance in publication form.
+   the processed CSV files.
+   `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
+   presents the first standalone Supplemental Material skeleton. The remaining
+   gap is to expand it with final convergence data and any final convention
+   decisions.
 
 ## Recommended Next Work Packages
 
-1. Draft a Supplemental Material skeleton:
-   model details, pairing projection gate, response formula, convergence,
-   units audit, figure/table provenance, and benchmark reconstruction.
+1. Expand the Supplemental Material:
+   add final convergence results, explicit script/config command blocks, and
+   any final absolute-convention decision.
 
 2. Run an `nk=11` or selected high-accuracy convergence check for:
    `mu=-4,0,2,4`, `eta=0,1`, `n_keep=6`, both normalization modes.

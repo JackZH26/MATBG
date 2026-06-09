@@ -9,8 +9,8 @@ Manuscript:
 
 This manifest records the data, scripts, configs, and reproduction commands
 behind every figure and table currently used in the PRB draft. It is intended
-to become the backbone of a future Supplemental Material reproducibility
-section.
+to support the standalone Supplemental Material reproducibility section in
+`Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`.
 
 ## Global Model Parameters
 

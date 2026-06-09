@@ -1,0 +1,276 @@
+\documentclass[aps,prb,preprint,superscriptaddress,floatfix,nofootinbib]{revtex4-2}
+
+\usepackage{amsmath,amssymb,booktabs,array}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+\begin{document}
+
+\title{Supplemental Material for ``Interband Pairing Signatures in the Superfluid Response of Magic-Angle Twisted Bilayer Graphene''}
+
+\author{Jian Zhou}
+\affiliation{JZ Institute of Science, Hong Kong, China}
+\email{jack@jzis.org}
+
+\date{June 9, 2026}
+
+\maketitle
+
+\section{Scope of the Supplemental Material}
+
+This Supplemental Material documents the executable numerical workflow behind
+the PRB manuscript.  It is organized as a reproducibility and self-audit record:
+the Bistritzer-MacDonald (BM) model conventions~\cite{bistritzer_2011}, the
+orbital-projected pairing construction, the finite-band response formula, the
+figure and table provenance, and the historical PRB benchmark reconstruction
+are recorded separately.
+
+The main text makes a conservative mechanism claim: an orbital-projected
+interband-pairing direction produces a reproducible, normalization-conditioned
+change in the normalized finite-band superfluid response.  The present
+Supplemental Material does not promote the raw response units to final
+experimental stiffness values.  This choice is motivated by the distinction
+between robust quantum-geometric mechanism diagnostics~\cite{peotta_torma_2015,hu_2019,julku_2020,xie_2020_prl}
+and direct quantitative comparison with recent stiffness
+experiments~\cite{tian_2023,tanaka_2025}.
+
+\section{BM Model and Numerical Parameters}
+
+The normal-state calculation uses the single-valley BM continuum Hamiltonian
+with orbital basis
+\begin{equation}
+  (tA,tB,bA,bB),
+\end{equation}
+where $t,b$ label layers and $A,B$ label sublattices.  Unless explicitly stated
+otherwise, the production mechanism scans use the parameters in
+Table~\ref{tab:sm_parameters}.
+
+\begin{table}[t]
+\caption{Default parameters used for the mechanism scans.}
+\label{tab:sm_parameters}
+\begin{ruledtabular}
+\begin{tabular}{ll}
+quantity & value\\
+\hline
+twist angle & $\theta=1.05^\circ$\\
+Dirac velocity & $v_F=2.135~\mathrm{eV}\,\text{\AA}$\\
+AA tunneling & $w_0=87.2~\mathrm{meV}$\\
+AB tunneling & $w_1=109.0~\mathrm{meV}$\\
+reciprocal cutoff & $N_{\rm shell}=3$\\
+retained bands & $n_{\rm keep}=6$\\
+momentum grid & $nk=7$ for dense maps, $nk=9$ for key-point validation\\
+gap scale & $\Delta_0=1~\mathrm{meV}$\\
+velocity finite difference & $dk=10^{-6}~\text{\AA}^{-1}$\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The moire unit-cell area and reciprocal scale used in the unit audit are
+\begin{align}
+  A_M &= 1.5606\times 10^4~\text{\AA}^{2}, &
+  G_M &= 0.054047~\text{\AA}^{-1}.
+\end{align}
+The raw response conversion used in the audit is
+\begin{equation}
+  D[\mathrm{eV}\,\text{\AA}^{2}]
+  =
+  \frac{D_{\rm raw}[\mathrm{meV}\,\text{\AA}^{2}]}{1000},
+\end{equation}
+with all remaining spin, valley, or convention factors kept explicit rather
+than absorbed into a hidden prefactor.
+
+\section{Orbital-Projected Pairing Construction}
+
+The pairing direction is specified first in the layer-sublattice orbital basis,
+\begin{equation}
+  \Delta_{\rm orb}(\eta)
+  =
+  \Delta_0\,\mathcal{N}_{\eta}(M_0+\eta M_1),
+\end{equation}
+with
+\begin{equation}
+  M_0=\tau_0\sigma_0,\qquad
+  M_1=\tau_x\sigma_x.
+\end{equation}
+The two normalization controls used in the manuscript are
+\begin{align}
+  &\text{fixed Frobenius:}
+  &&\|M_0+\eta M_1\|_F=\|M_0\|_F,\\
+  &\text{fixed }\Delta_0:
+  &&\mathcal{N}_{\eta}=1.
+\end{align}
+
+The band-basis pairing matrix is
+\begin{equation}
+  \Delta_{\rm band}(\mathbf{k})
+  =
+  U^\dagger(\mathbf{k})\Delta_{\rm orb}U^*(-\mathbf{k}).
+\end{equation}
+The working valley convention in the present diagnostic is the time-reversal
+sewn proxy
+\begin{equation}
+  U_{-}(-\mathbf{k}) = U_{+}^*(\mathbf{k}).
+\end{equation}
+This convention is useful for isolating an orbital-defined interband-pairing
+signature, but the readiness audit identifies a fully documented two-valley
+implementation as a submission-critical improvement.
+
+The projected interband-pairing weight is
+\begin{equation}
+  W_{\rm inter}
+  =
+  \frac{\sum_{n\ne m}|\Delta_{nm}|^2}
+       {\sum_{n,m}|\Delta_{nm}|^2}.
+\end{equation}
+For the dense $nk=7$, $n_{\rm keep}=6$ scan, $W_{\rm inter}\simeq 0.108$ at
+$\eta=1$.
+
+\section{Finite-Band Response and Channel Split}
+
+For a retained band subspace, the finite-band BdG Hamiltonian is
+\begin{equation}
+  H_{\rm BdG}(\mathbf{k}) =
+  \begin{pmatrix}
+  \varepsilon(\mathbf{k})-\mu & \Delta_{\rm band}(\mathbf{k})\\
+  \Delta^\dagger_{\rm band}(\mathbf{k}) & -[\varepsilon(\mathbf{k})-\mu]
+  \end{pmatrix}.
+\end{equation}
+The zero-temperature static current-current response is evaluated as
+\begin{equation}
+  \Lambda_{\alpha\beta}
+  =
+  \sum_{a\ne b}
+  \frac{
+  \langle a|J_\alpha|b\rangle
+  \langle b|J_\beta|a\rangle
+  (f_a-f_b)}
+  {E_b-E_a}.
+\end{equation}
+
+The band-basis velocity is split into diagonal and off-diagonal parts,
+\begin{equation}
+  v_\alpha^{\rm band}
+  =
+  v_\alpha^{\rm intra}+v_\alpha^{\rm inter}.
+\end{equation}
+This produces conventional, geometric, and cross-channel response diagnostics.
+The primary normalized response map uses
+\begin{equation}
+  \delta D_{\rm iso}(\mu,\eta)
+  =
+  \frac{D_{\rm iso}(\mu,\eta)}
+       {D_{\rm iso}(\mu,0)} - 1,
+  \qquad
+  D_{\rm iso}=\frac{D_{xx}+D_{yy}}{2}.
+\end{equation}
+
+\section{Figure and Table Provenance}
+
+Table~\ref{tab:sm_provenance} summarizes the current figure and table
+provenance.  The full machine-readable record is maintained in
+\code{notes/figure\_table\_provenance\_2026-06-09.md}.
+
+\begin{table*}[t]
+\caption{Manuscript artifact provenance.  CSV values used in the manuscript
+tables are checked by \code{scripts/verify\_manuscript\_tables.py}.}
+\label{tab:sm_provenance}
+\begin{ruledtabular}
+\begin{tabular}{llll}
+artifact & data source & script & check\\
+\hline
+Frobenius heatmap & dense scan CSV & heatmap plotter & figure file exists\\
+fixed-$\Delta_0$ heatmap & dense scan CSV & heatmap plotter & figure file exists\\
+dense response table & eta-summary CSV & eta summarizer & table verifier\\
+$nk=9$ validation table & key-point summary CSV & eta summarizer & table verifier\\
+PRB audit table & reconstruction CSVs & audit scripts & table verifier\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+The dense response data are reproduced by
+\begin{verbatim}
+python3 scripts/run_mu_response_scan.py \
+  --nk 7 --n-shell 3 --n-keep 6 \
+  --mus -5 -4 -3 -2 -1 0 1 2 3 4 5 \
+  --etas 0 0.25 0.5 0.75 1 \
+  --output data/processed/mu_eta_response_scan_nk7_nkeep6.csv
+\end{verbatim}
+and summarized by
+\begin{verbatim}
+python3 scripts/summarize_eta_effect.py \
+  data/processed/mu_eta_response_scan_nk7_nkeep6.csv \
+  --output data/processed/mu_eta_response_scan_nk7_nkeep6_eta1_summary.csv
+\end{verbatim}
+The table verifier is
+\begin{verbatim}
+python3 scripts/verify_manuscript_tables.py
+\end{verbatim}
+
+\section{Historical PRB Benchmark Reconstruction}
+
+The production interband-pairing scan and the historical PRB table
+reconstruction are kept separate.  The best simple unified reconstruction route
+for the old uniform-$s$ benchmark is
+\begin{equation}
+  D_{\rm conv}=2D_{\rm intra,\tau_z},
+  \qquad
+  D_{\rm geom}=D_{\rm inter,\tau_z}.
+\end{equation}
+For $n_{\rm keep}=6$, this gives $D_{\rm total}=126.66~\mathrm{eV}\,\text{\AA}^2$
+versus the historical target $129.30~\mathrm{eV}\,\text{\AA}^2$, and
+$D_{\rm geom}=75.22~\mathrm{eV}\,\text{\AA}^2$ versus
+$75.30~\mathrm{eV}\,\text{\AA}^2$.
+
+The old $n_{\rm keep}=2$ endpoint is more convention-sensitive.  The closest
+audited reconstruction combines a Gamma-centered mesh, central-pair band
+selection, an all-$\tau_z$ current convention, a factor of two in the intraband
+term, and a full curvature-like conventional correction.  This gives
+\begin{equation}
+  D_{\rm total}=66.18~\mathrm{eV}\,\text{\AA}^2
+  \quad
+  \text{versus}
+  \quad
+  67.50~\mathrm{eV}\,\text{\AA}^2.
+\end{equation}
+Because this full-curvature correction does not work uniformly at
+$n_{\rm keep}=6$, the reconstruction is treated as a historical audit rather
+than a production convention.
+
+\section{Current Limitations and Next Validation Gates}
+
+The current submission-critical gaps are:
+\begin{enumerate}
+  \item a higher-accuracy convergence check beyond the present $nk=9$ key
+  points, preferably at $nk=11$ for selected $\mu$ values;
+  \item a fully documented two-valley sewing convention or an explicitly
+  limited diagnostic-model framing;
+  \item a final absolute stiffness convention before any direct experimental
+  comparison;
+  \item a calibrated filling variable replacing the retained-band proxy
+  $\nu_{\rm proxy}$.
+\end{enumerate}
+
+These limitations do not invalidate the normalized-response mechanism claim,
+but they prevent the current draft from being treated as a final PRB submission
+without further convergence and convention work.
+
+\begin{acknowledgments}
+The author acknowledges use of open-source scientific computing tools
+including NumPy and Matplotlib.
+\end{acknowledgments}
+
+\section*{Declarations}
+
+\textbf{Funding}: Not applicable.
+
+\textbf{Conflict of interest}: The author declares no conflict of interest.
+
+\textbf{Data availability}: All data and code supporting this work are available
+from the corresponding author upon reasonable request.
+
+\textbf{Ethics approval}: Not applicable.
+
+\bibliography{references}
+
+\end{document}
