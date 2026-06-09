@@ -1,0 +1,99 @@
+# PRB Manuscript Strategy
+
+Date: 2026-06-09
+
+## Working Title
+
+Interband Pairing Signatures in the Superfluid Response of Magic-Angle
+Twisted Bilayer Graphene
+
+## Central Claim
+
+The executable BM-BdG pipeline supports a conservative mechanism claim:
+
+```text
+An orbital-projected interband-pairing direction produces a reproducible
+normalization-conditioned change in the isotropic superfluid response across
+chemical potential.
+```
+
+The strongest quantitative result is the normalized response map:
+
+```text
+D_iso(mu, eta) / D_iso(mu, eta=0) - 1
+```
+
+with both `fixed_frobenius_norm` and `fixed_delta0` retained as controls.
+
+## Claims Allowed in the Main Text
+
+1. The `tr_sewn` orbital-projected pairing construction passes algebraic and
+   projection checks.
+2. The interband-pairing weight grows smoothly from zero to about `0.108` at
+   `eta=1` for the working `M1=taux_sigmax` direction.
+3. In `fixed_frobenius_norm`, `eta=1` changes `D_iso` by about `+0.56%` to
+   `+11.86%` across `mu=-5...5 meV` at `nk=7`, `n_keep=6`.
+4. `nk=9` key-point checks preserve the qualitative signal.
+5. In `fixed_delta0`, the response is much weaker and can be negative.
+6. Therefore, the effect is a normalization-conditioned mechanism signature,
+   not an unconditional absolute-stiffness enhancement.
+
+## Claims Not Allowed Yet
+
+1. Do not claim direct quantitative agreement with experimental stiffness.
+2. Do not claim the absolute raw response is a final physical stiffness.
+3. Do not reuse the old PRB absolute table as a production convention.
+4. Do not claim anisotropy is the primary observable signature.
+5. Do not claim `nu_proxy` is a calibrated experimental filling.
+
+## Self-Review Result
+
+The old PRB benchmark table is now best treated as a historical audit route.
+It can be partially reconstructed:
+
+```text
+n_keep=6:
+double_conv_all_tauz gives D_total = 126.66 vs 129.30 eV A^2.
+
+n_keep=2:
+gamma_centered + central_pair + double_conv_full_curv_all_tauz gives
+D_total = 66.18 vs 67.50 eV A^2.
+```
+
+But no single convention reconstructs all sectors and truncations cleanly.
+Thus new paper figures should use normalized mechanism quantities unless a new
+absolute convention is declared and recomputed end-to-end.
+
+## Proposed Paper Structure
+
+1. Introduction: MATBG stiffness, quantum geometry, and why pairing structure
+   matters.
+2. Model and pairing construction: BM model, `tr_sewn` pairing, orbital
+   matrices, normalization controls.
+3. Response decomposition: finite-band BdG response, current split, normalized
+   observables.
+4. Pairing-definition gates: gauge covariance, interband weight, velocity
+   decomposition.
+5. Eta and mu response maps: dense scan, heatmaps, `nk=9` validation.
+6. Self-review of absolute units: PRB benchmark reconstruction and why
+   absolute claims are deferred.
+7. Discussion and outlook.
+
+## Primary Figures
+
+1. `figures/mu_eta_heatmap_nk7_nkeep6_fixed_frobenius.png`
+2. `figures/mu_eta_heatmap_nk7_nkeep6_fixed_delta0.png`
+3. `figures/mu_response_scan_nk7_nkeep6.png`
+4. A future pipeline schematic or pairing-matrix diagram.
+
+## Primary Tables
+
+1. Dense `eta=1` response summary.
+2. `nk=9` key-point validation.
+3. PRB reconstruction audit table.
+
+## Draft File
+
+```text
+Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex
+```

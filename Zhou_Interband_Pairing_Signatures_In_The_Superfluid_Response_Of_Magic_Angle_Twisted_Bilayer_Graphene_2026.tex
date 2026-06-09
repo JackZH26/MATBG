@@ -1,0 +1,505 @@
+\documentclass[aps,prb,reprint,superscriptaddress,floatfix,nofootinbib]{revtex4-2}
+
+\usepackage{amsmath,amssymb,graphicx,bm,booktabs}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
+
+\begin{document}
+
+\title{Interband Pairing Signatures in the Superfluid Response of Magic-Angle Twisted Bilayer Graphene}
+
+\author{Jian Zhou}
+\affiliation{JZ Institute of Science, Hong Kong, China}
+\email{jack@jzis.org}
+
+\date{June 9, 2026}
+
+\begin{abstract}
+The superfluid response of magic-angle twisted bilayer graphene is strongly
+affected by quantum geometry, but the role of pairing structure in this
+response remains less directly quantified.
+We construct an executable Bistritzer-MacDonald--Bogoliubov-de Gennes workflow
+for testing orbital-projected interband-pairing directions in a finite-band
+response calculation.
+The pairing family is defined in the layer-sublattice orbital basis and then
+projected into the normal-state band basis using a fixed time-reversal-sewn
+valley convention.
+For the working direction $M_1=\tau_x\sigma_x$, the projected interband
+pairing weight increases smoothly with the tuning parameter $\eta$ and reaches
+approximately $0.108$ at $\eta=1$ for the $n_{\rm keep}=6$ truncation.
+Dense scans over chemical potential and pairing interpolation show that, at
+fixed Frobenius norm of the orbital pairing matrix, the normalized isotropic
+response changes by approximately $+0.56\%$ to $+11.86\%$ between $\eta=0$ and
+$\eta=1$ over $\mu=-5,\ldots,5$ meV.
+The same scan at fixed raw gap amplitude is much weaker and can be negative.
+We therefore identify the signal as a normalization-conditioned mechanism
+signature rather than an unconditional enhancement of the absolute stiffness.
+Finally, we audit the absolute-unit baseline against a previous PRB-style
+superfluid-weight table and show that the historical table can be only
+partially reconstructed from a unified convention.
+This motivates using normalized response maps for the main mechanism claim and
+keeping absolute stiffness comparisons as a separate benchmark problem.
+\end{abstract}
+
+\maketitle
+
+%====================================================================
+\section{Introduction}
+%====================================================================
+
+Magic-angle twisted bilayer graphene (MATBG) provides a setting in which
+superconductivity, topology, flat bands, and quantum geometry meet in a single
+experimentally accessible platform~\cite{cao_sc_2018,cao_insulator_2018,yankowitz_2019}.
+In conventional superconductors the superfluid weight is tied to band
+dispersion and carrier density, but in flat or nearly flat bands a geometric
+contribution associated with the quantum metric can remain finite even when
+ordinary band velocity is small~\cite{peotta_torma_2015,torma_review_2022}.
+This geometric contribution is especially relevant for MATBG, whose fragile
+topology and $C_{2z}\mathcal{T}$ symmetry protect nontrivial band geometry in the
+flat-band manifold~\cite{song_2019,po_2019,xie_2020_prl}.
+
+Circuit-QED measurements have reported a superfluid stiffness in MATBG that is
+large compared with a simple BCS estimate~\cite{tian_2023}.
+More recent transport and microwave measurements have directly extracted the
+superfluid stiffness and found values above conventional Fermi-liquid
+expectations, while also pointing to nontrivial low-temperature gap
+structure~\cite{tanaka_2025}.
+Several theoretical works have connected this anomaly to quantum geometry,
+remote-band effects, and beyond-BCS corrections~\cite{hu_2019,julku_2020,verma_2021}.
+Yet a practical question remains: if a mean-field pairing ansatz contains
+interband structure after projection into the MATBG band basis, does that
+structure leave a robust and separable signature in the computed superfluid
+response?
+
+This paper addresses that question with an explicitly executable finite-band
+workflow.
+Rather than beginning from a band-basis off-diagonal gap chosen by hand, we
+define a pairing matrix in the layer-sublattice orbital basis and project it
+into the normal-state band basis.
+This construction makes the pairing direction covariant under band-basis gauge
+changes and separates two issues that are often entangled: the definition of
+interband pairing and the response convention used to report stiffness.
+The main output is a normalized mechanism map,
+\begin{equation}
+  \delta D_{\rm iso}(\mu,\eta)
+  =
+  \frac{D_{\rm iso}(\mu,\eta)}
+       {D_{\rm iso}(\mu,0)} - 1,
+\end{equation}
+computed for two gap-normalization controls.
+
+The central result is deliberately conservative.
+At fixed Frobenius norm of the orbital pairing direction, increasing the
+interband-pairing component produces a reproducible change in the isotropic
+response across chemical potential.
+At fixed raw gap amplitude, the effect is much smaller.
+Thus the present calculation supports a normalization-conditioned mechanism
+signature, not a universal statement that interband pairing always enhances
+the physical superfluid stiffness.
+We also perform a self-audit of the absolute units and a previous PRB-style
+benchmark table; that audit shows why absolute stiffness tables should be
+regenerated from a single declared convention before being used for final
+experimental comparison.
+
+%====================================================================
+\section{Model and Pairing Construction}
+%====================================================================
+
+\subsection{Bistritzer-MacDonald model}
+
+We use a single-valley Bistritzer-MacDonald continuum Hamiltonian with momenta
+in \AA$^{-1}$ and energies in meV~\cite{bistritzer_2011}.
+The basis for each moire reciprocal vector $\mathbf{G}$ is
+\begin{equation}
+  (tA,tB,bA,bB),
+\end{equation}
+where $t,b$ label top and bottom layers and $A,B$ label sublattices.
+Unless otherwise stated, the numerical scans use
+\begin{align}
+  \theta &= 1.05^\circ, &
+  v_F &= 2.135~\mathrm{eV}\,\text{\AA}, \nonumber\\
+  w_0 &= 87.2~\mathrm{meV}, &
+  w_1 &= 109.0~\mathrm{meV},
+\end{align}
+with a square reciprocal cutoff $N_{\rm shell}=3$, giving a $196\times196$
+normal-state Hamiltonian per valley and spin.
+The moire unit-cell area and reciprocal scale used in the unit audit are
+\begin{align}
+  A_M &= 1.5606\times 10^4~\text{\AA}^{2}, &
+  G_M &= 0.054047~\text{\AA}^{-1}.
+\end{align}
+
+\subsection{Orbital-defined pairing family}
+
+The pairing matrix is first specified in the orbital basis.  We write
+\begin{equation}
+  \Delta_{\rm orb}(\eta)
+  =
+  \Delta_0\,\mathcal{N}_{\eta}\left(M_0+\eta M_1\right),
+\end{equation}
+with
+\begin{equation}
+  M_0=\tau_0\sigma_0,\qquad
+  M_1=\tau_x\sigma_x.
+\end{equation}
+Here $\tau_i$ act in layer space and $\sigma_i$ act in sublattice space.
+The parameter $\eta$ interpolates between the reference orbital-singlet
+direction and the interlayer-sublattice-mixed direction.
+The normalization $\mathcal{N}_{\eta}$ is treated as a control variable.
+We use two conventions:
+\begin{align}
+  &\text{fixed Frobenius:}
+  &&\|M_0+\eta M_1\|_F=\|M_0\|_F,\\
+  &\text{fixed }\Delta_0:
+  &&\mathcal{N}_{\eta}=1.
+\end{align}
+
+At each momentum, the orbital pairing is projected into the retained band
+subspace as
+\begin{equation}
+  \Delta_{\rm band}(\mathbf{k})
+  =
+  U^\dagger(\mathbf{k})
+  \Delta_{\rm orb}
+  U^*(-\mathbf{k}).
+\end{equation}
+The working valley convention is a time-reversal-sewn proxy,
+$U_{-}(-\mathbf{k})=U_{+}^*(\mathbf{k})$.
+This is used as a controlled diagnostic convention rather than a claim that all
+valley-basis subtleties are solved.
+The projected interband-pairing weight is
+\begin{equation}
+  W_{\rm inter}
+  =
+  \frac{\sum_{n\ne m}|\Delta_{nm}|^2}
+       {\sum_{n,m}|\Delta_{nm}|^2}.
+\end{equation}
+
+%====================================================================
+\section{Finite-Band Response}
+%====================================================================
+
+For each retained band subspace we construct a finite-band BdG Hamiltonian,
+\begin{equation}
+  H_{\rm BdG}(\mathbf{k}) =
+  \begin{pmatrix}
+  \varepsilon(\mathbf{k})-\mu & \Delta_{\rm band}(\mathbf{k})\\
+  \Delta^\dagger_{\rm band}(\mathbf{k}) & -[\varepsilon(\mathbf{k})-\mu]
+  \end{pmatrix}.
+\end{equation}
+The static current-current response is evaluated at zero temperature as
+\begin{equation}
+  \Lambda_{\alpha\beta}
+  =
+  \sum_{a\ne b}
+  \frac{
+  \langle a|J_\alpha|b\rangle
+  \langle b|J_\beta|a\rangle
+  (f_a-f_b)}
+  {E_b-E_a}.
+  \label{eq:kubo}
+\end{equation}
+The values reported by the executable response engine are finite-band raw
+diagnostics.  They are internally consistent response outputs, but they are not
+used here as final experimental stiffness values.
+
+The band-basis velocity is decomposed into diagonal and off-diagonal parts,
+\begin{equation}
+  v_\alpha^{\rm band}
+  =
+  v_\alpha^{\rm intra}+v_\alpha^{\rm inter}.
+\end{equation}
+This yields conventional, geometric, and cross response channels.  The
+isotropic response used in the mechanism scans is
+\begin{equation}
+  D_{\rm iso}=\frac{1}{2}(D_{xx}+D_{yy}).
+\end{equation}
+The numerical checks track BdG Hermiticity, particle-hole symmetry, and exact
+closure of the channel decomposition.
+
+%====================================================================
+\section{Pairing Gates and Response Maps}
+%====================================================================
+
+\subsection{Pairing and velocity gates}
+
+The first algebraic pairing gate verifies that an orbital-defined pairing
+family transforms covariantly under band-basis gauge changes.
+The BM projection gate then selects $M_1=\tau_x\sigma_x$ as a useful working
+direction because it produces a finite projected interband weight in the
+time-reversal-sewn valley convention while keeping $W_{\rm inter}=0$ for
+$\eta=0$.
+For $n_{\rm keep}=6$, $nk=7$, and $\eta=1$, the dense scan gives
+\begin{equation}
+  W_{\rm inter}\simeq 0.108.
+\end{equation}
+The velocity gate confirms that projected velocity matrices are Hermitian to
+machine precision and that the intra/inter velocity split closes numerically.
+
+\subsection{Dense chemical-potential and pairing scan}
+
+Table~\ref{tab:dense_eta} summarizes the dense scan at $nk=7$ and
+$n_{\rm keep}=6$.
+The first column gives the retained-band filling proxy $\nu_{\rm proxy}$; this
+is a diagnostic occupancy proxy and is not used as a calibrated experimental
+filling.
+
+\begin{table*}[t]
+\caption{Dense $\mu$ scan comparing $\eta=1$ to $\eta=0$.
+The fixed-Frobenius column reports
+$D_{\rm iso}(\eta=1)/D_{\rm iso}(\eta=0)-1$.
+The fixed-$\Delta_0$ column reports the same quantity without rescaling the
+orbital pairing matrix.
+}
+\label{tab:dense_eta}
+\begin{ruledtabular}
+\begin{tabular}{rrrr}
+$\mu$ (meV) & $\nu_{\rm proxy}$ & fixed Frobenius & fixed $\Delta_0$\\
+\hline
+-5 & -1.483 &  0.0056 & -0.0510\\
+-4 & -1.333 &  0.0891 &  0.0291\\
+-3 & -1.061 &  0.0785 & -0.0071\\
+-2 & -0.857 &  0.0537 & -0.0110\\
+-1 & -0.653 &  0.0802 &  0.0093\\
+ 0 & -0.381 &  0.0817 &  0.0112\\
+ 1 & -0.054 &  0.0914 &  0.0044\\
+ 2 &  0.122 &  0.0949 &  0.0119\\
+ 3 &  0.395 &  0.0653 &  0.0004\\
+ 4 &  0.667 &  0.0662 & -0.0005\\
+ 5 &  0.857 &  0.1186 &  0.0312\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+Figure~\ref{fig:heatmap_frob} shows the fixed-Frobenius dense response map.
+The enhancement is positive over most of the scanned chemical-potential range,
+with the largest endpoint value in the present scan occurring near
+$\mu=5$ meV.
+The middle panel shows that the geometric fraction remains a useful diagnostic
+of how the response is redistributed between current sectors.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/mu_eta_heatmap_nk7_nkeep6_fixed_frobenius.png}
+\caption{Dense $\mu$-$\eta$ response map in the fixed-Frobenius normalization.
+Left: normalized isotropic response relative to $\eta=0$ at fixed $\mu$.
+Middle: geometric fraction.
+Right: response anisotropy $D_{xx}/D_{yy}$.
+}
+\label{fig:heatmap_frob}
+\end{figure*}
+
+Figure~\ref{fig:heatmap_delta0} shows the same scan at fixed raw $\Delta_0$.
+The response is much weaker and can be negative.  This contrast is the main
+reason that the conclusion is stated as normalization-conditioned.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/mu_eta_heatmap_nk7_nkeep6_fixed_delta0.png}
+\caption{Dense $\mu$-$\eta$ response map in the fixed-$\Delta_0$ normalization.
+Compared with Fig.~\ref{fig:heatmap_frob}, the normalized response is strongly
+suppressed and changes sign in parts of the scan.
+}
+\label{fig:heatmap_delta0}
+\end{figure*}
+
+\subsection{\texorpdfstring{$nk=9$}{nk=9} validation}
+
+The key-point validation in Table~\ref{tab:nk9} repeats selected values at
+$nk=9$.
+The fixed-Frobenius signal remains positive and of comparable size, while the
+fixed-$\Delta_0$ response stays close to zero.
+
+\begin{table}[t]
+\caption{$nk=9$, $n_{\rm keep}=6$ validation of the $\eta=1$ response.}
+\label{tab:nk9}
+\begin{ruledtabular}
+\begin{tabular}{rrr}
+$\mu$ (meV) & fixed Frobenius & fixed $\Delta_0$\\
+\hline
+-4 & 0.0604 & -0.0068\\
+ 0 & 0.0863 &  0.0103\\
+ 2 & 0.0643 & -0.0029\\
+ 4 & 0.0605 & -0.0017\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+%====================================================================
+\section{Self-Audit of Absolute Units}
+%====================================================================
+
+The raw response engine outputs values in finite-band diagnostic units.
+A conservative conversion maps raw meV\,\AA$^2$ to eV\,\AA$^2$ per flavor by
+dividing by $1000$.
+The moire area and reciprocal scale agree with the standard MATBG geometry,
+but the historical PRB-style benchmark table is not reproduced by a single
+global prefactor or by the present production convention.
+
+Table~\ref{tab:prb_audit} summarizes the reconstruction audit for uniform
+$s$-wave pairing at $\mu=0$, $\Delta_0=1$ meV, and $nk=14$.
+The best simple unified reconstruction is
+\begin{equation}
+  D_{\rm conv}=2D_{\rm intra,\tau_z},\qquad
+  D_{\rm geom}=D_{\rm inter,\tau_z}.
+\end{equation}
+It nearly reconstructs the extended-band endpoint but not the flat-band
+endpoint.
+A separate flat-band audit shows that the old $n_{\rm keep}=2$ total and
+conventional values can be approximated with a Gamma-centered mesh and a full
+curvature-like conventional correction, but that correction does not work
+cleanly at $n_{\rm keep}=6$.
+
+\begin{table*}[t]
+\caption{Historical PRB benchmark reconstruction.
+Values are eV\,\AA$^2$ per flavor.  The reconstruction route is kept separate
+from the production interband-pairing scans.
+}
+\label{tab:prb_audit}
+\begin{ruledtabular}
+\begin{tabular}{lrrrrrr}
+case & $n_{\rm keep}$ & $D_{\rm total}$ & target & $D_{\rm conv}$ & target & $D_{\rm geom}$\\
+\hline
+current $\tau_z/\tau_0$ & 2 & 29.34 & 67.50 & 20.95 & 53.00 & 8.40\\
+double-conv all-$\tau_z$ & 2 & 54.40 & 67.50 & 41.89 & 53.00 & 12.50\\
+flat endpoint audit & 2 & 66.18 & 67.50 & 53.83 & 53.00 & 12.36\\
+double-conv all-$\tau_z$ & 6 & 126.66 & 129.30 & 51.45 & 54.00 & 75.22\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+This self-audit changes the interpretation of absolute stiffness values.
+The historical table is useful as a benchmark, but it should not be used to
+set the convention for the present interband-pairing mechanism scans.
+Future absolute tables should be regenerated from one declared convention.
+
+%====================================================================
+\section{Discussion}
+%====================================================================
+
+The main physical message is that an interband-pairing direction can leave a
+detectable imprint on the normalized finite-band response of MATBG.
+The imprint is reproducible across chemical potential and survives a modest
+increase of the momentum grid, but it depends strongly on how the orbital gap
+direction is normalized.
+This is both a result and a warning: interband pairing is not a scalar knob.
+Changing the orbital structure can also change the total norm of the projected
+gap, and the resulting response should not be interpreted without specifying
+the normalization convention.
+
+The self-audit also clarifies the status of absolute stiffness claims.
+The continuum BM model has subtleties associated with UV regularization,
+current convention, and band truncation.  Those subtleties are manageable, but
+the audit shows that old absolute tables can mix conventions in ways that are
+not captured by one simple prefactor.
+For this reason the most robust near-term observable in the present work is a
+normalized response map, not an absolute stiffness prediction.
+
+Several limitations remain.  First, the valley sewing convention used here is a
+controlled time-reversal proxy and should be replaced by a fully documented
+two-valley implementation before final production calculations.
+Second, the filling variable is currently a retained-band occupancy proxy.
+Third, no self-consistent gap equation is solved.
+Fourth, a UV-complete lattice calculation would be required for final
+quantitative comparison with experiment.
+Finally, recent finite-momentum Kekul\'e or pair-density-wave scenarios connect
+tunneling spectra, gapless quasiparticles, and geometric stiffness in twisted
+graphene~\cite{wang_kekule_2026}.
+Those states are complementary to the present uniform-pairing diagnostic and
+will require a separate finite-momentum BdG extension.
+
+%====================================================================
+\section{Conclusions}
+%====================================================================
+
+We have built an executable MATBG response pipeline for testing
+orbital-projected interband-pairing signatures.
+The working pairing direction $M_1=\tau_x\sigma_x$ produces a finite projected
+interband-pairing weight and a reproducible normalized response in the
+fixed-Frobenius scan.
+The same mechanism is strongly suppressed when the raw gap amplitude is held
+fixed.
+Thus the calculation supports a precise and conservative conclusion:
+interband pairing produces a normalization-conditioned mechanism signature in
+the finite-band MATBG superfluid response.
+
+The accompanying benchmark audit shows that absolute stiffness tables should
+be regenerated from a single modern convention before being used as final
+manuscript or experimental-comparison numbers.
+The normalized response maps reported here provide the more robust foundation
+for the next stage of the PRB manuscript.
+
+\begin{acknowledgments}
+The author acknowledges use of open-source scientific computing tools
+including NumPy and Matplotlib.
+\end{acknowledgments}
+
+\section*{Declarations}
+
+\textbf{Funding}: Not applicable.
+
+\textbf{Conflict of interest}: The author declares no conflict of interest.
+
+\textbf{Data availability}: All data and code supporting this work are available
+from the corresponding author upon reasonable request.
+
+\textbf{Ethics approval}: Not applicable.
+
+\begin{thebibliography}{35}
+
+\bibitem{cao_sc_2018}
+Y.~Cao, V.~Fatemi, S.~Fang \textit{et al.}, Nature \textbf{556}, 43 (2018).
+
+\bibitem{cao_insulator_2018}
+Y.~Cao, V.~Fatemi, A.~Demir \textit{et al.}, Nature \textbf{556}, 80 (2018).
+
+\bibitem{yankowitz_2019}
+M.~Yankowitz, S.~Chen, H.~Polshyn \textit{et al.}, Science \textbf{363}, 1059 (2019).
+
+\bibitem{song_2019}
+Z.~Song, Z.~Wang, W.~Shi, G.~Li, C.~Fang, and B.~A.~Bernevig, Phys. Rev. Lett. \textbf{123}, 036401 (2019).
+
+\bibitem{po_2019}
+H.~C.~Po, L.~Zou, T.~Senthil, and A.~Vishwanath, Phys. Rev. B \textbf{99}, 195455 (2019).
+
+\bibitem{peotta_torma_2015}
+S.~Peotta and P.~T\"orm\"a, Nat. Commun. \textbf{6}, 8944 (2015).
+
+\bibitem{torma_review_2022}
+P.~T\"orm\"a, S.~Peotta, and B.~A.~Bernevig, Nat. Rev. Phys. \textbf{4}, 528 (2022).
+
+\bibitem{xie_2020_prl}
+F.~Xie, Z.~Song, B.~Lian, and B.~A.~Bernevig, Phys. Rev. Lett. \textbf{124}, 167002 (2020).
+
+\bibitem{tian_2023}
+H.~Tian, X.~Gao, Y.~Zhang \textit{et al.}, Nature \textbf{614}, 440 (2023).
+
+\bibitem{tanaka_2025}
+M.~Tanaka, J.~I.-J.~Wang, T.~H.~Dinh \textit{et al.}, Nature \textbf{638}, 99 (2025).
+
+\bibitem{hu_2019}
+X.~Hu, T.~Hyart, D.~I.~Pikulin, and E.~Rossi, Phys. Rev. Lett. \textbf{123}, 237002 (2019).
+
+\bibitem{julku_2020}
+A.~Julku, T.~J.~Peltonen, L.~Liang, T.~T.~Heikkil\"a, and P.~T\"orm\"a, Phys. Rev. B \textbf{101}, 060505(R) (2020).
+
+\bibitem{verma_2021}
+N.~Verma, T.~Hazra, and M.~Randeria, Proc. Natl. Acad. Sci. U.S.A. \textbf{118}, e2106744118 (2021).
+
+\bibitem{wang_kekule_2026}
+K.~Wang, Q.~Chen, R.~Boyack, and K.~Levin, arXiv:2603.24766 (2026).
+
+\bibitem{bistritzer_2011}
+R.~Bistritzer and A.~H.~MacDonald, Proc. Natl. Acad. Sci. U.S.A. \textbf{108}, 12233 (2011).
+
+\bibitem{nam_2017}
+N.~N.~T.~Nam and M.~Koshino, Phys. Rev. B \textbf{96}, 075311 (2017).
+
+\bibitem{koshino_2018}
+M.~Koshino, N.~F.~Q.~Yuan, T.~Koretsune, M.~Ochi, K.~Kuroki, and L.~Fu, Phys. Rev. X \textbf{8}, 031087 (2018).
+
+\bibitem{oh_2021}
+M.~Oh, K.~P.~Nuckolls, D.~Wong \textit{et al.}, Nature \textbf{600}, 240 (2021).
+
+\end{thebibliography}
+
+\end{document}

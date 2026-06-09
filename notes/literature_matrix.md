@@ -17,9 +17,11 @@
 | Experiment | Yankowitz et al., Science 2019 | MATBG | No | Indirect | No | Yes | Tuning and phase diagram context |
 | Experiment | Oh et al., Nature 2021 | MATBG spectroscopy | No | Gap-related | No | Yes | Gap scale and doping context |
 | Experiment | Tian et al., Nature 2023 | MATBG cQED stiffness | No | Yes | No | Yes | Direct stiffness comparison |
+| Experiment | Tanaka et al., Nature 2025 | MATBG transport and microwave stiffness | No | Yes | No | Yes | Latest direct stiffness context and temperature-dependence constraint |
 | Interaction correction | Herzog-Arbeitman et al., PRL 2022 | Interaction-renormalized geometry | No | Related | Conceptual | Indirect | Explain remaining enhancement beyond mean field |
 | Vertex/strong coupling | Verma, Hazra, Randeria, PNAS 2021 | Flat-band superfluid stiffness | Not central | Yes | Related | Indirect | Discussion of beyond-BCS effects |
 | Pairing symmetry | Isobe, Yuan, Fu, PRX 2018 | MATBG pairing mechanisms | Candidate symmetries | No | No | Indirect | Candidate pairing comparison |
+| Recent theory | Wang, Chen, Boyack, Levin, arXiv 2026 | Kekule / PDW superconductivity in twisted graphene | Yes, finite momentum | Yes | Geometric stiffness | Yes | Boundary of current uniform-pairing framework; future finite-momentum BdG extension |
 | Recent theory | Lamponen et al., PRB 2025 | To verify | To verify | To verify | To verify | To verify | Check relevance to interband pairing |
 
 ## Gap Statement Draft
@@ -29,6 +31,6 @@ Existing work establishes that quantum geometry contributes to superfluid stiffn
 ## Expansion Tasks
 
 1. Verify exact bibliographic information for all rows.
-2. Add 2024-2026 literature on interband pairing in twisted graphene.
+2. Continue verifying 2024-2026 literature on interband pairing in twisted graphene.
 3. Add columns for equations used, numerical parameters, and limitations.
 4. Mark which references belong in introduction, methods, results comparison, and limitations.
