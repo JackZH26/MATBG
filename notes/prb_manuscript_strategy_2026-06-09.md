@@ -202,3 +202,7 @@ submission/Zhou_PRB_Cover_Letter_2026.md
     files and provenance material into ignored outputs under
     `submission/build/` and writes
     `data/processed/prb_submission_package_build.csv`.
+20. The current Abstract and Introduction foreground the normalized-response
+    mechanism question, the fixed-Frobenius/fixed-Delta0 contrast, and the
+    selected-grid stability evidence before the absolute-unit and filling
+    limitations.

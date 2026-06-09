@@ -32,6 +32,10 @@ The Discussion now also includes an explicit evidence-chain and falsifiability
 paragraph: pairing gates, dense normalized maps, normalization controls, and
 selected-grid audits are identified as separate support layers, together with
 specific outcomes that would weaken the present mechanism interpretation.
+The Abstract and Introduction now foreground the normalized-response mechanism
+question, the fixed-Frobenius versus fixed-Delta0 contrast, and the selected
+`nk=9/11/13` plus representative `nk=15` stability evidence before turning to
+the absolute-unit and filling limitations.
 
 Legacy note: `MATBG_superfluid_weight_PRB_v2.tex` is treated as a historical
 baseline source, not as the current submission manuscript. Its author block has

@@ -14,26 +14,26 @@
 \date{June 9, 2026}
 
 \begin{abstract}
-The anomalously large superfluid response of magic-angle twisted bilayer
-graphene is often discussed in terms of quantum geometry, but the extent to
-which the orbital structure of the superconducting gap leaves a separable
-response signature remains less directly quantified.
-We address this question with an executable
-Bistritzer-MacDonald--Bogoliubov-de Gennes workflow that tests
-orbital-projected interband-pairing directions in a finite-band response
-calculation.
-The pairing family is defined in the layer-sublattice orbital basis and then
-projected into the normal-state band basis using a fixed time-reversal-sewn
-valley convention, allowing the pairing direction and response convention to
-be varied independently.
+The large superfluid response reported in magic-angle twisted bilayer graphene
+is often discussed in terms of quantum geometry, but it remains useful to ask
+whether the orbital structure of the superconducting gap leaves a separable
+finite-band response diagnostic.
+We answer this question with an executable
+Bistritzer-MacDonald--Bogoliubov-de Gennes workflow for orbital-projected
+interband-pairing directions.
+The pairing family is defined in the layer-sublattice basis and projected into
+the normal-state band basis using a fixed time-reversal-sewn valley convention,
+so that pairing direction, band projection, and response normalization can be
+varied separately.
 For the working direction $M_1=\tau_x\sigma_x$, the projected interband
 pairing weight increases smoothly with the tuning parameter $\eta$ and reaches
 approximately $0.108$ at $\eta=1$ for the $n_{\rm keep}=6$ truncation.
-Dense scans over chemical potential and pairing interpolation show that, at
-fixed Frobenius norm of the orbital pairing matrix, the normalized isotropic
-response changes by approximately $+0.56\%$ to $+11.86\%$ between $\eta=0$ and
-$\eta=1$ over $\mu=-5,\ldots,5$ meV.
-The same scan at fixed raw gap amplitude is much weaker and can be negative.
+At fixed Frobenius norm of the orbital pairing matrix, dense scans over
+chemical potential and pairing interpolation give a normalized isotropic
+response change of approximately $+0.56\%$ to $+11.86\%$ between $\eta=0$ and
+$\eta=1$ over $\mu=-5,\ldots,5$ meV; selected $nk=9,11,13$ checks and a
+representative $nk=15$ spot check preserve the positive fixed-Frobenius sign.
+The fixed raw-gap-amplitude control is much weaker and can be negative.
 We therefore identify the signal as a normalization-conditioned mechanism
 signature rather than an unconditional enhancement of the absolute stiffness.
 An absolute-unit audit of a previous PRB-style superfluid-weight benchmark
@@ -82,14 +82,14 @@ interband structure after projection into the MATBG band basis, does that
 structure leave a robust and separable signature in the computed superfluid
 response?
 
-This paper addresses that question with an explicitly executable finite-band
+This paper answers that question with an explicitly executable finite-band
 workflow.
-Rather than beginning from a band-basis off-diagonal gap chosen by hand, we
-define a pairing matrix in the layer-sublattice orbital basis and project it
+Rather than starting from a band-basis off-diagonal gap chosen by hand, we
+define the pairing matrix in the layer-sublattice orbital basis and project it
 into the normal-state band basis.
-This construction makes the pairing direction covariant under band-basis gauge
-changes and separates two issues that are often entangled: the definition of
-interband pairing and the response convention used to report stiffness.
+This keeps the pairing direction covariant under band-basis gauge changes and
+separates two issues that are often entangled: how interband pairing is
+defined, and how the response is normalized before it is interpreted.
 The main output is a normalized mechanism map,
 \begin{equation}
   \delta D_{\rm iso}(\mu,\eta)
@@ -102,8 +102,9 @@ computed for two gap-normalization controls.
 The central result is deliberately conservative.
 At fixed Frobenius norm of the orbital pairing direction, increasing the
 interband-pairing component produces a reproducible change in the isotropic
-response across chemical potential.
-At fixed raw gap amplitude, the effect is much smaller.
+response across chemical potential, with selected higher-grid checks
+supporting the sign and scale of the effect.
+At fixed raw gap amplitude, the effect is much smaller and sign-sensitive.
 Thus the present calculation supports a normalization-conditioned mechanism
 signature, not a universal statement that interband pairing always enhances
 the physical superfluid stiffness.
