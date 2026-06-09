@@ -20,6 +20,7 @@ SUPP_PATH = (
 DENSE_SUMMARY = ROOT / "data" / "processed" / "mu_eta_response_scan_nk7_nkeep6_eta1_summary.csv"
 NK9_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk9_nkeep6_keypoints_summary.csv"
 NK11_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk11_nkeep6_keypoints_summary.csv"
+NK13_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk13_nkeep6_keypoints_summary.csv"
 PRB_RECON = ROOT / "data" / "processed" / "prb_table_reconstruction_nk14.csv"
 FLAT_AUDIT = ROOT / "data" / "processed" / "flatband_endpoint_audit_nk14.csv"
 
@@ -245,6 +246,7 @@ def verify_supplemental_nk_convergence(tex: str) -> None:
     rows = split_rows(table_block(tex, "tab:sm_nk_convergence"))
     nk9 = load_csv(NK9_SUMMARY)
     nk11 = load_csv(NK11_SUMMARY)
+    nk13 = load_csv(NK13_SUMMARY)
     nk9_by_key = {
         (row["normalization"], int(float(row["mu_meV"]))): row
         for row in nk9
@@ -253,10 +255,14 @@ def verify_supplemental_nk_convergence(tex: str) -> None:
         (row["normalization"], int(float(row["mu_meV"]))): row
         for row in nk11
     }
+    nk13_by_key = {
+        (row["normalization"], int(float(row["mu_meV"]))): row
+        for row in nk13
+    }
 
     checked = 0
     for cells in rows:
-        if len(cells) != 4:
+        if len(cells) != 5:
             continue
         if "Frobenius" not in cells[0] and "Delta" not in cells[0]:
             continue
@@ -269,6 +275,7 @@ def verify_supplemental_nk_convergence(tex: str) -> None:
         mu = int(mu_values[-1])
         value9 = float(nk9_by_key[(normalization, mu)]["D_iso_rel_target_vs_baseline"])
         value11 = float(nk11_by_key[(normalization, mu)]["D_iso_rel_target_vs_baseline"])
+        value13 = float(nk13_by_key[(normalization, mu)]["D_iso_rel_target_vs_baseline"])
         assert_close(
             f"supp nk9 {normalization} mu={mu}",
             number(cells[1]),
@@ -282,9 +289,15 @@ def verify_supplemental_nk_convergence(tex: str) -> None:
             4,
         )
         assert_close(
-            f"supp nk diff {normalization} mu={mu}",
+            f"supp nk13 {normalization} mu={mu}",
             number(cells[3]),
-            rounded(value11 - value9, 4),
+            rounded(value13, 4),
+            4,
+        )
+        assert_close(
+            f"supp nk diff {normalization} mu={mu}",
+            number(cells[4]),
+            rounded(value13 - value9, 4),
             4,
         )
         checked += 1

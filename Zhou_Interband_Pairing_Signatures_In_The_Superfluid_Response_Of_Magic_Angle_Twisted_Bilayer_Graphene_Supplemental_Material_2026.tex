@@ -210,12 +210,17 @@ python3 scripts/verify_manuscript_tables.py
 \section{Key-Point Momentum-Grid Convergence}
 
 The dense maps in the main text use $nk=7$, while selected key points were
-checked at $nk=9$ and $nk=11$.  The $nk=11$ scan uses
+checked at $nk=9$, $nk=11$, and $nk=13$.  The higher-grid scans use
 \begin{verbatim}
 python3 scripts/run_mu_response_scan.py \
   --nk 11 --n-shell 3 --n-keep 6 \
   --mus -4 0 2 4 --etas 0 0.5 1 \
   --output data/processed/mu_response_scan_nk11_nkeep6_keypoints.csv
+
+python3 scripts/run_mu_response_scan.py \
+  --nk 13 --n-shell 3 --n-keep 6 \
+  --mus -4 0 2 4 --etas 0 0.5 1 \
+  --output data/processed/mu_response_scan_nk13_nkeep6_keypoints.csv
 \end{verbatim}
 and is summarized with \code{scripts/summarize\_eta\_effect.py}.
 
@@ -230,26 +235,26 @@ interband-pairing signal is normalization-conditioned.
 $D_{\rm iso}(\eta=1)/D_{\rm iso}(\eta=0)-1$.}
 \label{tab:sm_nk_convergence}
 \begin{ruledtabular}
-\begin{tabular}{lrrr}
-mode, $\mu$ (meV) & $nk=9$ & $nk=11$ & difference\\
+\begin{tabular}{lrrrr}
+mode, $\mu$ (meV) & $nk=9$ & $nk=11$ & $nk=13$ & $13-9$\\
 \hline
-fixed $\Delta_0$, -4 & -0.0068 & -0.0061 & +0.0007\\
-fixed $\Delta_0$,  0 & +0.0103 & +0.0080 & -0.0023\\
-fixed $\Delta_0$,  2 & -0.0029 & +0.0118 & +0.0147\\
-fixed $\Delta_0$,  4 & -0.0017 & -0.0003 & +0.0014\\
-fixed Frobenius, -4 & +0.0604 & +0.0617 & +0.0012\\
-fixed Frobenius,  0 & +0.0863 & +0.0796 & -0.0067\\
-fixed Frobenius,  2 & +0.0643 & +0.0927 & +0.0285\\
-fixed Frobenius,  4 & +0.0605 & +0.0608 & +0.0002\\
+fixed $\Delta_0$, -4 & -0.0068 & -0.0061 & +0.0122 & +0.0191\\
+fixed $\Delta_0$,  0 & +0.0103 & +0.0080 & +0.0196 & +0.0093\\
+fixed $\Delta_0$,  2 & -0.0029 & +0.0118 & +0.0024 & +0.0053\\
+fixed $\Delta_0$,  4 & -0.0017 & -0.0003 & +0.0011 & +0.0029\\
+fixed Frobenius, -4 & +0.0604 & +0.0617 & +0.0872 & +0.0267\\
+fixed Frobenius,  0 & +0.0863 & +0.0796 & +0.1013 & +0.0150\\
+fixed Frobenius,  2 & +0.0643 & +0.0927 & +0.0805 & +0.0162\\
+fixed Frobenius,  4 & +0.0605 & +0.0608 & +0.0772 & +0.0166\\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 
-The largest pointwise change in the fixed-Frobenius sector occurs at
-$\mu=2~\mathrm{meV}$, where the response increases by about 2.85 percentage
-points between $nk=9$ and $nk=11$.  Therefore the current manuscript claims sign
-and order-of-magnitude stability of the normalized mechanism signal, not a
-strict continuum-limit extrapolation of the tabulated values.
+Across the three key-point grids the fixed-Frobenius response remains positive,
+with the largest $nk=13-nk=9$ shift about 2.67 percentage points.  Therefore
+the current manuscript claims sign and order-of-magnitude stability of the
+normalized mechanism signal, not a strict continuum-limit extrapolation of the
+tabulated values.
 
 \section{Historical PRB Benchmark Reconstruction}
 
@@ -285,8 +290,8 @@ than a production convention.
 
 The current submission-critical gaps are:
 \begin{enumerate}
-  \item a systematic continuum-grid extrapolation beyond the present
-  $nk=9$ and $nk=11$ key-point checks;
+  \item a systematic continuum-grid extrapolation beyond the present selected
+  $nk=9$, $nk=11$, and $nk=13$ key-point checks;
   \item a fully documented two-valley sewing convention or an explicitly
   limited diagnostic-model framing;
   \item a final absolute stiffness convention before any direct experimental

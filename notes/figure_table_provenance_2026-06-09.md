@@ -147,17 +147,19 @@ Current status:
 values are copied from the summary CSV and rounded in the LaTeX table. The
 rounding is checked by `scripts/verify_manuscript_tables.py`.
 
-### Supplemental `nk=11` key-point convergence table
+### Supplemental `nk=9/11/13` key-point convergence table
 
 Supplemental content:
-selected `nk=9` versus `nk=11` validation values for `eta=1` relative to
-`eta=0`.
+selected `nk=9`, `nk=11`, and `nk=13` validation values for `eta=1` relative
+to `eta=0`.
 
 Source CSV:
 `data/processed/mu_response_scan_nk11_nkeep6_keypoints.csv`
+`data/processed/mu_response_scan_nk13_nkeep6_keypoints.csv`
 
 Summary CSV:
 `data/processed/mu_response_scan_nk11_nkeep6_keypoints_summary.csv`
+`data/processed/mu_response_scan_nk13_nkeep6_keypoints_summary.csv`
 
 Reproduction commands:
 
@@ -173,16 +175,29 @@ python3 scripts/run_mu_response_scan.py \
 python3 scripts/summarize_eta_effect.py \
   data/processed/mu_response_scan_nk11_nkeep6_keypoints.csv \
   --output data/processed/mu_response_scan_nk11_nkeep6_keypoints_summary.csv
+
+python3 scripts/run_mu_response_scan.py \
+  --nk 13 \
+  --n-shell 3 \
+  --n-keep 6 \
+  --mus -4 0 2 4 \
+  --etas 0 0.5 1 \
+  --output data/processed/mu_response_scan_nk13_nkeep6_keypoints.csv
+
+python3 scripts/summarize_eta_effect.py \
+  data/processed/mu_response_scan_nk13_nkeep6_keypoints.csv \
+  --output data/processed/mu_response_scan_nk13_nkeep6_keypoints_summary.csv
 ```
 
 Config:
 `configs/mu_response_convergence_nk11.yaml`
+`configs/mu_response_convergence_nk13.yaml`
 
 Current status:
-the fixed-Frobenius response remains positive at all four key points. The
-Supplemental Material table values are checked by
-`scripts/verify_manuscript_tables.py` against the `nk=9` and `nk=11` summary
-CSV files.
+the fixed-Frobenius response remains positive at all four key points and all
+three checked grids. The Supplemental Material table values are checked by
+`scripts/verify_manuscript_tables.py` against the `nk=9`, `nk=11`, and `nk=13`
+summary CSV files.
 
 ### `tab:prb_audit`
 

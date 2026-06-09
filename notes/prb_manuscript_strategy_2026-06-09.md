@@ -116,6 +116,8 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
    `scripts/verify_manuscript_tables.py`.
 5. Recent 2025-2026 stiffness and Kekule/PDW context is tracked in
    `notes/recent_literature_update_2026-06-09.md`.
-6. The selected `nk=11` convergence check is tracked in
-   `notes/nk11_convergence_result_2026-06-09.md` and
-   `configs/mu_response_convergence_nk11.yaml`.
+6. The selected `nk=11` and `nk=13` convergence checks are tracked in
+   `notes/nk11_convergence_result_2026-06-09.md`,
+   `notes/nk13_convergence_result_2026-06-09.md`,
+   `configs/mu_response_convergence_nk11.yaml`, and
+   `configs/mu_response_convergence_nk13.yaml`.
