@@ -13,9 +13,11 @@ tables, a declarations section, a formal BibTeX file, a figure/table
 provenance manifest, and a standalone Supplemental Material skeleton.
 
 The current draft is suitable as a research checkpoint and internal review
-target. It still needs a final absolute-unit convention and filling
-calibration. A broad 2025-2026 literature sweep was performed on 2026-06-09,
-but it should be repeated immediately before actual submission.
+target. It now has an explicit normalized-response observable policy for the
+mechanism-paper scope. It still needs final judgement on whether the present
+finite-grid and filling-crosswalk evidence is sufficient for submission. A
+broad 2025-2026 literature sweep was performed on 2026-06-09, but it should be
+repeated immediately before actual submission.
 The current draft now includes a central two-flat-band filling crosswalk for
 the dense scan, but this is still not a device-specific carrier-density
 calibration.
@@ -43,7 +45,7 @@ not regenerated in this work package because the legacy figure assets
 | Absolute PRB benchmark table is reproduced by current production convention | Unit/baseline audits show mismatch | Not allowed | Self-audit only |
 | Old `n_keep=6` endpoint can be nearly reconstructed by `double_conv_all_tauz` | `notes/prb_table_reconstruction_result_2026-06-09.md` | Supported as benchmark route | Audit table |
 | Old `n_keep=2` endpoint needs mesh/curvature-specific convention | `notes/flatband_endpoint_audit_result_2026-06-09.md` | Supported as historical audit | Appendix/audit |
-| Direct comparison to experimental stiffness | Requires final absolute convention and device-level filling calibration | Not ready | Motivation/discussion only |
+| Direct comparison to experimental stiffness | Requires final absolute convention and device-level filling calibration | Outside current mechanism-paper scope | Motivation/discussion only |
 | Anisotropy is a robust observable signature | Current scans do not establish robustness | Not ready | Secondary diagnostic only |
 
 ## Submission-Critical Gaps
@@ -70,11 +72,12 @@ not regenerated in this work package because the legacy figure assets
 
 3. Absolute stiffness:
    The production convention and the historical PRB table are not identical.
-   The manuscript now states a three-layer reporting convention: raw response
-   values are internal diagnostics, normalized ratios are the main mechanism
-   observable, and eV A^2 per-flavor values are used only for the benchmark
-   self-audit. The final paper must still choose one absolute convention and
-   recompute any absolute values before direct experimental comparison.
+   The manuscript now states a final observable policy for the current
+   mechanism-paper scope: raw response values are internal diagnostics,
+   normalized ratios are the only claim-bearing response observables, and eV
+   A^2 per-flavor values are used only for benchmark provenance and
+   self-audit. A future direct experimental-comparison version must choose one
+   absolute convention and recompute any absolute values before comparison.
 
 4. Filling calibration:
    `nu_proxy` is now explicitly defined as a retained-band occupancy label, not
@@ -106,24 +109,28 @@ not regenerated in this work package because the legacy figure assets
    short list of forbidden overclaims.
    `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
    presents the first standalone Supplemental Material skeleton. The remaining
-   gap is to expand it with any final convention decisions.
+   reproducibility gap is to decide whether additional convergence or
+   device-level filling work is needed before submission.
 
 ## Recommended Next Work Packages
 
-1. Decide the final absolute stiffness convention:
-   if absolute values are needed, regenerate them from one declared response
-   convention with explicit degeneracy, BZ normalization, and diamagnetic or
-   curvature terms.
+1. Decide whether the selected normalized-response evidence is sufficient for
+   the PRB mechanism-paper scope, or whether to add one more denser-grid layer.
 
-2. Decide whether the selected `nk=9/11/13` trend audit plus `nk=15`
+2. If the manuscript scope is expanded to direct experimental stiffness
+   comparison, regenerate absolute values from one declared response convention
+   with explicit degeneracy, BZ normalization, and diamagnetic or curvature
+   terms.
+
+3. Decide whether the selected `nk=9/11/13` trend audit plus `nk=15`
    representative spot check is enough for the PRB mechanism claim, or whether
    to add a broader denser-grid saturation check.
 
-3. Decide whether the central-flat-band crosswalk is sufficient for the PRB
+4. Decide whether the central-flat-band crosswalk is sufficient for the PRB
    mechanism claim, or add a device-level carrier-density calibration before
    comparing to superconducting dome locations.
 
-4. Repeat a broad literature sweep immediately before submission, focused on
+5. Repeat a broad literature sweep immediately before submission, focused on
    new 2026 stiffness, tunneling, and band-off-diagonal or finite-momentum
    pairing papers.
 
@@ -132,9 +139,12 @@ not regenerated in this work package because the legacy figure assets
 Current level: strong internal checkpoint, not yet submission-ready.
 
 The central normalized-response mechanism claim is viable. The final PRB paper
-should not be submitted until the remaining absolute-unit convention and
-filling calibration are tightened, and the 2026-06-09 literature sweep is
-repeated against the then-current literature.
+should not make direct absolute-stiffness or superconducting-dome comparison
+claims unless absolute-unit and device-level filling calibrations are added.
+For the current mechanism-paper scope, the main remaining decisions are
+whether the finite-grid evidence and central-flat-band crosswalk are sufficient,
+and to repeat the 2026-06-09 literature sweep against the then-current
+literature.
 The filling status has improved from an uncalibrated proxy alone to a
 CSV-verified central-flat-band crosswalk, but the conservative limitation should
 remain unless a device-level calibration is added.

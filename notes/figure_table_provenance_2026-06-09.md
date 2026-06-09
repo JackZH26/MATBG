@@ -115,10 +115,12 @@ retained-band filling proxy.
 
 Source:
 `notes/normalization_and_units_strategy.md`
+and `notes/observable_policy_decision_2026-06-09.md`
 
 Current status:
 this table has no numerical CSV dependencies. It records interpretive
 boundaries for the manuscript and is not part of the numerical table verifier.
+The text-level policy is checked by `scripts/audit_observable_policy.py`.
 
 ### `tab:sm_filling_crosswalk`
 
@@ -150,6 +152,27 @@ flat_occupied_bands_per_flavor -> occupied flat bands/flavor column
 Current status:
 values are generated from the BM central-pair spectrum and checked by
 `scripts/verify_manuscript_tables.py`.
+
+### Text-Level Claim and Observable Audits
+
+Outputs:
+
+```text
+data/processed/claim_scope_audit.csv
+data/processed/observable_policy_audit.csv
+```
+
+Scripts:
+
+```bash
+python3 scripts/audit_claim_scope.py
+python3 scripts/audit_observable_policy.py
+```
+
+Current status:
+these audits are guardrails for manuscript scope and observable policy. They do
+not replace numerical verification, but they check that the current draft does
+not promote finite-band diagnostics to claim-bearing absolute stiffness values.
 
 ### `tab:nk9`
 

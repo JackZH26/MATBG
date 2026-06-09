@@ -1,0 +1,11 @@
+check_id,kind,file_key,status,phrase,reason
+main_claim_bearing_ratios,required_phrase,main,pass,Normalized response ratios are the claim-bearing quantities,Main text must state which response observable carries the claim.
+main_no_claim_bearing_absolute,required_phrase,main,pass,makes no claim-bearing absolute stiffness prediction,Main text must exclude absolute stiffness prediction claims.
+supp_final_policy,required_phrase,supplement,pass,final observable policy for the current mechanism-paper scope,Supplement must expose the current mechanism-paper reporting policy.
+supp_claim_bearing_table,required_phrase,supplement,pass,claim-bearing mechanism observable,Supplemental reporting table must identify the claim-bearing row.
+strategy_policy,required_phrase,strategy,pass,Final Observable Policy,Strategy note must record the scope decision.
+readiness_scope,required_phrase,readiness,pass,final observable policy for the current mechanism-paper scope,Readiness audit must not treat absolute values as current-scope claims.
+units_claim_layer,required_phrase,units,pass,final claim-bearing observable layer,Units note must identify normalized ratios as the active claim layer.
+old_absolute_blocker,forbidden_phrase,combined,pass,absolute response convention is not yet final for experimental stiffness comparison,Old blocker wording should not remain after adopting normalized-only scope.
+old_must_choose_absolute,forbidden_phrase,combined,pass,final paper must still choose one absolute convention,Current mechanism-paper scope should not require an absolute table.
+old_prevent_submission,forbidden_phrase,combined,pass,prevent the current draft from being treated as a final PRB submission,Limitations should define scope rather than overstate an absolute blocker.

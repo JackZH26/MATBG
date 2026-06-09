@@ -66,6 +66,8 @@ W_inter
 ```
 
 This layer is appropriate for the first manuscript-level mechanism maps because it reduces sensitivity to missing global prefactors.
+As of the current PRB mechanism-paper scope, this is the final claim-bearing
+observable layer.
 
 ### Layer C: Physical Units
 
@@ -128,7 +130,11 @@ anisotropy as a main signature
 
 Anisotropy remains useful as a diagnostic, but current scans do not support it as the primary observable signature.
 
-## 5. Next Unit-Conversion Tasks
+## 5. Unit-Conversion Tasks for Expanded Experimental Scope
+
+These tasks are no longer blockers for the normalized-response mechanism
+claim, but they remain required before any direct experimental-comparison
+claim:
 
 1. Define the exact moire-cell area used by the BM model.
 2. Decide whether the response should be divided by the sampled Brillouin-zone area or moire-cell area.
@@ -170,7 +176,7 @@ Material use a three-layer reporting convention:
 
 1. raw response values are internal finite-band diagnostics;
 2. normalized ratios such as `D_iso(eta)/D_iso(0)-1` are the main mechanism
-   observables;
+   observables and the only claim-bearing response values;
 3. eV A^2 per-flavor values are used only for benchmark self-audit, not for
    experimental stiffness comparison.
 

@@ -11,9 +11,15 @@ This repository contains the working materials for a MATBG superfluid stiffness 
    The operational research plan with work packages, acceptance criteria, and sprint tasks.
 
 3. `MATBG_superfluid_weight_PRB_v2.tex`  
-   Existing PRB-style manuscript draft on band-basis decomposition of superfluid weight.
+   Historical PRB-style baseline draft on band-basis decomposition of superfluid weight.
 
-4. `notes/interband_pairing_definition.md`  
+4. `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex`
+   Current PRB-targeted mechanism manuscript.
+
+5. `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
+   Current Supplemental Material draft.
+
+6. `notes/interband_pairing_definition.md`
    Working definition and validation requirements for interband pairing.
 
 ## Execution Rule

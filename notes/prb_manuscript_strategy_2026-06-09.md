@@ -25,6 +25,14 @@ D_iso(mu, eta) / D_iso(mu, eta=0) - 1
 
 with both `fixed_frobenius_norm` and `fixed_delta0` retained as controls.
 
+## Final Observable Policy
+
+For the current PRB mechanism-paper scope, the claim-bearing response
+observable is the normalized finite-band response ratio. Raw response values
+are internal diagnostics, and eV A^2 per-flavor values are benchmark
+provenance only. No absolute stiffness value in the present manuscript is used
+as a final experimental prediction.
+
 ## Claims Allowed in the Main Text
 
 1. The `tr_sewn` orbital-projected pairing construction passes algebraic and
@@ -63,8 +71,9 @@ D_total = 66.18 vs 67.50 eV A^2.
 ```
 
 But no single convention reconstructs all sectors and truncations cleanly.
-Thus new paper figures should use normalized mechanism quantities unless a new
-absolute convention is declared and recomputed end-to-end.
+Thus new paper figures use normalized mechanism quantities. A direct
+experimental-comparison paper would need a separate absolute convention
+declared and recomputed end-to-end.
 
 ## Proposed Paper Structure
 
@@ -133,8 +142,11 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
 9. The manuscript reporting convention separates raw diagnostics, normalized
    mechanism ratios, eV A^2 per-flavor benchmark audits, and the retained-band
    filling proxy; details are tracked in
-   `notes/normalization_and_units_strategy.md`.
+   `notes/normalization_and_units_strategy.md` and
+   `notes/observable_policy_decision_2026-06-09.md`.
 10. Recent stiffness and band-off-diagonal pairing context is now included in
     the manuscript through `tanaka_2025`, `christos_2023`, `putzer_2025`, and
     `wang_kekule_2026`; supporting notes are in
     `notes/recent_literature_update_2026-06-09.md`.
+11. Text-level guardrails are run with `scripts/audit_claim_scope.py` and
+    `scripts/audit_observable_policy.py`.

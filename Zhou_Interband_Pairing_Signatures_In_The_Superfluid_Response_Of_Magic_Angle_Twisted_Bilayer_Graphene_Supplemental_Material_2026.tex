@@ -86,6 +86,7 @@ Table~\ref{tab:sm_reporting_layers} states the reporting convention used in
 the present manuscript.  The main figures use normalized response ratios, while
 absolute eV\,\AA$^2$ values are restricted to the self-audit and historical
 benchmark reconstruction.
+This is the final observable policy for the current mechanism-paper scope.
 
 \begin{table}[h]
 \caption{Reporting convention for response and filling quantities.}
@@ -95,7 +96,7 @@ benchmark reconstruction.
 quantity & present use & excluded interpretation\\
 \hline
 raw response & internal finite-band diagnostic & physical stiffness\\
-$D_{\rm iso}(\eta)/D_{\rm iso}(0)-1$ & main mechanism observable & absolute stiffness\\
+$D_{\rm iso}(\eta)/D_{\rm iso}(0)-1$ & claim-bearing mechanism observable & absolute stiffness\\
 eV\,\AA$^2$ per flavor & benchmark audit only & experimental comparison\\
 $\nu_{\rm proxy}$ & retained-band occupancy label & calibrated carrier density\\
 \end{tabular}
@@ -481,11 +482,19 @@ text-level claim-scope audit is generated with
 \begin{verbatim}
 python3 scripts/audit_claim_scope.py
 \end{verbatim}
-and recorded in \code{data/processed/claim\_scope\_audit.csv}.  This audit is
-not a numerical validation tool; it checks that the manuscript retains the
-boundary statements needed to avoid overinterpreting the finite-band diagnostic
-calculation.  Table~\ref{tab:sm_claim_scope} summarizes the current claim
-scope.
+and the observable-policy audit is generated with
+\begin{verbatim}
+python3 scripts/audit_observable_policy.py
+\end{verbatim}
+The audit outputs are
+\begin{verbatim}
+data/processed/claim_scope_audit.csv
+data/processed/observable_policy_audit.csv
+\end{verbatim}
+They are not numerical validation tools; they check that the manuscript
+retains the boundary statements needed to avoid overinterpreting the
+finite-band diagnostic calculation.  Table~\ref{tab:sm_claim_scope}
+summarizes the current claim scope.
 
 \begin{table}[h]
 \caption{Allowed manuscript claims and excluded interpretations.}
@@ -513,15 +522,16 @@ The current submission-critical gaps are:
   $nk=9$, $nk=11$, $nk=13$ trend audit and targeted $nk=15$ spot check;
   \item a fully independent two-valley implementation before studying
   valley-asymmetric perturbations;
-  \item a final absolute stiffness convention before any direct experimental
-  comparison;
+  \item a final absolute stiffness convention only before any direct
+  experimental comparison;
   \item a device-level filling calibration beyond the central-flat-band
   crosswalk reported here.
 \end{enumerate}
 
 These limitations do not invalidate the normalized-response mechanism claim,
-but they prevent the current draft from being treated as a final PRB submission
-without further convergence and convention work.
+but they define the boundary of the present PRB mechanism submission.  Direct
+experimental-comparison claims require further convergence, calibration, and
+absolute-convention work.
 
 \begin{acknowledgments}
 The author acknowledges use of open-source scientific computing tools
