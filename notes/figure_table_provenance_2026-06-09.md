@@ -291,6 +291,47 @@ Current status:
 values are generated from the `nk=9/11/13` summary CSV files and checked by
 `scripts/verify_manuscript_tables.py`.
 
+### Supplemental nk15 spot-check table
+
+Supplemental content:
+targeted `nk=15` spot check at `mu=0,2` meV, comparing `eta=1` to `eta=0` for
+fixed-Frobenius and fixed-Delta0 normalization.
+
+Source CSV:
+`data/processed/mu_response_scan_nk15_nkeep6_spotcheck.csv`
+`data/processed/mu_response_scan_nk15_nkeep6_spotcheck_summary.csv`
+
+Reproduction commands:
+
+```bash
+python3 scripts/run_mu_response_scan.py \
+  --nk 15 \
+  --n-shell 3 \
+  --n-keep 6 \
+  --mus 0 2 \
+  --etas 0 1 \
+  --output data/processed/mu_response_scan_nk15_nkeep6_spotcheck.csv
+
+python3 scripts/summarize_eta_effect.py \
+  data/processed/mu_response_scan_nk15_nkeep6_spotcheck.csv \
+  --output data/processed/mu_response_scan_nk15_nkeep6_spotcheck_summary.csv
+```
+
+Config:
+`configs/mu_response_spotcheck_nk15.yaml`
+
+Columns mapped into LaTeX:
+
+```text
+nk13 D_iso_rel_target_vs_baseline -> nk=13 column
+nk15 D_iso_rel_target_vs_baseline -> nk=15 column
+nk15 - nk13 -> 15-13 column
+nk15 W_inter_target -> W_inter(15) column
+```
+
+Current status:
+values are checked by `scripts/verify_manuscript_tables.py`.
+
 ### Supplemental raw valley sewing diagnostic table
 
 Supplemental content:

@@ -29,6 +29,7 @@ calibration.
 | Fixed-Frobenius response changes by `+0.56%` to `+11.86%` over `mu=-5...5 meV` | `notes/mu_eta_dense_scan_result_2026-06-09.md`, `data/processed/mu_eta_response_scan_nk7_nkeep6_eta1_summary.csv` | Supported at `nk=7` | Main result |
 | `nk=9`, `nk=11`, and `nk=13` key points preserve positive fixed-Frobenius response | `data/processed/mu_response_scan_nk9_nkeep6_keypoints_summary.csv`, `data/processed/mu_response_scan_nk11_nkeep6_keypoints_summary.csv`, `data/processed/mu_response_scan_nk13_nkeep6_keypoints_summary.csv`, `notes/nk11_convergence_result_2026-06-09.md`, `notes/nk13_convergence_result_2026-06-09.md` | Supported as selected-grid key-point convergence; not a full continuum extrapolation | Main text plus Supplemental Material |
 | Simple `1/nk^2` trend audit keeps fixed-Frobenius key-point intercepts positive | `data/processed/nk_trend_audit_nkeep6.csv`, `figures/nk_trend_audit_nkeep6.pdf`, `notes/nk_trend_audit_result_2026-06-09.md` | Supported as finite-grid trend audit; not a formal continuum limit | Main text plus Supplemental Material |
+| `nk=15` spot check preserves positive fixed-Frobenius response at representative key points | `data/processed/mu_response_scan_nk15_nkeep6_spotcheck_summary.csv`, `notes/nk15_spotcheck_result_2026-06-09.md` | Supported for `mu=0,2`; not a dense-grid replacement | Main text plus Supplemental Material |
 | Fixed-Delta0 response is weak and can be negative | Dense and key-point scan summaries | Supported | Control result |
 | Interband pairing universally enhances physical stiffness | Contradicted by fixed-Delta0 control | Not allowed | Do not claim |
 | Absolute PRB benchmark table is reproduced by current production convention | Unit/baseline audits show mismatch | Not allowed | Self-audit only |
@@ -43,11 +44,12 @@ calibration.
    The `nk=11` and `nk=13` key-point layers have now been run for
    `mu=-4,0,2,4`, `eta=0,0.5,1`, and `n_keep=6`. They preserve the positive
    fixed-Frobenius response across all selected chemical potentials. The
-   Supplemental Material now includes both the direct convergence figure/table
-   and a finite-grid `1/nk^2` trend audit whose fixed-Frobenius intercepts are
-   positive at the four key points. A final submission should still avoid
-   strict continuum-limit claims unless a denser-mesh saturation check or a
-   more formal extrapolation is performed.
+   Supplemental Material now includes the direct convergence figure/table, a
+   finite-grid `1/nk^2` trend audit whose fixed-Frobenius intercepts are
+   positive at the four key points, and a targeted `nk=15` spot check at
+   `mu=0,2`. A final submission should still avoid strict continuum-limit
+   claims unless a complete denser-mesh saturation check or a more formal
+   extrapolation is performed.
 
 2. Valley convention:
    The current `tr_sewn` proxy is now explicitly documented in the main text
@@ -99,9 +101,9 @@ calibration.
    convention with explicit degeneracy, BZ normalization, and diamagnetic or
    curvature terms.
 
-2. Decide whether the selected `nk=9/11/13` trend audit is enough for the PRB
-   mechanism claim, or whether to add a denser-grid saturation check using one
-   or two representative chemical potentials.
+2. Decide whether the selected `nk=9/11/13` trend audit plus `nk=15`
+   representative spot check is enough for the PRB mechanism claim, or whether
+   to add a broader denser-grid saturation check.
 
 3. Decide whether the central-flat-band crosswalk is sufficient for the PRB
    mechanism claim, or add a device-level carrier-density calibration before

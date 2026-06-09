@@ -121,7 +121,11 @@ def main() -> int:
     out = output_path(args)
     out.parent.mkdir(parents=True, exist_ok=True)
     with out.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=fieldnames,
+            lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows(summary_rows)
     print(f"Wrote {out}")

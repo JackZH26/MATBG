@@ -421,6 +421,29 @@ fixed Frobenius,  4 &  6.05 &  7.72 &  8.65 & 10.82 & positive\\
 \end{ruledtabular}
 \end{table}
 
+A targeted higher-grid spot check was also run at $nk=15$ for $\mu=0$ and
+$2$~meV, using only $\eta=0$ and $\eta=1$.  This is not a full dense-grid
+replacement, but it tests whether the two central representative key points
+remain in the same response range on a denser mesh.  Table~\ref{tab:sm_nk15}
+shows that the fixed-Frobenius response remains positive and close to the
+$nk=13$ values, while the fixed-$\Delta_0$ control remains below one percent at
+both chemical potentials.
+
+\begin{table}[t]
+\caption{Targeted $nk=15$ spot check for representative key points.}
+\label{tab:sm_nk15}
+\begin{ruledtabular}
+\begin{tabular}{lrrrr}
+mode, $\mu$ (meV) & $nk=13$ & $nk=15$ & $15-13$ & $W_{\rm inter}(15)$\\
+\hline
+fixed $\Delta_0$, 0 & +0.0196 & +0.0085 & -0.0111 & 0.1076\\
+fixed $\Delta_0$, 2 & +0.0024 & +0.0071 & +0.0046 & 0.1076\\
+fixed Frobenius, 0 & +0.1013 & +0.0897 & -0.0116 & 0.1076\\
+fixed Frobenius, 2 & +0.0805 & +0.0865 & +0.0060 & 0.1076\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 \section{Historical PRB Benchmark Reconstruction}
 
 The production interband-pairing scan and the historical PRB table
@@ -455,8 +478,8 @@ than a production convention.
 
 The current submission-critical gaps are:
 \begin{enumerate}
-  \item a denser or formal continuum-grid extrapolation beyond the present
-  selected $nk=9$, $nk=11$, and $nk=13$ trend audit;
+  \item a full continuum-grid extrapolation beyond the present selected
+  $nk=9$, $nk=11$, $nk=13$ trend audit and targeted $nk=15$ spot check;
   \item a fully independent two-valley implementation before studying
   valley-asymmetric perturbations;
   \item a final absolute stiffness convention before any direct experimental

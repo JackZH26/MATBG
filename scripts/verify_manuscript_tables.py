@@ -21,6 +21,7 @@ DENSE_SUMMARY = ROOT / "data" / "processed" / "mu_eta_response_scan_nk7_nkeep6_e
 NK9_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk9_nkeep6_keypoints_summary.csv"
 NK11_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk11_nkeep6_keypoints_summary.csv"
 NK13_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk13_nkeep6_keypoints_summary.csv"
+NK15_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk15_nkeep6_spotcheck_summary.csv"
 VALLEY_SEWING = ROOT / "data" / "processed" / "valley_sewing_diagnostic.csv"
 PRB_RECON = ROOT / "data" / "processed" / "prb_table_reconstruction_nk14.csv"
 FLAT_AUDIT = ROOT / "data" / "processed" / "flatband_endpoint_audit_nk14.csv"
@@ -440,6 +441,62 @@ def verify_supplemental_nk_trend(tex: str) -> None:
         raise AssertionError(f"Expected 8 supplemental nk trend rows, checked {checked}")
 
 
+def verify_supplemental_nk15(tex: str) -> None:
+    rows = split_rows(table_block(tex, "tab:sm_nk15"))
+    nk13 = {
+        (row["normalization"], int(float(row["mu_meV"]))): row
+        for row in load_csv(NK13_SUMMARY)
+    }
+    nk15 = {
+        (row["normalization"], int(float(row["mu_meV"]))): row
+        for row in load_csv(NK15_SUMMARY)
+    }
+
+    checked = 0
+    for cells in rows:
+        if len(cells) != 5:
+            continue
+        if "Frobenius" not in cells[0] and "Delta" not in cells[0]:
+            continue
+        normalization = (
+            "fixed_delta0" if "Delta" in cells[0] else "fixed_frobenius_norm"
+        )
+        mu_values = numbers(cells[0])
+        if not mu_values:
+            raise ValueError(f"No mu value found in cell: {cells[0]!r}")
+        mu = int(mu_values[-1])
+        value13 = float(nk13[(normalization, mu)]["D_iso_rel_target_vs_baseline"])
+        row15 = nk15[(normalization, mu)]
+        value15 = float(row15["D_iso_rel_target_vs_baseline"])
+        assert_close(
+            f"supp nk15 nk13 {normalization} mu={mu}",
+            number(cells[1]),
+            rounded(value13, 4),
+            4,
+        )
+        assert_close(
+            f"supp nk15 value {normalization} mu={mu}",
+            number(cells[2]),
+            rounded(value15, 4),
+            4,
+        )
+        assert_close(
+            f"supp nk15 diff {normalization} mu={mu}",
+            number(cells[3]),
+            rounded(value15 - value13, 4),
+            4,
+        )
+        assert_close(
+            f"supp nk15 winter {normalization} mu={mu}",
+            number(cells[4]),
+            rounded(row15["W_inter_target"], 4),
+            4,
+        )
+        checked += 1
+    if checked != 4:
+        raise AssertionError(f"Expected 4 supplemental nk15 rows, checked {checked}")
+
+
 def main() -> int:
     tex = TEX_PATH.read_text()
     verify_dense_eta(tex)
@@ -451,6 +508,7 @@ def main() -> int:
         verify_supplemental_valley_sewing(supp)
         verify_supplemental_filling_crosswalk(supp)
         verify_supplemental_nk_trend(supp)
+        verify_supplemental_nk15(supp)
     print("All manuscript and supplemental table values match processed CSV data.")
     return 0
 
