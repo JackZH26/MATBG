@@ -1,0 +1,67 @@
+check_id,scope,status,evidence,requirement
+title_main_tex,title,pass,Interband Pairing Signatures in the Superfluid Response of Magic-Angle Twisted Bilayer Graphene,Main TeX title matches the PRB checkpoint title.
+title_supplement_tex,title,pass,Interband Pairing Signatures in the Superfluid Response of Magic-Angle Twisted Bilayer Graphene,Supplement title references the same manuscript title.
+title_cover_letter,title,pass,Interband Pairing Signatures in the Superfluid Response of Magic-Angle Twisted Bilayer Graphene,Cover letter uses the same manuscript title.
+title_readme_files,title,pass,main and supplement filenames,README lists the active manuscript and supplement files.
+main_author_01,authorship,pass,\author{Jian Zhou},Main TeX author block matches the required Jian Zhou metadata.
+supp_author_01,authorship,pass,\author{Jian Zhou},Supplement author block matches the required Jian Zhou metadata.
+main_author_02,authorship,pass,"\affiliation{JZ Institute of Science, Hong Kong, China}",Main TeX author block matches the required Jian Zhou metadata.
+supp_author_02,authorship,pass,"\affiliation{JZ Institute of Science, Hong Kong, China}",Supplement author block matches the required Jian Zhou metadata.
+main_author_03,authorship,pass,\email{jack@jzis.org},Main TeX author block matches the required Jian Zhou metadata.
+supp_author_03,authorship,pass,\email{jack@jzis.org},Supplement author block matches the required Jian Zhou metadata.
+cover_signature,authorship,pass,Jian Zhou signature,Cover letter uses the required signature.
+forbid_author_variant_jack,authorship,pass,Jack,Forbidden author-name variants are absent from submission-facing text.
+forbid_author_variant_jack_zhou,authorship,pass,Jack Zhou,Forbidden author-name variants are absent from submission-facing text.
+forbid_author_variant_wall_e,authorship,pass,Wall-E,Forbidden author-name variants are absent from submission-facing text.
+forbid_author_variant_wali_chinese,authorship,pass,瓦力,Forbidden author-name variants are absent from submission-facing text.
+forbid_author_variant_j_zhou,authorship,pass,J. Zhou,Forbidden author-name variants are absent from submission-facing text.
+forbid_author_variant_zhou_j,authorship,pass,"Zhou, J.",Forbidden author-name variants are absent from submission-facing text.
+main_declaration_01,declarations,pass,\section*{Declarations},Main TeX contains the required declarations.
+supp_declaration_01,declarations,pass,\section*{Declarations},Supplement contains the required declarations.
+main_declaration_02,declarations,pass,\textbf{Funding}: Not applicable.,Main TeX contains the required declarations.
+supp_declaration_02,declarations,pass,\textbf{Funding}: Not applicable.,Supplement contains the required declarations.
+main_declaration_03,declarations,pass,\textbf{Conflict of interest}: The author declares no conflict of interest.,Main TeX contains the required declarations.
+supp_declaration_03,declarations,pass,\textbf{Conflict of interest}: The author declares no conflict of interest.,Supplement contains the required declarations.
+main_declaration_04,declarations,pass,\textbf{Data availability}: All data and code supporting this work are available,Main TeX contains the required declarations.
+supp_declaration_04,declarations,pass,\textbf{Data availability}: All data and code supporting this work are available,Supplement contains the required declarations.
+main_declaration_05,declarations,pass,\textbf{Ethics approval}: Not applicable.,Main TeX contains the required declarations.
+supp_declaration_05,declarations,pass,\textbf{Ethics approval}: Not applicable.,Supplement contains the required declarations.
+readme_scope_status,readme,pass,checkpoint scope,README states the current non-final submission status.
+readme_validation_command,readme,pass,run_prb_validation.py,README documents the standard validation command.
+readme_package_command,readme,pass,build_prb_submission_package.py,README documents the local package command.
+readme_checkpoint_audit_command,readme,pass,audit_prb_submission_checkpoint.py,README documents the final checkpoint audit command.
+validation_summary_exists,validation,pass,/Users/jackzhou/Documents/Papers/MATBG/data/processed/prb_validation_summary.csv,Validation summary CSV exists.
+validation_summary_all_pass,validation,pass,12/12,All recorded validation rows pass.
+manifest_exists,manifest,pass,/Users/jackzhou/Documents/Papers/MATBG/data/processed/prb_submission_manifest.csv,Submission manifest exists.
+manifest_required_ids,manifest,pass,all present,Manifest contains the final checkpoint-required artifact IDs.
+manifest_all_required_present,manifest,pass,75/75,All required manifest rows are present.
+package_summary_exists,package,pass,/Users/jackzhou/Documents/Papers/MATBG/data/processed/prb_submission_package_build.csv,Package build summary exists.
+package_summary_pass,package,pass,pass,Package build summary status is pass.
+package_dir_exists,package,pass,/Users/jackzhou/Documents/Papers/MATBG/submission/build/MATBG_PRB_submission_checkpoint_2026-06-09,Ignored local package directory exists.
+package_zip_exists,package,pass,/Users/jackzhou/Documents/Papers/MATBG/submission/build/MATBG_PRB_submission_checkpoint_2026-06-09.zip,Ignored local package zip exists.
+package_count_matches_manifest,package,pass,"copied=78, manifest=75","Package copies all manifest files plus manifest, validation summary, and README extras."
+manifest_count_matches_summary,package,pass,"summary=75, manifest_rows=75",Package summary manifest-entry count matches the current manifest.
+package_build_ignored,package,pass,submission/build/,Ignored package outputs are excluded from git.
+package_readme_exists,package,pass,README_PACKAGE.md,Package includes a package README.
+package_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026_tex,package,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex,Journal upload package contains the required manuscript-facing file.
+zip_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026_tex,package,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex,Package zip contains the required manuscript-facing file.
+package_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026_pdf,package,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.pdf,Journal upload package contains the required manuscript-facing file.
+zip_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026_pdf,package,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.pdf,Package zip contains the required manuscript-facing file.
+package_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026_tex,package,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex,Journal upload package contains the required manuscript-facing file.
+zip_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026_tex,package,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex,Package zip contains the required manuscript-facing file.
+package_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026_pdf,package,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.pdf,Journal upload package contains the required manuscript-facing file.
+zip_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026_pdf,package,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.pdf,Package zip contains the required manuscript-facing file.
+package_journal_submission_Zhou_PRB_Cover_Letter_2026_md,package,pass,submission/Zhou_PRB_Cover_Letter_2026.md,Journal upload package contains the required manuscript-facing file.
+zip_journal_submission_Zhou_PRB_Cover_Letter_2026_md,package,pass,submission/Zhou_PRB_Cover_Letter_2026.md,Package zip contains the required manuscript-facing file.
+package_journal_references_bib,package,pass,references.bib,Journal upload package contains the required manuscript-facing file.
+zip_journal_references_bib,package,pass,references.bib,Package zip contains the required manuscript-facing file.
+package_provenance_README_md,package,pass,README.md,Package provenance directory contains the required file.
+zip_provenance_README_md,package,pass,README.md,Package zip contains the required provenance file.
+package_provenance_data_processed_prb_submission_manifest_csv,package,pass,data/processed/prb_submission_manifest.csv,Package provenance directory contains the required file.
+zip_provenance_data_processed_prb_submission_manifest_csv,package,pass,data/processed/prb_submission_manifest.csv,Package zip contains the required provenance file.
+package_provenance_data_processed_prb_validation_summary_csv,package,pass,data/processed/prb_validation_summary.csv,Package provenance directory contains the required file.
+zip_provenance_data_processed_prb_validation_summary_csv,package,pass,data/processed/prb_validation_summary.csv,Package zip contains the required provenance file.
+package_provenance_data_processed_prb_submission_package_build_csv,package,pass,data/processed/prb_submission_package_build.csv,Package provenance directory contains the required file.
+zip_provenance_data_processed_prb_submission_package_build_csv,package,pass,data/processed/prb_submission_package_build.csv,Package zip contains the required provenance file.
+package_provenance_data_processed_prb_submission_checkpoint_audit_csv,package,pass,data/processed/prb_submission_checkpoint_audit.csv,Package provenance directory contains the required file.
+zip_provenance_data_processed_prb_submission_checkpoint_audit_csv,package,pass,data/processed/prb_submission_checkpoint_audit.csv,Package zip contains the required provenance file.

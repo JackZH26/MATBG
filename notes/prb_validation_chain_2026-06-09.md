@@ -64,4 +64,6 @@ absolute stiffness or device-level filling calibration.
 Use this command as the standard pre-commit and pre-submission smoke test for
 the current manuscript package. Use
 `scripts/build_prb_submission_package.py` after this chain when a local
-checkpoint archive under `submission/build/` is needed.
+checkpoint archive under `submission/build/` is needed, then run
+`scripts/audit_prb_submission_checkpoint.py` for the final local
+submission-facing consistency audit.

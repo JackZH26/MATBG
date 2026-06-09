@@ -213,3 +213,7 @@ submission/Zhou_PRB_Cover_Letter_2026.md
     claims to BM/reporting/filling conventions, pairing/response definitions,
     provenance, selected-grid convergence, benchmark reconstruction, and
     claim-scope boundaries.
+23. The local final submission-checkpoint audit is run with
+    `scripts/audit_prb_submission_checkpoint.py`, which checks cross-file
+    consistency across the manuscript, Supplemental Material, cover letter,
+    README, manifest, validation summary, and ignored local package outputs.

@@ -77,6 +77,22 @@ The package is for internal review and final-preparation work. It should be
 regenerated after the final literature sweep and before any actual journal
 upload.
 
+Run the final local checkpoint audit after validation and package construction:
+
+```bash
+python3 scripts/audit_prb_submission_checkpoint.py
+```
+
+The command writes:
+
+```text
+data/processed/prb_submission_checkpoint_audit.csv
+```
+
+This audit checks cross-file consistency among the manuscript, Supplemental
+Material, cover letter, README, manifest, validation summary, and ignored local
+package outputs.
+
 ## Research Owner
 
 Jian Zhou  

@@ -42,8 +42,8 @@ The package contains two top-level content areas:
 The current build records:
 
 ```text
-manifest_entries = 71
-copied_files = 74
+manifest_entries = 75
+copied_files = 78
 status = pass
 ```
 

@@ -48,6 +48,10 @@ reconstruction, and claim-scope boundaries.  Its convergence section now
 explicitly states that the `nk=11/13/15` material supports sign/scale stability
 at selected chemical potentials rather than replacing the dense map or
 establishing a continuum extrapolation.
+A final local submission-checkpoint audit now checks cross-file consistency
+across title, authorship, declarations, cover letter, README workflow
+instructions, validation summary, manifest, package summary, local package
+directory contents, and package zip contents.
 
 Legacy note: `MATBG_superfluid_weight_PRB_v2.tex` is treated as a historical
 baseline source, not as the current submission manuscript. Its author block has
@@ -166,7 +170,7 @@ not regenerated in this work package because the legacy figure assets
    recorded in
    `data/processed/prb_validation_summary.csv` and
    `notes/prb_validation_chain_2026-06-09.md`. The current manuscript package
-   inventory contains all 71 required entries, including the cover letter
+   inventory contains all 75 required entries, including the cover letter
    draft, included figures, key data tables, audit outputs, provenance notes,
    all repository scripts, and all MATBG source modules. It is recorded in
    `data/processed/prb_submission_manifest.csv` and
@@ -174,7 +178,10 @@ not regenerated in this work package because the legacy figure assets
    builder now copies the journal-facing files and provenance material into
    ignored outputs under `submission/build/`; the tracked summary is
    `data/processed/prb_submission_package_build.csv` and the build note is
-   `notes/prb_submission_package_build_2026-06-09.md`.
+   `notes/prb_submission_package_build_2026-06-09.md`. The final local
+   checkpoint audit is recorded in
+   `data/processed/prb_submission_checkpoint_audit.csv` and
+   `notes/prb_submission_checkpoint_audit_2026-06-09.md`.
    `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
    presents the first standalone Supplemental Material skeleton. The remaining
    reproducibility gap is to repeat the literature sweep immediately
