@@ -49,7 +49,10 @@ as a final experimental prediction.
 7. The filling-sufficiency self-audit supports the central-flat-band crosswalk
    as the current mechanism-paper counting reference.
 8. In `fixed_delta0`, the response is much weaker and can be negative.
-9. Therefore, the effect is a normalization-conditioned mechanism signature,
+9. The Discussion identifies falsification checks for this interpretation:
+   instability of `W_inter`, loss of fixed-Frobenius sign stability on selected
+   higher grids, or a fixed-Delta0 response pattern matching the primary map.
+10. Therefore, the effect is a normalization-conditioned mechanism signature,
    not an unconditional absolute-stiffness enhancement.
 
 ## Claims Not Allowed Yet

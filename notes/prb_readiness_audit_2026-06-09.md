@@ -28,6 +28,10 @@ immediately before actual submission.
 The current draft now includes a central two-flat-band filling crosswalk for
 the dense scan, but this is still not a device-specific carrier-density
 calibration.
+The Discussion now also includes an explicit evidence-chain and falsifiability
+paragraph: pairing gates, dense normalized maps, normalization controls, and
+selected-grid audits are identified as separate support layers, together with
+specific outcomes that would weaken the present mechanism interpretation.
 
 Legacy note: `MATBG_superfluid_weight_PRB_v2.tex` is treated as a historical
 baseline source, not as the current submission manuscript. Its author block has
@@ -55,6 +59,7 @@ not regenerated in this work package because the legacy figure assets
 | Old `n_keep=2` endpoint needs mesh/curvature-specific convention | `notes/flatband_endpoint_audit_result_2026-06-09.md` | Supported as historical audit | Appendix/audit |
 | Direct comparison to experimental stiffness | Requires final absolute convention and device-level filling calibration | Outside current mechanism-paper scope | Motivation/discussion only |
 | Central-flat-band filling crosswalk is sufficient as a mechanism-paper counting reference | `data/processed/filling_sufficiency_audit.csv`, `notes/filling_sufficiency_audit_2026-06-09.md`, `scripts/audit_filling_sufficiency.py` | Supported for current mechanism-paper scope; not a device calibration | Main text plus Supplemental Material |
+| Evidence chain is falsifiable within the finite-band diagnostic framework | Main-text Discussion; claim-scope and observable-policy audits | Supported as manuscript self-review language | Main text |
 | Anisotropy is a robust observable signature | Current scans do not establish robustness | Not ready | Secondary diagnostic only |
 
 ## Submission-Critical Gaps
