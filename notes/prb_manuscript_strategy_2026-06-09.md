@@ -97,3 +97,11 @@ absolute convention is declared and recomputed end-to-end.
 ```text
 Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex
 ```
+
+## Current Manuscript Infrastructure
+
+1. Bibliography is managed through `references.bib`.
+2. Submission-readiness risks are tracked in
+   `notes/prb_readiness_audit_2026-06-09.md`.
+3. Recent 2025-2026 stiffness and Kekule/PDW context is tracked in
+   `notes/recent_literature_update_2026-06-09.md`.
