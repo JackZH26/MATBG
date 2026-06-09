@@ -22,9 +22,36 @@ This repository contains the working materials for a MATBG superfluid stiffness 
 6. `notes/interband_pairing_definition.md`
    Working definition and validation requirements for interband pairing.
 
-## Execution Rule
+## Current Manuscript Status
 
-The next technical decision is the interband pairing construction. Large parameter scans should not begin until the pairing ansatz passes hermiticity, particle-hole symmetry, and gauge-randomization tests.
+The current PRB-targeted manuscript is a normalized-response mechanism paper.
+Its central claim is that an orbital-projected interband-pairing direction
+produces a reproducible, normalization-conditioned finite-band response
+signature in MATBG. The current draft is a strong internal checkpoint, not yet
+a final submission package.
+
+The manuscript deliberately does not claim direct quantitative agreement with
+experimental stiffness, a final absolute stiffness convention, a device-level
+carrier-density calibration, or a continuum-limit extrapolation.
+
+## Validation
+
+Run the standard validation chain before manuscript-facing commits:
+
+```bash
+python3 scripts/run_prb_validation.py
+```
+
+The command writes:
+
+```text
+data/processed/prb_validation_summary.csv
+```
+
+It checks script syntax, claim-scope guardrails, observable policy, filling and
+convergence sufficiency, manuscript/Supplemental Material table values,
+submission-package mechanics, main/Supplemental Material LaTeX builds, and
+blocking LaTeX log warnings.
 
 ## Research Owner
 

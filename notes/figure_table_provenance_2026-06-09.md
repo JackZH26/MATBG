@@ -542,19 +542,16 @@ values are checked by `scripts/verify_manuscript_tables.py`.
 
 ## Verification Checklist
 
-Before submission, run:
+Before submission or any manuscript-facing commit, run:
 
 ```bash
-python3 scripts/verify_manuscript_tables.py
-
-latexmk -pdf -interaction=nonstopmode -halt-on-error \
-  Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex
-
-rg -n 'undefined|Citation|invalid|Overfull|LaTeX Warning|Package hyperref Warning|natbib Warning' \
-  Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.log
+python3 scripts/run_prb_validation.py
 ```
 
-The second command should return no manuscript-level warning lines.
+This command runs the table verifier, text guardrails, submission-package
+audit, main/Supplemental Material LaTeX builds, and blocking log-warning scans.
+The current output is `data/processed/prb_validation_summary.csv` and is
+summarized in `notes/prb_validation_chain_2026-06-09.md`.
 
 ## Remaining Provenance Gap
 

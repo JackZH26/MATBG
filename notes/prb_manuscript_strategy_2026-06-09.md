@@ -176,3 +176,7 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
     `scripts/audit_submission_package.py`, which writes
     `data/processed/submission_package_audit.csv` and is summarized in
     `notes/submission_package_audit_2026-06-09.md`.
+16. The standard one-command validation chain is
+    `scripts/run_prb_validation.py`, which writes
+    `data/processed/prb_validation_summary.csv` and is summarized in
+    `notes/prb_validation_chain_2026-06-09.md`.
