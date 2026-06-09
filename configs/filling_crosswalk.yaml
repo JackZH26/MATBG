@@ -1,0 +1,20 @@
+project: matbg_interband_pairing_superfluid_stiffness
+created: 2026-06-09
+purpose: retained_proxy_to_central_flat_band_filling_crosswalk
+
+bm_model:
+  theta_deg: 1.05
+  vF_eV_A: 2.135
+  w0_meV: 87.2
+  w1_meV: 109.0
+  n_shell: 3
+
+scan:
+  nk: 7
+  n_keep_proxy: 6
+  n_flat_bands: 2
+  spin_valley_degeneracy: 4.0
+  mu_meV_values: [-5.0, -4.0, -3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0]
+
+outputs:
+  csv: data/processed/filling_crosswalk_nk7_nshell3.csv

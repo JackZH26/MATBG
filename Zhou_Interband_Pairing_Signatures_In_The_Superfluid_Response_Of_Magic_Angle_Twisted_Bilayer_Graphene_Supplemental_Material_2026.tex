@@ -115,6 +115,45 @@ The retained-band filling proxy is computed as
 with $g=4$ used as a spin-valley counting factor in the proxy.  For the
 $n_{\rm keep}=6$ scans this is not identical to a calibrated experimental
 filling factor; it is used only to order the chemical-potential scans.
+The central flat-band crosswalk instead counts the two central BM bands as
+\begin{equation}
+  \nu_{\rm flat}
+  =
+  g\left[
+  \left\langle
+  \sum_{n\in{\rm central\;pair}}\Theta(\mu-\varepsilon_{n\mathbf{k}})
+  \right\rangle_{\mathbf{k}}
+  -1\right],
+\end{equation}
+which ranges from $-4$ to $+4$ for an empty-to-full central two-band subspace
+when $g=4$.  On the $nk=7$, $N_{\rm shell}=3$ mesh used for the dense response
+scan, the central-pair energy window is $[-1.051,4.134]$~meV.  The resulting
+crosswalk is shown in Table~\ref{tab:sm_filling_crosswalk}.  It should be read
+as a flat-band counting reference for the present BM calculation, not as a
+device-specific carrier-density calibration.
+
+\begin{table}[h]
+\caption{Crosswalk between the retained-band filling proxy and central
+two-flat-band filling for the dense $nk=7$, $n_{\rm keep}=6$ scan.}
+\label{tab:sm_filling_crosswalk}
+\begin{ruledtabular}
+\begin{tabular}{rrrr}
+$\mu$ (meV) & $\nu_{\rm proxy}$ & $\nu_{\rm flat}$ & occupied flat bands/flavor\\
+\hline
+-5 & -1.483 & -4.000 & 0.000\\
+-4 & -1.333 & -4.000 & 0.000\\
+-3 & -1.061 & -4.000 & 0.000\\
+-2 & -0.857 & -4.000 & 0.000\\
+-1 & -0.653 & -3.837 & 0.041\\
+ 0 & -0.381 & -2.286 & 0.429\\
+ 1 & -0.054 & -0.327 & 0.918\\
+ 2 &  0.122 &  0.735 & 1.184\\
+ 3 &  0.395 &  2.367 & 1.592\\
+ 4 &  0.667 &  3.918 & 1.980\\
+ 5 &  0.857 &  4.000 & 2.000\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
 
 \section{Orbital-Projected Pairing Construction}
 

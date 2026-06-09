@@ -24,6 +24,7 @@ NK13_SUMMARY = ROOT / "data" / "processed" / "mu_response_scan_nk13_nkeep6_keypo
 VALLEY_SEWING = ROOT / "data" / "processed" / "valley_sewing_diagnostic.csv"
 PRB_RECON = ROOT / "data" / "processed" / "prb_table_reconstruction_nk14.csv"
 FLAT_AUDIT = ROOT / "data" / "processed" / "flatband_endpoint_audit_nk14.csv"
+FILLING_CROSSWALK = ROOT / "data" / "processed" / "filling_crosswalk_nk7_nshell3.csv"
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -342,6 +343,47 @@ def verify_supplemental_valley_sewing(tex: str) -> None:
         raise AssertionError(f"Expected 3 supplemental valley rows, checked {checked}")
 
 
+def verify_supplemental_filling_crosswalk(tex: str) -> None:
+    rows = split_rows(table_block(tex, "tab:sm_filling_crosswalk"))
+    data = {
+        int(float(row["mu_meV"])): row
+        for row in load_csv(FILLING_CROSSWALK)
+    }
+
+    checked = 0
+    for cells in rows:
+        if len(cells) != 4:
+            continue
+        try:
+            mu = int(number(cells[0]))
+        except ValueError:
+            continue
+        row = data[mu]
+        assert_close(
+            f"supp filling mu={mu} nu_proxy",
+            number(cells[1]),
+            rounded(row["nu_proxy"], 3),
+            3,
+        )
+        assert_close(
+            f"supp filling mu={mu} nu_flat",
+            number(cells[2]),
+            rounded(row["nu_flat"], 3),
+            3,
+        )
+        assert_close(
+            f"supp filling mu={mu} occupied flat bands",
+            number(cells[3]),
+            rounded(row["flat_occupied_bands_per_flavor"], 3),
+            3,
+        )
+        checked += 1
+    if checked != 11:
+        raise AssertionError(
+            f"Expected 11 supplemental filling crosswalk rows, checked {checked}"
+        )
+
+
 def main() -> int:
     tex = TEX_PATH.read_text()
     verify_dense_eta(tex)
@@ -351,6 +393,7 @@ def main() -> int:
         supp = SUPP_PATH.read_text()
         verify_supplemental_nk_convergence(supp)
         verify_supplemental_valley_sewing(supp)
+        verify_supplemental_filling_crosswalk(supp)
     print("All manuscript and supplemental table values match processed CSV data.")
     return 0
 

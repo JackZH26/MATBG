@@ -15,6 +15,9 @@ provenance manifest, and a standalone Supplemental Material skeleton.
 The current draft is suitable as a research checkpoint and internal review
 target. It still needs a final absolute-unit convention, filling calibration,
 and a final pre-submission literature sweep before submission.
+The current draft now includes a central two-flat-band filling crosswalk for
+the dense scan, but this is still not a device-specific carrier-density
+calibration.
 
 ## Claim Audit
 
@@ -30,7 +33,7 @@ and a final pre-submission literature sweep before submission.
 | Absolute PRB benchmark table is reproduced by current production convention | Unit/baseline audits show mismatch | Not allowed | Self-audit only |
 | Old `n_keep=6` endpoint can be nearly reconstructed by `double_conv_all_tauz` | `notes/prb_table_reconstruction_result_2026-06-09.md` | Supported as benchmark route | Audit table |
 | Old `n_keep=2` endpoint needs mesh/curvature-specific convention | `notes/flatband_endpoint_audit_result_2026-06-09.md` | Supported as historical audit | Appendix/audit |
-| Direct comparison to experimental stiffness | Requires final absolute convention and filling calibration | Not ready | Motivation/discussion only |
+| Direct comparison to experimental stiffness | Requires final absolute convention and device-level filling calibration | Not ready | Motivation/discussion only |
 | Anisotropy is a robust observable signature | Current scans do not establish robustness | Not ready | Secondary diagnostic only |
 
 ## Submission-Critical Gaps
@@ -63,8 +66,12 @@ and a final pre-submission literature sweep before submission.
 
 4. Filling calibration:
    `nu_proxy` is now explicitly defined as a retained-band occupancy label, not
-   an experimental filling. Any comparison to superconducting domes must use
-   calibrated carrier density or remain clearly qualitative.
+   an experimental filling. The Supplemental Material now includes a central
+   two-flat-band crosswalk generated from
+   `data/processed/filling_crosswalk_nk7_nshell3.csv`, showing that the dense
+   chemical-potential window spans approximately `nu_flat=-4` to `+4` in the
+   central-pair counting convention. Any comparison to superconducting domes
+   must still use calibrated carrier density or remain clearly qualitative.
 
 5. Reference completeness:
    The key recent stiffness and band-off-diagonal pairing references have now
@@ -94,8 +101,9 @@ and a final pre-submission literature sweep before submission.
    PRB claim, or whether to add a smaller formal extrapolation plot using one
    or two representative chemical potentials.
 
-3. Add a calibrated filling workflow or keep all comparisons to experimental
-   superconducting domes qualitative.
+3. Decide whether the central-flat-band crosswalk is sufficient for the PRB
+   mechanism claim, or add a device-level carrier-density calibration before
+   comparing to superconducting dome locations.
 
 4. Perform a final broad literature sweep before submission, focused on new
    2026 stiffness, tunneling, and band-off-diagonal pairing papers.
@@ -107,3 +115,6 @@ Current level: strong internal checkpoint, not yet submission-ready.
 The central normalized-response mechanism claim is viable. The final PRB paper
 should not be submitted until the remaining absolute-unit convention, filling
 calibration, and final literature sweep are tightened.
+The filling status has improved from an uncalibrated proxy alone to a
+CSV-verified central-flat-band crosswalk, but the conservative limitation should
+remain unless a device-level calibration is added.

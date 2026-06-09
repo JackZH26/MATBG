@@ -120,6 +120,37 @@ Current status:
 this table has no numerical CSV dependencies. It records interpretive
 boundaries for the manuscript and is not part of the numerical table verifier.
 
+### `tab:sm_filling_crosswalk`
+
+Supplemental content:
+crosswalk between the retained-band filling proxy and central two-flat-band
+filling for the dense `nk=7`, `n_keep=6` scan.
+
+Data source:
+`data/processed/filling_crosswalk_nk7_nshell3.csv`
+
+Script:
+`scripts/build_filling_crosswalk.py`
+
+Reproduction command:
+
+```bash
+python3 scripts/build_filling_crosswalk.py
+```
+
+Columns mapped into LaTeX:
+
+```text
+mu_meV -> mu column
+nu_proxy -> nu_proxy column
+nu_flat -> nu_flat column
+flat_occupied_bands_per_flavor -> occupied flat bands/flavor column
+```
+
+Current status:
+values are generated from the BM central-pair spectrum and checked by
+`scripts/verify_manuscript_tables.py`.
+
 ### `tab:nk9`
 
 Manuscript content:
