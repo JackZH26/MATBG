@@ -1,6 +1,6 @@
 \documentclass[aps,prb,preprint,superscriptaddress,floatfix,nofootinbib]{revtex4-2}
 
-\usepackage{amsmath,amssymb,booktabs,array}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx,float}
 \usepackage[colorlinks=true,citecolor=blue,linkcolor=blue,urlcolor=blue]{hyperref}
 
 \newcommand{\code}[1]{\texttt{#1}}
@@ -223,12 +223,27 @@ python3 scripts/run_mu_response_scan.py \
   --output data/processed/mu_response_scan_nk13_nkeep6_keypoints.csv
 \end{verbatim}
 and is summarized with \code{scripts/summarize\_eta\_effect.py}.
+The convergence figure is generated with
+\begin{verbatim}
+python3 scripts/plot_nk_convergence_keypoints.py
+\end{verbatim}
 
-Table~\ref{tab:sm_nk_convergence} compares the normalized $\eta=1$ response
-relative to $\eta=0$.  The fixed-Frobenius response remains positive at all
-four key chemical potentials.  The fixed-$\Delta_0$ response remains small and
-sign-sensitive, consistent with the main-text interpretation that the
-interband-pairing signal is normalization-conditioned.
+Figure~\ref{fig:sm_nk_convergence} and Table~\ref{tab:sm_nk_convergence}
+compare the normalized $\eta=1$ response relative to $\eta=0$.  The
+fixed-Frobenius response remains positive at all four key chemical potentials.
+The fixed-$\Delta_0$ response remains small and sign-sensitive, consistent with
+the main-text interpretation that the interband-pairing signal is
+normalization-conditioned.
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figures/nk_convergence_keypoints_nkeep6.pdf}
+\caption{Selected-grid convergence of the normalized $\eta=1$ response.
+The left panel shows the fixed-Frobenius comparison used for the main mechanism
+claim; the right panel shows the fixed-$\Delta_0$ control.  The plotted values
+are drawn from the same summary data tabulated in
+Table~\ref{tab:sm_nk_convergence}.}
+\label{fig:sm_nk_convergence}
+\end{figure}
 
 \begin{table}[t]
 \caption{Key-point momentum-grid check for

@@ -147,11 +147,15 @@ Current status:
 values are copied from the summary CSV and rounded in the LaTeX table. The
 rounding is checked by `scripts/verify_manuscript_tables.py`.
 
-### Supplemental `nk=9/11/13` key-point convergence table
+### Supplemental `nk=9/11/13` key-point convergence figure and table
 
 Supplemental content:
 selected `nk=9`, `nk=11`, and `nk=13` validation values for `eta=1` relative
 to `eta=0`.
+
+Figure files:
+`figures/nk_convergence_keypoints_nkeep6.png`
+`figures/nk_convergence_keypoints_nkeep6.pdf`
 
 Source CSV:
 `data/processed/mu_response_scan_nk11_nkeep6_keypoints.csv`
@@ -187,6 +191,8 @@ python3 scripts/run_mu_response_scan.py \
 python3 scripts/summarize_eta_effect.py \
   data/processed/mu_response_scan_nk13_nkeep6_keypoints.csv \
   --output data/processed/mu_response_scan_nk13_nkeep6_keypoints_summary.csv
+
+python3 scripts/plot_nk_convergence_keypoints.py
 ```
 
 Config:
@@ -197,6 +203,7 @@ Current status:
 the fixed-Frobenius response remains positive at all four key points and all
 three checked grids. The Supplemental Material table values are checked by
 `scripts/verify_manuscript_tables.py` against the `nk=9`, `nk=11`, and `nk=13`
+summary CSV files. The Supplemental Material figure is generated from the same
 summary CSV files.
 
 ### `tab:prb_audit`

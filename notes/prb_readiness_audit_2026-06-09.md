@@ -38,9 +38,11 @@ final absolute-unit convention decisions before submission.
 1. Convergence:
    The `nk=11` and `nk=13` key-point layers have now been run for
    `mu=-4,0,2,4`, `eta=0,0.5,1`, and `n_keep=6`. They preserve the positive
-   fixed-Frobenius response across all selected chemical potentials. A final
-   submission should still avoid strict continuum-limit claims unless a formal
-   extrapolation or denser-mesh saturation check is performed.
+   fixed-Frobenius response across all selected chemical potentials, and the
+   Supplemental Material now includes both a convergence figure and a tabulated
+   CSV-verified convergence table. A final submission should still avoid strict
+   continuum-limit claims unless a formal extrapolation or denser-mesh
+   saturation check is performed.
 
 2. Valley convention:
    The current `tr_sewn` proxy is acceptable for a mechanism diagnostic, but a
@@ -71,8 +73,7 @@ final absolute-unit convention decisions before submission.
    Material LaTeX table values against the processed CSV files.
    `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
    presents the first standalone Supplemental Material skeleton. The remaining
-   gap is to expand it with final convergence data and any final convention
-   decisions.
+   gap is to expand it with any final convention decisions.
 
 ## Recommended Next Work Packages
 
