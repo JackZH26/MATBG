@@ -128,7 +128,13 @@ not regenerated in this work package because the legacy figure assets
    Material LaTeX table values against the processed CSV files. The
    `scripts/audit_claim_scope.py` text-level guardrail checks that the current
    manuscript keeps the required conservative boundary statements and avoids a
-   short list of forbidden overclaims.
+   short list of forbidden overclaims. `scripts/audit_submission_package.py`
+   checks the mechanical manuscript package invariants: author blocks,
+   declarations, required files, main figure existence, labels, bibliography
+   commands, RevTeX class, and filename convention. The current
+   submission-package audit passes all 59 checks and is recorded in
+   `data/processed/submission_package_audit.csv` and
+   `notes/submission_package_audit_2026-06-09.md`.
    `Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex`
    presents the first standalone Supplemental Material skeleton. The remaining
    reproducibility gap is to repeat the literature sweep immediately

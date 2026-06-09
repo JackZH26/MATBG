@@ -1,0 +1,60 @@
+check_id,scope,status,evidence,requirement
+main_tex_exists,main,pass,/Users/jackzhou/Documents/Papers/MATBG/Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex,Main TeX file exists.
+main_pdf_exists,main,pass,/Users/jackzhou/Documents/Papers/MATBG/Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.pdf,Main PDF exists.
+supp_tex_exists,supplement,pass,/Users/jackzhou/Documents/Papers/MATBG/Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex,Supplement TeX exists.
+supp_pdf_exists,supplement,pass,/Users/jackzhou/Documents/Papers/MATBG/Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.pdf,Supplement PDF exists.
+main_filename_rule_tex,main,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex,Main paper TeX filename follows the Zhou_<Title>_2026.tex convention.
+main_filename_rule_pdf,main,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.pdf,Main paper PDF filename follows the Zhou_<Title>_2026.pdf convention.
+main_revtex_01,main,pass,"\documentclass[aps,prb,reprint,superscriptaddress,floatfix,nofootinbib]{revtex4-2}",Required manuscript/package phrase must be present.
+main_abstract_01,main,pass,\begin{abstract},Required manuscript/package phrase must be present.
+main_author_01,main,pass,\author{Jian Zhou},Required manuscript/package phrase must be present.
+main_author_02,main,pass,"\affiliation{JZ Institute of Science, Hong Kong, China}",Required manuscript/package phrase must be present.
+main_author_03,main,pass,\email{jack@jzis.org},Required manuscript/package phrase must be present.
+supp_author_01,supplement,pass,\author{Jian Zhou},Required manuscript/package phrase must be present.
+supp_author_02,supplement,pass,"\affiliation{JZ Institute of Science, Hong Kong, China}",Required manuscript/package phrase must be present.
+supp_author_03,supplement,pass,\email{jack@jzis.org},Required manuscript/package phrase must be present.
+main_declaration_01,main,pass,\section*{Declarations},Required manuscript/package phrase must be present.
+main_declaration_02,main,pass,\textbf{Funding}: Not applicable.,Required manuscript/package phrase must be present.
+main_declaration_03,main,pass,\textbf{Conflict of interest}: The author declares no conflict of interest.,Required manuscript/package phrase must be present.
+main_declaration_04,main,pass,\textbf{Data availability}: All data and code supporting this work are available,Required manuscript/package phrase must be present.
+main_declaration_05,main,pass,\textbf{Ethics approval}: Not applicable.,Required manuscript/package phrase must be present.
+supp_declaration_01,supplement,pass,\section*{Declarations},Required manuscript/package phrase must be present.
+supp_declaration_02,supplement,pass,\textbf{Funding}: Not applicable.,Required manuscript/package phrase must be present.
+supp_declaration_03,supplement,pass,\textbf{Conflict of interest}: The author declares no conflict of interest.,Required manuscript/package phrase must be present.
+supp_declaration_04,supplement,pass,\textbf{Data availability}: All data and code supporting this work are available,Required manuscript/package phrase must be present.
+supp_declaration_05,supplement,pass,\textbf{Ethics approval}: Not applicable.,Required manuscript/package phrase must be present.
+main_section_01,main,pass,\section{Introduction},Required manuscript/package phrase must be present.
+main_section_02,main,pass,\section{Model and Pairing Construction},Required manuscript/package phrase must be present.
+main_section_03,main,pass,\section{Finite-Band Response},Required manuscript/package phrase must be present.
+main_section_04,main,pass,\section{Pairing Gates and Response Maps},Required manuscript/package phrase must be present.
+main_section_05,main,pass,\section{Self-Audit of Absolute Units},Required manuscript/package phrase must be present.
+main_section_06,main,pass,\section{Discussion},Required manuscript/package phrase must be present.
+main_section_07,main,pass,\section{Conclusions},Required manuscript/package phrase must be present.
+supp_section_01,supplement,pass,\section{Scope of the Supplemental Material},Required manuscript/package phrase must be present.
+supp_section_02,supplement,pass,\section{BM Model and Numerical Parameters},Required manuscript/package phrase must be present.
+supp_section_03,supplement,pass,\section{Orbital-Projected Pairing Construction},Required manuscript/package phrase must be present.
+supp_section_04,supplement,pass,\section{Claim Scope and Excluded Interpretations},Required manuscript/package phrase must be present.
+supp_section_05,supplement,pass,\section{Current Limitations and Next Validation Gates},Required manuscript/package phrase must be present.
+main_label_01,main,pass,\label{fig:workflow},Required manuscript/package phrase must be present.
+main_label_02,main,pass,\label{fig:heatmap_frob},Required manuscript/package phrase must be present.
+main_label_03,main,pass,\label{fig:heatmap_delta0},Required manuscript/package phrase must be present.
+main_label_04,main,pass,\label{tab:dense_eta},Required manuscript/package phrase must be present.
+main_label_05,main,pass,\label{tab:nk9},Required manuscript/package phrase must be present.
+main_label_06,main,pass,\label{tab:prb_audit},Required manuscript/package phrase must be present.
+supp_label_01,supplement,pass,\label{tab:sm_reporting_layers},Required manuscript/package phrase must be present.
+supp_label_02,supplement,pass,\label{tab:sm_filling_crosswalk},Required manuscript/package phrase must be present.
+supp_label_03,supplement,pass,\label{tab:sm_filling_sufficiency},Required manuscript/package phrase must be present.
+supp_label_04,supplement,pass,\label{tab:sm_convergence_sufficiency},Required manuscript/package phrase must be present.
+supp_label_05,supplement,pass,\label{tab:sm_claim_scope},Required manuscript/package phrase must be present.
+main_bibliography_01,main,pass,\bibliography{references},Required manuscript/package phrase must be present.
+supp_bibliography_01,supplement,pass,\bibliography{references},Required manuscript/package phrase must be present.
+forbid_author_variant_jack,main+supplement,pass,Jack,Prohibited author-name variant must not appear in paper files.
+forbid_author_variant_jack_zhou,main+supplement,pass,Jack Zhou,Prohibited author-name variant must not appear in paper files.
+forbid_author_variant_wall_e,main+supplement,pass,Wall-E,Prohibited author-name variant must not appear in paper files.
+forbid_author_variant_wali_chinese,main+supplement,pass,瓦力,Prohibited author-name variant must not appear in paper files.
+forbid_author_variant_j_zhou,main+supplement,pass,J. Zhou,Prohibited author-name variant must not appear in paper files.
+forbid_author_variant_zhou_j,main+supplement,pass,"Zhou, J.",Prohibited author-name variant must not appear in paper files.
+main_graphics_present,main,pass,3 includegraphics command(s),At least one visual asset should be present in a PRB manuscript file.
+main_graphic_exists_01,main,pass,figures/workflow_schematic_prb.png,Every included graphic file must exist in the repository.
+main_graphic_exists_02,main,pass,figures/mu_eta_heatmap_nk7_nkeep6_fixed_frobenius.png,Every included graphic file must exist in the repository.
+main_graphic_exists_03,main,pass,figures/mu_eta_heatmap_nk7_nkeep6_fixed_delta0.png,Every included graphic file must exist in the repository.

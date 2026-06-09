@@ -172,3 +172,7 @@ Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twis
     `notes/recent_literature_update_2026-06-09.md`.
 14. Text-level guardrails are run with `scripts/audit_claim_scope.py` and
     `scripts/audit_observable_policy.py`.
+15. Submission-package mechanical guardrails are run with
+    `scripts/audit_submission_package.py`, which writes
+    `data/processed/submission_package_audit.csv` and is summarized in
+    `notes/submission_package_audit_2026-06-09.md`.
