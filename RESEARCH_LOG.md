@@ -99,3 +99,11 @@ Config / run_id: `python3 scripts/audit_response_conventions.py --nk 14 --n-keep
 Result: Switching from the current `intra_tauz_inter_tau0` convention to `all_tauz` moves the band-diagonal baseline closer to the PRB table, but does not close the gap. For `n_keep=2`, `D_iso` changes from `29.34` to `33.45 eV A^2` versus PRB `67.5`; for `n_keep=6`, it changes from `85.60` to `100.94 eV A^2` versus PRB `129.3`.
 
 Decision: Current convention is a contributor but not the whole discrepancy. Continue the audit by checking Kubo prefactors, BZ integration weights, and any older-code implementation differences before changing the production response convention.
+
+Question: Can BM bandwidth drift or a simple prefactor explain the remaining PRB baseline mismatch?
+
+Config / run_id: `python3 scripts/audit_bm_baseline.py` and `python3 scripts/analyze_prefactor_residuals.py`.
+
+Result: The BM geometry factors are internally consistent: `|b| = 0.054047 A^-1` and BZ area equals `(2pi)^2/A_M`. However, the current BM implementation gives a two-flat-band bandwidth of about `6.1 meV` at `theta=1.05 deg`, not the `11.2 meV` quoted in the old PRB text. Moving to `theta=1.20 deg` gives `W2 = 11.76 meV` but only changes the `n_keep=2` band-diagonal response from `29.34` to `31.15 eV A^2`, still far below the PRB `67.5 eV A^2`. Prefactor residuals are not global: in the `all_tauz` convention, the scale needed is `2.018` for `n_keep=2` but `1.281` for `n_keep=6`.
+
+Decision: BZ/moire area factors and one global Kubo prefactor are not sufficient explanations. The strongest remaining lead is the conventional/intraband sector: with `all_tauz`, the `n_keep=6` geometric contribution already matches the PRB value, while the conventional contribution remains too small by roughly a factor of two.

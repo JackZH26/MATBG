@@ -120,3 +120,23 @@ especially at `n_keep=6`, but it does not close the gap. The remaining mismatch
 therefore likely involves additional implementation differences such as Kubo
 prefactors, BZ integration, band selection details, or an older response-code
 convention.
+
+## Follow-Up Audit
+
+See:
+
+```text
+notes/bm_prefactor_audit_result_2026-06-09.md
+```
+
+Summary:
+
+```text
+The BM geometry factors are internally consistent.
+The current BM implementation gives W2 ~= 6.1 meV at theta = 1.05 deg, not the
+11.2 meV quoted in the old PRB text.
+Moving to theta = 1.20 deg gives W2 ~= 11.8 meV but does not fix D_iso.
+No single global prefactor matches both n_keep=2 and n_keep=6.
+The all_tauz geometric sector matches the PRB n_keep=6 geometric contribution,
+but the conventional sector remains too small by about a factor of two.
+```
