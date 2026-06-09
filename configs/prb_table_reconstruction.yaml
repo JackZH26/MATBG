@@ -32,4 +32,8 @@ candidates:
 
 outputs:
   reconstruction_csv: data/processed/prb_table_reconstruction_nk14.csv
+  flatband_endpoint_audit_csv: data/processed/flatband_endpoint_audit_nk14.csv
+  flatband_endpoint_theta_scan_csv: data/processed/flatband_endpoint_theta_scan_gamma_centered.csv
+  flatband_endpoint_nshell_scan_csv: data/processed/flatband_endpoint_nshell_scan_gamma_centered.csv
   note: notes/prb_table_reconstruction_result_2026-06-09.md
+  flatband_endpoint_note: notes/flatband_endpoint_audit_result_2026-06-09.md

@@ -96,3 +96,31 @@ Do not edit the production interband-pairing response convention to match the
 old table. Keep the PRB reconstruction as a separate benchmark route, and use
 normalized eta-response quantities for new mechanism claims until the
 flat-band endpoint is fully understood.
+
+## Flat-Band Endpoint Follow-Up
+
+See:
+
+```text
+notes/flatband_endpoint_audit_result_2026-06-09.md
+```
+
+The closest audited `n_keep=2` reconstruction uses:
+
+```text
+gamma_centered mesh
+central_pair band selector
+double_conv_full_curv_all_tauz
+```
+
+and gives:
+
+```text
+D_total = 66.18 vs 67.50 eV A^2
+D_conv  = 53.83 vs 53.00 eV A^2
+D_geom  = 12.36 vs 14.50 eV A^2
+```
+
+This nearly reconstructs the old flat-band total and conventional values, but
+the geometric component remains low and the same full-curvature correction does
+not work cleanly at `n_keep=6`.

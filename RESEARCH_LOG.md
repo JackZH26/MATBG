@@ -123,3 +123,11 @@ Config / run_id: `python3 scripts/reconstruct_prb_table.py --nk 14 --n-keep-valu
 Result: The best simple unified candidate is `double_conv_all_tauz`, defined as `D_conv = 2 * intraband_tauz` and `D_geom = interband_tauz`. It nearly reconstructs the extended-band endpoint: for `n_keep=6`, it gives `D_total = 126.66 eV A^2` versus PRB `129.3`, `D_conv = 51.45` versus `54.0`, and `D_geom = 75.22` versus `75.3`. It also gives `D_conv = 50.78` for `n_keep=4` versus PRB `53.9`. However, for `n_keep=2`, it gives `D_total = 54.40` versus PRB `67.5`, so the flat-band endpoint remains unreconciled.
 
 Decision: Keep PRB table reconstruction as a separate benchmark route. Do not retune the production interband-pairing response convention to match the old table. New mechanism claims should continue to use normalized eta-response maps until the `n_keep=2` PRB endpoint is understood.
+
+Question: Is the unreconciled PRB `n_keep=2` flat-band endpoint caused by mesh, band-selection, or cutoff conventions?
+
+Config / run_id: `python3 scripts/audit_flatband_endpoint.py` with mesh variants `half_shift_centered`, `gamma_centered`, `positive_half_shift`; band selectors `central_pair`, `closest_abs`, `valence_conduction`; and follow-up scans over `theta` and `n_shell`.
+
+Result: The closest audited reconstruction uses `gamma_centered` mesh, `central_pair` band selection, and `double_conv_full_curv_all_tauz`. At `theta=1.05`, `n_shell=3`, it gives `D_total = 66.18 eV A^2` versus PRB `67.5`, `D_conv = 53.83` versus `53.0`, and `D_geom = 12.36` versus `14.5`. A theta scan shows `theta=1.20` matches the old bandwidth scale better and gives `D_total = 68.24`, but overshoots the geometric component. A cutoff scan shows `n_shell=2` gives `W = 11.91 meV` but much smaller response, so bandwidth matching alone is not sufficient.
+
+Decision: The old flat-band endpoint can be approximately reconstructed only with a specific mesh plus curvature convention, and even then the geometric component remains off. Treat the old PRB table as a historical benchmark route. For future manuscript tables, regenerate absolute values from one declared convention instead of retuning the production interband-pairing engine to old mixed conventions.

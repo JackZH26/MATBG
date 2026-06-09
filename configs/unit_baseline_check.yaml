@@ -44,7 +44,9 @@ outputs:
   conventional_channel_audit_csv: data/processed/conventional_channel_audit_nk14.csv
   prb_manuscript_targets_csv: data/processed/prb_manuscript_targets.csv
   prb_table_reconstruction_csv: data/processed/prb_table_reconstruction_nk14.csv
+  flatband_endpoint_audit_csv: data/processed/flatband_endpoint_audit_nk14.csv
   note: notes/unit_conversion_baseline_result_2026-06-09.md
   bm_prefactor_note: notes/bm_prefactor_audit_result_2026-06-09.md
   conventional_channel_note: notes/conventional_channel_audit_result_2026-06-09.md
   prb_table_reconstruction_note: notes/prb_table_reconstruction_result_2026-06-09.md
+  flatband_endpoint_note: notes/flatband_endpoint_audit_result_2026-06-09.md
