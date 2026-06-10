@@ -18,7 +18,7 @@ SUPP_TEX = (
     / "Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex"
 )
 STRATEGY = ROOT / "notes" / "prb_manuscript_strategy_2026-06-09.md"
-READINESS = ROOT / "notes" / "prb_readiness_audit_2026-06-09.md"
+READINESS = ROOT / "notes" / "prb_readiness_audit_2026-06-10.md"
 UNITS = ROOT / "notes" / "normalization_and_units_strategy.md"
 OUTPUT = ROOT / "data" / "processed" / "observable_policy_audit.csv"
 
@@ -45,6 +45,12 @@ REQUIRED = [
         "Main text must exclude absolute stiffness prediction claims.",
     ),
     PhraseCheck(
+        "main_declared_diagnostic_convention",
+        "main",
+        "declared finite-band diagnostic convention",
+        "Main text must bind the claim to the audited finite-band convention.",
+    ),
+    PhraseCheck(
         "supp_final_policy",
         "supplement",
         "final observable policy for the current mechanism-paper scope",
@@ -55,6 +61,12 @@ REQUIRED = [
         "supplement",
         "claim-bearing mechanism observable",
         "Supplemental reporting table must identify the claim-bearing row.",
+    ),
+    PhraseCheck(
+        "supp_valley_boundary",
+        "supplement",
+        "valley-basis-independent stiffness claim",
+        "Supplement must expose the valley-partner boundary after the sensitivity audit.",
     ),
     PhraseCheck(
         "strategy_policy",

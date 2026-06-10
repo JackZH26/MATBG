@@ -1,0 +1,9 @@
+check_id,status,measured_value,criterion,interpretation
+partner_coverage,pass,"same_valley,sewn_time_reversed_valley,time_reversed_valley,tr_sewn",all four valley-partner conventions are present,The response sensitivity test covers the working convention and three alternatives.
+axis_coverage,pass,"nks=[9, 13, 15]; n_shells=[3, 4]; mus=[-4.0, 0.0, 2.0, 4.0]; normalizations=['fixed_delta0', 'fixed_frobenius_norm']",key-point response sensitivity covers the planned axes,The test samples production grids and shell cutoffs without becoming a dense rerun.
+tr_sewn_reference_positive,pass,24/24 positive,the working tr_sewn reference remains positive,The sensitivity study reproduces the production-scope positive sign.
+alternative_partner_sign_sensitivity_detected,pass,34/72 positive,at least one alternative partner convention changes the fixed-Frobenius sign,The revision must not present the response as valley-sewing independent.
+partner_sensitivity_quantified,pass,max_spread=63.973 percentage points; mean_spread=20.933,partner-convention spread is explicitly measured,The revision can discuss valley-sewing sensitivity quantitatively rather than as a vague caveat.
+sewing_alignment_recorded,pass,max_raw_alignment=1.415e+00; min_sv=1.448e-06,partner alignment diagnostics are recorded,The response sensitivity table includes evidence for how far raw partners are from the TR target.
+tr_sewn_numerical_error_bounds,pass,max_ph=2.159e-15,working tr_sewn particle-hole spectrum error remains below 1e-8,The production convention remains numerically PH-consistent.
+alternative_partner_ph_sensitivity_recorded,pass,max_ph=3.731e-02,alternative partner conventions show measurable PH-spectrum sensitivity,Alternative partners are diagnostic stress tests rather than replacement production conventions.

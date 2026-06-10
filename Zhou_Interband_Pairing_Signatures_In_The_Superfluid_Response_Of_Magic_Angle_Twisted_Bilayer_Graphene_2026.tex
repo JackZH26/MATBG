@@ -11,7 +11,7 @@
 \affiliation{JZ Institute of Science, Hong Kong, China}
 \email{jack@jzis.org}
 
-\date{June 9, 2026}
+\date{June 10, 2026}
 
 \begin{abstract}
 The large superfluid response reported in magic-angle twisted bilayer graphene
@@ -26,16 +26,27 @@ the normal-state band basis using a fixed time-reversal-sewn valley convention,
 so that pairing direction, band projection, and response normalization can be
 varied separately.
 For the working direction $M_1=\tau_x\sigma_x$, the projected interband
-pairing weight increases smoothly with the tuning parameter $\eta$ and reaches
-approximately $0.108$ at $\eta=1$ for the $n_{\rm keep}=6$ truncation.
+pairing weight reaches approximately $0.108$ at $\eta=1$ for the
+$n_{\rm keep}=6$ truncation.
 At fixed Frobenius norm of the orbital pairing matrix, dense scans over
 chemical potential and pairing interpolation give a normalized isotropic
 response change of approximately $+0.56\%$ to $+11.86\%$ between $\eta=0$ and
-$\eta=1$ over $\mu=-5,\ldots,5$ meV; selected $nk=9,11,13$ checks and a
-representative $nk=15$ spot check preserve the positive fixed-Frobenius sign.
-The fixed raw-gap-amplitude control is much weaker and can be negative.
+$\eta=1$ over $\mu=-5,\ldots,5$ meV.
+Major-revision stress tests sharpen this statement.  An eight-direction
+real-symmetric orbital-pairing family gives positive fixed-Frobenius response
+changes in all first-pass family rows, with values between $+6.43\%$ and
+$+9.49\%$.  A grid, truncation, and shell matrix for the working direction
+gives positive fixed-Frobenius changes in all $120$ tested rows with
+$n_{\rm keep}\ge 6$, while also exposing a low-truncation boundary at
+$n_{\rm keep}=4$ and $\mu=-4$ meV.  A valley-partner sensitivity test shows
+that the positive response is stable in the declared time-reversal-sewn
+diagnostic convention, but alternative partner choices are sign-sensitive and
+can break the finite-band particle-hole diagnostic.
+The fixed raw-gap-amplitude control remains much weaker and sign-sensitive.
 We therefore identify the signal as a normalization-conditioned mechanism
-signature rather than an unconditional enhancement of the absolute stiffness.
+signature within a declared finite-band diagnostic convention, rather than an
+unconditional or valley-basis-independent enhancement of the absolute
+stiffness.
 An absolute-unit audit of a previous PRB-style superfluid-weight benchmark
 shows that the legacy values can be only partially reconstructed from one
 unified convention.
@@ -103,8 +114,10 @@ computed for two gap-normalization controls.
 The central result is deliberately conservative.
 At fixed Frobenius norm of the orbital pairing direction, increasing the
 interband-pairing component produces a reproducible change in the isotropic
-response across chemical potential, with selected higher-grid checks
-supporting the sign and scale of the effect.
+response across chemical potential.  The major-revision audits reported below
+show that this is not only a single-ansatz observation: it persists across a
+tested orbital-pairing family and across the production and expanded
+retained-band truncations $n_{\rm keep}=6,8$.
 At fixed raw gap amplitude, the effect is much smaller and sign-sensitive.
 Thus the present calculation supports a normalization-conditioned mechanism
 signature, not a universal statement that interband pairing always enhances
@@ -396,6 +409,57 @@ $\mu$ (meV) & fixed Frobenius & fixed $\Delta_0$\\
 \end{ruledtabular}
 \end{table}
 
+\subsection{Major-revision robustness checks}
+
+The first-round review raised three related questions: whether the response is
+specific to one orbital direction, whether the sign is stable against grid and
+truncation choices, and whether the valley-partner convention is part of the
+claim.  Table~\ref{tab:major_revision_evidence} summarizes the additional
+audits added in response.
+
+The pairing-family audit scans eight real, symmetric layer-sublattice
+directions.  All first-pass fixed-Frobenius rows are positive, with values
+between $+6.43\%$ and $+9.49\%$, whereas the fixed-$\Delta_0$ control remains
+weaker and sign-sensitive.  This shows that the working
+$M_1=\tau_x\sigma_x$ direction is not an isolated successful ansatz in the
+current finite-band diagnostic.
+
+The grid, truncation, and shell matrix uses $nk=9,11,13,15$,
+$n_{\rm keep}=4,6,8$, $N_{\rm shell}=2,3,4$, and
+$\mu=-4,-2,0,2,4$ meV for the working direction.  The fixed-Frobenius response
+is positive in all $120$ rows with $n_{\rm keep}\ge 6$ and in all $80$
+production-scope rows with $n_{\rm keep}\ge 6$ and $N_{\rm shell}\ge 3$.
+This stronger result is deliberately not stated as global truncation
+independence: the same matrix exposes a low-truncation boundary at
+$n_{\rm keep}=4$ and $\mu=-4$ meV.
+
+The valley-partner sensitivity audit keeps the response formula fixed and
+changes only the paired-sector partner vectors.  The production
+time-reversal-sewn convention remains positive in all key-point rows and has
+zero particle-hole spectrum error.  Alternative partner choices are useful
+stress tests, but they are sign-sensitive and show measurable particle-hole
+spectrum errors in the present finite-band BdG diagnostic.  Thus the main
+claim is robust within the declared \texttt{tr\_sewn} convention, but is not
+presently claimed to be independent of valley-partner basis choices.
+
+\begin{table*}[t]
+\caption{Major-revision evidence added after the first review.  The table
+records the claim-bearing result and the corresponding boundary that remains
+in the revised manuscript.}
+\label{tab:major_revision_evidence}
+\small
+\begin{ruledtabular}
+\begin{tabular}{p{0.15\textwidth}p{0.21\textwidth}p{0.30\textwidth}p{0.24\textwidth}}
+audit & scope & claim-bearing result & boundary retained\\
+\hline
+pairing family & 8 directions, $nk=7$ & 32/32 positive; $+6.43$ to $+9.49\%$ & fixed-$\Delta_0$: $-1.46$ to $+2.91\%$\\
+grid/trunc./shell & $nk=9,11,13,15$; $n_{\rm keep}\ge6$ & 120/120 positive; $+1.07$ to $+13.60\%$ & $n_{\rm keep}=4$, $\mu=-4$ meV can be negative\\
+production scope & $n_{\rm keep}\ge6$, $N_{\rm shell}\ge3$ & 80/80 positive; $+4.37$ to $+13.60\%$ & finite-band diagnostic, not continuum value\\
+valley partner & \texttt{tr\_sewn}, $n_{\rm keep}=6$ & 24/24 positive; $+4.37$ to $+13.60\%$; PH error $0$ & alternatives are sign/PH sensitive\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
 %====================================================================
 \section{Self-Audit of Absolute Units}
 %====================================================================
@@ -498,8 +562,11 @@ The pairing gates establish that the orbital construction creates a finite
 band-off-diagonal component after projection; the dense maps show that this
 component changes the normalized response when the orbital pairing direction is
 compared at fixed Frobenius norm; the fixed-$\Delta_0$ maps show that the same
-statement is not normalization independent; and the selected-grid audits test
-that the sign and scale are not artifacts of the smallest momentum grid.
+statement is not normalization independent; the pairing-family audit shows
+that the effect is not confined to a single working ansatz; and the
+grid/truncation/shell matrix tests that the sign and scale are not artifacts
+of the original dense-grid parameters within the production retained-band
+scope.
 The interpretation would be weakened if the projected interband weight became
 unstable under the retained-band or grid choices, if the fixed-Frobenius signal
 lost its sign stability on the selected higher grids, or if the fixed-$\Delta_0$
@@ -509,15 +576,22 @@ make the present conclusion falsifiable within the finite-band diagnostic
 framework used here.
 
 Several limitations remain.  First, the valley sewing convention used here is a
-controlled time-reversal proxy; a fully independent two-valley implementation
-would be required for valley-asymmetric perturbations or final absolute
-production calculations.
+controlled time-reversal proxy.  The response-level sensitivity audit shows
+that alternative partner choices are not interchangeable with the production
+\texttt{tr\_sewn} convention: they can change the response sign and introduce
+measurable particle-hole spectrum errors in the present finite-band BdG
+diagnostic.  A fully independent two-valley implementation would therefore be
+required before claiming valley-basis-independent stiffness physics or
+studying valley-asymmetric perturbations.
 Second, a direct experimental-comparison version would require a final absolute
 response convention; the present mechanism paper therefore makes no
 claim-bearing absolute stiffness prediction.  Third, the filling variable is
 currently a retained-band occupancy proxy.  Fourth, no self-consistent gap
-equation is solved.  Fifth, a UV-complete lattice calculation would be required
-for final quantitative comparison with experiment.
+equation is solved.  Fifth, the low-truncation boundary at
+$n_{\rm keep}=4$, $\mu=-4$ meV shows that the normalized response is not
+globally independent of retained-band cutoff.  Sixth, a UV-complete lattice
+calculation would be required for final quantitative comparison with
+experiment.
 Recent direct imaging of interaction-reshaped flat bands in MATBG also
 suggests that a future quantitative comparison should revisit the normal-state
 band structure beyond the noninteracting BM spectrum used here~\cite{xiao_flat_bands_2026}.
@@ -539,11 +613,19 @@ structure in MATBG.
 For the orbital direction $M_1=\tau_x\sigma_x$, the projected interband weight
 is finite and the fixed-Frobenius response map shows a reproducible positive
 change across the scanned chemical-potential window.
+The major-revision audits strengthen and delimit this conclusion: a tested
+eight-direction orbital-pairing family shows the same positive fixed-Frobenius
+diagnostic at the first-pass grid, the production and expanded retained-band
+truncations $n_{\rm keep}=6,8$ remain positive across the new
+grid/truncation/shell matrix, and the \texttt{tr\_sewn} valley convention is
+identified as the PH-consistent production convention rather than an
+unexamined gauge choice.
 The fixed-$\Delta_0$ control, by contrast, is weak and sign-sensitive.
 This contrast is the central result: interband pairing produces a
-normalization-conditioned mechanism signature in the finite-band MATBG
-superfluid response, not an absolute stiffness prediction independent of how
-the gap direction is normalized.
+normalization-conditioned mechanism signature in the declared finite-band
+MATBG superfluid-response diagnostic, not an absolute stiffness prediction
+independent of how the gap direction is normalized and not a
+valley-basis-independent stiffness theorem.
 
 The self-audit of units and filling fixes the scope of this conclusion.
 Normalized response ratios are robust claim-bearing observables for the
@@ -567,7 +649,12 @@ including NumPy and Matplotlib.
 \textbf{Conflict of interest}: The author declares no conflict of interest.
 
 \textbf{Data availability}: All data and code supporting this work are available
-from the corresponding author upon reasonable request.
+from the corresponding author upon reasonable request.  The manuscript source,
+generated data tables, configuration files, plotting scripts, validation
+scripts, and local package manifests are maintained in the MATBG research
+repository at \url{https://github.com/JackZH26/MATBG}.  The CSV files and
+scripts referenced in the manuscript and Supplemental Material reproduce the
+reported tables and figures.
 
 \textbf{Ethics approval}: Not applicable.
 

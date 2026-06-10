@@ -1,11 +1,15 @@
 requirement,status,evidence,decision
 PRB-targeted main manuscript,present,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex and PDF,Complete for normalized-response mechanism-paper checkpoint
 Supplemental Material,present,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex and PDF,Complete for supporting reproducibility and self-audit
-Data tables and figures,present,notes/figure_table_provenance_2026-06-09.md and data/processed/prb_submission_manifest.csv,Complete for current manuscript figures and tables
+Data tables and figures,present,notes/figure_table_provenance_2026-06-10.md and data/processed/prb_submission_manifest.csv,Complete for current manuscript figures and tables
+Point-by-point response,present,submission/Zhou_PRB_Response_To_Reviewers_2026.md,Complete as draft response to the Major Revision report
+Pairing-family major-revision evidence,present,data/processed/pairing_family_response_summary.csv and data/processed/pairing_family_response_audit.csv,Complete for the tested orbital-pairing family
+Grid/truncation/shell robustness evidence,present,data/processed/prb_major_revision_robustness_summary.csv and data/processed/prb_major_revision_robustness_audit.csv,Complete for production/expanded truncations with low-truncation boundary disclosed
+Valley-partner response sensitivity,present,data/processed/valley_sewing_response_sensitivity_summary.csv and data/processed/valley_sewing_response_sensitivity_audit.csv,Complete for the declared tr_sewn diagnostic convention with alternatives treated as stress tests
 Claim and observable self-review,present,data/processed/claim_scope_audit.csv and data/processed/observable_policy_audit.csv,Complete for current conservative mechanism scope
 Convergence and filling self-review,present,data/processed/convergence_sufficiency_audit.csv and data/processed/filling_sufficiency_audit.csv,Complete for selected-grid normalized mechanism claim and BM filling reference
 Recent literature context,present,notes/recent_literature_update_2026-06-09.md and references.bib,Complete as of 2026-06-09 submission-time refresh
 Standard validation chain,pass,data/processed/prb_validation_summary.csv,Complete with all recorded validation rows passing
 Local PRB package checkpoint,pass,data/processed/prb_submission_package_build.csv,Complete with ignored local package and zip generated
 Final local checkpoint audit,pass,data/processed/prb_submission_checkpoint_audit.csv,Complete with cross-file package consistency checks passing
-Scope boundary,documented,README.md and notes/prb_readiness_audit_2026-06-09.md,Complete for normalized-response mechanism scope; expanded absolute-stiffness or device-calibration paper remains separate
+Scope boundary,documented,README.md and notes/prb_readiness_audit_2026-06-10.md,Complete for normalized-response major-revision scope; expanded absolute-stiffness or device-calibration paper remains separate

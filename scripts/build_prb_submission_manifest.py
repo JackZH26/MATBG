@@ -24,6 +24,7 @@ SUPP_TEX = (
     / "Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex"
 )
 COVER_LETTER = ROOT / "submission" / "Zhou_PRB_Cover_Letter_2026.md"
+RESPONSE_LETTER = ROOT / "submission" / "Zhou_PRB_Response_To_Reviewers_2026.md"
 
 
 @dataclass(frozen=True)
@@ -68,6 +69,7 @@ def base_items() -> list[ManifestItem]:
         ManifestItem("supplement_tex", "journal_source", SUPP_TEX, True, "Supplemental Material source."),
         ManifestItem("supplement_pdf", "journal_pdf", SUPP_TEX.with_suffix(".pdf"), True, "Compiled Supplemental Material PDF."),
         ManifestItem("cover_letter", "journal_submission_text", COVER_LETTER, True, "Physical Review B cover letter draft."),
+        ManifestItem("response_to_reviewers", "journal_submission_text", RESPONSE_LETTER, True, "Point-by-point response to the major-revision report."),
         ManifestItem("bibliography", "journal_source", ROOT / "references.bib", True, "Shared BibTeX database."),
         ManifestItem("dense_response_data", "source_data", PROCESSED / "mu_eta_response_scan_nk7_nkeep6.csv", True, "Dense mu-eta response map source data."),
         ManifestItem("dense_response_summary", "source_data", PROCESSED / "mu_eta_response_scan_nk7_nkeep6_eta1_summary.csv", True, "Main dense eta=1 response table source."),
@@ -80,18 +82,44 @@ def base_items() -> list[ManifestItem]:
         ManifestItem("convergence_sufficiency", "audit_output", PROCESSED / "convergence_sufficiency_audit.csv", True, "Convergence-sufficiency self-audit."),
         ManifestItem("claim_scope", "audit_output", PROCESSED / "claim_scope_audit.csv", True, "Text-level claim-scope guardrail."),
         ManifestItem("observable_policy", "audit_output", PROCESSED / "observable_policy_audit.csv", True, "Observable-policy guardrail."),
+        ManifestItem("pairing_family_response_data", "source_data", PROCESSED / "pairing_family_response_scan.csv", True, "Major-revision pairing-family response source data."),
+        ManifestItem("pairing_family_response_summary", "source_data", PROCESSED / "pairing_family_response_summary.csv", True, "Major-revision pairing-family table source data."),
+        ManifestItem("pairing_family_response_audit", "audit_output", PROCESSED / "pairing_family_response_audit.csv", True, "Major-revision pairing-family audit output."),
+        ManifestItem("major_revision_robustness_matrix", "source_data", PROCESSED / "prb_major_revision_robustness_matrix.csv", True, "Grid/truncation/shell robustness matrix source data."),
+        ManifestItem("major_revision_robustness_summary", "source_data", PROCESSED / "prb_major_revision_robustness_summary.csv", True, "Grid/truncation/shell robustness summary source data."),
+        ManifestItem("major_revision_robustness_audit", "audit_output", PROCESSED / "prb_major_revision_robustness_audit.csv", True, "Grid/truncation/shell robustness audit output."),
+        ManifestItem("valley_response_sensitivity_data", "source_data", PROCESSED / "valley_sewing_response_sensitivity.csv", True, "Valley-partner response-sensitivity source data."),
+        ManifestItem("valley_response_sensitivity_summary", "source_data", PROCESSED / "valley_sewing_response_sensitivity_summary.csv", True, "Valley-partner response-sensitivity summary source data."),
+        ManifestItem("valley_response_sensitivity_audit", "audit_output", PROCESSED / "valley_sewing_response_sensitivity_audit.csv", True, "Valley-partner response-sensitivity audit output."),
         ManifestItem("submission_package_audit", "audit_output", PROCESSED / "submission_package_audit.csv", True, "Mechanical submission-package audit."),
         ManifestItem("submission_package_build_summary", "audit_output", PROCESSED / "prb_submission_package_build.csv", True, "Local submission-package build summary."),
         ManifestItem("prb_submission_checkpoint_audit", "audit_output", PROCESSED / "prb_submission_checkpoint_audit.csv", True, "Final local PRB submission checkpoint audit."),
         ManifestItem("prb_goal_completion_audit", "audit_output", PROCESSED / "prb_goal_completion_audit.csv", True, "Goal-level completion audit for the local PRB mechanism-paper checkpoint."),
-        ManifestItem("figure_table_provenance", "provenance_note", ROOT / "notes" / "figure_table_provenance_2026-06-09.md", True, "Figure/table provenance manifest."),
-        ManifestItem("readiness_audit", "provenance_note", ROOT / "notes" / "prb_readiness_audit_2026-06-09.md", True, "Current PRB readiness audit."),
-        ManifestItem("validation_chain_note", "provenance_note", ROOT / "notes" / "prb_validation_chain_2026-06-09.md", True, "Validation-chain description."),
-        ManifestItem("submission_manifest_note", "provenance_note", ROOT / "notes" / "prb_submission_manifest_2026-06-09.md", True, "Submission-manifest description."),
-        ManifestItem("submission_package_build_note", "provenance_note", ROOT / "notes" / "prb_submission_package_build_2026-06-09.md", True, "Submission-package build description."),
-        ManifestItem("submission_checkpoint_audit_note", "provenance_note", ROOT / "notes" / "prb_submission_checkpoint_audit_2026-06-09.md", True, "Submission-checkpoint audit description."),
-        ManifestItem("goal_completion_audit_note", "provenance_note", ROOT / "notes" / "prb_goal_completion_audit_2026-06-09.md", True, "Goal-completion audit description."),
+        ManifestItem("figure_table_provenance", "provenance_note", ROOT / "notes" / "figure_table_provenance_2026-06-10.md", True, "Figure/table provenance manifest."),
+        ManifestItem("readiness_audit", "provenance_note", ROOT / "notes" / "prb_readiness_audit_2026-06-10.md", True, "Current PRB readiness audit."),
+        ManifestItem("validation_chain_note", "provenance_note", ROOT / "notes" / "prb_validation_chain_2026-06-10.md", True, "Validation-chain description."),
+        ManifestItem("major_revision_plan_note", "provenance_note", ROOT / "notes" / "prb_major_revision_plan_2026-06-10.md", True, "Major-revision plan derived from the review report."),
+        ManifestItem("pairing_family_revision_note", "provenance_note", ROOT / "notes" / "pairing_family_major_revision_result_2026-06-10.md", True, "Pairing-family major-revision result note."),
+        ManifestItem("major_revision_robustness_note", "provenance_note", ROOT / "notes" / "prb_major_revision_robustness_audit_2026-06-10.md", True, "Grid/truncation/shell major-revision result note."),
+        ManifestItem("valley_response_sensitivity_note", "provenance_note", ROOT / "notes" / "valley_sewing_response_sensitivity_2026-06-10.md", True, "Valley response-sensitivity result note."),
+        ManifestItem("submission_manifest_note", "provenance_note", ROOT / "notes" / "prb_submission_manifest_2026-06-10.md", True, "Submission-manifest description."),
+        ManifestItem("submission_package_build_note", "provenance_note", ROOT / "notes" / "prb_submission_package_build_2026-06-10.md", True, "Submission-package build description."),
+        ManifestItem("submission_checkpoint_audit_note", "provenance_note", ROOT / "notes" / "prb_submission_checkpoint_audit_2026-06-10.md", True, "Submission-checkpoint audit description."),
+        ManifestItem("goal_completion_audit_note", "provenance_note", ROOT / "notes" / "prb_goal_completion_audit_2026-06-10.md", True, "Goal-completion audit description."),
         ManifestItem("recent_literature_note", "provenance_note", ROOT / "notes" / "recent_literature_update_2026-06-09.md", True, "Latest recorded literature sweep."),
+    ]
+
+
+def config_items() -> list[ManifestItem]:
+    return [
+        ManifestItem(
+            artifact_id=f"config_{path.stem}",
+            role="configuration",
+            path=path,
+            required=True,
+            notes="YAML configuration included for reproducibility.",
+        )
+        for path in sorted((ROOT / "configs").glob("*.yaml"))
     ]
 
 
@@ -157,7 +185,7 @@ def row_for(item: ManifestItem) -> dict[str, str]:
 
 def main() -> int:
     args = parse_args()
-    items = base_items() + script_items() + source_code_items() + figure_items()
+    items = base_items() + config_items() + script_items() + source_code_items() + figure_items()
     rows = [row_for(item) for item in items]
 
     args.output.parent.mkdir(parents=True, exist_ok=True)

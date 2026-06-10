@@ -22,6 +22,7 @@ SUPP_TEX = (
 )
 SUPP_PDF = SUPP_TEX.with_suffix(".pdf")
 COVER_LETTER = ROOT / "submission" / "Zhou_PRB_Cover_Letter_2026.md"
+RESPONSE_LETTER = ROOT / "submission" / "Zhou_PRB_Response_To_Reviewers_2026.md"
 
 OUTPUT = ROOT / "data" / "processed" / "submission_package_audit.csv"
 
@@ -56,6 +57,16 @@ COVER_LETTER_REQUIRED_PHRASES = [
     "Sincerely,\nJian Zhou\nPrincipal Investigator\nJZ Institute of Science, Hong Kong, China\njack@jzis.org",
 ]
 
+RESPONSE_LETTER_REQUIRED_PHRASES = [
+    "Response to Referee Report",
+    "Major Revision",
+    "pairing-family",
+    "grid, truncation, and shell robustness",
+    "valley-partner sensitivity",
+    "normalized finite-band diagnostic",
+    "No valley-basis-independent absolute stiffness claim is made",
+]
+
 MAIN_REQUIRED_SECTIONS = [
     r"\section{Introduction}",
     r"\section{Model and Pairing Construction}",
@@ -81,6 +92,7 @@ REQUIRED_MAIN_LABELS = [
     r"\label{tab:dense_eta}",
     r"\label{tab:nk9}",
     r"\label{tab:prb_audit}",
+    r"\label{tab:major_revision_evidence}",
 ]
 
 REQUIRED_SUPP_LABELS = [
@@ -89,6 +101,12 @@ REQUIRED_SUPP_LABELS = [
     r"\label{tab:sm_filling_sufficiency}",
     r"\label{tab:sm_convergence_sufficiency}",
     r"\label{tab:sm_claim_scope}",
+    r"\label{fig:sm_valley_response_sensitivity}",
+    r"\label{tab:sm_valley_response_sensitivity}",
+    r"\label{fig:sm_pairing_family_revision}",
+    r"\label{tab:sm_pairing_family_revision}",
+    r"\label{fig:sm_major_revision_robustness}",
+    r"\label{tab:sm_major_revision_robustness}",
 ]
 
 
@@ -113,6 +131,25 @@ def contains(text: str, phrase: str) -> bool:
 
 def read(path: Path) -> str:
     return path.read_text()
+
+
+def author_sensitive_text(*texts: str) -> str:
+    markers = (
+        r"\author",
+        r"\affiliation",
+        r"\email",
+        "author:",
+        "sincerely,",
+        "principal investigator",
+        "jz institute",
+    )
+    lines = []
+    for text in texts:
+        for line in text.splitlines():
+            lowered = line.lower()
+            if any(marker in lowered for marker in markers):
+                lines.append(line)
+    return "\n".join(lines)
 
 
 def add(
@@ -185,16 +222,19 @@ def main() -> int:
     main_exists = MAIN_TEX.exists()
     supp_exists = SUPP_TEX.exists()
     cover_exists = COVER_LETTER.exists()
+    response_exists = RESPONSE_LETTER.exists()
     add(rows, "main_tex_exists", "main", main_exists, str(MAIN_TEX), "Main TeX file exists.")
     add(rows, "main_pdf_exists", "main", MAIN_PDF.exists(), str(MAIN_PDF), "Main PDF exists.")
     add(rows, "supp_tex_exists", "supplement", supp_exists, str(SUPP_TEX), "Supplement TeX exists.")
     add(rows, "supp_pdf_exists", "supplement", SUPP_PDF.exists(), str(SUPP_PDF), "Supplement PDF exists.")
     add(rows, "cover_letter_exists", "cover_letter", cover_exists, str(COVER_LETTER), "Cover letter draft exists.")
+    add(rows, "response_letter_exists", "response_letter", response_exists, str(RESPONSE_LETTER), "Response-to-reviewers draft exists.")
 
     main_text = read(MAIN_TEX) if main_exists else ""
     supp_text = read(SUPP_TEX) if supp_exists else ""
     cover_text = read(COVER_LETTER) if cover_exists else ""
-    combined = f"{main_text}\n{supp_text}\n{cover_text}"
+    response_text = read(RESPONSE_LETTER) if response_exists else ""
+    author_text = author_sensitive_text(main_text, supp_text, cover_text, response_text)
 
     add(
         rows,
@@ -234,6 +274,13 @@ def main() -> int:
         COVER_LETTER_REQUIRED_PHRASES,
         "cover_letter",
     )
+    audit_required_phrases(
+        rows,
+        response_text,
+        "response_letter",
+        RESPONSE_LETTER_REQUIRED_PHRASES,
+        "response_letter",
+    )
     audit_required_phrases(rows, main_text, "main", MAIN_REQUIRED_SECTIONS, "main_section")
     audit_required_phrases(rows, supp_text, "supplement", SUPP_REQUIRED_SECTIONS, "supp_section")
     audit_required_phrases(rows, main_text, "main", REQUIRED_MAIN_LABELS, "main_label")
@@ -245,13 +292,14 @@ def main() -> int:
         add(
             rows,
             f"forbid_author_variant_{slug}",
-            "main+supplement+cover_letter",
-            variant not in combined,
+            "author_metadata",
+            variant not in author_text,
             variant,
-            "Prohibited author-name variant must not appear in submission text files.",
+            "Prohibited author-name variant must not appear in author fields or signature metadata.",
         )
 
     audit_graphics(rows, main_text, "main")
+    audit_graphics(rows, supp_text, "supplement")
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", newline="") as handle:

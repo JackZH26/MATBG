@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "data" / "processed" / "prb_submission_manifest.csv"
 SUMMARY = ROOT / "data" / "processed" / "prb_submission_package_build.csv"
 BUILD_ROOT = ROOT / "submission" / "build"
-DEFAULT_PACKAGE_NAME = "MATBG_PRB_submission_checkpoint_2026-06-09"
+DEFAULT_PACKAGE_NAME = "MATBG_PRB_submission_checkpoint_2026-06-10"
 
 JOURNAL_ROLES = {
     "journal_source",
@@ -27,6 +27,7 @@ JOURNAL_ROLES = {
 }
 
 PROVENANCE_ROLES = {
+    "configuration",
     "source_data",
     "audit_output",
     "source_code",
@@ -109,10 +110,11 @@ Twisted Bilayer Graphene".
 
 ## Scope
 
-This package reflects the current normalized-response mechanism-paper scope.
-It is not a final journal submission until a fresh literature sweep is repeated
-at submission time and any decision about expanding to absolute-stiffness or
-device-level filling calibration is made.
+This package reflects the current major-revision normalized-response
+mechanism-paper scope.  It includes the point-by-point response draft, the
+pairing-family scan, the grid/truncation/shell robustness matrix, and the
+valley-partner response-sensitivity audit. It is not an APS Editorial Manager
+upload until the author approves the final journal submission.
 
 Files copied into checkpoint: {copied_count}
 """

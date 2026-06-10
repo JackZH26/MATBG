@@ -1,12 +1,12 @@
 # Cover Letter Draft for Physical Review B
 
-Date: June 9, 2026
+Date: June 10, 2026
 
 Dear Editors,
 
-I am pleased to submit the manuscript titled "Interband Pairing Signatures in
-the Superfluid Response of Magic-Angle Twisted Bilayer Graphene" for
-consideration as a Regular Article in Physical Review B.
+I am pleased to submit the revised manuscript titled "Interband Pairing
+Signatures in the Superfluid Response of Magic-Angle Twisted Bilayer Graphene"
+for consideration as a Regular Article in Physical Review B.
 
 The manuscript addresses how the orbital structure of a superconducting
 pairing ansatz can leave a separable signature in the finite-band superfluid
@@ -25,7 +25,11 @@ absolute stiffness prediction, quantitative agreement with experimental
 stiffness, or a device-level carrier-density calibration.  The Supplemental
 Material documents the numerical conventions, table provenance, convergence
 and filling sufficiency audits, and the excluded interpretations of the
-current mechanism-paper scope.
+current mechanism-paper scope.  In response to the major-revision report, the
+revised manuscript now adds a pairing-family scan, a grid/truncation/shell
+robustness matrix, and a response-level valley-partner sensitivity audit.  A
+separate point-by-point response to the referee report is included with this
+revision package.
 
 I believe the manuscript is suitable for Physical Review B because it connects
 multiband pairing structure, quantum-geometric response diagnostics, and

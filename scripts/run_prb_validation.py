@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import os
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -56,9 +57,14 @@ def excerpt(text: str, limit: int = 500) -> str:
 
 
 def run_command(step: str, command: list[str]) -> ValidationRow:
+    pycache = Path("/private/tmp/pycache-matbg")
+    pycache.mkdir(parents=True, exist_ok=True)
+    env = os.environ.copy()
+    env["PYTHONPYCACHEPREFIX"] = str(pycache)
     result = subprocess.run(
         command,
         cwd=ROOT,
+        env=env,
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
@@ -120,6 +126,9 @@ def validation_commands() -> list[tuple[str, list[str]]]:
         ("observable_policy_audit", [sys.executable, "scripts/audit_observable_policy.py"]),
         ("filling_sufficiency_audit", [sys.executable, "scripts/audit_filling_sufficiency.py"]),
         ("convergence_sufficiency_audit", [sys.executable, "scripts/audit_convergence_sufficiency.py"]),
+        ("pairing_family_response_audit", [sys.executable, "scripts/audit_pairing_family_response.py"]),
+        ("major_revision_robustness_audit", [sys.executable, "scripts/audit_prb_major_revision_robustness.py"]),
+        ("valley_response_sensitivity_audit", [sys.executable, "scripts/audit_valley_sewing_response_sensitivity.py"]),
         ("manuscript_table_verifier", [sys.executable, "scripts/verify_manuscript_tables.py"]),
         ("submission_package_audit", [sys.executable, "scripts/audit_submission_package.py"]),
         ("submission_manifest_build", [sys.executable, "scripts/build_prb_submission_manifest.py"]),

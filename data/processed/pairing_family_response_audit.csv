@@ -1,0 +1,8 @@
+check_id,status,measured_value,criterion,interpretation
+candidate_direction_count,pass,8,at least eight real layer-sublattice directions are scanned,The first major-revision family scan is broader than one ansatz.
+candidate_matrix_flags,pass,"[('True', 'True', 'True')]","all scanned matrices are real, symmetric, and Hermitian",The current candidate family stays within the intended real even-parity test set.
+working_direction_included,pass,"tau0_sigmax,tau0_sigmaz,taux_sigma0,taux_sigmax,taux_sigmaz,tauz_sigma0,tauz_sigmax,tauz_sigmaz",the original M1=taux_sigmax direction is included,The family scan can be compared directly with the current manuscript result.
+fixed_frobenius_all_positive,pass,32/32 rows positive,all fixed-Frobenius eta=1 rows are positive,The positive normalized signature is not unique to the original direction at this grid.
+fixed_frobenius_minimum_size,pass,"min=6.427%, max=9.487%",minimum fixed-Frobenius response exceeds five percent in the first-pass family scan,The family response has comparable scale to the manuscript's main diagnostic.
+fixed_delta0_has_sign_sensitivity,pass,"min=-1.461%, max=2.906%",fixed-Delta0 control includes both signs,The normalization dependence remains central and cannot be hidden in the revision.
+fixed_delta0_weaker_than_frobenius,pass,"max_abs_delta0=2.906%, min_frob=6.427%",fixed-Delta0 absolute response is less than half the weakest fixed-Frobenius response,The control remains substantially weaker than the normalized family response.

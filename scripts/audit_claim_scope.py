@@ -79,6 +79,24 @@ REQUIRED_PHRASES = [
         "Main text should state the finite-grid claim scope supported by the audit.",
     ),
     RequiredPhrase(
+        "main_pairing_family_scope",
+        "main",
+        "tested orbital-pairing family",
+        "Main text should answer the review concern that the result is only a single ansatz.",
+    ),
+    RequiredPhrase(
+        "main_low_truncation_boundary",
+        "main",
+        "low-truncation boundary",
+        "Main text must disclose the n_keep=4 boundary found by the robustness matrix.",
+    ),
+    RequiredPhrase(
+        "main_valley_partner_boundary",
+        "main",
+        "not presently claimed to be independent of valley-partner basis choices",
+        "Main text must not overclaim valley-basis-independent response physics.",
+    ),
+    RequiredPhrase(
         "supp_no_final_experimental_stiffness",
         "supplement",
         "does not promote the raw response units to final experimental stiffness values",
@@ -119,6 +137,24 @@ REQUIRED_PHRASES = [
         "supplement",
         "\\label{tab:sm_claim_scope}",
         "Supplement should expose the allowed and excluded claim scope.",
+    ),
+    RequiredPhrase(
+        "supp_pairing_family_table",
+        "supplement",
+        "\\label{tab:sm_pairing_family_revision}",
+        "Supplement should expose the major-revision pairing-family evidence.",
+    ),
+    RequiredPhrase(
+        "supp_robustness_table",
+        "supplement",
+        "\\label{tab:sm_major_revision_robustness}",
+        "Supplement should expose the major-revision grid/truncation/shell evidence.",
+    ),
+    RequiredPhrase(
+        "supp_valley_sensitivity_table",
+        "supplement",
+        "\\label{tab:sm_valley_response_sensitivity}",
+        "Supplement should expose the response-level valley-partner sensitivity evidence.",
     ),
 ]
 

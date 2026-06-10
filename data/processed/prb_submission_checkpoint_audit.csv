@@ -2,6 +2,7 @@ check_id,scope,status,evidence,requirement
 title_main_tex,title,pass,Interband Pairing Signatures in the Superfluid Response of Magic-Angle Twisted Bilayer Graphene,Main TeX title matches the PRB checkpoint title.
 title_supplement_tex,title,pass,Interband Pairing Signatures in the Superfluid Response of Magic-Angle Twisted Bilayer Graphene,Supplement title references the same manuscript title.
 title_cover_letter,title,pass,Interband Pairing Signatures in the Superfluid Response of Magic-Angle Twisted Bilayer Graphene,Cover letter uses the same manuscript title.
+title_response_letter,title,pass,Interband Pairing Signatures in the Superfluid Response of Magic-Angle Twisted Bilayer Graphene,Response-to-reviewers letter uses the same manuscript title.
 title_readme_files,title,pass,main and supplement filenames,README lists the active manuscript and supplement files.
 main_author_01,authorship,pass,\author{Jian Zhou},Main TeX author block matches the required Jian Zhou metadata.
 supp_author_01,authorship,pass,\author{Jian Zhou},Supplement author block matches the required Jian Zhou metadata.
@@ -10,12 +11,13 @@ supp_author_02,authorship,pass,"\affiliation{JZ Institute of Science, Hong Kong,
 main_author_03,authorship,pass,\email{jack@jzis.org},Main TeX author block matches the required Jian Zhou metadata.
 supp_author_03,authorship,pass,\email{jack@jzis.org},Supplement author block matches the required Jian Zhou metadata.
 cover_signature,authorship,pass,Jian Zhou signature,Cover letter uses the required signature.
-forbid_author_variant_jack,authorship,pass,Jack,Forbidden author-name variants are absent from submission-facing text.
-forbid_author_variant_jack_zhou,authorship,pass,Jack Zhou,Forbidden author-name variants are absent from submission-facing text.
-forbid_author_variant_wall_e,authorship,pass,Wall-E,Forbidden author-name variants are absent from submission-facing text.
-forbid_author_variant_wali_chinese,authorship,pass,瓦力,Forbidden author-name variants are absent from submission-facing text.
-forbid_author_variant_j_zhou,authorship,pass,J. Zhou,Forbidden author-name variants are absent from submission-facing text.
-forbid_author_variant_zhou_j,authorship,pass,"Zhou, J.",Forbidden author-name variants are absent from submission-facing text.
+response_signature,authorship,pass,Jian Zhou signature,Response-to-reviewers letter uses the required signature.
+forbid_author_variant_jack,authorship,pass,Jack,Forbidden author-name variants are absent from author fields and signature metadata.
+forbid_author_variant_jack_zhou,authorship,pass,Jack Zhou,Forbidden author-name variants are absent from author fields and signature metadata.
+forbid_author_variant_wall_e,authorship,pass,Wall-E,Forbidden author-name variants are absent from author fields and signature metadata.
+forbid_author_variant_wali_chinese,authorship,pass,瓦力,Forbidden author-name variants are absent from author fields and signature metadata.
+forbid_author_variant_j_zhou,authorship,pass,J. Zhou,Forbidden author-name variants are absent from author fields and signature metadata.
+forbid_author_variant_zhou_j,authorship,pass,"Zhou, J.",Forbidden author-name variants are absent from author fields and signature metadata.
 main_declaration_01,declarations,pass,\section*{Declarations},Main TeX contains the required declarations.
 supp_declaration_01,declarations,pass,\section*{Declarations},Supplement contains the required declarations.
 main_declaration_02,declarations,pass,\textbf{Funding}: Not applicable.,Main TeX contains the required declarations.
@@ -26,22 +28,24 @@ main_declaration_04,declarations,pass,\textbf{Data availability}: All data and c
 supp_declaration_04,declarations,pass,\textbf{Data availability}: All data and code supporting this work are available,Supplement contains the required declarations.
 main_declaration_05,declarations,pass,\textbf{Ethics approval}: Not applicable.,Main TeX contains the required declarations.
 supp_declaration_05,declarations,pass,\textbf{Ethics approval}: Not applicable.,Supplement contains the required declarations.
-readme_scope_status,readme,pass,checkpoint scope,README states the current local PRB checkpoint status.
+readme_scope_status,readme,pass,major-revision package scope,README states the current local PRB major-revision package status.
 readme_validation_command,readme,pass,run_prb_validation.py,README documents the standard validation command.
 readme_package_command,readme,pass,build_prb_submission_package.py,README documents the local package command.
 readme_checkpoint_audit_command,readme,pass,audit_prb_submission_checkpoint.py,README documents the final checkpoint audit command.
 readme_goal_completion_audit,readme,pass,prb_goal_completion_audit.csv,README documents the goal-level completion audit.
+readme_major_revision_scope,readme,pass,major-revision response package,README documents the current major-revision checkpoint scope.
 validation_summary_exists,validation,pass,/Users/jackzhou/Documents/Papers/MATBG/data/processed/prb_validation_summary.csv,Validation summary CSV exists.
-validation_summary_all_pass,validation,pass,12/12,All recorded validation rows pass.
+validation_summary_all_pass,validation,pass,15/15,All recorded validation rows pass.
+validation_required_steps,validation,pass,all present,Validation summary includes all required major-revision validation steps.
 manifest_exists,manifest,pass,/Users/jackzhou/Documents/Papers/MATBG/data/processed/prb_submission_manifest.csv,Submission manifest exists.
 manifest_required_ids,manifest,pass,all present,Manifest contains the final checkpoint-required artifact IDs.
-manifest_all_required_present,manifest,pass,77/77,All required manifest rows are present.
+manifest_all_required_present,manifest,pass,121/121,All required manifest rows are present.
 package_summary_exists,package,pass,/Users/jackzhou/Documents/Papers/MATBG/data/processed/prb_submission_package_build.csv,Package build summary exists.
 package_summary_pass,package,pass,pass,Package build summary status is pass.
-package_dir_exists,package,pass,/Users/jackzhou/Documents/Papers/MATBG/submission/build/MATBG_PRB_submission_checkpoint_2026-06-09,Ignored local package directory exists.
-package_zip_exists,package,pass,/Users/jackzhou/Documents/Papers/MATBG/submission/build/MATBG_PRB_submission_checkpoint_2026-06-09.zip,Ignored local package zip exists.
-package_count_matches_manifest,package,pass,"copied=80, manifest=77","Package copies all manifest files plus manifest, validation summary, and README extras."
-manifest_count_matches_summary,package,pass,"summary=77, manifest_rows=77",Package summary manifest-entry count matches the current manifest.
+package_dir_exists,package,pass,/Users/jackzhou/Documents/Papers/MATBG/submission/build/MATBG_PRB_submission_checkpoint_2026-06-10,Ignored local package directory exists.
+package_zip_exists,package,pass,/Users/jackzhou/Documents/Papers/MATBG/submission/build/MATBG_PRB_submission_checkpoint_2026-06-10.zip,Ignored local package zip exists.
+package_count_matches_manifest,package,pass,"copied=124, manifest=121","Package copies all manifest files plus manifest, validation summary, and README extras."
+manifest_count_matches_summary,package,pass,"summary=121, manifest_rows=121",Package summary manifest-entry count matches the current manifest.
 package_build_ignored,package,pass,submission/build/,Ignored package outputs are excluded from git.
 package_readme_exists,package,pass,README_PACKAGE.md,Package includes a package README.
 package_manifest_hashes_match,package,pass,0 mismatch(es),All manifest-tracked files in the package directory match their recorded SHA-256 hashes.
@@ -56,6 +60,8 @@ package_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_
 zip_journal_Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026_pdf,package,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.pdf,Package zip contains the required manuscript-facing file.
 package_journal_submission_Zhou_PRB_Cover_Letter_2026_md,package,pass,submission/Zhou_PRB_Cover_Letter_2026.md,Journal upload package contains the required manuscript-facing file.
 zip_journal_submission_Zhou_PRB_Cover_Letter_2026_md,package,pass,submission/Zhou_PRB_Cover_Letter_2026.md,Package zip contains the required manuscript-facing file.
+package_journal_submission_Zhou_PRB_Response_To_Reviewers_2026_md,package,pass,submission/Zhou_PRB_Response_To_Reviewers_2026.md,Journal upload package contains the required manuscript-facing file.
+zip_journal_submission_Zhou_PRB_Response_To_Reviewers_2026_md,package,pass,submission/Zhou_PRB_Response_To_Reviewers_2026.md,Package zip contains the required manuscript-facing file.
 package_journal_references_bib,package,pass,references.bib,Journal upload package contains the required manuscript-facing file.
 zip_journal_references_bib,package,pass,references.bib,Package zip contains the required manuscript-facing file.
 package_provenance_README_md,package,pass,README.md,Package provenance directory contains the required file.

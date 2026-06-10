@@ -25,17 +25,28 @@ This repository contains the working materials for a MATBG superfluid stiffness 
 7. `submission/Zhou_PRB_Cover_Letter_2026.md`
    Current Physical Review B cover letter draft.
 
+8. `submission/Zhou_PRB_Response_To_Reviewers_2026.md`
+   Current point-by-point response draft for the 2026-06-10 Major Revision
+   report.
+
 ## Current Manuscript Status
 
 The current PRB-targeted manuscript is a normalized-response mechanism paper.
-Its central claim is that an orbital-projected interband-pairing direction
+Its central claim is that an orbital-projected interband-pairing family
 produces a reproducible, normalization-conditioned finite-band response
 signature in MATBG. The current repository state is a local PRB
-submission-facing checkpoint for this mechanism-paper scope.
+major-revision response package for this mechanism-paper scope.
+
+The 2026-06-10 revision adds three response-to-review evidence layers:
+
+1. a pairing-family response scan,
+2. a grid/truncation/shell robustness matrix,
+3. a valley-partner response-sensitivity audit.
 
 The manuscript deliberately does not claim direct quantitative agreement with
-experimental stiffness, a final absolute stiffness convention, a device-level
-carrier-density calibration, or a continuum-limit extrapolation.
+experimental stiffness, a final absolute stiffness convention, a
+valley-basis-independent stiffness result, a device-level carrier-density
+calibration, or a continuum-limit extrapolation.
 
 ## Validation
 
@@ -53,9 +64,10 @@ data/processed/prb_submission_manifest.csv
 ```
 
 It checks script syntax, claim-scope guardrails, observable policy, filling and
-convergence sufficiency, manuscript/Supplemental Material table values,
-submission-package mechanics, submission-manifest completeness, main/Supplemental
-Material LaTeX builds, cover letter presence/signature, and blocking LaTeX log
+convergence sufficiency, the three major-revision evidence audits, manuscript
+and Supplemental Material table values, submission-package mechanics,
+submission-manifest completeness, main/Supplemental Material LaTeX builds,
+cover letter and response-letter presence/signatures, and blocking LaTeX log
 warnings.
 
 ## Local PRB Package Checkpoint
@@ -75,7 +87,8 @@ data/processed/prb_submission_package_build.csv
 
 The package is for local review and final-preparation work. It is not an APS
 Editorial Manager upload; actual journal submission still requires user
-approval and upload through the journal system.
+approval and upload through the journal system. The package currently includes
+the major-revision response package, including the response-to-reviewers draft.
 
 Run the final local checkpoint audit after validation and package construction:
 
@@ -98,7 +111,7 @@ The goal-level completion audit is recorded in:
 
 ```text
 data/processed/prb_goal_completion_audit.csv
-notes/prb_goal_completion_audit_2026-06-09.md
+notes/prb_goal_completion_audit_2026-06-10.md
 ```
 
 ## Research Owner

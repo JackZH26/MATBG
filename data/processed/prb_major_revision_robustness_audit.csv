@@ -1,0 +1,13 @@
+check_id,status,measured_value,criterion,interpretation
+axis_nk_coverage,pass,"[9, 11, 13, 15]","nk coverage includes 9, 11, 13, and 15",The revision directly extends the earlier selected-grid checks.
+axis_nkeep_coverage,pass,"[4, 6, 8]","retained-band coverage includes n_keep=4,6,8",The result is tested against retained-band truncation.
+axis_nshell_coverage,pass,"[2, 3, 4]","moire shell coverage includes n_shell=2,3,4",The result is tested against ultraviolet shell cutoff.
+axis_mu_coverage,pass,"[-4.0, -2.0, 0.0, 2.0, 4.0]","chemical-potential coverage includes -4,-2,0,2,4 meV",The key response window is sampled beyond the previous four-point set.
+axis_eta_coverage,pass,"[0.0, 0.5, 1.0]","raw matrix includes eta=0,0.5,1",The robustness matrix preserves the midpoint interpolation check.
+summary_row_count,pass,360/360,summary contains every nk/n_keep/n_shell/mu/normalization combination,The audit is based on a complete rectangular robustness matrix.
+fixed_frobenius_claim_scope_positive,pass,120/120 positive,all fixed-Frobenius eta=1 responses are positive for n_keep>=6,The normalized response sign survives the production and expanded retained-band truncations.
+fixed_frobenius_production_scope_size,pass,"min=4.374%, max=13.603%",minimum fixed-Frobenius response exceeds four percent for n_keep>=6 and n_shell>=3,The production-scope response remains larger than a tiny numerical residual.
+fixed_frobenius_low_truncation_boundary,pass,8 nonpositive row(s): n_shell=3 nk=9 pct=-6.683%; n_shell=4 nk=9 pct=-42.222%; n_shell=3 nk=11 pct=-10.095%; n_shell=4 nk=11 pct=-41.233%; n_shell=3 nk=13 pct=-1.668%; n_shell=4 nk=13 pct=-41.429%; n_shell=3 nk=15 pct=-0.891%; n_shell=4 nk=15 pct=-41.616%,all nonpositive fixed-Frobenius rows are confined to n_keep=4 at mu=-4 meV,The revision must state that the signal is not globally truncation-independent at the lowest retained-band cutoff.
+fixed_frobenius_production_scope_spread,pass,range=9.229 percentage points,production-scope fixed-Frobenius spread stays below twelve percentage points,The response scale is stable enough for a scoped finite-band mechanism claim.
+fixed_delta0_sign_sensitivity,pass,"min=-4.624%, max=3.301%",fixed-Delta0 control includes both signs,The normalization dependence remains visible in the stronger robustness matrix.
+numerical_error_bounds,pass,max_ph=2.704e-15,particle-hole spectrum error remains below 1e-8,The robustness matrix is not dominated by BdG numerical symmetry failure.

@@ -1,8 +1,10 @@
 check_id,kind,file_key,status,phrase,reason
 main_claim_bearing_ratios,required_phrase,main,pass,Normalized response ratios are the claim-bearing quantities,Main text must state which response observable carries the claim.
 main_no_claim_bearing_absolute,required_phrase,main,pass,makes no claim-bearing absolute stiffness prediction,Main text must exclude absolute stiffness prediction claims.
+main_declared_diagnostic_convention,required_phrase,main,pass,declared finite-band diagnostic convention,Main text must bind the claim to the audited finite-band convention.
 supp_final_policy,required_phrase,supplement,pass,final observable policy for the current mechanism-paper scope,Supplement must expose the current mechanism-paper reporting policy.
 supp_claim_bearing_table,required_phrase,supplement,pass,claim-bearing mechanism observable,Supplemental reporting table must identify the claim-bearing row.
+supp_valley_boundary,required_phrase,supplement,pass,valley-basis-independent stiffness claim,Supplement must expose the valley-partner boundary after the sensitivity audit.
 strategy_policy,required_phrase,strategy,pass,Final Observable Policy,Strategy note must record the scope decision.
 readiness_scope,required_phrase,readiness,pass,final observable policy for the current mechanism-paper scope,Readiness audit must not treat absolute values as current-scope claims.
 units_claim_layer,required_phrase,units,pass,final claim-bearing observable layer,Units note must identify normalized ratios as the active claim layer.

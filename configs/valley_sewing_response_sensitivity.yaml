@@ -1,0 +1,45 @@
+project: matbg_interband_pairing_superfluid_stiffness
+created: 2026-06-10
+purpose: prb_major_revision_valley_sewing_response_sensitivity
+
+bm_model:
+  theta_deg: 1.05
+  vF_eV_A: 2.135
+  w0_meV: 87.2
+  w1_meV: 109.0
+  n_shell_values: [3, 4]
+
+scan:
+  nk_values: [9, 13, 15]
+  n_keep: 6
+  mu_meV_values: [-4.0, 0.0, 2.0, 4.0]
+  eta_values: [0.0, 1.0]
+  delta0_meV: 1.0
+  finite_difference_dk_Ainv: 1.0e-6
+  normalization_modes:
+    - fixed_frobenius_norm
+    - fixed_delta0
+
+pairing:
+  m0: tau0_sigma0
+  m1: taux_sigmax
+  partner_conventions:
+    - tr_sewn
+    - same_valley
+    - time_reversed_valley
+    - sewn_time_reversed_valley
+
+outputs:
+  raw_csv: data/processed/valley_sewing_response_sensitivity.csv
+  summary_csv: data/processed/valley_sewing_response_sensitivity_summary.csv
+  audit_csv: data/processed/valley_sewing_response_sensitivity_audit.csv
+  figure_png: figures/valley_sewing_response_sensitivity.png
+  figure_pdf: figures/valley_sewing_response_sensitivity.pdf
+
+commands:
+  scan: >
+    python3 scripts/run_valley_sewing_response_sensitivity.py
+  audit: >
+    python3 scripts/audit_valley_sewing_response_sensitivity.py
+  plot: >
+    python3 scripts/plot_valley_sewing_response_sensitivity.py

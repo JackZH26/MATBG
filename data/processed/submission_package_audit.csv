@@ -4,6 +4,7 @@ main_pdf_exists,main,pass,/Users/jackzhou/Documents/Papers/MATBG/Zhou_Interband_
 supp_tex_exists,supplement,pass,/Users/jackzhou/Documents/Papers/MATBG/Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex,Supplement TeX exists.
 supp_pdf_exists,supplement,pass,/Users/jackzhou/Documents/Papers/MATBG/Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.pdf,Supplement PDF exists.
 cover_letter_exists,cover_letter,pass,/Users/jackzhou/Documents/Papers/MATBG/submission/Zhou_PRB_Cover_Letter_2026.md,Cover letter draft exists.
+response_letter_exists,response_letter,pass,/Users/jackzhou/Documents/Papers/MATBG/submission/Zhou_PRB_Response_To_Reviewers_2026.md,Response-to-reviewers draft exists.
 main_filename_rule_tex,main,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.tex,Main paper TeX filename follows the Zhou_<Title>_2026.tex convention.
 main_filename_rule_pdf,main,pass,Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_2026.pdf,Main paper PDF filename follows the Zhou_<Title>_2026.pdf convention.
 main_revtex_01,main,pass,"\documentclass[aps,prb,reprint,superscriptaddress,floatfix,nofootinbib]{revtex4-2}",Required manuscript/package phrase must be present.
@@ -33,6 +34,13 @@ Jian Zhou
 Principal Investigator
 JZ Institute of Science, Hong Kong, China
 jack@jzis.org",Required manuscript/package phrase must be present.
+response_letter_01,response_letter,pass,Response to Referee Report,Required manuscript/package phrase must be present.
+response_letter_02,response_letter,pass,Major Revision,Required manuscript/package phrase must be present.
+response_letter_03,response_letter,pass,pairing-family,Required manuscript/package phrase must be present.
+response_letter_04,response_letter,pass,"grid, truncation, and shell robustness",Required manuscript/package phrase must be present.
+response_letter_05,response_letter,pass,valley-partner sensitivity,Required manuscript/package phrase must be present.
+response_letter_06,response_letter,pass,normalized finite-band diagnostic,Required manuscript/package phrase must be present.
+response_letter_07,response_letter,pass,No valley-basis-independent absolute stiffness claim is made,Required manuscript/package phrase must be present.
 main_section_01,main,pass,\section{Introduction},Required manuscript/package phrase must be present.
 main_section_02,main,pass,\section{Model and Pairing Construction},Required manuscript/package phrase must be present.
 main_section_03,main,pass,\section{Finite-Band Response},Required manuscript/package phrase must be present.
@@ -51,20 +59,33 @@ main_label_03,main,pass,\label{fig:heatmap_delta0},Required manuscript/package p
 main_label_04,main,pass,\label{tab:dense_eta},Required manuscript/package phrase must be present.
 main_label_05,main,pass,\label{tab:nk9},Required manuscript/package phrase must be present.
 main_label_06,main,pass,\label{tab:prb_audit},Required manuscript/package phrase must be present.
+main_label_07,main,pass,\label{tab:major_revision_evidence},Required manuscript/package phrase must be present.
 supp_label_01,supplement,pass,\label{tab:sm_reporting_layers},Required manuscript/package phrase must be present.
 supp_label_02,supplement,pass,\label{tab:sm_filling_crosswalk},Required manuscript/package phrase must be present.
 supp_label_03,supplement,pass,\label{tab:sm_filling_sufficiency},Required manuscript/package phrase must be present.
 supp_label_04,supplement,pass,\label{tab:sm_convergence_sufficiency},Required manuscript/package phrase must be present.
 supp_label_05,supplement,pass,\label{tab:sm_claim_scope},Required manuscript/package phrase must be present.
+supp_label_06,supplement,pass,\label{fig:sm_valley_response_sensitivity},Required manuscript/package phrase must be present.
+supp_label_07,supplement,pass,\label{tab:sm_valley_response_sensitivity},Required manuscript/package phrase must be present.
+supp_label_08,supplement,pass,\label{fig:sm_pairing_family_revision},Required manuscript/package phrase must be present.
+supp_label_09,supplement,pass,\label{tab:sm_pairing_family_revision},Required manuscript/package phrase must be present.
+supp_label_10,supplement,pass,\label{fig:sm_major_revision_robustness},Required manuscript/package phrase must be present.
+supp_label_11,supplement,pass,\label{tab:sm_major_revision_robustness},Required manuscript/package phrase must be present.
 main_bibliography_01,main,pass,\bibliography{references},Required manuscript/package phrase must be present.
 supp_bibliography_01,supplement,pass,\bibliography{references},Required manuscript/package phrase must be present.
-forbid_author_variant_jack,main+supplement+cover_letter,pass,Jack,Prohibited author-name variant must not appear in submission text files.
-forbid_author_variant_jack_zhou,main+supplement+cover_letter,pass,Jack Zhou,Prohibited author-name variant must not appear in submission text files.
-forbid_author_variant_wall_e,main+supplement+cover_letter,pass,Wall-E,Prohibited author-name variant must not appear in submission text files.
-forbid_author_variant_wali_chinese,main+supplement+cover_letter,pass,瓦力,Prohibited author-name variant must not appear in submission text files.
-forbid_author_variant_j_zhou,main+supplement+cover_letter,pass,J. Zhou,Prohibited author-name variant must not appear in submission text files.
-forbid_author_variant_zhou_j,main+supplement+cover_letter,pass,"Zhou, J.",Prohibited author-name variant must not appear in submission text files.
+forbid_author_variant_jack,author_metadata,pass,Jack,Prohibited author-name variant must not appear in author fields or signature metadata.
+forbid_author_variant_jack_zhou,author_metadata,pass,Jack Zhou,Prohibited author-name variant must not appear in author fields or signature metadata.
+forbid_author_variant_wall_e,author_metadata,pass,Wall-E,Prohibited author-name variant must not appear in author fields or signature metadata.
+forbid_author_variant_wali_chinese,author_metadata,pass,瓦力,Prohibited author-name variant must not appear in author fields or signature metadata.
+forbid_author_variant_j_zhou,author_metadata,pass,J. Zhou,Prohibited author-name variant must not appear in author fields or signature metadata.
+forbid_author_variant_zhou_j,author_metadata,pass,"Zhou, J.",Prohibited author-name variant must not appear in author fields or signature metadata.
 main_graphics_present,main,pass,3 includegraphics command(s),At least one visual asset should be present in a PRB manuscript file.
 main_graphic_exists_01,main,pass,figures/workflow_schematic_prb.png,Every included graphic file must exist in the repository.
 main_graphic_exists_02,main,pass,figures/mu_eta_heatmap_nk7_nkeep6_fixed_frobenius.png,Every included graphic file must exist in the repository.
 main_graphic_exists_03,main,pass,figures/mu_eta_heatmap_nk7_nkeep6_fixed_delta0.png,Every included graphic file must exist in the repository.
+supplement_graphics_present,supplement,pass,5 includegraphics command(s),At least one visual asset should be present in a PRB manuscript file.
+supplement_graphic_exists_01,supplement,pass,figures/valley_sewing_response_sensitivity.pdf,Every included graphic file must exist in the repository.
+supplement_graphic_exists_02,supplement,pass,figures/pairing_family_response_summary.pdf,Every included graphic file must exist in the repository.
+supplement_graphic_exists_03,supplement,pass,figures/nk_convergence_keypoints_nkeep6.pdf,Every included graphic file must exist in the repository.
+supplement_graphic_exists_04,supplement,pass,figures/nk_trend_audit_nkeep6.pdf,Every included graphic file must exist in the repository.
+supplement_graphic_exists_05,supplement,pass,figures/prb_major_revision_robustness_matrix.pdf,Every included graphic file must exist in the repository.

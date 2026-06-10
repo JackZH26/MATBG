@@ -6,6 +6,9 @@ main_filling_sufficiency_scope,required_phrase,main,pass,adequate as a BM centra
 main_delta0_control,required_phrase,main,pass,fixed-$\Delta_0$ control remains weak,The weaker fixed-Delta0 control limits unconditional enhancement claims.
 main_nk15_spotcheck,required_phrase,main,pass,targeted $nk=15$ spot check,Main text should reflect the latest high-grid representative check.
 main_convergence_sufficiency_scope,required_phrase,main,pass,selected-grid normalized mechanism claim,Main text should state the finite-grid claim scope supported by the audit.
+main_pairing_family_scope,required_phrase,main,pass,tested orbital-pairing family,Main text should answer the review concern that the result is only a single ansatz.
+main_low_truncation_boundary,required_phrase,main,pass,low-truncation boundary,Main text must disclose the n_keep=4 boundary found by the robustness matrix.
+main_valley_partner_boundary,required_phrase,main,pass,not presently claimed to be independent of valley-partner basis choices,Main text must not overclaim valley-basis-independent response physics.
 supp_no_final_experimental_stiffness,required_phrase,supplement,pass,does not promote the raw response units to final experimental stiffness values,Supplement must declare the absolute-unit boundary.
 supp_device_calibration_boundary,required_phrase,supplement,pass,not as a device-specific carrier-density calibration,Central-flat-band crosswalk must not be overinterpreted.
 supp_filling_sufficiency_table,required_phrase,supplement,pass,\label{tab:sm_filling_sufficiency},Supplement should expose the filling-sufficiency self-audit.
@@ -13,6 +16,9 @@ supp_not_continuum_extrapolation,required_phrase,supplement,pass,rather than a f
 supp_not_dense_replacement,required_phrase,supplement,pass,not a full dense-grid replacement,The nk15 result is a targeted spot check only.
 supp_convergence_sufficiency_table,required_phrase,supplement,pass,\label{tab:sm_convergence_sufficiency},Supplement should expose the convergence-sufficiency self-audit.
 supp_claim_scope_table,required_phrase,supplement,pass,\label{tab:sm_claim_scope},Supplement should expose the allowed and excluded claim scope.
+supp_pairing_family_table,required_phrase,supplement,pass,\label{tab:sm_pairing_family_revision},Supplement should expose the major-revision pairing-family evidence.
+supp_robustness_table,required_phrase,supplement,pass,\label{tab:sm_major_revision_robustness},Supplement should expose the major-revision grid/truncation/shell evidence.
+supp_valley_sensitivity_table,required_phrase,supplement,pass,\label{tab:sm_valley_response_sensitivity},Supplement should expose the response-level valley-partner sensitivity evidence.
 forbid_universal_enhancement,forbidden_phrase,main+supplement,pass,universally enhances physical stiffness,The fixed-Delta0 control contradicts a universal enhancement claim.
 forbid_quant_agreement,forbidden_phrase,main+supplement,pass,quantitative agreement with experimental stiffness,Direct experimental stiffness comparison is outside the current scope.
 forbid_final_carrier_density,forbidden_phrase,main+supplement,pass,device-level carrier-density calibration is complete,The current filling work is a central-flat-band crosswalk only.

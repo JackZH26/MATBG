@@ -20,6 +20,7 @@ MAIN_PDF = MAIN_TEX.with_suffix(".pdf")
 SUPP_TEX = ROOT / "Zhou_Interband_Pairing_Signatures_In_The_Superfluid_Response_Of_Magic_Angle_Twisted_Bilayer_Graphene_Supplemental_Material_2026.tex"
 SUPP_PDF = SUPP_TEX.with_suffix(".pdf")
 COVER_LETTER = ROOT / "submission" / "Zhou_PRB_Cover_Letter_2026.md"
+RESPONSE_LETTER = ROOT / "submission" / "Zhou_PRB_Response_To_Reviewers_2026.md"
 README = ROOT / "README.md"
 GITIGNORE = ROOT / ".gitignore"
 
@@ -62,7 +63,21 @@ REQUIRED_MANIFEST_IDS = {
     "supplement_tex",
     "supplement_pdf",
     "cover_letter",
+    "response_to_reviewers",
     "bibliography",
+    "pairing_family_response_data",
+    "pairing_family_response_summary",
+    "pairing_family_response_audit",
+    "major_revision_robustness_matrix",
+    "major_revision_robustness_summary",
+    "major_revision_robustness_audit",
+    "valley_response_sensitivity_data",
+    "valley_response_sensitivity_summary",
+    "valley_response_sensitivity_audit",
+    "major_revision_plan_note",
+    "pairing_family_revision_note",
+    "major_revision_robustness_note",
+    "valley_response_sensitivity_note",
     "submission_package_build_summary",
     "prb_submission_checkpoint_audit",
     "prb_goal_completion_audit",
@@ -75,6 +90,7 @@ REQUIRED_JOURNAL_UPLOADS = [
     SUPP_TEX,
     SUPP_PDF,
     COVER_LETTER,
+    RESPONSE_LETTER,
     ROOT / "references.bib",
 ]
 REQUIRED_PROVENANCE = [
@@ -92,11 +108,29 @@ JOURNAL_ROLES = {
     "journal_submission_text",
 }
 PROVENANCE_ROLES = {
+    "configuration",
     "source_data",
     "audit_output",
     "source_code",
     "validation_script",
     "provenance_note",
+}
+REQUIRED_VALIDATION_STEPS = {
+    "python_compile_scripts",
+    "claim_scope_audit",
+    "observable_policy_audit",
+    "filling_sufficiency_audit",
+    "convergence_sufficiency_audit",
+    "pairing_family_response_audit",
+    "major_revision_robustness_audit",
+    "valley_response_sensitivity_audit",
+    "manuscript_table_verifier",
+    "submission_package_audit",
+    "submission_manifest_build",
+    "main_latexmk",
+    "supplement_latexmk",
+    "main_latex_log_audit",
+    "supplement_latex_log_audit",
 }
 
 
@@ -119,6 +153,25 @@ def contains(text: str, phrase: str) -> bool:
 
 def read_text(path: Path) -> str:
     return path.read_text(errors="replace") if path.exists() else ""
+
+
+def author_sensitive_text(*texts: str) -> str:
+    markers = (
+        r"\author",
+        r"\affiliation",
+        r"\email",
+        "author:",
+        "sincerely,",
+        "principal investigator",
+        "jz institute",
+    )
+    lines = []
+    for text in texts:
+        for line in text.splitlines():
+            lowered = line.lower()
+            if any(marker in lowered for marker in markers):
+                lines.append(line)
+    return "\n".join(lines)
 
 
 def add(
@@ -256,8 +309,9 @@ def main() -> int:
     main_text = read_text(MAIN_TEX)
     supp_text = read_text(SUPP_TEX)
     cover_text = read_text(COVER_LETTER)
+    response_text = read_text(RESPONSE_LETTER)
     readme_text = read_text(README)
-    combined_submission_text = "\n".join([main_text, supp_text, cover_text])
+    author_text = author_sensitive_text(main_text, supp_text, cover_text, response_text)
 
     manifest_rows = load_csv(MANIFEST)
     validation_rows = load_csv(VALIDATION_SUMMARY)
@@ -267,27 +321,33 @@ def main() -> int:
     add(rows, "title_main_tex", "title", latex_title(main_text) == MAIN_TITLE, latex_title(main_text), "Main TeX title matches the PRB checkpoint title.")
     add(rows, "title_supplement_tex", "title", MAIN_TITLE in supp_text, MAIN_TITLE, "Supplement title references the same manuscript title.")
     add(rows, "title_cover_letter", "title", contains(cover_text, MAIN_TITLE), MAIN_TITLE, "Cover letter uses the same manuscript title.")
+    add(rows, "title_response_letter", "title", contains(response_text, MAIN_TITLE), MAIN_TITLE, "Response-to-reviewers letter uses the same manuscript title.")
     add(rows, "title_readme_files", "title", MAIN_TEX.name in readme_text and SUPP_TEX.name in readme_text, "main and supplement filenames", "README lists the active manuscript and supplement files.")
 
     for phrase in EXPECTED_AUTHOR_BLOCKS:
         add(rows, f"main_author_{len([r for r in rows if r.check_id.startswith('main_author_')]) + 1:02d}", "authorship", contains(main_text, phrase), phrase, "Main TeX author block matches the required Jian Zhou metadata.")
         add(rows, f"supp_author_{len([r for r in rows if r.check_id.startswith('supp_author_')]) + 1:02d}", "authorship", contains(supp_text, phrase), phrase, "Supplement author block matches the required Jian Zhou metadata.")
     add(rows, "cover_signature", "authorship", EXPECTED_COVER_SIGNATURE in cover_text, "Jian Zhou signature", "Cover letter uses the required signature.")
+    add(rows, "response_signature", "authorship", EXPECTED_COVER_SIGNATURE in response_text, "Jian Zhou signature", "Response-to-reviewers letter uses the required signature.")
     for slug, variant in FORBIDDEN_AUTHOR_VARIANTS:
-        add(rows, f"forbid_author_variant_{slug}", "authorship", variant not in combined_submission_text, variant, "Forbidden author-name variants are absent from submission-facing text.")
+        add(rows, f"forbid_author_variant_{slug}", "authorship", variant not in author_text, variant, "Forbidden author-name variants are absent from author fields and signature metadata.")
 
     for phrase in EXPECTED_DECLARATIONS:
         add(rows, f"main_declaration_{len([r for r in rows if r.check_id.startswith('main_declaration_')]) + 1:02d}", "declarations", contains(main_text, phrase), phrase, "Main TeX contains the required declarations.")
         add(rows, f"supp_declaration_{len([r for r in rows if r.check_id.startswith('supp_declaration_')]) + 1:02d}", "declarations", contains(supp_text, phrase), phrase, "Supplement contains the required declarations.")
 
-    add(rows, "readme_scope_status", "readme", contains(readme_text, "local PRB submission-facing checkpoint"), "checkpoint scope", "README states the current local PRB checkpoint status.")
+    add(rows, "readme_scope_status", "readme", contains(readme_text, "local PRB major-revision response package"), "major-revision package scope", "README states the current local PRB major-revision package status.")
     add(rows, "readme_validation_command", "readme", "python3 scripts/run_prb_validation.py" in readme_text, "run_prb_validation.py", "README documents the standard validation command.")
     add(rows, "readme_package_command", "readme", "python3 scripts/build_prb_submission_package.py" in readme_text, "build_prb_submission_package.py", "README documents the local package command.")
     add(rows, "readme_checkpoint_audit_command", "readme", "python3 scripts/audit_prb_submission_checkpoint.py" in readme_text, "audit_prb_submission_checkpoint.py", "README documents the final checkpoint audit command.")
     add(rows, "readme_goal_completion_audit", "readme", "prb_goal_completion_audit.csv" in readme_text, "prb_goal_completion_audit.csv", "README documents the goal-level completion audit.")
+    add(rows, "readme_major_revision_scope", "readme", "major-revision response package" in readme_text, "major-revision response package", "README documents the current major-revision checkpoint scope.")
 
     add(rows, "validation_summary_exists", "validation", bool(validation_rows), str(VALIDATION_SUMMARY), "Validation summary CSV exists.")
     add(rows, "validation_summary_all_pass", "validation", bool(validation_rows) and all(row.get("status") == "pass" for row in validation_rows), f"{sum(row.get('status') == 'pass' for row in validation_rows)}/{len(validation_rows)}", "All recorded validation rows pass.")
+    validation_steps = {row.get("step", "") for row in validation_rows}
+    missing_validation_steps = sorted(REQUIRED_VALIDATION_STEPS - validation_steps)
+    add(rows, "validation_required_steps", "validation", not missing_validation_steps, ",".join(missing_validation_steps) or "all present", "Validation summary includes all required major-revision validation steps.")
 
     manifest_ids = {row.get("artifact_id", "") for row in manifest_rows}
     missing_manifest_ids = sorted(REQUIRED_MANIFEST_IDS - manifest_ids)

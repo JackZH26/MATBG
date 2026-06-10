@@ -13,7 +13,7 @@
 \affiliation{JZ Institute of Science, Hong Kong, China}
 \email{jack@jzis.org}
 
-\date{June 9, 2026}
+\date{June 10, 2026}
 
 \maketitle
 
@@ -39,12 +39,15 @@ The material below is meant to be read as a set of checks attached to the main
 text, not as a separate enlargement of the claim.  The BM parameters, reporting
 policy, and filling crosswalk specify what the plotted axes and tabulated
 labels mean.  The pairing-construction and finite-response sections define the
-diagnostic used in the main text.  The provenance section identifies the data
-and scripts behind each figure and table.  The momentum-grid section supplies
-the selected-grid evidence invoked after the main-text $nk=9$ table.  The
-benchmark-reconstruction and claim-scope sections record why absolute
-stiffness, device-level filling, and continuum-limit interpretations are left
-outside the current mechanism-paper scope.
+diagnostic used in the main text.  The major-revision sections then document
+the pairing-family scan, the grid/truncation/shell robustness matrix, and the
+response-level valley-partner sensitivity test added after review.  The
+provenance section identifies the data and scripts behind each figure and
+table.  The momentum-grid section supplies the selected-grid evidence invoked
+after the main-text $nk=9$ table.  The benchmark-reconstruction and
+claim-scope sections record why absolute stiffness, device-level filling, and
+continuum-limit interpretations are left outside the current mechanism-paper
+scope.
 
 \section{BM Model and Numerical Parameters}
 
@@ -68,9 +71,9 @@ twist angle & $\theta=1.05^\circ$\\
 Dirac velocity & $v_F=2.135~\mathrm{eV}\,\text{\AA}$\\
 AA tunneling & $w_0=87.2~\mathrm{meV}$\\
 AB tunneling & $w_1=109.0~\mathrm{meV}$\\
-reciprocal cutoff & $N_{\rm shell}=3$\\
-retained bands & $n_{\rm keep}=6$\\
-momentum grid & $nk=7$ for dense maps, $nk=9,11,13$ for key-point checks\\
+reciprocal cutoff & $N_{\rm shell}=3$ for dense maps; $2,3,4$ in robustness audit\\
+retained bands & $n_{\rm keep}=6$ for dense maps; $4,6,8$ in robustness audit\\
+momentum grid & $nk=7$ for dense maps; $nk=9,11,13,15$ for major-revision checks\\
 gap scale & $\Delta_0=1~\mathrm{meV}$\\
 velocity finite difference & $dk=10^{-6}~\text{\AA}^{-1}$\\
 \end{tabular}
@@ -263,6 +266,62 @@ This is still a diagnostic convention rather than a full independent
 two-valley implementation.  Valley-asymmetric perturbations, strain, or
 valley-dependent interactions would require revisiting this sewing choice.
 
+\subsection{Response-Level Valley-Partner Sensitivity}
+
+The revision adds a response-level stress test of the valley-partner choice:
+\begin{verbatim}
+python3 scripts/run_valley_sewing_response_sensitivity.py
+python3 scripts/audit_valley_sewing_response_sensitivity.py
+python3 scripts/plot_valley_sewing_response_sensitivity.py
+\end{verbatim}
+The outputs are
+\begin{verbatim}
+data/processed/valley_sewing_response_sensitivity.csv
+data/processed/valley_sewing_response_sensitivity_summary.csv
+data/processed/valley_sewing_response_sensitivity_audit.csv
+figures/valley_sewing_response_sensitivity.png
+figures/valley_sewing_response_sensitivity.pdf
+\end{verbatim}
+
+The test keeps the same finite-band response formula and changes only the
+paired-sector partner vectors used in the projection of
+$\Delta_{\rm orb}$.  The scan covers $nk=9,13,15$, $N_{\rm shell}=3,4$,
+$n_{\rm keep}=6$, and $\mu=-4,0,2,4$~meV.  It is a sensitivity diagnostic, not
+a replacement for a complete two-valley response calculation.
+
+\begin{figure}[t]
+\includegraphics[width=\textwidth]{figures/valley_sewing_response_sensitivity.pdf}
+\caption{Valley-partner sensitivity of the fixed-Frobenius response.  The
+production \code{tr\_sewn} convention remains positive and has zero
+particle-hole spectrum error in this diagnostic.  Alternative partner choices
+are sign-sensitive and show measurable particle-hole spectrum errors, so they
+are treated as stress tests rather than replacement production conventions.}
+\label{fig:sm_valley_response_sensitivity}
+\end{figure}
+
+\begin{table}[t]
+\caption{Response-level valley-partner sensitivity.  Percent ranges are over
+$nk=9,13,15$, $N_{\rm shell}=3,4$, and $\mu=-4,0,2,4$~meV.}
+\label{tab:sm_valley_response_sensitivity}
+\small
+\begin{ruledtabular}
+\begin{tabular}{lrrrr}
+partner & positive rows & response range (\%) & mean (\%) & max PH error\\
+\hline
+\code{tr\_sewn} & 24/24 & 4.37 to 13.60 & 9.18 & 0\\
+\code{same\_valley} & 14/24 & -28.41 to 46.31 & 3.74 & $3.731\times10^{-2}$\\
+\code{time\_reversed\_valley} & 12/24 & -17.66 to 29.76 & 1.80 & $2.672\times10^{-2}$\\
+\code{sewn\_time\_reversed\_valley} & 8/24 & -17.28 to 16.68 & -1.44 & $2.064\times10^{-2}$\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The result is not that the response is valley-partner independent.  It is the
+opposite, and the revised manuscript should say so plainly: the positive
+response is robust within the declared \code{tr\_sewn} finite-band diagnostic
+convention, while alternative partner choices expose sign and PH-consistency
+sensitivity.
+
 The projected interband-pairing weight is
 \begin{equation}
   W_{\rm inter}
@@ -272,6 +331,64 @@ The projected interband-pairing weight is
 \end{equation}
 For the dense $nk=7$, $n_{\rm keep}=6$ scan, $W_{\rm inter}\simeq 0.108$ at
 $\eta=1$.
+
+\subsection{Major-Revision Pairing-Family Scan}
+
+The review asked whether the result is tied to the single working direction
+$M_1=\tau_x\sigma_x$.  To answer this, the revision adds a first-pass scan of
+eight real, symmetric, Hermitian orbital directions:
+\begin{verbatim}
+python3 scripts/run_pairing_family_response_scan.py
+python3 scripts/audit_pairing_family_response.py
+python3 scripts/plot_pairing_family_response.py
+\end{verbatim}
+The outputs are
+\begin{verbatim}
+data/processed/pairing_family_response_scan.csv
+data/processed/pairing_family_response_summary.csv
+data/processed/pairing_family_response_audit.csv
+figures/pairing_family_response_summary.png
+figures/pairing_family_response_summary.pdf
+\end{verbatim}
+
+The scan uses $nk=7$, $n_{\rm keep}=6$, $N_{\rm shell}=3$, and
+$\mu=-4,0,2,4$ meV.  It is a pairing-family test at the original dense-map
+resolution rather than a replacement for the grid/truncation/shell audit below.
+Figure~\ref{fig:sm_pairing_family_revision} and
+Table~\ref{tab:sm_pairing_family_revision} show that the fixed-Frobenius
+response is positive for all candidate directions, while the fixed-$\Delta_0$
+control remains weak and sign-sensitive.
+
+\begin{figure}[t]
+\includegraphics[width=\textwidth]{figures/pairing_family_response_summary.pdf}
+\caption{First-pass pairing-family response scan.  Points and bars summarize
+the $\eta=1$ response relative to $\eta=0$ across
+$\mu=-4,0,2,4$~meV.  The blue fixed-Frobenius values remain positive across
+all eight directions; the fixed-$\Delta_0$ control stays close to zero and can
+change sign.}
+\label{fig:sm_pairing_family_revision}
+\end{figure}
+
+\begin{table}[t]
+\caption{Pairing-family response summary.  Percent ranges are over
+$\mu=-4,0,2,4$~meV.}
+\label{tab:sm_pairing_family_revision}
+\small
+\begin{ruledtabular}
+\begin{tabular}{lrrr}
+$M_1$ & fixed Frobenius (\%) & fixed $\Delta_0$ (\%) & mean $W_{\rm inter}$\\
+\hline
+$\tau_0\sigma_x$ & 7.09 to 9.05 & -0.31 to 1.50 & 0.0179\\
+$\tau_0\sigma_z$ & 7.30 to 9.06 & -0.04 to 0.57 & 0.0422\\
+$\tau_x\sigma_0$ & 6.56 to 8.52 & -1.46 to 1.25 & 0.0488\\
+$\tau_x\sigma_x$ & 6.62 to 9.49 & -0.05 to 2.91 & 0.1082\\
+$\tau_x\sigma_z$ & 7.47 to 8.71 & 0.16 to 0.23 & 0.0374\\
+$\tau_z\sigma_0$ & 7.19 to 8.37 & -0.21 to 0.14 & 0.0050\\
+$\tau_z\sigma_x$ & 6.43 to 9.17 & -1.09 to 1.63 & 0.1304\\
+$\tau_z\sigma_z$ & 7.33 to 8.77 & 0.01 to 0.18 & 0.0109\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
 
 \section{Finite-Band Response and Channel Split}
 
@@ -316,23 +433,29 @@ The primary normalized response map uses
 
 Table~\ref{tab:sm_provenance} summarizes the current figure and table
 provenance.  The full machine-readable record is maintained in
-\code{notes/figure\_table\_provenance\_2026-06-09.md}.
+\code{notes/figure\_table\_provenance\_2026-06-10.md}.
 
 \begin{table*}[t]
 \caption{Manuscript artifact provenance.  CSV values used in the manuscript
 tables are checked by \code{scripts/verify\_manuscript\_tables.py}.}
 \label{tab:sm_provenance}
-\begin{ruledtabular}
+\small
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{llll}
+\toprule
 artifact & data source & script & check\\
-\hline
+\midrule
 Frobenius heatmap & dense scan CSV & heatmap plotter & figure file exists\\
 fixed-$\Delta_0$ heatmap & dense scan CSV & heatmap plotter & figure file exists\\
 dense response table & eta-summary CSV & eta summarizer & table verifier\\
 $nk=9$ validation table & key-point summary CSV & eta summarizer & table verifier\\
 PRB audit table & reconstruction CSVs & audit scripts & table verifier\\
+pairing-family revision table & pairing-family summary CSV & family scan/audit scripts & family audit\\
+robustness-matrix revision figure & robustness summary CSV & robustness scan/audit scripts & robustness audit\\
+valley-sensitivity revision figure & valley sensitivity summary CSV & sensitivity scan/audit scripts & sensitivity audit\\
+\bottomrule
 \end{tabular}
-\end{ruledtabular}
+}
 \end{table*}
 
 The dense response data are reproduced by
@@ -524,6 +647,71 @@ Overall scope & 8/8 numeric gates & selected-grid claim only\\
 \end{ruledtabular}
 \end{table}
 
+\section{Major-Revision Grid, Truncation, and Shell Robustness}
+
+The review asked for stronger numerical convergence and truncation control.
+The revision therefore adds a rectangular robustness matrix for the working
+direction:
+\begin{verbatim}
+python3 scripts/run_prb_major_revision_robustness.py
+python3 scripts/audit_prb_major_revision_robustness.py
+python3 scripts/plot_prb_major_revision_robustness.py
+\end{verbatim}
+The outputs are
+\begin{verbatim}
+data/processed/prb_major_revision_robustness_matrix.csv
+data/processed/prb_major_revision_robustness_summary.csv
+data/processed/prb_major_revision_robustness_audit.csv
+figures/prb_major_revision_robustness_matrix.png
+figures/prb_major_revision_robustness_matrix.pdf
+\end{verbatim}
+
+The matrix spans
+\begin{equation}
+  nk=9,11,13,15,\qquad
+  n_{\rm keep}=4,6,8,\qquad
+  N_{\rm shell}=2,3,4,
+\end{equation}
+with $\mu=-4,-2,0,2,4$~meV and $\eta=0,0.5,1$.
+The raw matrix has 1080 rows and the $\eta=1$ versus $\eta=0$ summary has
+360 rows.
+
+\begin{figure}[t]
+\includegraphics[width=\textwidth]{figures/prb_major_revision_robustness_matrix.pdf}
+\caption{Major-revision robustness matrix for the fixed-Frobenius response.
+Rows vary the moire shell cutoff, columns vary the retained-band truncation,
+and each panel shows the response versus $nk$ at five chemical potentials.
+The production and expanded truncations $n_{\rm keep}=6,8$ are positive
+throughout the tested matrix, while the low-truncation boundary appears at
+$n_{\rm keep}=4$ and $\mu=-4$~meV.}
+\label{fig:sm_major_revision_robustness}
+\end{figure}
+
+\begin{table}[t]
+\caption{Major-revision robustness summary for the working direction
+$M_1=\tau_x\sigma_x$.}
+\label{tab:sm_major_revision_robustness}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llll}
+\toprule
+scope & positive rows & response range (\%) & consequence\\
+\midrule
+all fixed Frobenius & 172/180 & -42.22 to 16.60 & not globally truncation independent\\
+$n_{\rm keep}\ge6$ & 120/120 & 1.07 to 13.60 & production/expanded truncations positive\\
+$n_{\rm keep}\ge6$, $N_{\rm shell}\ge3$ & 80/80 & 4.37 to 13.60 & production-scope response sizable\\
+$n_{\rm keep}=4$, $\mu=-4$ meV & 8 nonpositive & -42.22 to -0.89 & disclosed low-truncation boundary\\
+all fixed $\Delta_0$ & 113/180 & -4.62 to 3.30 & weak/sign-sensitive control\\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+The machine-readable robustness audit passes all current scoped checks.  It
+certifies production-scope sign stability; it does not certify a global
+all-truncation positive response.  This distinction is essential for the
+revised PRB claim.
+
 \section{Historical PRB Benchmark Reconstruction}
 
 The production interband-pairing scan and the historical PRB table
@@ -579,18 +767,22 @@ summarizes the current claim scope.
 \caption{Allowed manuscript claims and excluded interpretations.}
 \label{tab:sm_claim_scope}
 \small
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lll}
 \toprule
 topic & allowed in the present manuscript & excluded interpretation\\
 \midrule
 normalized response & mechanism signature & absolute stiffness enhancement\\
 fixed-$\Delta_0$ control & weak/sign-sensitive control & universal enhancement\\
+pairing family & tested orbital-pairing family & all possible pairing channels\\
 momentum grids & selected sign/scale stability & continuum-limit value\\
+robustness matrix & production-scope $n_{\rm keep}=6,8$ stability & all-truncation independence\\
 filling variable & central flat-band crosswalk & device density calibration\\
 absolute units & benchmark self-audit only & experimental comparison\\
-valley partner & \code{tr\_sewn} diagnostic convention & valley-asymmetric calculation\\
+valley partner & \code{tr\_sewn} diagnostic convention & valley-basis-independent stiffness claim\\
 \bottomrule
 \end{tabular}
+}
 \end{table}
 
 \section{Current Limitations and Next Validation Gates}
@@ -598,9 +790,11 @@ valley partner & \code{tr\_sewn} diagnostic convention & valley-asymmetric calcu
 The current submission-critical gaps are:
 \begin{enumerate}
   \item a full continuum-grid extrapolation beyond the present selected
-  $nk=9$, $nk=11$, $nk=13$ trend audit and targeted $nk=15$ spot check;
+  $nk=9$, $nk=11$, $nk=13$, $nk=15$ audits and the major-revision robustness
+  matrix;
   \item a fully independent two-valley implementation before studying
-  valley-asymmetric perturbations;
+  valley-asymmetric perturbations or claiming valley-basis-independent
+  stiffness physics;
   \item a final absolute stiffness convention only before any direct
   experimental comparison;
   \item a device-level filling calibration beyond the central-flat-band
@@ -624,7 +818,12 @@ including NumPy and Matplotlib.
 \textbf{Conflict of interest}: The author declares no conflict of interest.
 
 \textbf{Data availability}: All data and code supporting this work are available
-from the corresponding author upon reasonable request.
+from the corresponding author upon reasonable request.  The manuscript source,
+generated data tables, configuration files, plotting scripts, validation
+scripts, and local package manifests are maintained in the MATBG research
+repository at \url{https://github.com/JackZH26/MATBG}.  The CSV files and
+scripts referenced in the manuscript and Supplemental Material reproduce the
+reported tables and figures.
 
 \textbf{Ethics approval}: Not applicable.
 

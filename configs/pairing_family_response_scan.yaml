@@ -1,0 +1,44 @@
+project: matbg_interband_pairing_superfluid_stiffness
+created: 2026-06-10
+purpose: prb_major_revision_pairing_family_response_scan
+
+bm_model:
+  theta_deg: 1.05
+  vF_eV_A: 2.135
+  w0_meV: 87.2
+  w1_meV: 109.0
+  n_shell: 3
+
+scan:
+  nk: 7
+  n_keep: 6
+  mu_meV_values: [-4.0, 0.0, 2.0, 4.0]
+  eta_values: [0.0, 1.0]
+  delta0_meV: 1.0
+  finite_difference_dk_Ainv: 1.0e-6
+  normalization_modes:
+    - fixed_frobenius_norm
+    - fixed_delta0
+
+pairing_family:
+  m0: tau0_sigma0
+  candidate_m1_values:
+    - taux_sigmax
+    - taux_sigma0
+    - tau0_sigmaz
+    - tauz_sigmaz
+    - tau0_sigmax
+    - taux_sigmaz
+    - tauz_sigma0
+    - tauz_sigmax
+  partner_convention: tr_sewn
+
+outputs:
+  raw_csv: data/processed/pairing_family_response_scan.csv
+  summary_csv: data/processed/pairing_family_response_summary.csv
+
+commands:
+  scan: >
+    python3 scripts/run_pairing_family_response_scan.py
+    --output data/processed/pairing_family_response_scan.csv
+    --summary-output data/processed/pairing_family_response_summary.csv

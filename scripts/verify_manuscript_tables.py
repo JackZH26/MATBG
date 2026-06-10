@@ -31,6 +31,18 @@ NK_TREND = ROOT / "data" / "processed" / "nk_trend_audit_nkeep6.csv"
 CONVERGENCE_SUFFICIENCY = (
     ROOT / "data" / "processed" / "convergence_sufficiency_audit.csv"
 )
+PAIRING_FAMILY_SUMMARY = (
+    ROOT / "data" / "processed" / "pairing_family_response_summary.csv"
+)
+PAIRING_FAMILY_AUDIT = (
+    ROOT / "data" / "processed" / "pairing_family_response_audit.csv"
+)
+REVISION_ROBUSTNESS_SUMMARY = (
+    ROOT / "data" / "processed" / "prb_major_revision_robustness_summary.csv"
+)
+VALLEY_SENSITIVITY_SUMMARY = (
+    ROOT / "data" / "processed" / "valley_sewing_response_sensitivity_summary.csv"
+)
 
 
 def load_csv(path: Path) -> list[dict[str, str]]:
@@ -255,6 +267,62 @@ def verify_prb_audit(tex: str) -> None:
             rounded(data["D_geom_eV_A2"], 2),
             2,
         )
+
+
+def verify_main_major_revision_evidence(tex: str) -> None:
+    rows = split_rows(table_block(tex, "tab:major_revision_evidence"))
+    numeric_rows = [row for row in rows if len(row) == 4 and numbers(row[2])]
+    if len(numeric_rows) < 4:
+        raise AssertionError("Expected at least four main major-revision evidence rows")
+
+    pairing = numeric_rows[0]
+    robustness = numeric_rows[1]
+    production = numeric_rows[2]
+    valley = numeric_rows[3]
+
+    pairing_audit = {row["check_id"]: row for row in load_csv(PAIRING_FAMILY_AUDIT)}
+    pairing_range = numbers(pairing_audit["fixed_frobenius_minimum_size"]["measured_value"])
+    assert_close("main pairing family positive numerator", numbers(pairing[2])[0], 32, 0)
+    assert_close("main pairing family positive denominator", numbers(pairing[2])[1], 32, 0)
+    assert_close("main pairing family min percent", numbers(pairing[2])[2], pairing_range[0], 2)
+    assert_close("main pairing family max percent", numbers(pairing[2])[3], pairing_range[1], 2)
+
+    robustness_values = [
+        row
+        for row in load_csv(REVISION_ROBUSTNESS_SUMMARY)
+        if row["normalization"] == "fixed_frobenius_norm"
+    ]
+    robust_nkeep_ge6 = [
+        row for row in robustness_values if int(row["n_keep"]) >= 6
+    ]
+    production_rows = [
+        row
+        for row in robust_nkeep_ge6
+        if int(row["n_shell"]) >= 3
+    ]
+    vals_ge6 = [float(row["D_iso_rel_percent"]) for row in robust_nkeep_ge6]
+    vals_prod = [float(row["D_iso_rel_percent"]) for row in production_rows]
+    assert_close("main robustness positive numerator", numbers(robustness[2])[0], 120, 0)
+    assert_close("main robustness positive denominator", numbers(robustness[2])[1], 120, 0)
+    assert_close("main robustness min", numbers(robustness[2])[2], rounded(min(vals_ge6), 2), 2)
+    assert_close("main robustness max", numbers(robustness[2])[3], rounded(max(vals_ge6), 2), 2)
+    assert_close("main production positive numerator", numbers(production[2])[0], 80, 0)
+    assert_close("main production positive denominator", numbers(production[2])[1], 80, 0)
+    assert_close("main production min", numbers(production[2])[2], rounded(min(vals_prod), 2), 2)
+    assert_close("main production max", numbers(production[2])[3], rounded(max(vals_prod), 2), 2)
+
+    valley_rows = [
+        row
+        for row in load_csv(VALLEY_SENSITIVITY_SUMMARY)
+        if row["normalization"] == "fixed_frobenius_norm"
+        and row["partner"] == "tr_sewn"
+    ]
+    valley_vals = [float(row["D_iso_rel_percent"]) for row in valley_rows]
+    assert_close("main valley positive numerator", numbers(valley[2])[0], 24, 0)
+    assert_close("main valley positive denominator", numbers(valley[2])[1], 24, 0)
+    assert_close("main valley ph error", numbers(valley[2])[-1], 0, 0)
+    assert_close("main valley min", numbers(valley[2])[2], rounded(min(valley_vals), 2), 2)
+    assert_close("main valley max", numbers(valley[2])[3], rounded(max(valley_vals), 2), 2)
 
 
 def verify_supplemental_nk_convergence(tex: str) -> None:
@@ -614,20 +682,176 @@ def verify_supplemental_convergence_sufficiency(tex: str) -> None:
         )
 
 
+def latex_pairing_name(cell: str) -> str:
+    replacements = {
+        r"\tau_0\sigma_x": "tau0_sigmax",
+        r"\tau_0\sigma_z": "tau0_sigmaz",
+        r"\tau_x\sigma_0": "taux_sigma0",
+        r"\tau_x\sigma_x": "taux_sigmax",
+        r"\tau_x\sigma_z": "taux_sigmaz",
+        r"\tau_z\sigma_0": "tauz_sigma0",
+        r"\tau_z\sigma_x": "tauz_sigmax",
+        r"\tau_z\sigma_z": "tauz_sigmaz",
+    }
+    for latex, name in replacements.items():
+        if latex in cell:
+            return name
+    raise ValueError(f"Unsupported pairing label: {cell!r}")
+
+
+def verify_supplemental_pairing_family(tex: str) -> None:
+    rows = split_rows(table_block(tex, "tab:sm_pairing_family_revision"))
+    data_rows = load_csv(PAIRING_FAMILY_SUMMARY)
+    grouped: dict[tuple[str, str], list[dict[str, str]]] = {}
+    for row in data_rows:
+        grouped.setdefault((row["m1"], row["normalization"]), []).append(row)
+
+    checked = 0
+    for cells in rows:
+        if len(cells) != 4 or "\\tau" not in cells[0]:
+            continue
+        m1 = latex_pairing_name(cells[0])
+        frob = [
+            float(row["D_iso_rel_percent"])
+            for row in grouped[(m1, "fixed_frobenius_norm")]
+        ]
+        delta0 = [
+            float(row["D_iso_rel_percent"])
+            for row in grouped[(m1, "fixed_delta0")]
+        ]
+        winter = [
+            float(row["W_inter_target"])
+            for row in grouped[(m1, "fixed_frobenius_norm")]
+        ]
+        frob_actual = numbers(cells[1])
+        delta_actual = numbers(cells[2])
+        assert_close(f"pairing family {m1} frob min", frob_actual[0], rounded(min(frob), 2), 2)
+        assert_close(f"pairing family {m1} frob max", frob_actual[1], rounded(max(frob), 2), 2)
+        assert_close(f"pairing family {m1} delta min", delta_actual[0], rounded(min(delta0), 2), 2)
+        assert_close(f"pairing family {m1} delta max", delta_actual[1], rounded(max(delta0), 2), 2)
+        assert_close(
+            f"pairing family {m1} W mean",
+            number(cells[3]),
+            rounded(sum(winter) / len(winter), 4),
+            4,
+        )
+        checked += 1
+    if checked != 8:
+        raise AssertionError(f"Expected 8 pairing-family rows, checked {checked}")
+
+
+def verify_supplemental_major_revision_robustness(tex: str) -> None:
+    rows = split_rows(table_block(tex, "tab:sm_major_revision_robustness"))
+    data = load_csv(REVISION_ROBUSTNESS_SUMMARY)
+    frob = [row for row in data if row["normalization"] == "fixed_frobenius_norm"]
+    delta = [row for row in data if row["normalization"] == "fixed_delta0"]
+    nkeep_ge6 = [row for row in frob if int(row["n_keep"]) >= 6]
+    production = [
+        row for row in nkeep_ge6 if int(row["n_shell"]) >= 3
+    ]
+    boundary = [
+        row
+        for row in frob
+        if int(row["n_keep"]) == 4
+        and float(row["mu_meV"]) == -4.0
+        and float(row["D_iso_rel_percent"]) <= 0.0
+    ]
+    expected = {
+        "all fixed Frobenius": (172, 180, min(floats_from_rows(frob)), max(floats_from_rows(frob))),
+        "n_keep": (120, 120, min(floats_from_rows(nkeep_ge6)), max(floats_from_rows(nkeep_ge6))),
+        "N_": (80, 80, min(floats_from_rows(production)), max(floats_from_rows(production))),
+        "mu=-4": (len(boundary), None, min(floats_from_rows(boundary)), max(floats_from_rows(boundary))),
+        "all fixed": (113, 180, min(floats_from_rows(delta)), max(floats_from_rows(delta))),
+    }
+
+    checked = 0
+    for cells in rows:
+        if len(cells) != 4:
+            continue
+        label = cells[0]
+        key = None
+        if label.startswith("all fixed Frobenius"):
+            key = "all fixed Frobenius"
+        elif "n_{\\rm keep}\\ge6" in label and "N_{\\rm shell}" not in label:
+            key = "n_keep"
+        elif "N_{\\rm shell}" in label:
+            key = "N_"
+        elif "\\mu=-4" in label:
+            key = "mu=-4"
+        elif "Delta" in label:
+            key = "all fixed"
+        if key is None:
+            continue
+        numerator, denominator, vmin, vmax = expected[key]
+        count_values = numbers(cells[1])
+        range_values = numbers(cells[2])
+        assert_close(f"robustness {key} numerator", count_values[0], numerator, 0)
+        if denominator is not None:
+            assert_close(f"robustness {key} denominator", count_values[1], denominator, 0)
+        assert_close(f"robustness {key} min", range_values[0], rounded(vmin, 2), 2)
+        assert_close(f"robustness {key} max", range_values[1], rounded(vmax, 2), 2)
+        checked += 1
+    if checked != 5:
+        raise AssertionError(f"Expected 5 robustness rows, checked {checked}")
+
+
+def floats_from_rows(rows: list[dict[str, str]]) -> list[float]:
+    return [float(row["D_iso_rel_percent"]) for row in rows]
+
+
+def verify_supplemental_valley_sensitivity(tex: str) -> None:
+    rows = split_rows(table_block(tex, "tab:sm_valley_response_sensitivity"))
+    data = [
+        row
+        for row in load_csv(VALLEY_SENSITIVITY_SUMMARY)
+        if row["normalization"] == "fixed_frobenius_norm"
+    ]
+    by_partner: dict[str, list[dict[str, str]]] = {}
+    for row in data:
+        by_partner.setdefault(row["partner"], []).append(row)
+
+    checked = 0
+    for cells in rows:
+        if len(cells) != 5 or "\\code" not in cells[0]:
+            continue
+        partner = cells[0].replace("\\code{", "").replace("}", "").replace("\\_", "_")
+        partner_rows = by_partner[partner]
+        vals = [float(row["D_iso_rel_percent"]) for row in partner_rows]
+        count_values = numbers(cells[1])
+        range_values = numbers(cells[2])
+        assert_close(f"valley {partner} positive numerator", count_values[0], sum(v > 0 for v in vals), 0)
+        assert_close(f"valley {partner} positive denominator", count_values[1], len(vals), 0)
+        assert_close(f"valley {partner} min", range_values[0], rounded(min(vals), 2), 2)
+        assert_close(f"valley {partner} max", range_values[1], rounded(max(vals), 2), 2)
+        assert_close(
+            f"valley {partner} mean",
+            number(cells[3]),
+            rounded(sum(vals) / len(vals), 2),
+            2,
+        )
+        checked += 1
+    if checked != 4:
+        raise AssertionError(f"Expected 4 valley-sensitivity rows, checked {checked}")
+
+
 def main() -> int:
     tex = TEX_PATH.read_text()
     verify_dense_eta(tex)
     verify_nk9(tex)
     verify_prb_audit(tex)
+    verify_main_major_revision_evidence(tex)
     if SUPP_PATH.exists():
         supp = SUPP_PATH.read_text()
         verify_supplemental_nk_convergence(supp)
         verify_supplemental_valley_sewing(supp)
+        verify_supplemental_valley_sensitivity(supp)
         verify_supplemental_filling_crosswalk(supp)
         verify_supplemental_filling_sufficiency(supp)
+        verify_supplemental_pairing_family(supp)
         verify_supplemental_nk_trend(supp)
         verify_supplemental_nk15(supp)
         verify_supplemental_convergence_sufficiency(supp)
+        verify_supplemental_major_revision_robustness(supp)
     print("All manuscript and supplemental table values match processed CSV data.")
     return 0
 
